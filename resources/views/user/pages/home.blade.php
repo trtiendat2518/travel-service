@@ -111,6 +111,82 @@
         </section>
     </div>
 
+    <!-- our process -->
+    <div class="our-process box">
+        <div class="box-title text-center">
+            <h2 class="text-capitalize">Quy Trình Làm Việc</h2>
+            <h3 class="text-capitalize">Quy Trình Làm Việc</h3>
+        </div>
+        <div class="box-content">
+            <div class="container">
+                <div class="elementor-element elementor-element-869e133 elementor-widget elementor-widget-Numbered Steps Row" data-id="869e133"
+                    data-element_type="widget" data-widget_type="Numbered Steps Row.default">
+                    <div class="elementor-widget-container">
+                        <div class="slick-carousel steps-carousel slick-initialized slick-slider">
+                            <div class="slick-list draggable">
+                                <div class="slick-track" style="opacity: 1; width: 905px; transform: translate3d(0px, 0px, 0px);">
+                                    <div class="slick-slide slick-current slick-active" data-slick-index="0" aria-hidden="false"
+                                        style="width: 181px;">
+                                        <div>
+                                            <div style="width: 100%; display: inline-block;">
+                                                <div class="numbered-steps-block">
+                                                    <div class="numbered-steps-number-container numbered-steps-number-first"><span
+                                                            class="numbered-steps-number">1.</span></div>
+                                                    <p>Gửi thông tin của bạn cho chúng tôi</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="slick-slide slick-active" data-slick-index="1" aria-hidden="false" style="width: 181px;">
+                                        <div>
+                                            <div style="width: 100%; display: inline-block;">
+                                                <div class="numbered-steps-block">
+                                                    <div class="numbered-steps-number-container"><span class="numbered-steps-number">2.</span></div>
+                                                    <p>Nhóm 24/7 của chúng tôi sẽ liên hệ với bạn trong thời gian sớm nhất</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="slick-slide slick-active" data-slick-index="2" aria-hidden="false" style="width: 181px;">
+                                        <div>
+                                            <div style="width: 100%; display: inline-block;">
+                                                <div class="numbered-steps-block">
+                                                    <div class="numbered-steps-number-container"><span class="numbered-steps-number">3.</span></div>
+                                                    <p>Chúng tôi sẽ sắp xếp lịch trình, dịch vụ cho bạn</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="slick-slide slick-active" data-slick-index="3" aria-hidden="false" style="width: 181px;">
+                                        <div>
+                                            <div style="width: 100%; display: inline-block;">
+                                                <div class="numbered-steps-block">
+                                                    <div class="numbered-steps-number-container"><span class="numbered-steps-number">4.</span></div>
+                                                    <p>Tài xế chuyên nghiệp của chúng tôi sẽ đón bạn vào khung giờ bạn chọn</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="slick-slide slick-active" data-slick-index="4" aria-hidden="false" style="width: 181px;">
+                                        <div>
+                                            <div style="width: 100%; display: inline-block;">
+                                                <div class="numbered-steps-block">
+                                                    <div class="numbered-steps-number-container numbered-steps-number-last"><span
+                                                            class="numbered-steps-number">5.</span></div>
+                                                    <p>Thư giãn và tận hưởng chuyến đi của bạn!</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- our service -->
     <our-service-component></our-service-component>
 
@@ -118,7 +194,7 @@
     {{-- <car-category-component></car-category-component> --}}
 
     <!-- contact us -->
-    <div id="info-box" class="hero-image parallax">
+    {{-- <div id="info-box" class="hero-image parallax">
         <div class="hero-text">
             <div class="box-title text-center">
                 <h3 class="">Liên hệ với chúng tôi</h3>
@@ -131,7 +207,10 @@
                 <a href="tel:0123456789" class="btn text-capitalize">Gọi ngay <span>(1)-212-333-4343</span></a>
             </div>
         </div>
-    </div>
+    </div> --}}
+
+    <!-- popular place -->
+    <popular-place-component></popular-place-component>
 
     <!-- review -->
     <feedback-component></feedback-component>

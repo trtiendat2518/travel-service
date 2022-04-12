@@ -9,7 +9,7 @@
                 <div class="container">
                     <div class="row">
                         <div
-                            class="col-lg-6 col-md-6 d-flex flex-column justify-content-between mt-4"
+                            class="col-md-3 d-flex flex-column justify-content-between mt-4"
                         >
                             <a href="/dich-vu-thue-xe">
                                 <div class="our-service-item">
@@ -19,13 +19,13 @@
                                         alt=""
                                     />
                                     <p class="our-service-caption">
-                                        Xe đưa đón sân bay
+                                        Đưa đón sân bay
                                     </p>
                                 </div>
                             </a>
                         </div>
                         <div
-                            class="col-lg-6 col-md-6 d-flex flex-column justify-content-between mt-4"
+                            class="col-md-3 d-flex flex-column justify-content-between mt-4"
                         >
                             <div class="our-service-item">
                                 <img
@@ -33,13 +33,11 @@
                                     :src="`../public/user/img/xe-di-cap-cuu.png`"
                                     alt=""
                                 />
-                                <p class="our-service-caption">
-                                    Xe đưa đi bệnh viện
-                                </p>
+                                <p class="our-service-caption">Xe đi cấp cứu</p>
                             </div>
                         </div>
                         <div
-                            class="col-lg-6 col-md-6 d-flex flex-column justify-content-between mt-4"
+                            class="col-md-3 d-flex flex-column justify-content-between mt-4"
                         >
                             <div class="our-service-item">
                                 <img
@@ -53,7 +51,7 @@
                             </div>
                         </div>
                         <div
-                            class="col-lg-6 col-md-6 d-flex flex-column justify-content-between mt-4"
+                            class="col-md-3 d-flex flex-column justify-content-between mt-4"
                         >
                             <div class="our-service-item">
                                 <img
@@ -65,7 +63,7 @@
                             </div>
                         </div>
                         <div
-                            class="col-lg-6 col-md-6 d-flex flex-column justify-content-between mt-4"
+                            class="col-md-3 d-flex flex-column justify-content-between mt-4"
                         >
                             <div class="our-service-item">
                                 <img
@@ -73,13 +71,23 @@
                                     :src="`../public/user/img/xe-di-1-chieu.png`"
                                     alt=""
                                 />
-                                <p class="our-service-caption">
-                                    Xe đi 1 chiều có tài xế
-                                </p>
+                                <p class="our-service-caption">Xe đi 1 chiều</p>
                             </div>
                         </div>
                         <div
-                            class="col-lg-6 col-md-6 d-flex flex-column justify-content-between mt-4"
+                            class="col-md-3 d-flex flex-column justify-content-between mt-4"
+                        >
+                            <div class="our-service-item">
+                                <img
+                                    class="our-service-img decrease-brightness"
+                                    :src="`../public/user/img/xe-di-2-chieu.png`"
+                                    alt=""
+                                />
+                                <p class="our-service-caption">Xe đi 2 chiều</p>
+                            </div>
+                        </div>
+                        <div
+                            class="col-md-3 d-flex flex-column justify-content-between mt-4"
                         >
                             <div class="our-service-item">
                                 <img
@@ -88,8 +96,20 @@
                                     alt=""
                                 />
                                 <p class="our-service-caption">
-                                    Xe đi 2 chiều có tài xế
+                                    Xe hoa cưới hỏi
                                 </p>
+                            </div>
+                        </div>
+                        <div
+                            class="col-md-3 d-flex flex-column justify-content-between mt-4"
+                        >
+                            <div class="our-service-item">
+                                <img
+                                    class="our-service-img decrease-brightness"
+                                    :src="`../public/user/img/xe-di-2-chieu.png`"
+                                    alt=""
+                                />
+                                <p class="our-service-caption">Xe đi sự kiện</p>
                             </div>
                         </div>
                     </div>
@@ -106,5 +126,8 @@ export default {};
 <style scoped>
 .decrease-brightness {
     filter: brightness(30%);
+}
+p {
+    font-size: 18px;
 }
 </style>

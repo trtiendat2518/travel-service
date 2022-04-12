@@ -6216,12 +6216,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -6285,51 +6279,36 @@ __webpack_require__.r(__webpack_exports__);
         order_id: 1,
         code: "MVD000001",
         name: "Ho va Ten 1",
-        phone: "0123456789",
-        place_from: "Hồ Chí Minh",
-        place_to: "Đà Lạt",
-        time_go: "11/04/2022",
-        time_back: "20/04/2022",
+        phone: "09" + Math.floor(Math.random() * (98765432 - 12345678) + 12345678),
+        note: "Cần tư vấn đi nơi nào vui vẻ đổi tâm trạng",
         status: Math.floor(Math.random() * (4 - 0) + 0)
       }, {
         order_id: 2,
         code: "MVD000002",
         name: "Ho va Ten 2",
-        phone: "0123456789",
-        place_from: "Hồ Chí Minh",
-        place_to: "Đà Lạt",
-        time_go: "11/04/2022",
-        time_back: "20/04/2022",
+        phone: "09" + Math.floor(Math.random() * (98765432 - 12345678) + 12345678),
+        note: "Nơi nào có biển thoáng và sạch",
         status: Math.floor(Math.random() * (4 - 0) + 0)
       }, {
         order_id: 3,
         code: "MVD000003",
         name: "Ho va Ten 3",
-        phone: "0123456789",
-        place_from: "Hồ Chí Minh",
-        place_to: "Đà Lạt",
-        time_go: "11/04/2022",
-        time_back: "20/04/2022",
+        phone: "09" + Math.floor(Math.random() * (98765432 - 12345678) + 12345678),
+        note: "Cần tư vấn đi nơi nào đó",
         status: Math.floor(Math.random() * (4 - 0) + 0)
       }, {
         order_id: 4,
         code: "MVD000004",
         name: "Ho va Ten 4",
-        phone: "0123456789",
-        place_from: "Hồ Chí Minh",
-        place_to: "Đà Lạt",
-        time_go: "11/04/2022",
-        time_back: "20/04/2022",
+        phone: "09" + Math.floor(Math.random() * (98765432 - 12345678) + 12345678),
+        note: "Không",
         status: Math.floor(Math.random() * (4 - 0) + 0)
       }, {
         order_id: 5,
         code: "MVD000005",
         name: "Ho va Ten 5",
-        phone: "0123456789",
-        place_from: "Hồ Chí Minh",
-        place_to: "Đà Lạt",
-        time_go: "11/04/2022",
-        time_back: "20/04/2022",
+        phone: "09" + Math.floor(Math.random() * (98765432 - 12345678) + 12345678),
+        note: "Tư vấn",
         status: Math.floor(Math.random() * (4 - 0) + 0)
       }];
     },
@@ -7043,6 +7022,29 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({});
 
 /***/ }),
@@ -7486,6 +7488,256 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/user/pages/home/PopularPlaceComponent.vue?vue&type=script&lang=js&":
+/*!********************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/user/pages/home/PopularPlaceComponent.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({});
 
 /***/ }),
@@ -7786,6 +8038,22 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   methods: {
     loan: function loan() {
@@ -7909,7 +8177,8 @@ vue__WEBPACK_IMPORTED_MODULE_0__["default"].component("banner-component", (__web
 vue__WEBPACK_IMPORTED_MODULE_0__["default"].component("our-service-component", (__webpack_require__(/*! ./components/user/pages/home/OurServiceComponent.vue */ "./resources/js/components/user/pages/home/OurServiceComponent.vue")["default"]));
 vue__WEBPACK_IMPORTED_MODULE_0__["default"].component("car-category-component", (__webpack_require__(/*! ./components/user/pages/home/CarCategoryComponent.vue */ "./resources/js/components/user/pages/home/CarCategoryComponent.vue")["default"]));
 vue__WEBPACK_IMPORTED_MODULE_0__["default"].component("feedback-component", (__webpack_require__(/*! ./components/user/pages/home/FeedbackComponent.vue */ "./resources/js/components/user/pages/home/FeedbackComponent.vue")["default"]));
-vue__WEBPACK_IMPORTED_MODULE_0__["default"].component("booking-now-component", (__webpack_require__(/*! ./components/user/pages/home/BookingNowComponent.vue */ "./resources/js/components/user/pages/home/BookingNowComponent.vue")["default"])); // Service
+vue__WEBPACK_IMPORTED_MODULE_0__["default"].component("booking-now-component", (__webpack_require__(/*! ./components/user/pages/home/BookingNowComponent.vue */ "./resources/js/components/user/pages/home/BookingNowComponent.vue")["default"]));
+vue__WEBPACK_IMPORTED_MODULE_0__["default"].component("popular-place-component", (__webpack_require__(/*! ./components/user/pages/home/PopularPlaceComponent.vue */ "./resources/js/components/user/pages/home/PopularPlaceComponent.vue")["default"])); // Service
 
 vue__WEBPACK_IMPORTED_MODULE_0__["default"].component("booking-service-component", (__webpack_require__(/*! ./components/user/pages/service/BookingServiceComponent.vue */ "./resources/js/components/user/pages/service/BookingServiceComponent.vue")["default"])); // Post
 
@@ -15188,7 +15457,31 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.decrease-brightness[data-v-42b36118] {\n    filter: brightness(30%);\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.decrease-brightness[data-v-42b36118] {\n    filter: brightness(30%);\n}\np[data-v-42b36118] {\n    font-size: 18px;\n}\n", ""]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/user/pages/home/PopularPlaceComponent.vue?vue&type=style&index=0&id=42a34653&scoped=true&lang=css&":
+/*!****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/user/pages/home/PopularPlaceComponent.vue?vue&type=style&index=0&id=42a34653&scoped=true&lang=css& ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
+// Imports
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, "\nh4[data-v-42a34653] {\n    color: black !important;\n}\na[data-v-42a34653] {\n    color: black;\n}\n.decrease-brightness[data-v-42a34653] {\n    filter: brightness(30%);\n}\n.view-all[data-v-42a34653]:hover {\n    background-color: #bf9c60;\n}\n.post-styling[data-v-42a34653] {\n    border: none !important;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -44769,6 +45062,36 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/user/pages/home/PopularPlaceComponent.vue?vue&type=style&index=0&id=42a34653&scoped=true&lang=css&":
+/*!********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/user/pages/home/PopularPlaceComponent.vue?vue&type=style&index=0&id=42a34653&scoped=true&lang=css& ***!
+  \********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_PopularPlaceComponent_vue_vue_type_style_index_0_id_42a34653_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!../../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!../../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./PopularPlaceComponent.vue?vue&type=style&index=0&id=42a34653&scoped=true&lang=css& */ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/user/pages/home/PopularPlaceComponent.vue?vue&type=style&index=0&id=42a34653&scoped=true&lang=css&");
+
+            
+
+var options = {};
+
+options.insert = "head";
+options.singleton = false;
+
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_PopularPlaceComponent_vue_vue_type_style_index_0_id_42a34653_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_1__["default"], options);
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_PopularPlaceComponent_vue_vue_type_style_index_0_id_42a34653_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_1__["default"].locals || {});
+
+/***/ }),
+
 /***/ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/user/pages/post/PostNewsComponent.vue?vue&type=style&index=0&id=4ca078e2&scoped=true&lang=css&":
 /*!****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/user/pages/post/PostNewsComponent.vue?vue&type=style&index=0&id=4ca078e2&scoped=true&lang=css& ***!
@@ -45614,6 +45937,47 @@ component.options.__file = "resources/js/components/user/pages/home/OurServiceCo
 
 /***/ }),
 
+/***/ "./resources/js/components/user/pages/home/PopularPlaceComponent.vue":
+/*!***************************************************************************!*\
+  !*** ./resources/js/components/user/pages/home/PopularPlaceComponent.vue ***!
+  \***************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _PopularPlaceComponent_vue_vue_type_template_id_42a34653_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PopularPlaceComponent.vue?vue&type=template&id=42a34653&scoped=true& */ "./resources/js/components/user/pages/home/PopularPlaceComponent.vue?vue&type=template&id=42a34653&scoped=true&");
+/* harmony import */ var _PopularPlaceComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PopularPlaceComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/user/pages/home/PopularPlaceComponent.vue?vue&type=script&lang=js&");
+/* harmony import */ var _PopularPlaceComponent_vue_vue_type_style_index_0_id_42a34653_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./PopularPlaceComponent.vue?vue&type=style&index=0&id=42a34653&scoped=true&lang=css& */ "./resources/js/components/user/pages/home/PopularPlaceComponent.vue?vue&type=style&index=0&id=42a34653&scoped=true&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! !../../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+;
+
+
+/* normalize component */
+
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _PopularPlaceComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _PopularPlaceComponent_vue_vue_type_template_id_42a34653_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render,
+  _PopularPlaceComponent_vue_vue_type_template_id_42a34653_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  "42a34653",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/user/pages/home/PopularPlaceComponent.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
 /***/ "./resources/js/components/user/pages/post/PostNewsComponent.vue":
 /*!***********************************************************************!*\
   !*** ./resources/js/components/user/pages/post/PostNewsComponent.vue ***!
@@ -45888,6 +46252,22 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/user/pages/home/PopularPlaceComponent.vue?vue&type=script&lang=js&":
+/*!****************************************************************************************************!*\
+  !*** ./resources/js/components/user/pages/home/PopularPlaceComponent.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PopularPlaceComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./PopularPlaceComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/user/pages/home/PopularPlaceComponent.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PopularPlaceComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
 /***/ "./resources/js/components/user/pages/post/PostNewsComponent.vue?vue&type=script&lang=js&":
 /*!************************************************************************************************!*\
   !*** ./resources/js/components/user/pages/post/PostNewsComponent.vue?vue&type=script&lang=js& ***!
@@ -46033,6 +46413,19 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_style_loader_dist_cjs_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_OurServiceComponent_vue_vue_type_style_index_0_id_42b36118_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/style-loader/dist/cjs.js!../../../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!../../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!../../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./OurServiceComponent.vue?vue&type=style&index=0&id=42b36118&scoped=true&lang=css& */ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/user/pages/home/OurServiceComponent.vue?vue&type=style&index=0&id=42b36118&scoped=true&lang=css&");
+
+
+/***/ }),
+
+/***/ "./resources/js/components/user/pages/home/PopularPlaceComponent.vue?vue&type=style&index=0&id=42a34653&scoped=true&lang=css&":
+/*!************************************************************************************************************************************!*\
+  !*** ./resources/js/components/user/pages/home/PopularPlaceComponent.vue?vue&type=style&index=0&id=42a34653&scoped=true&lang=css& ***!
+  \************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_dist_cjs_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_PopularPlaceComponent_vue_vue_type_style_index_0_id_42a34653_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/style-loader/dist/cjs.js!../../../../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!../../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!../../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./PopularPlaceComponent.vue?vue&type=style&index=0&id=42a34653&scoped=true&lang=css& */ "./node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[2]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/user/pages/home/PopularPlaceComponent.vue?vue&type=style&index=0&id=42a34653&scoped=true&lang=css&");
 
 
 /***/ }),
@@ -46263,6 +46656,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_OurServiceComponent_vue_vue_type_template_id_42b36118_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
 /* harmony export */ });
 /* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_OurServiceComponent_vue_vue_type_template_id_42b36118_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./OurServiceComponent.vue?vue&type=template&id=42b36118&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/user/pages/home/OurServiceComponent.vue?vue&type=template&id=42b36118&scoped=true&");
+
+
+/***/ }),
+
+/***/ "./resources/js/components/user/pages/home/PopularPlaceComponent.vue?vue&type=template&id=42a34653&scoped=true&":
+/*!**********************************************************************************************************************!*\
+  !*** ./resources/js/components/user/pages/home/PopularPlaceComponent.vue?vue&type=template&id=42a34653&scoped=true& ***!
+  \**********************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PopularPlaceComponent_vue_vue_type_template_id_42a34653_scoped_true___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PopularPlaceComponent_vue_vue_type_template_id_42a34653_scoped_true___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PopularPlaceComponent_vue_vue_type_template_id_42a34653_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./PopularPlaceComponent.vue?vue&type=template&id=42a34653&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/user/pages/home/PopularPlaceComponent.vue?vue&type=template&id=42a34653&scoped=true&");
 
 
 /***/ }),
@@ -47715,13 +48125,7 @@ var render = function () {
                   _vm._v(" "),
                   _c("td", [_vm._v(_vm._s(order.phone))]),
                   _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(order.place_from))]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(order.place_to))]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(order.time_go))]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(order.time_back))]),
+                  _c("td", [_vm._v(_vm._s(order.note))]),
                   _vm._v(" "),
                   _c("td", [
                     _c(
@@ -47871,13 +48275,7 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", [_vm._v("Số điện thoại")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Điểm đón")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Điểm đến")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Ngày đi")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Ngày về")]),
+        _c("th", [_vm._v("Ghi chú")]),
         _vm._v(" "),
         _c("th", [_vm._v("Trạng thái")]),
       ]),
@@ -48623,9 +49021,15 @@ var staticRenderFns = [
                   _c("form", { attrs: { "accept-charset": "utf-8" } }, [
                     _c("div", { staticClass: "row" }, [
                       _c("div", { staticClass: "col-md-6" }, [
-                        _c("label", { attrs: { for: "name" } }, [
-                          _vm._v("Họ và tên"),
-                        ]),
+                        _c(
+                          "label",
+                          { staticClass: "text-left", attrs: { for: "name" } },
+                          [
+                            _vm._v(
+                              "\n                                            Họ và tên\n                                        "
+                            ),
+                          ]
+                        ),
                         _vm._v(" "),
                         _c("input", {
                           attrs: {
@@ -48638,11 +49042,15 @@ var staticRenderFns = [
                       ]),
                       _vm._v(" "),
                       _c("div", { staticClass: "col-md-6" }, [
-                        _c("label", { attrs: { for: "phone" } }, [
-                          _vm._v(
-                            "Số điện thoại\n                                        "
-                          ),
-                        ]),
+                        _c(
+                          "label",
+                          { staticClass: "text-left", attrs: { for: "phone" } },
+                          [
+                            _vm._v(
+                              "\n                                            Số điện thoại\n                                        "
+                            ),
+                          ]
+                        ),
                         _vm._v(" "),
                         _c("input", {
                           attrs: {
@@ -48654,195 +49062,27 @@ var staticRenderFns = [
                         }),
                       ]),
                       _vm._v(" "),
-                      _c("div", { staticClass: "col-md-6" }, [
-                        _c("label", { attrs: { for: "category" } }, [
-                          _vm._v("Loại xe"),
-                        ]),
-                        _vm._v(" "),
+                      _c("div", { staticClass: "col-md-12" }, [
                         _c(
-                          "select",
-                          { attrs: { name: "category", id: "category" } },
-                          [
-                            _c("option", { attrs: { value: "" } }, [
-                              _vm._v(
-                                "\n                                                Chọn loại xe\n                                            "
-                              ),
-                            ]),
-                            _vm._v(" "),
-                            _c("option", { attrs: { value: "1" } }, [
-                              _vm._v(
-                                "\n                                                Xe 4 chỗ\n                                            "
-                              ),
-                            ]),
-                            _vm._v(" "),
-                            _c("option", { attrs: { value: "2" } }, [
-                              _vm._v(
-                                "\n                                                Xe 7 chỗ\n                                            "
-                              ),
-                            ]),
-                            _vm._v(" "),
-                            _c("option", { attrs: { value: "3" } }, [
-                              _vm._v(
-                                "\n                                                Xe 16 chỗ\n                                            "
-                              ),
-                            ]),
-                            _vm._v(" "),
-                            _c("option", { attrs: { value: "4" } }, [
-                              _vm._v(
-                                "\n                                                Xe 29 chỗ\n                                            "
-                              ),
-                            ]),
-                            _vm._v(" "),
-                            _c("option", { attrs: { value: "5" } }, [
-                              _vm._v(
-                                "\n                                                Xe 45 chỗ\n                                            "
-                              ),
-                            ]),
-                          ]
-                        ),
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "col-md-6" }, [
-                        _c("label", { attrs: { for: "service" } }, [
-                          _vm._v(
-                            "Dịch vụ thuê xe\n                                        "
-                          ),
-                        ]),
-                        _vm._v(" "),
-                        _c(
-                          "select",
-                          { attrs: { name: "service", id: "service" } },
-                          [
-                            _c("option", { attrs: { value: "" } }, [
-                              _vm._v(
-                                "\n                                                Chọn dịch vụ\n                                            "
-                              ),
-                            ]),
-                            _vm._v(" "),
-                            _c("option", { attrs: { value: "1" } }, [
-                              _vm._v(
-                                "\n                                                Đi 1 chiều có tài xế\n                                            "
-                              ),
-                            ]),
-                            _vm._v(" "),
-                            _c("option", { attrs: { value: "2" } }, [
-                              _vm._v(
-                                "\n                                                Đi 2 chiều có tài xế\n                                            "
-                              ),
-                            ]),
-                          ]
-                        ),
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "col-md-6" }, [
-                        _c("label", { attrs: { for: "address-start" } }, [
-                          _vm._v("Chọn điểm đón"),
-                        ]),
-                        _vm._v(" "),
-                        _c(
-                          "select",
+                          "label",
                           {
-                            attrs: {
-                              name: "address-start",
-                              id: "address-start",
-                            },
+                            staticClass: "text-left",
+                            attrs: { for: "category" },
                           },
                           [
-                            _c("option", { attrs: { value: "" } }, [
-                              _vm._v(
-                                "\n                                                Chọn điểm đón\n                                            "
-                              ),
-                            ]),
-                            _vm._v(" "),
-                            _c("option", { attrs: { value: "1" } }, [
-                              _vm._v(
-                                "\n                                                Xe 4 chỗ\n                                            "
-                              ),
-                            ]),
-                            _vm._v(" "),
-                            _c("option", { attrs: { value: "2" } }, [
-                              _vm._v(
-                                "\n                                                Xe 7 chỗ\n                                            "
-                              ),
-                            ]),
-                            _vm._v(" "),
-                            _c("option", { attrs: { value: "3" } }, [
-                              _vm._v(
-                                "\n                                                Xe 16 chỗ\n                                            "
-                              ),
-                            ]),
-                            _vm._v(" "),
-                            _c("option", { attrs: { value: "4" } }, [
-                              _vm._v(
-                                "\n                                                Xe 29 chỗ\n                                            "
-                              ),
-                            ]),
-                            _vm._v(" "),
-                            _c("option", { attrs: { value: "5" } }, [
-                              _vm._v(
-                                "\n                                                Xe 45 chỗ\n                                            "
-                              ),
-                            ]),
+                            _vm._v(
+                              "\n                                            Ghi chú\n                                        "
+                            ),
                           ]
                         ),
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "col-md-6" }, [
-                        _c("label", { attrs: { for: "address-end" } }, [
-                          _vm._v("Chọn điểm đến"),
-                        ]),
                         _vm._v(" "),
-                        _c(
-                          "select",
-                          { attrs: { name: "address-end", id: "address-end" } },
-                          [
-                            _c("option", { attrs: { value: "" } }, [
-                              _vm._v(
-                                "\n                                                Chọn điểm đến\n                                            "
-                              ),
-                            ]),
-                            _vm._v(" "),
-                            _c("option", { attrs: { value: "1" } }, [
-                              _vm._v(
-                                "\n                                                Đi 1 chiều có tài xế\n                                            "
-                              ),
-                            ]),
-                            _vm._v(" "),
-                            _c("option", { attrs: { value: "2" } }, [
-                              _vm._v(
-                                "\n                                                Đi 2 chiều có tài xế\n                                            "
-                              ),
-                            ]),
-                          ]
-                        ),
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "col-md-6" }, [
-                        _c("label", { attrs: { for: "time-start" } }, [
-                          _vm._v("Ngày bắt đầu"),
-                        ]),
-                        _vm._v(" "),
-                        _c("input", {
+                        _c("textarea", {
                           attrs: {
-                            type: "date",
-                            name: "time-start",
-                            id: "time-start",
-                          },
-                        }),
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "col-md-6" }, [
-                        _c("label", { attrs: { for: "time-end" } }, [
-                          _vm._v(
-                            "Ngày kết thúc\n                                        "
-                          ),
-                        ]),
-                        _vm._v(" "),
-                        _c("input", {
-                          attrs: {
-                            type: "date",
-                            name: "time-end",
-                            id: "time-end",
+                            name: "",
+                            id: "",
+                            cols: "30",
+                            rows: "10",
+                            placeholder: "Để lại lời nhắn cho chúng tôi",
                           },
                         }),
                       ]),
@@ -49391,7 +49631,7 @@ var render = function () {
               "div",
               {
                 staticClass:
-                  "col-lg-6 col-md-6 d-flex flex-column justify-content-between mt-4",
+                  "col-md-3 d-flex flex-column justify-content-between mt-4",
               },
               [
                 _c("a", { attrs: { href: "/dich-vu-thue-xe" } }, [
@@ -49406,7 +49646,7 @@ var render = function () {
                     _vm._v(" "),
                     _c("p", { staticClass: "our-service-caption" }, [
                       _vm._v(
-                        "\n                                    Xe đưa đón sân bay\n                                "
+                        "\n                                    Đưa đón sân bay\n                                "
                       ),
                     ]),
                   ]),
@@ -49418,7 +49658,7 @@ var render = function () {
               "div",
               {
                 staticClass:
-                  "col-lg-6 col-md-6 d-flex flex-column justify-content-between mt-4",
+                  "col-md-3 d-flex flex-column justify-content-between mt-4",
               },
               [
                 _c("div", { staticClass: "our-service-item" }, [
@@ -49431,9 +49671,7 @@ var render = function () {
                   }),
                   _vm._v(" "),
                   _c("p", { staticClass: "our-service-caption" }, [
-                    _vm._v(
-                      "\n                                Xe đưa đi bệnh viện\n                            "
-                    ),
+                    _vm._v("Xe đi cấp cứu"),
                   ]),
                 ]),
               ]
@@ -49443,7 +49681,7 @@ var render = function () {
               "div",
               {
                 staticClass:
-                  "col-lg-6 col-md-6 d-flex flex-column justify-content-between mt-4",
+                  "col-md-3 d-flex flex-column justify-content-between mt-4",
               },
               [
                 _c("div", { staticClass: "our-service-item" }, [
@@ -49468,7 +49706,7 @@ var render = function () {
               "div",
               {
                 staticClass:
-                  "col-lg-6 col-md-6 d-flex flex-column justify-content-between mt-4",
+                  "col-md-3 d-flex flex-column justify-content-between mt-4",
               },
               [
                 _c("div", { staticClass: "our-service-item" }, [
@@ -49488,7 +49726,7 @@ var render = function () {
               "div",
               {
                 staticClass:
-                  "col-lg-6 col-md-6 d-flex flex-column justify-content-between mt-4",
+                  "col-md-3 d-flex flex-column justify-content-between mt-4",
               },
               [
                 _c("div", { staticClass: "our-service-item" }, [
@@ -49501,9 +49739,7 @@ var render = function () {
                   }),
                   _vm._v(" "),
                   _c("p", { staticClass: "our-service-caption" }, [
-                    _vm._v(
-                      "\n                                Xe đi 1 chiều có tài xế\n                            "
-                    ),
+                    _vm._v("Xe đi 1 chiều"),
                   ]),
                 ]),
               ]
@@ -49513,7 +49749,30 @@ var render = function () {
               "div",
               {
                 staticClass:
-                  "col-lg-6 col-md-6 d-flex flex-column justify-content-between mt-4",
+                  "col-md-3 d-flex flex-column justify-content-between mt-4",
+              },
+              [
+                _c("div", { staticClass: "our-service-item" }, [
+                  _c("img", {
+                    staticClass: "our-service-img decrease-brightness",
+                    attrs: {
+                      src: "../public/user/img/xe-di-2-chieu.png",
+                      alt: "",
+                    },
+                  }),
+                  _vm._v(" "),
+                  _c("p", { staticClass: "our-service-caption" }, [
+                    _vm._v("Xe đi 2 chiều"),
+                  ]),
+                ]),
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass:
+                  "col-md-3 d-flex flex-column justify-content-between mt-4",
               },
               [
                 _c("div", { staticClass: "our-service-item" }, [
@@ -49527,8 +49786,31 @@ var render = function () {
                   _vm._v(" "),
                   _c("p", { staticClass: "our-service-caption" }, [
                     _vm._v(
-                      "\n                                Xe đi 2 chiều có tài xế\n                            "
+                      "\n                                Xe hoa cưới hỏi\n                            "
                     ),
+                  ]),
+                ]),
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass:
+                  "col-md-3 d-flex flex-column justify-content-between mt-4",
+              },
+              [
+                _c("div", { staticClass: "our-service-item" }, [
+                  _c("img", {
+                    staticClass: "our-service-img decrease-brightness",
+                    attrs: {
+                      src: "../public/user/img/xe-di-2-chieu.png",
+                      alt: "",
+                    },
+                  }),
+                  _vm._v(" "),
+                  _c("p", { staticClass: "our-service-caption" }, [
+                    _vm._v("Xe đi sự kiện"),
                   ]),
                 ]),
               ]
@@ -49548,6 +49830,388 @@ var staticRenderFns = [
       _c("h2", { staticClass: "text-capitalize" }, [_vm._v("Dịch Vụ Thuê Xe")]),
       _vm._v(" "),
       _c("h3", { staticClass: "text-capitalize" }, [_vm._v("Dịch Vụ Thuê Xe")]),
+    ])
+  },
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/user/pages/home/PopularPlaceComponent.vue?vue&type=template&id=42a34653&scoped=true&":
+/*!*************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/user/pages/home/PopularPlaceComponent.vue?vue&type=template&id=42a34653&scoped=true& ***!
+  \*************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function () {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("div", { staticClass: "our-service box" }, [
+      _vm._m(0),
+      _vm._v(" "),
+      _c("div", { staticClass: "box-content" }, [
+        _c("div", { staticClass: "container" }, [
+          _c("div", { staticClass: "row" }, [
+            _c("div", { staticClass: "col-md-2" }, [
+              _c("a", { attrs: { href: "/bai-viet/chi-tiet" } }, [
+                _c("article", { staticClass: "post post-styling" }, [
+                  _c("div", { staticClass: "featured-image" }, [
+                    _c("img", {
+                      attrs: {
+                        src: "public/user/img/dich-vu-cho-thue-xe-tphcm.png",
+                        alt: "",
+                      },
+                    }),
+                  ]),
+                  _vm._v(" "),
+                  _vm._m(1),
+                ]),
+              ]),
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-md-2" }, [
+              _c("article", { staticClass: "post post-styling" }, [
+                _c("div", { staticClass: "featured-image" }, [
+                  _c("img", {
+                    attrs: {
+                      src: "public/user/img/dich-vu-cho-thue-xe-du-lich-da-lat.png",
+                      alt: "",
+                    },
+                  }),
+                ]),
+                _vm._v(" "),
+                _vm._m(2),
+              ]),
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-md-2" }, [
+              _c("article", { staticClass: "post post-styling" }, [
+                _c("div", { staticClass: "featured-image" }, [
+                  _c("img", {
+                    attrs: {
+                      src: "public/user/img/dich-vu-thue-xe-tai-vung-tau.png",
+                      alt: "",
+                    },
+                  }),
+                ]),
+                _vm._v(" "),
+                _vm._m(3),
+              ]),
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-md-2" }, [
+              _c("article", { staticClass: "post post-styling" }, [
+                _c("div", { staticClass: "featured-image" }, [
+                  _c("img", {
+                    attrs: {
+                      src: "public/user/img/thue-xe-du-lich-binh-duong.png",
+                      alt: "",
+                    },
+                  }),
+                ]),
+                _vm._v(" "),
+                _vm._m(4),
+              ]),
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-md-2" }, [
+              _c("article", { staticClass: "post post-styling" }, [
+                _c("div", { staticClass: "featured-image" }, [
+                  _c("img", {
+                    attrs: {
+                      src: "public/user/img/dich-vu-cho-thue-xe-tphcm.png",
+                      alt: "",
+                    },
+                  }),
+                ]),
+                _vm._v(" "),
+                _vm._m(5),
+              ]),
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-md-2" }, [
+              _c("article", { staticClass: "post post-styling" }, [
+                _c("div", { staticClass: "featured-image" }, [
+                  _c("img", {
+                    attrs: {
+                      src: "public/user/img/dich-vu-cho-thue-xe-tphcm.png",
+                      alt: "",
+                    },
+                  }),
+                ]),
+                _vm._v(" "),
+                _vm._m(6),
+              ]),
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-md-2" }, [
+              _c("a", { attrs: { href: "/bai-viet/chi-tiet" } }, [
+                _c("article", { staticClass: "post post-styling" }, [
+                  _c("div", { staticClass: "featured-image" }, [
+                    _c("img", {
+                      attrs: {
+                        src: "public/user/img/dich-vu-cho-thue-xe-tphcm.png",
+                        alt: "",
+                      },
+                    }),
+                  ]),
+                  _vm._v(" "),
+                  _vm._m(7),
+                ]),
+              ]),
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-md-2" }, [
+              _c("article", { staticClass: "post post-styling" }, [
+                _c("div", { staticClass: "featured-image" }, [
+                  _c("img", {
+                    attrs: {
+                      src: "public/user/img/dich-vu-cho-thue-xe-du-lich-da-lat.png",
+                      alt: "",
+                    },
+                  }),
+                ]),
+                _vm._v(" "),
+                _vm._m(8),
+              ]),
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-md-2" }, [
+              _c("article", { staticClass: "post post-styling" }, [
+                _c("div", { staticClass: "featured-image" }, [
+                  _c("img", {
+                    attrs: {
+                      src: "public/user/img/dich-vu-thue-xe-tai-vung-tau.png",
+                      alt: "",
+                    },
+                  }),
+                ]),
+                _vm._v(" "),
+                _vm._m(9),
+              ]),
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-md-2" }, [
+              _c("article", { staticClass: "post post-styling" }, [
+                _c("div", { staticClass: "featured-image" }, [
+                  _c("img", {
+                    attrs: {
+                      src: "public/user/img/thue-xe-du-lich-binh-duong.png",
+                      alt: "",
+                    },
+                  }),
+                ]),
+                _vm._v(" "),
+                _vm._m(10),
+              ]),
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-md-2" }, [
+              _c("article", { staticClass: "post post-styling" }, [
+                _c("div", { staticClass: "featured-image" }, [
+                  _c("img", {
+                    attrs: {
+                      src: "public/user/img/dich-vu-cho-thue-xe-tphcm.png",
+                      alt: "",
+                    },
+                  }),
+                ]),
+                _vm._v(" "),
+                _vm._m(11),
+              ]),
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-md-2" }, [
+              _c("article", { staticClass: "post post-styling" }, [
+                _c("div", { staticClass: "featured-image" }, [
+                  _c("img", {
+                    attrs: {
+                      src: "public/user/img/dich-vu-cho-thue-xe-tphcm.png",
+                      alt: "",
+                    },
+                  }),
+                ]),
+                _vm._v(" "),
+                _vm._m(12),
+              ]),
+            ]),
+            _vm._v(" "),
+            _vm._m(13),
+          ]),
+        ]),
+      ]),
+    ]),
+  ])
+}
+var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "box-title text-center" }, [
+      _c("h2", { staticClass: "text-capitalize" }, [
+        _vm._v("Địa điểm phổ biến"),
+      ]),
+      _vm._v(" "),
+      _c("h3", { staticClass: "text-capitalize" }, [
+        _vm._v("Địa điểm phổ biến"),
+      ]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "entry-content" }, [
+      _c("div", { staticClass: "entry-post-title" }, [
+        _c("h4", { staticClass: "post-title" }, [
+          _vm._v(
+            "\n                                            Hồ Chí Minh\n                                        "
+          ),
+        ]),
+      ]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "entry-content" }, [
+      _c("div", { staticClass: "entry-post-title" }, [
+        _c("h4", { staticClass: "post-title" }, [_vm._v("Đà Lạt")]),
+      ]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "entry-content" }, [
+      _c("div", { staticClass: "entry-post-title" }, [
+        _c("h4", { staticClass: "post-title" }, [_vm._v("Vũng Tàu")]),
+      ]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "entry-content" }, [
+      _c("div", { staticClass: "entry-post-title" }, [
+        _c("h4", { staticClass: "post-title" }, [_vm._v("Bình Dương")]),
+      ]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "entry-content" }, [
+      _c("div", { staticClass: "entry-post-title" }, [
+        _c("h4", { staticClass: "post-title" }, [_vm._v("Hà Nội")]),
+      ]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "entry-content" }, [
+      _c("div", { staticClass: "entry-post-title" }, [
+        _c("h4", { staticClass: "post-title" }, [_vm._v("Nha Trang")]),
+      ]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "entry-content" }, [
+      _c("div", { staticClass: "entry-post-title" }, [
+        _c("h4", { staticClass: "post-title" }, [
+          _vm._v(
+            "\n                                            Hồ Chí Minh\n                                        "
+          ),
+        ]),
+      ]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "entry-content" }, [
+      _c("div", { staticClass: "entry-post-title" }, [
+        _c("h4", { staticClass: "post-title" }, [_vm._v("Đà Lạt")]),
+      ]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "entry-content" }, [
+      _c("div", { staticClass: "entry-post-title" }, [
+        _c("h4", { staticClass: "post-title" }, [_vm._v("Vũng Tàu")]),
+      ]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "entry-content" }, [
+      _c("div", { staticClass: "entry-post-title" }, [
+        _c("h4", { staticClass: "post-title" }, [_vm._v("Bình Dương")]),
+      ]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "entry-content" }, [
+      _c("div", { staticClass: "entry-post-title" }, [
+        _c("h4", { staticClass: "post-title" }, [_vm._v("Hà Nội")]),
+      ]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "entry-content" }, [
+      _c("div", { staticClass: "entry-post-title" }, [
+        _c("h4", { staticClass: "post-title" }, [_vm._v("Nha Trang")]),
+      ]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-md-12 text-center" }, [
+      _c("div", { staticClass: "btn-submit" }, [
+        _c(
+          "button",
+          { staticClass: "text-center view-all", attrs: { type: "submit" } },
+          [
+            _vm._v(
+              "\n                                Xem tất cả\n                            "
+            ),
+          ]
+        ),
+      ]),
     ])
   },
 ]
@@ -49967,7 +50631,9 @@ var staticRenderFns = [
     return _c("div", { staticClass: "modal-body" }, [
       _c("div", { staticClass: "row" }, [
         _c("div", { staticClass: "col-md-6" }, [
-          _c("label", { attrs: { for: "name" } }, [_vm._v("Họ và tên")]),
+          _c("label", { staticClass: "text-left", attrs: { for: "name" } }, [
+            _vm._v("Họ và tên"),
+          ]),
           _vm._v(" "),
           _c("input", {
             attrs: {
@@ -49980,7 +50646,9 @@ var staticRenderFns = [
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "col-md-6" }, [
-          _c("label", { attrs: { for: "phone" } }, [_vm._v("Số điện thoại ")]),
+          _c("label", { staticClass: "text-left", attrs: { for: "phone" } }, [
+            _vm._v("Số điện thoại\n                                "),
+          ]),
           _vm._v(" "),
           _c("input", {
             attrs: {
@@ -49992,109 +50660,19 @@ var staticRenderFns = [
           }),
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "col-md-6" }, [
-          _c("label", { attrs: { for: "category" } }, [_vm._v("Loại xe")]),
-          _vm._v(" "),
-          _c("select", { attrs: { name: "category", id: "category" } }, [
-            _c("option", { attrs: { value: "" } }, [_vm._v("Chọn loại xe")]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "1" } }, [_vm._v("Xe 4 chỗ")]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "2" } }, [_vm._v("Xe 7 chỗ")]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "3" } }, [_vm._v("Xe 16 chỗ")]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "4" } }, [_vm._v("Xe 29 chỗ")]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "5" } }, [_vm._v("Xe 45 chỗ")]),
-          ]),
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-md-6" }, [
-          _c("label", { attrs: { for: "service" } }, [
-            _vm._v("Dịch vụ thuê xe\n                                "),
+        _c("div", { staticClass: "col-md-12" }, [
+          _c("label", { staticClass: "text-left", attrs: { for: "phone" } }, [
+            _vm._v("Ghi chú\n                                "),
           ]),
           _vm._v(" "),
-          _c("select", { attrs: { name: "service", id: "service" } }, [
-            _c("option", { attrs: { value: "" } }, [_vm._v("Chọn dịch vụ")]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "1" } }, [
-              _vm._v(
-                "\n                                        Đi 1 chiều có tài xế\n                                    "
-              ),
-            ]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "2" } }, [
-              _vm._v(
-                "\n                                        Đi 2 chiều có tài xế\n                                    "
-              ),
-            ]),
-          ]),
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-md-6" }, [
-          _c("label", { attrs: { for: "address-start" } }, [
-            _vm._v("Chọn điểm đón"),
-          ]),
-          _vm._v(" "),
-          _c(
-            "select",
-            { attrs: { name: "address-start", id: "address-start" } },
-            [
-              _c("option", { attrs: { value: "" } }, [_vm._v("Chọn điểm đón")]),
-              _vm._v(" "),
-              _c("option", { attrs: { value: "1" } }, [_vm._v("Xe 4 chỗ")]),
-              _vm._v(" "),
-              _c("option", { attrs: { value: "2" } }, [_vm._v("Xe 7 chỗ")]),
-              _vm._v(" "),
-              _c("option", { attrs: { value: "3" } }, [_vm._v("Xe 16 chỗ")]),
-              _vm._v(" "),
-              _c("option", { attrs: { value: "4" } }, [_vm._v("Xe 29 chỗ")]),
-              _vm._v(" "),
-              _c("option", { attrs: { value: "5" } }, [_vm._v("Xe 45 chỗ")]),
-            ]
-          ),
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-md-6" }, [
-          _c("label", { attrs: { for: "address-end" } }, [
-            _vm._v("Chọn điểm đến"),
-          ]),
-          _vm._v(" "),
-          _c("select", { attrs: { name: "address-end", id: "address-end" } }, [
-            _c("option", { attrs: { value: "" } }, [_vm._v("Chọn điểm đến")]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "1" } }, [
-              _vm._v(
-                "\n                                        Đi 1 chiều có tài xế\n                                    "
-              ),
-            ]),
-            _vm._v(" "),
-            _c("option", { attrs: { value: "2" } }, [
-              _vm._v(
-                "\n                                        Đi 2 chiều có tài xế\n                                    "
-              ),
-            ]),
-          ]),
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-md-6" }, [
-          _c("label", { attrs: { for: "time-start" } }, [
-            _vm._v("Ngày bắt đầu"),
-          ]),
-          _vm._v(" "),
-          _c("input", {
-            attrs: { type: "date", name: "time-start", id: "time-start" },
-          }),
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-md-6" }, [
-          _c("label", { attrs: { for: "time-end" } }, [
-            _vm._v("Ngày kết thúc "),
-          ]),
-          _vm._v(" "),
-          _c("input", {
-            attrs: { type: "date", name: "time-end", id: "time-end" },
+          _c("textarea", {
+            attrs: {
+              name: "",
+              id: "",
+              cols: "30",
+              rows: "10",
+              laceholder: "Để lại lời nhắn cho chúng tôi",
+            },
           }),
         ]),
         _vm._v(" "),

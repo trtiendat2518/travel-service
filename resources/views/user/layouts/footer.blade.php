@@ -16,7 +16,7 @@
         </div>
     </div>
 
-    <div class="container text-center">
+    {{-- <div class="container text-center">
         <div class="footer-logo ">
             <a href="#"><img src="{{ asset('public/user/img/logo.png') }}" alt=""></a>
         </div>
@@ -47,7 +47,95 @@
             <li><a href="#">Paris</a></li>
             <li><a href="#"> All cities</a></li>
         </ul>
-    </div>
+    </div> --}}
+    <section class="footer-widgets text-left">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <aside class="widget-area footer-1-area mb-2">
+                        <section id="custom_html-4" class="widget_text widget wp-bp-footer-widget widget_custom_html">
+                            <h5 class="widget-title h3">Theo dõi chúng tôi</h5>
+                            <div class="textwidget custom-html-widget">
+                                <div class="social-list"><a href="https://www.facebook.com/AsiaCarService/" target="_blank"
+                                        rel="noopener noreferrer"><i class="fab fa-facebook"></i></a><a
+                                        href="https://www.linkedin.com/company/asia-car-service/?originalSubdomain=hk" target="_blank"
+                                        rel="noopener noreferrer"><i class="fab fa-linkedin"></i></a><a href="http://instagram.com/asiacarservice"
+                                        target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a></div>
+                            </div>
+                        </section>
+                        <section id="media_image-4" class="widget wp-bp-footer-widget widget_media_image"><img loading="lazy" width="114" height="79"
+                                src="https://www.asiacarservice.com/wp-content/uploads/2019/08/footer-logotype-group.png"
+                                class="image wp-image-460 attachment-full size-full lazyloaded" alt="Associations and Payment Methods"
+                                style="max-width: 100%; height: auto;"
+                                data-lazy-src="https://www.asiacarservice.com/wp-content/uploads/2019/08/footer-logotype-group.png"
+                                data-was-processed="true"><noscript><img width="114" height="79"
+                                    src="https://www.asiacarservice.com/wp-content/uploads/2019/08/footer-logotype-group.png"
+                                    class="image wp-image-460  attachment-full size-full" alt="Associations and Payment Methods"
+                                    style="max-width: 100%; height: auto;" /></noscript></section>
+                    </aside>
+                </div>
+
+                <div class="col-md-3">
+                    <aside class="widget-area footer-2-area mb-2">
+                        <section id="nav_menu-2" class="widget wp-bp-footer-widget widget_nav_menu">
+                            <h5 class="widget-title h3">Các dịch vụ</h5>
+                            <div class="menu-footer-menu-our-services-container">
+                                <ul id="menu-footer-menu-our-services" class="menu">
+                                    <li id="menu-item-2090"
+                                        class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-1358 current_page_item menu-item-2090">
+                                        <a href="https://www.asiacarservice.com/services/airport-transfers-hourly-hire/" aria-current="page">Đi xe 1
+                                            chiều có tài xế</a>
+                                    </li>
+                                    <li id="menu-item-260" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-260"><a
+                                            href="https://www.asiacarservice.com/services/airport-vip-meet-assist-fast-track/">Đi xe 2 chiều có tài
+                                            xế</a></li>
+                                    <li id="menu-item-261" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-261"><a
+                                            href="https://www.asiacarservice.com/services/event-transportation-management/">Xe đưa đi công tác</a>
+                                    </li>
+                                    <li id="menu-item-259" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-259"><a
+                                            href="https://www.asiacarservice.com/services/private-sightseeing-tours/">Xe đưa đón sân bay</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                    </aside>
+                </div>
+
+                <div class="col-md-3">
+                    <aside class="widget-area footer-3-area mb-2">
+                        <section id="nav_menu-3" class="widget wp-bp-footer-widget widget_nav_menu">
+                            <h5 class="widget-title h3">Về chúng tôi</h5>
+                            <div class="menu-footer-menu-about-us-container">
+                                <ul id="menu-footer-menu-about-us" class="menu">
+                                    <li id="menu-item-262" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-262"><a
+                                            href="{{ url('gioi-thieu') }}">Giới thiệu</a></li>
+                                    <li id="menu-item-263" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-263"><a
+                                            href="https://www.asiacarservice.com/faqs/">FAQ</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                    </aside>
+                </div>
+
+                <div class="col-md-3">
+                    <aside class="widget-area footer-4-area mb-2">
+                        <section id="nav_menu-4" class="widget wp-bp-footer-widget widget_nav_menu">
+                            <h5 class="widget-title h3">Chính sách</h5>
+                            <div class="menu-footer-menu-tcs-container">
+                                <ul id="menu-footer-menu-tcs" class="menu">
+                                    <li id="menu-item-2091"
+                                        class="menu-item menu-item-type-post_type menu-item-object-page menu-item-privacy-policy menu-item-2091"><a
+                                            href="https://www.asiacarservice.com/policies/">Asia Car Service Policies</a></li>
+                                    <li id="menu-item-2377" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2377"><a
+                                            href="https://www.asiacarservice.com/asiacardriver-privacy-policy/">AsiaCarDriver App Privacy Policy</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </section>
+                    </aside>
+                </div>
+            </div>
+        </div>
+    </section>
 
 </footer>
 <div class="copyright text-center">

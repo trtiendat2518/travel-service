@@ -21,6 +21,10 @@ Vue.component(
     "booking-now-component",
     require("./components/user/pages/home/BookingNowComponent.vue").default
 );
+Vue.component(
+    "popular-place-component",
+    require("./components/user/pages/home/PopularPlaceComponent.vue").default
+);
 
 // Service
 Vue.component(

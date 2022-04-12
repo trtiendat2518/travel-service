@@ -34,11 +34,39 @@
     <link rel="stylesheet" href="{{ asset('public/user/css/frontend.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('public/user/css/image-text-alignment-block.css') }}" />
     <link rel="stylesheet" href="{{ asset('public/user/css/booking-form.css') }}" />
+    <link rel="stylesheet" href="{{ asset('public/user/css/numbered-steps-row.css') }}" />
 
     <title>prodrive</title>
 </head>
 
 <body>
+    <!-- Messenger Chat Plugin Code -->
+    <div id="fb-root"></div>
+    <!-- Your Chat Plugin code -->
+    <div id="fb-customer-chat" class="fb-customerchat">
+    </div>
+    <script>
+        var chatbox = document.getElementById('fb-customer-chat');
+      chatbox.setAttribute("page_id", "111710484840321");
+      chatbox.setAttribute("attribution", "biz_inbox");
+    </script>
+    <!-- Your SDK code -->
+    <script>
+        window.fbAsyncInit = function() {
+        FB.init({
+          xfbml            : true,
+          version          : 'API-VERSION'
+        });
+      };
+      (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+    </script>
+
     <div id="app">
         @include('user.layouts.header')
 
@@ -60,6 +88,16 @@
     <script src="{{ asset('public/user/js/main.js') }}"></script>
     <script src="{{ asset('public/user/js/slide.js') }}"></script>
     <script src="{{ asset('public/js/app.js') }}"></script>
+    <script src="{{ asset('public/user/js/zalo.js') }}"></script>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="zalo-chat-widget" data-oaid="579745863508352884" data-welcome-message="Rất vui khi được hỗ trợ bạn!" data-autopopup="0"
+                data-width="" data-height=""></div>
+        </div>
+        <div class="col-md-12">
+        </div>
+    </div>
 </body>
 
 </html>

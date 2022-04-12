@@ -35,7 +35,9 @@
                         <div class="modal-body">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <label for="name">Họ và tên</label>
+                                    <label class="text-left" for="name"
+                                        >Họ và tên</label
+                                    >
                                     <input
                                         type="text"
                                         name="name"
@@ -44,7 +46,9 @@
                                     />
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="phone">Số điện thoại </label>
+                                    <label class="text-left" for="phone"
+                                        >Số điện thoại
+                                    </label>
                                     <input
                                         type="text"
                                         name="phone"
@@ -52,7 +56,19 @@
                                         placeholder="Nhập số điện thoại"
                                     />
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-12">
+                                    <label class="text-left" for="phone"
+                                        >Ghi chú
+                                    </label>
+                                    <textarea
+                                        name=""
+                                        id=""
+                                        cols="30"
+                                        rows="10"
+                                        laceholder="Để lại lời nhắn cho chúng tôi"
+                                    ></textarea>
+                                </div>
+                                <!-- <div class="col-md-6">
                                     <label for="category">Loại xe</label>
                                     <select name="category" id="category">
                                         <option value="">Chọn loại xe</option>
@@ -122,7 +138,7 @@
                                         name="time-end"
                                         id="time-end"
                                     />
-                                </div>
+                                </div> -->
                                 <div class="clearfix"></div>
                             </div>
                         </div>

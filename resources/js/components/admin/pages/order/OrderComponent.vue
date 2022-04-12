@@ -50,10 +50,7 @@
                         <th>Mã đơn thuê xe</th>
                         <th>Họ và tên</th>
                         <th>Số điện thoại</th>
-                        <th>Điểm đón</th>
-                        <th>Điểm đến</th>
-                        <th>Ngày đi</th>
-                        <th>Ngày về</th>
+                        <th>Ghi chú</th>
                         <th>Trạng thái</th>
                     </tr>
                 </thead>
@@ -62,10 +59,7 @@
                         <td>{{ order.code }}</td>
                         <td>{{ order.name }}</td>
                         <td>{{ order.phone }}</td>
-                        <td>{{ order.place_from }}</td>
-                        <td>{{ order.place_to }}</td>
-                        <td>{{ order.time_go }}</td>
-                        <td>{{ order.time_back }}</td>
+                        <td>{{ order.note }}</td>
                         <td>
                             <select
                                 class="form-select"
@@ -174,55 +168,60 @@ export default {
                     order_id: 1,
                     code: "MVD000001",
                     name: "Ho va Ten 1",
-                    phone: "0123456789",
-                    place_from: "Hồ Chí Minh",
-                    place_to: "Đà Lạt",
-                    time_go: "11/04/2022",
-                    time_back: "20/04/2022",
+                    phone:
+                        "09" +
+                        Math.floor(
+                            Math.random() * (98765432 - 12345678) + 12345678
+                        ),
+                    note: "Cần tư vấn đi nơi nào vui vẻ đổi tâm trạng",
                     status: Math.floor(Math.random() * (4 - 0) + 0),
                 },
                 {
                     order_id: 2,
                     code: "MVD000002",
                     name: "Ho va Ten 2",
-                    phone: "0123456789",
-                    place_from: "Hồ Chí Minh",
-                    place_to: "Đà Lạt",
-                    time_go: "11/04/2022",
-                    time_back: "20/04/2022",
+                    phone:
+                        "09" +
+                        Math.floor(
+                            Math.random() * (98765432 - 12345678) + 12345678
+                        ),
+                    note: "Nơi nào có biển thoáng và sạch",
                     status: Math.floor(Math.random() * (4 - 0) + 0),
                 },
                 {
                     order_id: 3,
                     code: "MVD000003",
                     name: "Ho va Ten 3",
-                    phone: "0123456789",
-                    place_from: "Hồ Chí Minh",
-                    place_to: "Đà Lạt",
-                    time_go: "11/04/2022",
-                    time_back: "20/04/2022",
+                    phone:
+                        "09" +
+                        Math.floor(
+                            Math.random() * (98765432 - 12345678) + 12345678
+                        ),
+                    note: "Cần tư vấn đi nơi nào đó",
                     status: Math.floor(Math.random() * (4 - 0) + 0),
                 },
                 {
                     order_id: 4,
                     code: "MVD000004",
                     name: "Ho va Ten 4",
-                    phone: "0123456789",
-                    place_from: "Hồ Chí Minh",
-                    place_to: "Đà Lạt",
-                    time_go: "11/04/2022",
-                    time_back: "20/04/2022",
+                    phone:
+                        "09" +
+                        Math.floor(
+                            Math.random() * (98765432 - 12345678) + 12345678
+                        ),
+                    note: "Không",
                     status: Math.floor(Math.random() * (4 - 0) + 0),
                 },
                 {
                     order_id: 5,
                     code: "MVD000005",
                     name: "Ho va Ten 5",
-                    phone: "0123456789",
-                    place_from: "Hồ Chí Minh",
-                    place_to: "Đà Lạt",
-                    time_go: "11/04/2022",
-                    time_back: "20/04/2022",
+                    phone:
+                        "09" +
+                        Math.floor(
+                            Math.random() * (98765432 - 12345678) + 12345678
+                        ),
+                    note: "Tư vấn",
                     status: Math.floor(Math.random() * (4 - 0) + 0),
                 },
             ];

@@ -20,7 +20,9 @@
                                 <form accept-charset="utf-8">
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <label for="name">Họ và tên</label>
+                                            <label class="text-left" for="name">
+                                                Họ và tên
+                                            </label>
                                             <input
                                                 type="text"
                                                 name="name"
@@ -29,8 +31,11 @@
                                             />
                                         </div>
                                         <div class="col-md-6">
-                                            <label for="phone"
-                                                >Số điện thoại
+                                            <label
+                                                for="phone"
+                                                class="text-left"
+                                            >
+                                                Số điện thoại
                                             </label>
                                             <input
                                                 type="text"
@@ -39,7 +44,24 @@
                                                 placeholder="Nhập số điện thoại"
                                             />
                                         </div>
-                                        <div class="col-md-6">
+
+                                        <div class="col-md-12">
+                                            <label
+                                                for="category"
+                                                class="text-left"
+                                            >
+                                                Ghi chú
+                                            </label>
+                                            <textarea
+                                                name=""
+                                                id=""
+                                                cols="30"
+                                                rows="10"
+                                                placeholder="Để lại lời nhắn cho chúng tôi"
+                                            ></textarea>
+                                        </div>
+
+                                        <!-- <div class="col-md-6">
                                             <label for="category"
                                                 >Loại xe</label
                                             >
@@ -149,7 +171,8 @@
                                                 name="time-end"
                                                 id="time-end"
                                             />
-                                        </div>
+                                        </div> -->
+
                                         <div class="clearfix"></div>
                                         <div class="col-md-12 text-center">
                                             <div class="btn-submit">
