@@ -40,11 +40,20 @@
 </head>
 
 <body>
-    <!-- Messenger Plugin chat Code -->
-    <div id="fb-root"></div>
-    <!-- Your Plugin chat code -->
-    <div id="fb-customer-chat" class="fb-customerchat">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="zalo-chat-widget" data-oaid="579745863508352884" data-welcome-message="Rất vui khi được hỗ trợ bạn!" data-autopopup="0"
+                data-width="200" data-height="200"></div>
+        </div>
+        <div class="col-md-12">
+            <div id="fb-root"></div>
+            <!-- Your Plugin chat code -->
+            <div id="fb-customer-chat" class="fb-customerchat">
+            </div>
+        </div>
     </div>
+    <!-- Messenger Plugin chat Code -->
+
     <script>
         var chatbox = document.getElementById('fb-customer-chat');
       chatbox.setAttribute("page_id", "111710484840321");
@@ -58,7 +67,6 @@
           version          : 'v13.0'
         });
       };
-
       (function(d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0];
         if (d.getElementById(id)) return;
@@ -91,14 +99,7 @@
     <script src="{{ asset('public/js/app.js') }}"></script>
     <script src="{{ asset('public/user/js/zalo.js') }}"></script>
 
-    <div class="row">
-        <div class="col-md-12">
-            <div class="zalo-chat-widget" data-oaid="579745863508352884" data-welcome-message="Rất vui khi được hỗ trợ bạn!" data-autopopup="0"
-                data-width="" data-height=""></div>
-        </div>
-        <div class="col-md-12">
-        </div>
-    </div>
+
 </body>
 
 </html>

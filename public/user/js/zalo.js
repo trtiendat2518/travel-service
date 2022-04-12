@@ -3266,9 +3266,9 @@ try {
                                                                   ? (this.element.style.left =
                                                                         "52px")
                                                                   : (this.element.style.right =
-                                                                        "52px"),
+                                                                        "23px"),
                                                               (this.element.style.bottom =
-                                                                  "52px"))
+                                                                  "100px"))
                                                             : ((this.element.style.left =
                                                                   this
                                                                       .chatBoxLeft +
