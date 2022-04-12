@@ -7736,8 +7736,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({});
 
 /***/ }),
@@ -49929,7 +49927,7 @@ var render = function () {
                 _c("div", { staticClass: "featured-image" }, [
                   _c("img", {
                     attrs: {
-                      src: "public/user/img/dich-vu-cho-thue-xe-tphcm.png",
+                      src: "public/user/img/Thue-xe-dich-vu-di-ha-noi.png",
                       alt: "",
                     },
                   }),
@@ -49944,7 +49942,7 @@ var render = function () {
                 _c("div", { staticClass: "featured-image" }, [
                   _c("img", {
                     attrs: {
-                      src: "public/user/img/dich-vu-cho-thue-xe-tphcm.png",
+                      src: "public/user/img/Thue-xe-dich-vu-di-nha-trang.png",
                       alt: "",
                     },
                   }),
@@ -49960,7 +49958,7 @@ var render = function () {
                   _c("div", { staticClass: "featured-image" }, [
                     _c("img", {
                       attrs: {
-                        src: "public/user/img/dich-vu-cho-thue-xe-tphcm.png",
+                        src: "public/user/img/Thue-xe-dich-vu-di-can-tho.png",
                         alt: "",
                       },
                     }),
@@ -49976,7 +49974,7 @@ var render = function () {
                 _c("div", { staticClass: "featured-image" }, [
                   _c("img", {
                     attrs: {
-                      src: "public/user/img/dich-vu-cho-thue-xe-du-lich-da-lat.png",
+                      src: "public/user/img/Thue-xe-dich-vu-di-mui-ne.png",
                       alt: "",
                     },
                   }),
@@ -49991,7 +49989,7 @@ var render = function () {
                 _c("div", { staticClass: "featured-image" }, [
                   _c("img", {
                     attrs: {
-                      src: "public/user/img/dich-vu-thue-xe-tai-vung-tau.png",
+                      src: "public/user/img/Thue-xe-dich-vu-di-tay-ninh.png",
                       alt: "",
                     },
                   }),
@@ -50006,7 +50004,7 @@ var render = function () {
                 _c("div", { staticClass: "featured-image" }, [
                   _c("img", {
                     attrs: {
-                      src: "public/user/img/thue-xe-du-lich-binh-duong.png",
+                      src: "public/user/img/Thue-xe-dich-vu-di-da-nang.png",
                       alt: "",
                     },
                   }),
@@ -50021,7 +50019,7 @@ var render = function () {
                 _c("div", { staticClass: "featured-image" }, [
                   _c("img", {
                     attrs: {
-                      src: "public/user/img/dich-vu-cho-thue-xe-tphcm.png",
+                      src: "public/user/img/Thue-xe-dich-vu-di-gia-lai.png",
                       alt: "",
                     },
                   }),
@@ -50036,7 +50034,7 @@ var render = function () {
                 _c("div", { staticClass: "featured-image" }, [
                   _c("img", {
                     attrs: {
-                      src: "public/user/img/dich-vu-cho-thue-xe-tphcm.png",
+                      src: "public/user/img/Thue-xe-dich-vu-di-long-hai.png",
                       alt: "",
                     },
                   }),
@@ -50138,11 +50136,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "entry-content" }, [
       _c("div", { staticClass: "entry-post-title" }, [
-        _c("h4", { staticClass: "post-title" }, [
-          _vm._v(
-            "\n                                            Hồ Chí Minh\n                                        "
-          ),
-        ]),
+        _c("h4", { staticClass: "post-title" }, [_vm._v("Cần thơ")]),
       ]),
     ])
   },
@@ -50152,7 +50146,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "entry-content" }, [
       _c("div", { staticClass: "entry-post-title" }, [
-        _c("h4", { staticClass: "post-title" }, [_vm._v("Đà Lạt")]),
+        _c("h4", { staticClass: "post-title" }, [_vm._v("Mũi Né")]),
       ]),
     ])
   },
@@ -50162,7 +50156,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "entry-content" }, [
       _c("div", { staticClass: "entry-post-title" }, [
-        _c("h4", { staticClass: "post-title" }, [_vm._v("Vũng Tàu")]),
+        _c("h4", { staticClass: "post-title" }, [_vm._v("Tây Ninh")]),
       ]),
     ])
   },
@@ -50172,7 +50166,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "entry-content" }, [
       _c("div", { staticClass: "entry-post-title" }, [
-        _c("h4", { staticClass: "post-title" }, [_vm._v("Bình Dương")]),
+        _c("h4", { staticClass: "post-title" }, [_vm._v("Đà Nẵng")]),
       ]),
     ])
   },
@@ -50182,7 +50176,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "entry-content" }, [
       _c("div", { staticClass: "entry-post-title" }, [
-        _c("h4", { staticClass: "post-title" }, [_vm._v("Hà Nội")]),
+        _c("h4", { staticClass: "post-title" }, [_vm._v("Gia Lai")]),
       ]),
     ])
   },
@@ -50192,7 +50186,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "entry-content" }, [
       _c("div", { staticClass: "entry-post-title" }, [
-        _c("h4", { staticClass: "post-title" }, [_vm._v("Nha Trang")]),
+        _c("h4", { staticClass: "post-title" }, [_vm._v("Long Hải")]),
       ]),
     ])
   },

@@ -76,7 +76,7 @@
                             <article class="post post-styling">
                                 <div class="featured-image">
                                     <img
-                                        :src="`public/user/img/dich-vu-cho-thue-xe-tphcm.png`"
+                                        :src="`public/user/img/Thue-xe-dich-vu-di-ha-noi.png`"
                                         alt=""
                                     />
                                 </div>
@@ -91,7 +91,7 @@
                             <article class="post post-styling">
                                 <div class="featured-image">
                                     <img
-                                        :src="`public/user/img/dich-vu-cho-thue-xe-tphcm.png`"
+                                        :src="`public/user/img/Thue-xe-dich-vu-di-nha-trang.png`"
                                         alt=""
                                     />
                                 </div>
@@ -107,15 +107,13 @@
                                 <article class="post post-styling">
                                     <div class="featured-image">
                                         <img
-                                            :src="`public/user/img/dich-vu-cho-thue-xe-tphcm.png`"
+                                            :src="`public/user/img/Thue-xe-dich-vu-di-can-tho.png`"
                                             alt=""
                                         />
                                     </div>
                                     <div class="entry-content">
                                         <div class="entry-post-title">
-                                            <h4 class="post-title">
-                                                Hồ Chí Minh
-                                            </h4>
+                                            <h4 class="post-title">Cần thơ</h4>
                                         </div>
                                     </div>
                                 </article>
@@ -125,13 +123,13 @@
                             <article class="post post-styling">
                                 <div class="featured-image">
                                     <img
-                                        :src="`public/user/img/dich-vu-cho-thue-xe-du-lich-da-lat.png`"
+                                        :src="`public/user/img/Thue-xe-dich-vu-di-mui-ne.png`"
                                         alt=""
                                     />
                                 </div>
                                 <div class="entry-content">
                                     <div class="entry-post-title">
-                                        <h4 class="post-title">Đà Lạt</h4>
+                                        <h4 class="post-title">Mũi Né</h4>
                                     </div>
                                 </div>
                             </article>
@@ -140,13 +138,13 @@
                             <article class="post post-styling">
                                 <div class="featured-image">
                                     <img
-                                        :src="`public/user/img/dich-vu-thue-xe-tai-vung-tau.png`"
+                                        :src="`public/user/img/Thue-xe-dich-vu-di-tay-ninh.png`"
                                         alt=""
                                     />
                                 </div>
                                 <div class="entry-content">
                                     <div class="entry-post-title">
-                                        <h4 class="post-title">Vũng Tàu</h4>
+                                        <h4 class="post-title">Tây Ninh</h4>
                                     </div>
                                 </div>
                             </article>
@@ -155,13 +153,13 @@
                             <article class="post post-styling">
                                 <div class="featured-image">
                                     <img
-                                        :src="`public/user/img/thue-xe-du-lich-binh-duong.png`"
+                                        :src="`public/user/img/Thue-xe-dich-vu-di-da-nang.png`"
                                         alt=""
                                     />
                                 </div>
                                 <div class="entry-content">
                                     <div class="entry-post-title">
-                                        <h4 class="post-title">Bình Dương</h4>
+                                        <h4 class="post-title">Đà Nẵng</h4>
                                     </div>
                                 </div>
                             </article>
@@ -170,13 +168,13 @@
                             <article class="post post-styling">
                                 <div class="featured-image">
                                     <img
-                                        :src="`public/user/img/dich-vu-cho-thue-xe-tphcm.png`"
+                                        :src="`public/user/img/Thue-xe-dich-vu-di-gia-lai.png`"
                                         alt=""
                                     />
                                 </div>
                                 <div class="entry-content">
                                     <div class="entry-post-title">
-                                        <h4 class="post-title">Hà Nội</h4>
+                                        <h4 class="post-title">Gia Lai</h4>
                                     </div>
                                 </div>
                             </article>
@@ -185,13 +183,13 @@
                             <article class="post post-styling">
                                 <div class="featured-image">
                                     <img
-                                        :src="`public/user/img/dich-vu-cho-thue-xe-tphcm.png`"
+                                        :src="`public/user/img/Thue-xe-dich-vu-di-long-hai.png`"
                                         alt=""
                                     />
                                 </div>
                                 <div class="entry-content">
                                     <div class="entry-post-title">
-                                        <h4 class="post-title">Nha Trang</h4>
+                                        <h4 class="post-title">Long Hải</h4>
                                     </div>
                                 </div>
                             </article>
