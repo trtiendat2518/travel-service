@@ -1,0 +1,180 @@
+#booking-form {
+    max-width: 960px;
+}
+
+#booking-form.centered {
+    margin: 0 auto;
+}
+
+#booking-form .nav-tabs {
+    border-bottom: 0;
+    font-size: 20px;
+    text-align: center;
+    font-weight: bold;
+}
+
+#booking-form .nav-tabs li {
+    width: 50%;
+}
+
+#booking-form .nav-tabs li a {
+    background-color: #d7d7d7;
+    padding: 15px;
+}
+
+#booking-form .nav-tabs li a.active {
+    background-color: #f8f8f8;
+}
+
+#booking-form .nav-tabs li a {
+    color: #1e1e1e;
+    display: block;
+}
+
+#booking-form .form-field-icon-container,
+#booking-form .form-field-content-container {
+    display: inline-block;
+}
+
+#booking-form .form-field-container {
+    background-color: white;
+    border: 1px solid #bfbfbf;
+    display: flex;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 7px 0 rgba(0, 0, 0, 0.15);
+}
+input[type="checkbox"] {
+    border: 1px solid #bfbfbf !important;
+    box-shadow: 0 2px 7px 0 rgba(0, 0, 0, 0.15) !important;
+}
+
+#booking-form .form-field-icon-container {
+    width: 45px;
+    display: flex;
+    vertical-align: middle;
+    flex-direction: column;
+    justify-content: center;
+    background-image: linear-gradient(to bottom, #ffffff, #f1f1f1);
+    text-align: center;
+}
+
+#booking-form .form-field-icon-container i {
+    margin: 0 auto;
+    color: #d40000;
+}
+
+#booking-form .form-field-content-container {
+    width: calc(100% - 45px);
+}
+
+#booking-form .form-field-content-container label {
+    margin-bottom: -5px;
+    display: block;
+    padding: 5px 0.75em 0;
+}
+
+#booking-form .form-field-content-container input,
+#booking-form .form-field-content-container select,
+#booking-form .form-field-content-container text-area {
+    border: 0;
+    width: 100%;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+#booking-form .return-trip-container {
+    box-shadow: 0 2px 7px 0 rgba(0, 0, 0, 0.15);
+    background-color: white;
+}
+
+#booking-form .return-trip-option-container input {
+    vertical-align: middle;
+}
+
+#booking-form .return-trip-option-container label {
+    margin: 0;
+    vertical-align: middle;
+}
+
+#booking-form .cta-button {
+    height: 100%;
+    cursor: pointer;
+}
+
+#booking-form .cta-button:disabled {
+    cursor: progress !important;
+    background-color: #d40000;
+    color: white;
+    opacity: 0.8;
+}
+
+#booking-form input[type="radio"].transfer-option-radio:checked + label {
+    background-color: #f8f8f8;
+    color: #d40000;
+}
+
+#booking-form input[type="radio"].transfer-option-radio + label {
+    display: block;
+    background-color: #d7d7d7;
+}
+
+#booking-form .transfer-option-radio {
+    display: none;
+}
+
+#booking-form .nav-label {
+    padding: 15px 0;
+}
+
+.autocomplete-suggestions {
+    box-shadow: 0 2px 7px 0 rgba(0, 0, 0, 0.15);
+    background-color: white;
+}
+
+.autocomplete-suggestions .autocomplete-suggestion {
+    cursor: pointer;
+    padding: 5px;
+}
+
+.bootstrap-datetimepicker-widget.dropdown-menu {
+    width: auto;
+}
+
+@media screen and (min-width: 768px) {
+    #booking-form .form-field-container.last-row {
+        margin-bottom: 0;
+    }
+}
+#promoError {
+    position: absolute;
+    color: red;
+    margin-top: 2px;
+    font-size: 14px;
+}
+label.hide-autocomplete {
+    height: 100%;
+    position: relative;
+    background: transparent;
+    z-index: 1;
+    cursor: text;
+}
+input.hide-autocomplete {
+    position: relative;
+    top: -31px;
+}
+input.hide-autocomplete.change-to-front {
+    z-index: 2;
+}
+.addon-spinner {
+    z-index: 3;
+    max-width: 100%;
+    position: absolute;
+    right: 2px;
+    top: 21px;
+    padding: 10px 18px 0 0;
+    color: #454a55;
+}
+.addon-spinner .fa-spin {
+    animation: fa-spin 1s infinite linear;
+}

@@ -1,0 +1,243 @@
+@media (max-width: 991px) {
+    #menu {
+        position: fixed;
+        height: 100%;
+        width: 100%;
+        left: 0;
+        top: 0;
+        justify-content: center;
+        padding: 120px 0 0 0;
+        background-color: #3333;
+        z-index: -1;
+        -webkit-transform: translateX(-100%);
+        -ms-transform: translateX(-100%);
+        transform: translateX(-100%);
+        -webkit-transition: 0.4s;
+        -o-transition: 0.4s;
+        transition: 0.4s;
+        flex-direction: column;
+    }
+
+    #menu li a.nav-link {
+        font-size: 30px;
+    }
+    li.nav-item {
+        padding: 0;
+    }
+
+    .header-main {
+        width: 100%;
+    }
+
+    ul.menu-dropdown{
+        position: static !important;
+        display: none;
+        visibility: visible;
+    }
+    ul.menu-dropdown{
+        position: static !important;
+    }
+
+    ul.menu-dropdown::before{
+        content: "";
+        border: 0;
+    }
+
+    .banner {
+        height: auto;
+    }
+
+    .li.item a.nav-link {
+        font-size: 30px;
+    }
+
+    .owl-banner .item {
+        height: auto;
+    }
+
+    .caption {
+        bottom: 50%;
+        transform: translateY(50%);
+        margin-top: 0;
+    }
+    .caption h4.amimate-caption-title {
+        font-size: 45px;
+        margin-bottom: 10px;
+    }
+
+    .caption p {
+        font-size: 16px;
+    }
+
+    /* .owl-banner {
+        height: 90vh;
+    } */
+
+    .owl-banner .item img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .tab-booking {
+        position: static;
+    }
+
+    .tab-select-item.select::before{
+        bottom: 0;
+    }
+
+    .booking-tab{
+        background-color: black;
+        width: 100%;
+        justify-content: left !important;
+        margin-bottom: 0;
+    }
+    .booking-tab li{
+        padding:25px 30px;
+    }
+    .booking-form {
+     flex-wrap: wrap;
+     justify-content: left !important;
+    }
+
+    .form-item{
+        flex-basis: 36%;
+        padding: 5px 10px;
+    }
+
+    .form-item:first-child{
+        padding-left: 10px;
+    }
+    .form-item-link{
+        flex-basis: 28%;
+    
+    }
+
+    .box-title h2 {
+        display: none;
+    }
+
+    .slick-list .slick-slide .item {
+        padding: 0;
+        opacity: 1;
+        transform: translateY();
+    }
+
+    .slick-slide.slick-center .item {
+        transform: translateY(0);
+    }
+
+    .slick-list .slick-slide .item .prodrive-desc {
+        display: block;
+        font-size: 18px;
+    }
+
+    .slick-list .slick-slide .item .prodrive-img img {
+        transform: scale(1);
+        margin-bottom: 30px;
+    }
+
+    .hero-text .box-title h3 {
+        font-size: 40px;
+    }
+
+    .hero-text .box-title p {
+        width: 80%;
+    }
+    .how-to-book {
+        margin-top: 10px;
+    }
+
+    .how-to-book .step {
+        margin-bottom: 20px;
+    }
+
+    .how-to-book .step p {
+        margin-bottom: 20px;
+    }
+
+    .footer ul.social {
+        width: 60%;
+    }
+
+    .footer ul.list-city {
+        width: 100%;
+    }
+
+
+}
+
+@media (max-width: 767px) {
+    .box-title {
+        margin-left: 15px;
+        margin-right: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .search {
+        padding-left: 20px;
+        margin-left: 0 !important;
+    }
+    .our-service-item {
+        margin-bottom: 10px;
+    }
+
+    .our-service-caption {
+        width: 100%;
+        text-align: center;
+        bottom: 10px;
+    }
+    .prodrive-tab a.nav-link {
+        margin: 0 5px;
+        font-size: 16px;
+    }
+    .box-title h3 {
+        font-size: 38px;
+    }
+
+    .prodrive-title {
+        font-size: 18px;
+    }
+
+    .box-title p {
+        font-size: 16px;
+    }
+
+    .hero-text .box-title h3 {
+        font-size: 36px;
+        line-height: 1.8;
+    }
+
+    .hero-text .box-title p {
+        width: 100%;
+        font-size: 19px;
+    }
+
+    .footer ul.list-city {
+    }
+
+    .footer ul.list-city li {
+        padding-right: 30px;
+    }
+
+    .info-box-content.box-content {
+        padding-top: 20px;
+    }
+
+    .booking-tab li{
+        padding: 20px 20px;
+    }
+    .form-item{
+        flex-basis:100%;
+        padding: 5px 10px;
+    }
+
+    /* .form-item:first-child{
+        padding-left: 10px;
+    } */
+    .form-item-link{
+        flex-basis: 100%;
+    
+    }
+}

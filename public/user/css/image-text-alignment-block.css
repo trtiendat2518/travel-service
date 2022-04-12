@@ -1,0 +1,106 @@
+/* Image Text Block */
+
+.image-text-alignment-row {
+    background-size: cover;
+}
+
+.image-text-alignment-block {
+    box-shadow: 0 2px 7px 0 rgba(0, 0, 0, 0.06);
+    background-color: white;
+}
+
+.image-text-alignment-block-content {
+    padding: 30px;
+    /* border-right: 2.5px solid gray;
+    border-bottom: 2.5px solid gray; */
+}
+
+.image-text-aligment-2-column ul {
+    columns: 2;
+    -webkit-columns: 2;
+    -moz-columns: 2;
+    list-style: none;
+    padding: 0;
+}
+
+.image-text-aligment-2-column ul li {
+    position: relative;
+    margin-bottom: 15px;
+    padding-left: 30px;
+}
+
+.image-text-aligment-2-column ul li:before {
+    content: "\f058";
+    font-family: "Font Awesome 5 Pro";
+    font-weight: bold;
+    position: absolute;
+    left: 0px;
+    color: #d40000;
+    line-height: normal;
+}
+
+.image-text-alignment-contact-row i {
+    color: #d40000;
+    margin-right: 10px;
+}
+
+.image-text-alignment-contact-row a {
+    color: #1e1e1e;
+}
+
+.wechat-popup {
+    text-align: center;
+}
+
+.wechat-popup img {
+    width: 200px;
+    margin-bottom: 30px;
+}
+
+@media screen and (min-width: 768px) {
+    .image-text-alignment-row {
+        padding-top: 60px;
+        padding-bottom: 60px;
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+    .image-text-alignment-row-left {
+        background-position-x: calc(100% - 15px);
+    }
+    .image-text-alignment-row-right {
+        background-position-x: 15px;
+    }
+    .image-text-alignment-block-mobile-image {
+        background-image: none !important;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .image-icon-cta-block-button-container a {
+        margin-bottom: 0;
+        display: inline-block;
+    }
+    .image-icon-cta-block-button-container a:nth-child(2) {
+        margin-left: 15px;
+    }
+}
+
+@media screen and (max-width: 1199.9px) {
+    .image-icon-cta-block-button-container a:nth-child(2) {
+        margin-top: 15px;
+    }
+    .image-icon-cta-block-button-container a {
+        display: block;
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 767.9px) {
+    .image-text-alignment-row {
+        background-image: none !important;
+    }
+    .image-text-alignment-block-mobile-image {
+        height: 200px;
+        background-size: cover;
+    }
+}
