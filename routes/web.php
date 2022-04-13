@@ -59,4 +59,8 @@ Route::prefix('admin')->group(function () {
     Route::get('/quan-ly-bai-viet', function () {
         return view('admin.pages.post.list');
     });
+
+    Route::get('/lien-he-tu-van', function () {
+        return view('admin.pages.consulting.list');
+    });
 });

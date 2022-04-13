@@ -32,8 +32,6 @@
                         <option value="">Chọn trạng thái cần lọc</option>
                         <option value="0">Đang xử lý</option>
                         <option value="1">Đã liên hệ</option>
-                        <option value="2">Đã hoàn thành</option>
-                        <option value="3">Đã bị huỷ</option>
                     </select>
                 </div>
                 <div class="col-md-5">
@@ -50,10 +48,7 @@
                         <th>Mã đơn thuê xe</th>
                         <th>Họ và tên</th>
                         <th>Số điện thoại</th>
-                        <th>Địa điểm đón</th>
-                        <th>Địa điểm đến</th>
-                        <th>Thời gian đi</th>
-                        <th>Thời gian về</th>
+                        <th>Ghi chú</th>
                         <th>Trạng thái</th>
                     </tr>
                 </thead>
@@ -62,10 +57,7 @@
                         <td>{{ order.code }}</td>
                         <td>{{ order.name }}</td>
                         <td>{{ order.phone }}</td>
-                        <td>{{ order.place_from }}</td>
-                        <td>{{ order.place_to }}</td>
-                        <td>{{ order.time_go }}</td>
-                        <td>{{ order.time_back }}</td>
+                        <td>{{ order.note }}</td>
                         <td>
                             <select
                                 class="form-select"
@@ -90,8 +82,6 @@
                             >
                                 <option value="0">Đang chờ xử lý</option>
                                 <option value="1">Đã liên hệ</option>
-                                <option value="2">Đã hoàn thành</option>
-                                <option value="3">Đã huỷ</option>
                             </select>
                         </td>
                     </tr>
@@ -130,7 +120,6 @@ export default {
                 order_time_go: "",
                 order_time_back: "",
                 order_status: "",
-                order_note: "",
             }),
         };
     },
@@ -180,11 +169,8 @@ export default {
                         Math.floor(
                             Math.random() * (98765432 - 12345678) + 12345678
                         ),
-                    place_from: "Hồ Chí Minh",
-                    place_to: "Đà Lạt",
-                    time_go: "20/3/2022",
-                    time_back: "22/3/2022",
-                    status: Math.floor(Math.random() * (4 - 0) + 0),
+                    note: "Cần tư vấn đi nơi nào vui vẻ đổi tâm trạng",
+                    status: Math.floor(Math.random() * (2 - 0) + 0),
                 },
                 {
                     order_id: 2,
@@ -195,11 +181,8 @@ export default {
                         Math.floor(
                             Math.random() * (98765432 - 12345678) + 12345678
                         ),
-                    place_from: "Hồ Chí Minh",
-                    place_to: "Đà Lạt",
-                    time_go: "20/3/2022",
-                    time_back: "22/3/2022",
-                    status: Math.floor(Math.random() * (4 - 0) + 0),
+                    note: "Nơi nào có biển thoáng và sạch",
+                    status: Math.floor(Math.random() * (2 - 0) + 0),
                 },
                 {
                     order_id: 3,
@@ -210,11 +193,8 @@ export default {
                         Math.floor(
                             Math.random() * (98765432 - 12345678) + 12345678
                         ),
-                    place_from: "Hồ Chí Minh",
-                    place_to: "Đà Lạt",
-                    time_go: "20/3/2022",
-                    time_back: "22/3/2022",
-                    status: Math.floor(Math.random() * (4 - 0) + 0),
+                    note: "Cần tư vấn đi nơi nào đó",
+                    status: Math.floor(Math.random() * (2 - 0) + 0),
                 },
                 {
                     order_id: 4,
@@ -225,11 +205,8 @@ export default {
                         Math.floor(
                             Math.random() * (98765432 - 12345678) + 12345678
                         ),
-                    place_from: "Hồ Chí Minh",
-                    place_to: "Đà Lạt",
-                    time_go: "20/3/2022",
-                    time_back: "22/3/2022",
-                    status: Math.floor(Math.random() * (4 - 0) + 0),
+                    note: "Không",
+                    status: Math.floor(Math.random() * (2 - 0) + 0),
                 },
                 {
                     order_id: 5,
@@ -240,11 +217,8 @@ export default {
                         Math.floor(
                             Math.random() * (98765432 - 12345678) + 12345678
                         ),
-                    place_from: "Hồ Chí Minh",
-                    place_to: "Đà Lạt",
-                    time_go: "20/3/2022",
-                    time_back: "22/3/2022",
-                    status: Math.floor(Math.random() * (4 - 0) + 0),
+                    note: "Tư vấn",
+                    status: Math.floor(Math.random() * (2 - 0) + 0),
                 },
             ];
         },

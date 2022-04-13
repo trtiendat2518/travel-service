@@ -38,3 +38,10 @@ Vue.component(
     "list-service-component",
     require("./components/admin/pages/service/ListServiceComponent.vue").default
 );
+
+// Consulting
+Vue.component(
+    "consulting-component",
+    require("./components/admin/pages/consulting/ConsultingComponent.vue")
+        .default
+);
