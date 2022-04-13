@@ -3,8 +3,8 @@
 
 <div class="layout-theme">
     <!-- Start Top Title -->
-    <section class="top-title"
-        style="background-image: url('{{ asset('public/user/img/xe-dua-don-san-bay.png') }}'); background-size: 100vw; filter: brightness(30%)">
+    <section class="top-title">
+        <img src="{{ asset('public/user/img/xe-dua-don-san-bay.png') }}" alt="" style="width: 100vw; height: 500px; filter: brightness(30%)">
         <div class="top-page">
             <div class="container">
                 <div class="row">

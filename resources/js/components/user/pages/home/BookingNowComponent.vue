@@ -3,11 +3,11 @@
         <div class="w-choose box" id="booking-now">
             <div class="container">
                 <div class="box-title text-center">
-                    <h2>Thuê Xe Ngay</h2>
-                    <h3 class="title">Thuê Xe Ngay</h3>
+                    <h2>Liên Hệ Tư Vấn</h2>
+                    <h3 class="title">Liên Hệ Tư Vấn</h3>
                     <p class="mt-4 mb-4">
-                        Bạn điền đẩy đủ thông tin dưới đây và nhấn thuê xe, sau
-                        đó chúng tôi sẽ liên hệ với bạn.
+                        Bạn điền đẩy đủ thông tin dưới đây và nhấn gửi, sau đó
+                        chúng tôi sẽ liên hệ với bạn.
                     </p>
                 </div>
             </div>
@@ -180,7 +180,7 @@
                                                     class="text-center"
                                                     type="submit"
                                                 >
-                                                    Tiếp tục
+                                                    Gửi
                                                 </button>
                                             </div>
                                         </div>

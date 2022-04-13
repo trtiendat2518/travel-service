@@ -199,6 +199,7 @@
                                 <button
                                     class="text-center view-all"
                                     type="submit"
+                                    @click="viewAll()"
                                 >
                                     Xem tất cả
                                 </button>
@@ -212,7 +213,13 @@
 </template>
 
 <script>
-export default {};
+export default {
+    methods: {
+        viewAll() {
+            window.location.href = "../bai-viet";
+        },
+    },
+};
 </script>
 
 <style scoped>

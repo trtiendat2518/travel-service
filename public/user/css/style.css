@@ -1556,8 +1556,8 @@ button:focus {
 }
 /*========== Page Title ==========*/
 .top-title {
-    background: url("/public/user/img/page-title.jpg") no-repeat top center;
-    height: 394px;
+    /* background: url("/public/user/img/page-title.jpg") no-repeat top center; */
+    height: 500px;
     position: relative;
 }
 .top-title.ver-1 {

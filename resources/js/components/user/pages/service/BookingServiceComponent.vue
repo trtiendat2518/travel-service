@@ -56,19 +56,7 @@
                                         placeholder="Nhập số điện thoại"
                                     />
                                 </div>
-                                <div class="col-md-12">
-                                    <label class="text-left" for="phone"
-                                        >Ghi chú
-                                    </label>
-                                    <textarea
-                                        name=""
-                                        id=""
-                                        cols="30"
-                                        rows="10"
-                                        laceholder="Để lại lời nhắn cho chúng tôi"
-                                    ></textarea>
-                                </div>
-                                <!-- <div class="col-md-6">
+                                <div class="col-md-6">
                                     <label for="category">Loại xe</label>
                                     <select name="category" id="category">
                                         <option value="">Chọn loại xe</option>
@@ -138,7 +126,18 @@
                                         name="time-end"
                                         id="time-end"
                                     />
-                                </div> -->
+                                </div>
+                                <div class="col-md-12">
+                                    <label class="text-left" for="phone"
+                                        >Ghi chú
+                                    </label>
+                                    <textarea
+                                        name=""
+                                        id=""
+                                        rows="4"
+                                        laceholder="Để lại lời nhắn cho chúng tôi"
+                                    ></textarea>
+                                </div>
                                 <div class="clearfix"></div>
                             </div>
                         </div>
@@ -171,5 +170,8 @@ export default {
 .btn-color {
     background-color: #1e1e1e;
     color: #fff;
+}
+textarea {
+    resize: none;
 }
 </style>

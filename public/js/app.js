@@ -6832,7 +6832,161 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({});
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  methods: {
+    book: function book() {
+      $("#loanModal").modal("show");
+    },
+    close: function close() {
+      $("#loanModal").modal("hide");
+    }
+  }
+});
 
 /***/ }),
 
@@ -7736,7 +7890,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({});
+//
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  methods: {
+    viewAll: function viewAll() {
+      window.location.href = "../bai-viet";
+    }
+  }
+});
 
 /***/ }),
 
@@ -7896,7 +8057,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-//
 //
 //
 //
@@ -15527,7 +15687,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.btn-color[data-v-1d59f47a] {\n    background-color: #1e1e1e;\n    color: #fff;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.btn-color[data-v-1d59f47a] {\n    background-color: #1e1e1e;\n    color: #fff;\n}\ntextarea[data-v-1d59f47a] {\n    resize: none;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -48839,8 +48999,127 @@ var render = function () {
         ]),
       ]),
       _vm._v(" "),
-      _vm._m(5),
+      _c("div", { staticClass: "tab-booking" }, [
+        _c("div", { staticClass: "container-fluid p-0" }, [
+          _c(
+            "form",
+            {
+              staticClass:
+                "text-center booking-form justify-content-end d-flex align-items-center",
+              attrs: { action: "post" },
+            },
+            [
+              _c(
+                "a",
+                {
+                  staticClass: "form-item-link text-uppercase m-0",
+                  attrs: { href: "javascript:void(0)" },
+                  on: {
+                    click: function ($event) {
+                      return _vm.book()
+                    },
+                  },
+                },
+                [
+                  _c("i", { staticClass: "fa-solid fa-hand-point-right" }),
+                  _vm._v(" "),
+                  _c("span", { attrs: { id: "button-booking-banner" } }, [
+                    _vm._v(
+                      "\n                             Đặt xe ngay \n                        "
+                    ),
+                  ]),
+                  _vm._v(" "),
+                  _c("i", { staticClass: "fa-solid fa-hand-point-left" }),
+                ]
+              ),
+            ]
+          ),
+        ]),
+      ]),
     ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "modal fade",
+        attrs: {
+          id: "loanModal",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "loanModalTitle",
+          "aria-hidden": "true",
+        },
+      },
+      [
+        _c(
+          "div",
+          { staticClass: "modal-dialog", attrs: { role: "document" } },
+          [
+            _c(
+              "form",
+              {
+                on: {
+                  submit: function ($event) {
+                    $event.preventDefault()
+                  },
+                  keydown: function ($event) {
+                    return _vm.form.onKeydown($event)
+                  },
+                },
+              },
+              [
+                _c("div", { staticClass: "modal-content" }, [
+                  _c(
+                    "div",
+                    { staticClass: "modal-header styling-modal-header-update" },
+                    [
+                      _c(
+                        "h5",
+                        {
+                          staticClass: "modal-title",
+                          attrs: { id: "loanModalTitle" },
+                        },
+                        [
+                          _vm._v(
+                            "\n                            Đặt thuê xe\n                        "
+                          ),
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        {
+                          staticClass: "close",
+                          attrs: {
+                            type: "button",
+                            "data-dismiss": "modal",
+                            "aria-label": "Close",
+                          },
+                          on: {
+                            click: function ($event) {
+                              return _vm.close()
+                            },
+                          },
+                        },
+                        [
+                          _c("span", { attrs: { "aria-hidden": "true" } }, [
+                            _vm._v("×"),
+                          ]),
+                        ]
+                      ),
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _vm._m(5),
+                  _vm._v(" "),
+                  _vm._m(6),
+                ]),
+              ]
+            ),
+          ]
+        ),
+      ]
+    ),
   ])
 }
 var staticRenderFns = [
@@ -48930,35 +49209,171 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "tab-booking" }, [
-      _c("div", { staticClass: "container-fluid p-0" }, [
-        _c(
-          "form",
-          {
-            staticClass:
-              "text-center booking-form justify-content-end d-flex align-items-center",
-            attrs: { action: "post" },
-          },
-          [
-            _c(
-              "a",
-              {
-                staticClass: "form-item-link text-uppercase m-0",
-                attrs: { href: "#booking-now" },
-              },
-              [
-                _c("i", { staticClass: "fa-solid fa-hand-point-right" }),
-                _vm._v(" "),
-                _c("span", { attrs: { id: "button-booking-banner" } }, [
-                  _vm._v(
-                    "\n                             Đặt xe ngay \n                        "
-                  ),
-                ]),
-                _vm._v(" "),
-                _c("i", { staticClass: "fa-solid fa-hand-point-left" }),
-              ]
-            ),
-          ]
+    return _c("div", { staticClass: "modal-body" }, [
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-md-6" }, [
+          _c("label", { staticClass: "text-left", attrs: { for: "name" } }, [
+            _vm._v("Họ và tên"),
+          ]),
+          _vm._v(" "),
+          _c("input", {
+            attrs: {
+              type: "text",
+              name: "name",
+              id: "name",
+              placeholder: "Nhập đầy đủ họ tên",
+            },
+          }),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-md-6" }, [
+          _c("label", { staticClass: "text-left", attrs: { for: "phone" } }, [
+            _vm._v("Số điện thoại\n                                "),
+          ]),
+          _vm._v(" "),
+          _c("input", {
+            attrs: {
+              type: "text",
+              name: "phone",
+              id: "phone",
+              placeholder: "Nhập số điện thoại",
+            },
+          }),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-md-6" }, [
+          _c("label", { attrs: { for: "category" } }, [_vm._v("Loại xe")]),
+          _vm._v(" "),
+          _c("select", { attrs: { name: "category", id: "category" } }, [
+            _c("option", { attrs: { value: "" } }, [_vm._v("Chọn loại xe")]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "1" } }, [_vm._v("Xe 4 chỗ")]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "2" } }, [_vm._v("Xe 7 chỗ")]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "3" } }, [_vm._v("Xe 16 chỗ")]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "4" } }, [_vm._v("Xe 29 chỗ")]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "5" } }, [_vm._v("Xe 45 chỗ")]),
+          ]),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-md-6" }, [
+          _c("label", { attrs: { for: "service" } }, [
+            _vm._v("Dịch vụ thuê xe\n                                "),
+          ]),
+          _vm._v(" "),
+          _c("select", { attrs: { name: "service", id: "service" } }, [
+            _c("option", { attrs: { value: "" } }, [_vm._v("Chọn dịch vụ")]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "1" } }, [
+              _vm._v(
+                "\n                                        Đi 1 chiều có tài xế\n                                    "
+              ),
+            ]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "2" } }, [
+              _vm._v(
+                "\n                                        Đi 2 chiều có tài xế\n                                    "
+              ),
+            ]),
+          ]),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-md-6" }, [
+          _c("label", { attrs: { for: "address-start" } }, [
+            _vm._v("Chọn điểm đón"),
+          ]),
+          _vm._v(" "),
+          _c(
+            "select",
+            { attrs: { name: "address-start", id: "address-start" } },
+            [
+              _c("option", { attrs: { value: "" } }, [_vm._v("Chọn điểm đón")]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "1" } }, [_vm._v("Xe 4 chỗ")]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "2" } }, [_vm._v("Xe 7 chỗ")]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "3" } }, [_vm._v("Xe 16 chỗ")]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "4" } }, [_vm._v("Xe 29 chỗ")]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "5" } }, [_vm._v("Xe 45 chỗ")]),
+            ]
+          ),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-md-6" }, [
+          _c("label", { attrs: { for: "address-end" } }, [
+            _vm._v("Chọn điểm đến"),
+          ]),
+          _vm._v(" "),
+          _c("select", { attrs: { name: "address-end", id: "address-end" } }, [
+            _c("option", { attrs: { value: "" } }, [_vm._v("Chọn điểm đến")]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "1" } }, [
+              _vm._v(
+                "\n                                        Đi 1 chiều có tài xế\n                                    "
+              ),
+            ]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "2" } }, [
+              _vm._v(
+                "\n                                        Đi 2 chiều có tài xế\n                                    "
+              ),
+            ]),
+          ]),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-md-6" }, [
+          _c("label", { attrs: { for: "time-start" } }, [
+            _vm._v("Ngày bắt đầu"),
+          ]),
+          _vm._v(" "),
+          _c("input", {
+            attrs: { type: "date", name: "time-start", id: "time-start" },
+          }),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-md-6" }, [
+          _c("label", { attrs: { for: "time-end" } }, [
+            _vm._v("Ngày kết thúc "),
+          ]),
+          _vm._v(" "),
+          _c("input", {
+            attrs: { type: "date", name: "time-end", id: "time-end" },
+          }),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-md-12" }, [
+          _c("label", { staticClass: "text-left", attrs: { for: "phone" } }, [
+            _vm._v("Ghi chú\n                                "),
+          ]),
+          _vm._v(" "),
+          _c("textarea", {
+            attrs: {
+              name: "",
+              id: "",
+              rows: "4",
+              laceholder: "Để lại lời nhắn cho chúng tôi",
+            },
+          }),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "clearfix" }),
+      ]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-footer" }, [
+      _c("button", { staticClass: "text-center", attrs: { type: "submit" } }, [
+        _vm._v(
+          "\n                            Tiếp tục\n                        "
         ),
       ]),
     ])
@@ -48997,13 +49412,13 @@ var staticRenderFns = [
       _c("div", { staticClass: "w-choose box", attrs: { id: "booking-now" } }, [
         _c("div", { staticClass: "container" }, [
           _c("div", { staticClass: "box-title text-center" }, [
-            _c("h2", [_vm._v("Thuê Xe Ngay")]),
+            _c("h2", [_vm._v("Liên Hệ Tư Vấn")]),
             _vm._v(" "),
-            _c("h3", { staticClass: "title" }, [_vm._v("Thuê Xe Ngay")]),
+            _c("h3", { staticClass: "title" }, [_vm._v("Liên Hệ Tư Vấn")]),
             _vm._v(" "),
             _c("p", { staticClass: "mt-4 mb-4" }, [
               _vm._v(
-                "\n                    Bạn điền đẩy đủ thông tin dưới đây và nhấn thuê xe, sau\n                    đó chúng tôi sẽ liên hệ với bạn.\n                "
+                "\n                    Bạn điền đẩy đủ thông tin dưới đây và nhấn gửi, sau đó\n                    chúng tôi sẽ liên hệ với bạn.\n                "
               ),
             ]),
           ]),
@@ -49097,7 +49512,7 @@ var staticRenderFns = [
                             },
                             [
                               _vm._v(
-                                "\n                                                Tiếp tục\n                                            "
+                                "\n                                                Gửi\n                                            "
                               ),
                             ]
                           ),
@@ -50044,7 +50459,27 @@ var render = function () {
               ]),
             ]),
             _vm._v(" "),
-            _vm._m(13),
+            _c("div", { staticClass: "col-md-12 text-center" }, [
+              _c("div", { staticClass: "btn-submit" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "text-center view-all",
+                    attrs: { type: "submit" },
+                    on: {
+                      click: function ($event) {
+                        return _vm.viewAll()
+                      },
+                    },
+                  },
+                  [
+                    _vm._v(
+                      "\n                                Xem tất cả\n                            "
+                    ),
+                  ]
+                ),
+              ]),
+            ]),
           ]),
         ]),
       ]),
@@ -50187,24 +50622,6 @@ var staticRenderFns = [
     return _c("div", { staticClass: "entry-content" }, [
       _c("div", { staticClass: "entry-post-title" }, [
         _c("h4", { staticClass: "post-title" }, [_vm._v("Long Hải")]),
-      ]),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-12 text-center" }, [
-      _c("div", { staticClass: "btn-submit" }, [
-        _c(
-          "button",
-          { staticClass: "text-center view-all", attrs: { type: "submit" } },
-          [
-            _vm._v(
-              "\n                                Xem tất cả\n                            "
-            ),
-          ]
-        ),
       ]),
     ])
   },
@@ -50654,6 +51071,112 @@ var staticRenderFns = [
           }),
         ]),
         _vm._v(" "),
+        _c("div", { staticClass: "col-md-6" }, [
+          _c("label", { attrs: { for: "category" } }, [_vm._v("Loại xe")]),
+          _vm._v(" "),
+          _c("select", { attrs: { name: "category", id: "category" } }, [
+            _c("option", { attrs: { value: "" } }, [_vm._v("Chọn loại xe")]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "1" } }, [_vm._v("Xe 4 chỗ")]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "2" } }, [_vm._v("Xe 7 chỗ")]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "3" } }, [_vm._v("Xe 16 chỗ")]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "4" } }, [_vm._v("Xe 29 chỗ")]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "5" } }, [_vm._v("Xe 45 chỗ")]),
+          ]),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-md-6" }, [
+          _c("label", { attrs: { for: "service" } }, [
+            _vm._v("Dịch vụ thuê xe\n                                "),
+          ]),
+          _vm._v(" "),
+          _c("select", { attrs: { name: "service", id: "service" } }, [
+            _c("option", { attrs: { value: "" } }, [_vm._v("Chọn dịch vụ")]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "1" } }, [
+              _vm._v(
+                "\n                                        Đi 1 chiều có tài xế\n                                    "
+              ),
+            ]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "2" } }, [
+              _vm._v(
+                "\n                                        Đi 2 chiều có tài xế\n                                    "
+              ),
+            ]),
+          ]),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-md-6" }, [
+          _c("label", { attrs: { for: "address-start" } }, [
+            _vm._v("Chọn điểm đón"),
+          ]),
+          _vm._v(" "),
+          _c(
+            "select",
+            { attrs: { name: "address-start", id: "address-start" } },
+            [
+              _c("option", { attrs: { value: "" } }, [_vm._v("Chọn điểm đón")]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "1" } }, [_vm._v("Xe 4 chỗ")]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "2" } }, [_vm._v("Xe 7 chỗ")]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "3" } }, [_vm._v("Xe 16 chỗ")]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "4" } }, [_vm._v("Xe 29 chỗ")]),
+              _vm._v(" "),
+              _c("option", { attrs: { value: "5" } }, [_vm._v("Xe 45 chỗ")]),
+            ]
+          ),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-md-6" }, [
+          _c("label", { attrs: { for: "address-end" } }, [
+            _vm._v("Chọn điểm đến"),
+          ]),
+          _vm._v(" "),
+          _c("select", { attrs: { name: "address-end", id: "address-end" } }, [
+            _c("option", { attrs: { value: "" } }, [_vm._v("Chọn điểm đến")]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "1" } }, [
+              _vm._v(
+                "\n                                        Đi 1 chiều có tài xế\n                                    "
+              ),
+            ]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "2" } }, [
+              _vm._v(
+                "\n                                        Đi 2 chiều có tài xế\n                                    "
+              ),
+            ]),
+          ]),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-md-6" }, [
+          _c("label", { attrs: { for: "time-start" } }, [
+            _vm._v("Ngày bắt đầu"),
+          ]),
+          _vm._v(" "),
+          _c("input", {
+            attrs: { type: "date", name: "time-start", id: "time-start" },
+          }),
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-md-6" }, [
+          _c("label", { attrs: { for: "time-end" } }, [
+            _vm._v("Ngày kết thúc "),
+          ]),
+          _vm._v(" "),
+          _c("input", {
+            attrs: { type: "date", name: "time-end", id: "time-end" },
+          }),
+        ]),
+        _vm._v(" "),
         _c("div", { staticClass: "col-md-12" }, [
           _c("label", { staticClass: "text-left", attrs: { for: "phone" } }, [
             _vm._v("Ghi chú\n                                "),
@@ -50663,8 +51186,7 @@ var staticRenderFns = [
             attrs: {
               name: "",
               id: "",
-              cols: "30",
-              rows: "10",
+              rows: "4",
               laceholder: "Để lại lời nhắn cho chúng tôi",
             },
           }),

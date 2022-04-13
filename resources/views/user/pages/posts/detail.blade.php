@@ -3,15 +3,16 @@
 
 <div class="layout-theme">
     <!-- Start Top Title -->
-    <section class="top-title"
-        style="background-image: url('{{ asset('public/user/img/dich-vu-cho-thue-xe-tphcm.png') }}'); background-size: 100vw; filter: brightness(30%);">
+    <section class="top-title">
+        <img src="{{ asset('public/user/img/tu-van-du-lich-thanh-pho-ho-chi-minh-1.jpg') }}" alt=""
+            style="width: 100vw; height: 500px; filter: brightness(30%)">
         <div class="top-page">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="top-page-heading">
-                            {{-- <h1>Du lịch tại Hồ Chí Minh</h1>
-                            <p class="sub-title">Chúng tôi luôn mang đến khách hàng những trải nghiệp tốt nhât.</p> --}}
+                            <h1>Du lịch tại Hồ Chí Minh</h1>
+                            <p class="sub-title">Chúng tôi luôn mang đến khách hàng những trải nghiệp tốt nhât.</p>
                         </div>
                     </div>
                 </div>
