@@ -7,11 +7,19 @@ Route::prefix('')->group(function () {
         return view('user.pages.home');
     });
 
-    Route::get('/gioi-thieu', function () {
+    Route::get('dang-nhap', function () {
+        return view('user.pages.auth.login');
+    });
+
+    Route::get('dang-ky', function () {
+        return view('user.pages.auth.register');
+    });
+
+    Route::get('gioi-thieu', function () {
         return view('user.pages.introduction');
     });
 
-    Route::get('/dich-vu-thue-xe', function () {
+    Route::get('dich-vu-thue-xe', function () {
         return view('user.pages.ourservice');
     });
 

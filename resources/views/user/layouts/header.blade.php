@@ -4,7 +4,7 @@
             <div id="logo" class="col-lg-2 col-md-3 col-6 d-flex text-left">
                 <a id="logo-img" href="#"><img src="{{ asset('public/user/img/logo.png') }}" alt="logo" title="prodrive" /></a>
             </div>
-            <div class="top-header-right d-flex flex-wrap col-lg-10 col-md-9 col-6 justify-content-end align-items-center">
+            <div class="top-header-right d-flex flex-wrap col-lg-10 col-md-9 col-6 align-items-center" style="justify-content: right !important">
                 <ul id="menu" class="d-flex align-items-center list-unstyled mb-0">
                     <li class="item">
                         <a class="nav-link text-capitalize p-0" href="{{ url('/') }}">Trang chủ</a>
@@ -34,9 +34,12 @@
                             <li><a href="booking-options.html">Nha Trang</a></li>
                             <hr>
                             <li><a href="{{ url('/bai-viet') }}"><i>Xem thêm...</i></a></li>
-
                         </ul>
                     </li>
+                    <div class="login">
+                        <a href="{{ url('dang-nhap') }}">Đăng nhập </a>/
+                        <a href="{{ url('dang-ky') }}"> Đăng ký</a>
+                    </div>
                 </ul>
                 <div class="close-menu d-none">
                     <img src="{{ asset('public/user/img/close_s.png') }}" alt="">

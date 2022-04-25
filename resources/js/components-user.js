@@ -1,5 +1,15 @@
 import Vue from "vue";
 
+//Auth
+Vue.component(
+    "user-login-component",
+    require("./components/user/pages/auth/UserLoginComponent.vue").default
+);
+Vue.component(
+    "user-register-component",
+    require("./components/user/pages/auth/UserRegisterComponent.vue").default
+);
+
 // Home
 Vue.component(
     "banner-component",
