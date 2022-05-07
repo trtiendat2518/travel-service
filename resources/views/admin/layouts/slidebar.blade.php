@@ -106,7 +106,7 @@
                 <hr>
 
                 <li class="sidebar-item  ">
-                    <a href="{{ url('admin/dang-xuat') }}" class='sidebar-link'>
+                    <a href="{{ url('dang-xuat') }}" class='sidebar-link'>
                         <i class="bi bi-box-arrow-in-right"></i>
                         <span>Đăng xuất</span>
                     </a>

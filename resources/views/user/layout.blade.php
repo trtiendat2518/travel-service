@@ -35,8 +35,13 @@
     <link rel="stylesheet" href="{{ asset('public/user/css/image-text-alignment-block.css') }}" />
     <link rel="stylesheet" href="{{ asset('public/user/css/booking-form.css') }}" />
     <link rel="stylesheet" href="{{ asset('public/user/css/numbered-steps-row.css') }}" />
+    <!-- SEO website -->
+    <meta name="description" content="{{$meta_desc}}">
+    <meta name="author" content="TranTienDat">
+    <link rel="canonical" href="{{$url_canonical}}">
+    <link rel="icon" href="{{asset('public/images/logo.ico')}}">
 
-    <title>Thuê Xe Miền Nam</title>
+    <title>{{$meta_title}}</title>
 </head>
 
 <body>

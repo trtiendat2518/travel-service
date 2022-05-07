@@ -37,8 +37,12 @@
                         </ul>
                     </li>
                     <div class="login">
+                        @if (Session::get('id') && Session::get('role') == 1)
+                        <a href="{{ url('dang-xuat') }}">Đăng xuất </a>
+                        @else
                         <a href="{{ url('dang-nhap') }}">Đăng nhập </a>/
                         <a href="{{ url('dang-ky') }}"> Đăng ký</a>
+                        @endif
                     </div>
                 </ul>
                 <div class="close-menu d-none">
