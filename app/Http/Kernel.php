@@ -66,5 +66,6 @@ class Kernel extends HttpKernel
         'session' => \App\Http\Middleware\CheckSession::class,
         'otp' => \App\Http\Middleware\CheckOTP::class,
         'loged' => \App\Http\Middleware\CheckLoged::class,
+        'forgot' => \App\Http\Middleware\CheckForgot::class,
     ];
 }

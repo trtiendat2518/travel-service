@@ -43,6 +43,28 @@ class AuthController extends Controller
         return \view('auth.verify')->with(\compact('meta_desc', 'meta_title', 'url_canonical'));
     }
 
+    public function forgotIndex(Request $request)
+    {
+        //SEO
+        $meta_desc = "Quên mật khẩu";
+        $meta_title = "Quên mật khẩu";
+        $url_canonical = $request->url();
+        //---------------
+
+        return \view('auth.forgot_password')->with(\compact('meta_desc', 'meta_title', 'url_canonical'));
+    }
+
+    public function newPasswordIndex(Request $request)
+    {
+        //SEO
+        $meta_desc = "Tạo mới mật khẩu";
+        $meta_title = "Tạo mới mật khẩu";
+        $url_canonical = $request->url();
+        //---------------
+
+        return \view('auth.new_password')->with(\compact('meta_desc', 'meta_title', 'url_canonical'));
+    }
+
     public function registerAccount(Request $request)
     {
         $data = $request->validate([
@@ -167,22 +189,93 @@ class AuthController extends Controller
         $email = Session::get('email');
         $codeOtp = Session::get('otp');
         if ($data['verify'] == $codeOtp) {
-            $user = Users::where('email', $email)->first();
-            $user->status = 0;
-            $user->save();
+            if (Session::get('forgot')) {
+                $request->session()->forget('verify');
+                $request->session()->forget('otp');
+                return redirect()->intended('tao-mat-khau-moi');
+            } else {
+                $user = Users::where('email', $email)->first();
+                $user->status = 0;
+                $user->save();
 
-            $request->session()->put('id', $user->id);
-            $request->session()->put('role', $user->role);
-            $request->session()->forget('verify');
-            $request->session()->forget('otp');
+                $request->session()->put('id', $user->id);
+                $request->session()->put('role', $user->role);
+                $request->session()->forget('verify');
+                $request->session()->forget('otp');
 
-            if ($user->role == 0) {
-                return redirect()->intended('admin');
-            } else if ($user->role == 1) {
-                return redirect()->intended('/');
+                if ($user->role == 0) {
+                    return redirect()->intended('admin');
+                } else if ($user->role == 1) {
+                    return redirect()->intended('/');
+                }
             }
         } else {
             return back()->with('fail', 'Mã xác thực không đúng');
+        }
+    }
+
+    public function forgotAccount(Request $request)
+    {
+        $data = $request->validate(
+            [
+                'email_phone' => 'bail|required'
+            ],
+            [
+                'email_phone.required' => 'Không được để trống'
+            ]
+        );
+
+        $emailOrPhone = $data['email_phone'];
+        $checkUser = Users::where('phone_number', $emailOrPhone)->orWhere('email', $emailOrPhone)->first();
+
+        if ($checkUser) {
+            $codeOtp = \rand(1000, 9999);
+            $tokenForgot = \md5(\rand() . \time());
+
+            $to_email = $checkUser->email;
+            $data = array("otp" => $codeOtp);
+            Mail::send('auth.mail', $data, function ($message) use ($to_email) {
+                $message->to($to_email)->subject('Xác thực tài khoản!');
+                $message->from($to_email);
+            });
+
+            $request->session()->put('email', $checkUser->email);
+            $request->session()->put('verify', 'Vui lòng nhập mã xác thực, mã đã được gửi vào email của bạn');
+            $request->session()->put('forgot', $tokenForgot);
+            $request->session()->put('otp', $codeOtp);
+
+            return redirect()->intended('xac-thuc');
+        } else {
+            return back()->with('fail', 'Email hoặc Số điện thoại không đúng');
+        }
+    }
+
+    public function newPasswordAccount(Request $request)
+    {
+        $data = $request->validate(
+            [
+                'password' => 'bail|required|min:8|max:32'
+            ],
+            [
+                'password.required' => 'Mật khẩu không được để trống',
+                'password.min' => 'Mật khẩu ít nhất có 8 ký tự',
+                'password.max' => 'Mật khẩu không quá 32 ký tự'
+            ]
+        );
+
+        $password = $data['password'];
+        $repeatPassword = $request->repeat_password;
+        $email = Session::get('email');
+
+        $user = Users::where('email', $email)->first();
+
+        if ($password == $repeatPassword) {
+            $request->session()->forget('forgot');
+            $user->password = \md5($password);
+            $user->save();
+            return redirect()->intended('/dang-nhap')->with('success', 'Đổi mật khẩu thành công');
+        } else {
+            return back()->with('fail', 'Mật khẩu không trùng khớp');
         }
     }
 }

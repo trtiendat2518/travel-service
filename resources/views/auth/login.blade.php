@@ -19,6 +19,10 @@
                                         <div class="alert alert-danger">
                                             {{ Session::get('fail') }}
                                         </div>
+                                        @elseif (Session::get('success'))
+                                        <div class="alert alert-success">
+                                            {{ Session::get('success') }}
+                                        </div>
                                         @endif
                                     </div>
                                     <div class="form-email">
@@ -44,7 +48,7 @@
                                                 <a href="{{ url('dang-ky') }}" title="" style="color: #000">Chưa có tài khoản ?</a>
                                             </div>
                                             <div class="col-md-12 center-form" style="display: flex; align-items: center; justify-content: center;">
-                                                <a href="#" title="" style="color: #000">Quên mật khẩu ?</a>
+                                                <a href="{{ url('quen-mat-khau') }}" title="" style="color: #000">Quên mật khẩu ?</a>
                                             </div>
                                         </div>
                                     </div>

@@ -9,9 +9,13 @@ Route::prefix('')->group(function () {
     Route::get('/dang-ky', 'AuthController@registerIndex')->middleware('session');
     Route::get('/dang-xuat', 'AuthController@logoutAccount');
     Route::get('/xac-thuc', 'AuthController@verifyIndex')->middleware('otp');
+    Route::get('/quen-mat-khau', 'AuthController@forgotIndex')->middleware('session');
+    Route::get('/tao-mat-khau-moi', 'AuthController@newPasswordIndex')->middleware('forgot');
     Route::post('/dang-nhap-tai-khoan', 'AuthController@loginAccount');
     Route::post('/dang-ky-tai-khoan', 'AuthController@registerAccount');
     Route::post('/xac-thuc-tai-khoan', 'AuthController@verifyAccount');
+    Route::post('/quen-mat-khau-tai-khoan', 'AuthController@forgotAccount');
+    Route::post('/tao-moi-mat-khau-tai-khoan', 'AuthController@newPasswordAccount');
 
     Route::get('gioi-thieu', 'HomeController@aboutUs');
 

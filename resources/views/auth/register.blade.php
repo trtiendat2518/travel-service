@@ -84,7 +84,7 @@
                                                 </a>
                                             </div>
                                             <div class="col-md-12 center-form" style="display: flex; align-items: center; justify-content: center;">
-                                                <a href="#" title="" style="color: #000">
+                                                <a href="{{ url('quen-mat-khau') }}" title="" style="color: #000">
                                                     Quên mật khẩu ?
                                                 </a>
                                             </div>
