@@ -45,15 +45,15 @@
 </head>
 
 <body>
-    @include('user.plugin.zalo')
-    @include('user.plugin.facebook')
+    @include('customer.plugin.zalo')
+    @include('customer.plugin.facebook')
 
     <div id="app">
-        @include('user.layouts.header')
+        @include('customer.layouts.header')
 
         @yield('user-content')
 
-        @include('user.layouts.footer')
+        @include('customer.layouts.footer')
     </div>
 
     <!-- script -->

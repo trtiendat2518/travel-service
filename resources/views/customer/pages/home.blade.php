@@ -1,4 +1,4 @@
-@extends('user.layout')
+@extends('customer.layout')
 @section('user-content')
 <div class="main">
     <!-- banners -->

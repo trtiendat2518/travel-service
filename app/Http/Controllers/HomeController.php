@@ -14,7 +14,7 @@ class HomeController extends Controller
         $url_canonical = $request->url();
         //---------------
 
-        return view('user.pages.home')->with(compact('meta_desc', 'meta_title', 'url_canonical'));
+        return view('customer.pages.home')->with(compact('meta_desc', 'meta_title', 'url_canonical'));
     }
 
     public function aboutUs(Request $request)
@@ -25,6 +25,6 @@ class HomeController extends Controller
         $url_canonical = $request->url();
         //---------------
 
-        return view('user.pages.introduction')->with(compact('meta_desc', 'meta_title', 'url_canonical'));
+        return view('customer.pages.about.index')->with(compact('meta_desc', 'meta_title', 'url_canonical'));
     }
 }

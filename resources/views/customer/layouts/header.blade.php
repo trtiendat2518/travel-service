@@ -24,26 +24,25 @@
                             <li><a href="services-rates.html">Xe đi 2 chiều có tài xế</a></li>
                         </ul>
                     </li>
+
+                    @if (Session::get('id') && Session::get('role') == 1)
                     <li class="item">
-                        <a class="nav-link text-capitalize p-0" href="{{ url('/bai-viet') }}">Bài viết</a>
+                        <a class="nav-link text-capitalize p-0" href="{{ url('/thong-tin-ca-nhan') }}">Hồ sơ cá nhân</a>
                         <ul class="menu-dropdown position-absolute list-unstyled">
-                            <li><a href="booking-car-class.html">Hồ Chí Minh</a></li>
-                            <li><a href="booking-card.html">Hà Nội</a></li>
-                            <li><a href="booking-check-out.html">Bình Dương</a></li>
-                            <li><a href="booking-login.html">Bà Rịa - Vũng Tàu</a></li>
-                            <li><a href="booking-options.html">Nha Trang</a></li>
-                            <hr>
-                            <li><a href="{{ url('/bai-viet') }}"><i>Xem thêm...</i></a></li>
+                            <li><a href="{{ url('/thong-tin-ca-nhan') }}">Thông tin cá nhân</a></li>
+                            <li><a href="{{ url('/lich-su-thue-xe') }}">Lịch sử đơn đặt thuê xe</a></li>
+                            <li><a href="{{ url('/doi-mat-khau') }}">Đổi mật khẩu</a></li>
                         </ul>
                     </li>
                     <div class="login">
-                        @if (Session::get('id') && Session::get('role') == 1)
                         <a href="{{ url('dang-xuat') }}">Đăng xuất </a>
-                        @else
+                    </div>
+                    @else
+                    <div class="login">
                         <a href="{{ url('dang-nhap') }}">Đăng nhập </a>/
                         <a href="{{ url('dang-ky') }}"> Đăng ký</a>
-                        @endif
                     </div>
+                    @endif
                 </ul>
                 <div class="close-menu d-none">
                     <img src="{{ asset('public/user/img/close_s.png') }}" alt="">

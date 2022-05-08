@@ -20,15 +20,15 @@ Route::prefix('')->group(function () {
     Route::get('gioi-thieu', 'HomeController@aboutUs');
 
     Route::get('dich-vu-thue-xe', function () {
-        return view('user.pages.ourservice');
+        return view('customer.pages.services.detail');
     });
 
     Route::prefix('bai-viet')->group(function () {
         Route::get('/', function () {
-            return view('user.pages.posts.index');
+            return view('customer.pages.posts.index');
         });
         Route::get('/chi-tiet', function () {
-            return view('user.pages.posts.detail');
+            return view('customer.pages.posts.detail');
         });
     });
 });
