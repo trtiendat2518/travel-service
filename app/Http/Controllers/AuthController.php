@@ -43,6 +43,17 @@ class AuthController extends Controller
         return \view('auth.verify')->with(\compact('meta_desc', 'meta_title', 'url_canonical'));
     }
 
+    public function verifyAdminIndex(Request $request)
+    {
+        //SEO
+        $meta_desc = "Xác thực tài khoản";
+        $meta_title = "Xác thực tài khoản";
+        $url_canonical = $request->url();
+        //---------------
+
+        return \view('admin.pages.info.verify')->with(\compact('meta_desc', 'meta_title', 'url_canonical'));
+    }
+
     public function forgotIndex(Request $request)
     {
         //SEO
@@ -188,11 +199,35 @@ class AuthController extends Controller
 
         $email = Session::get('email');
         $codeOtp = Session::get('otp');
+
         if ($data['verify'] == $codeOtp) {
             if (Session::get('forgot')) {
                 $request->session()->forget('verify');
                 $request->session()->forget('otp');
                 return redirect()->intended('tao-mat-khau-moi');
+            } else if (Session::get('info')) {
+                $id = Session::get('id');
+                $user = Users::find($id);
+                if (Session::get('editEmail') != null) {
+                    $newEmail = Session::get('editEmail');
+                    $user->email = $newEmail;
+                    $user->save();
+                    $request->session()->forget('editEmail');
+                }
+                if (Session::get('editPhone') != null) {
+                    $newPhone = Session::get('editPhone');
+                    $user->phone_number = $newPhone;
+                    $user->save();
+                    $request->session()->forget('editPhone');
+                }
+                $request->session()->forget('verify');
+                $request->session()->forget('otp');
+                $request->session()->forget('info');
+                if ($user->role == 0) {
+                    return redirect()->intended('/admin/thong-tin-ca-nhan')->with('success', 'Chỉnh sửa thông tin thành công');
+                } else {
+                    return redirect()->intended('/thong-tin-ca-nhan')->with('success', 'Chỉnh sửa thông tin thành công');
+                }
             } else {
                 $user = Users::where('email', $email)->first();
                 $user->status = 0;
@@ -276,6 +311,183 @@ class AuthController extends Controller
             return redirect()->intended('/dang-nhap')->with('success', 'Đổi mật khẩu thành công');
         } else {
             return back()->with('fail', 'Mật khẩu không trùng khớp');
+        }
+    }
+
+    public function infoIndex(Request $request)
+    {
+        //SEO
+        $meta_desc = "Hồ sơ cá nhân - Thông tin tài khoản";
+        $meta_title = "Hồ sơ cá nhân";
+        $url_canonical = $request->url();
+        //---------------
+
+        $user = Users::find(Session::get('id'));
+
+        return \view('customer.pages.info.edit_info')->with(\compact('meta_desc', 'meta_title', 'url_canonical', 'user'));
+    }
+
+    public function infoAdminIndex(Request $request)
+    {
+        //SEO
+        $meta_desc = "Hồ sơ cá nhân - Thông tin tài khoản";
+        $meta_title = "Hồ sơ cá nhân";
+        $url_canonical = $request->url();
+        //---------------
+
+        $user = Users::find(Session::get('id'));
+
+        return \view('admin.pages.info.edit_info')->with(\compact('meta_desc', 'meta_title', 'url_canonical', 'user'));
+    }
+
+    public function infoEdit(Request $request)
+    {
+        $id = Session::get('id');
+        $user = Users::find($id);
+
+        $data = $request->validate(
+            [
+                'full_name' => 'bail|alpha_spaces|min:8|max:30',
+                'phone_number' => "bail|unique:users,phone_number,$id,id|numeric|digits_between:10,11",
+                'email' => "bail|unique:users,email,$id,id|email|max:50",
+                'address' => 'bail|min:10|max:128',
+            ],
+            [
+                'full_name.alpha_spaces' => 'Họ tên không được chứa ký tự số hoặc ký tự đặc biệt',
+                'full_name.min' => 'Họ tên nhập tối thiểu 8 ký tự',
+                'full_name.max' => 'Họ tên không nhập quá 30 ký tự chữ',
+
+                'phone_number.unique' => 'Số điện thoại này đã tồn tại',
+                'phone_number.numeric' => 'Số điện thoại chỉ nhập ký tự số',
+                'phone_number.digits_between' => 'Số điện thoại nhập 10 hoặc 11 số',
+
+                'email.unique' => 'Email này đã tồn tại',
+                'email.email' => 'Emai không đúng định dạng',
+                'email.max' => 'Email tối đa 50 ký tự chữ',
+
+                'address.min' => 'Địa chỉ không nhập quá 10 ký tự',
+                'address.max' => 'Địa chỉ không nhập quá 128 ký tự',
+            ]
+        );
+
+        $fullName = $data['full_name'];
+        $phoneNumber = $data['phone_number'];
+        $email = $data['email'];
+        $address = $data['address'];
+        $token = \md5(\rand() . \time());
+
+        if ($phoneNumber != $user->phone_number && $email == $user->email) {
+            $request->session()->put('info', $token);
+            $request->session()->put('editPhone', $phoneNumber);
+            $this->sendEmail($user);
+            if ($user->role == 0) {
+                return redirect()->intended('admin/xac-thuc');
+            } else {
+                return redirect()->intended('xac-thuc');
+            }
+        } else if ($phoneNumber == $user->phone_number && $email != $user->email) {
+            $request->session()->put('info', $token);
+            $request->session()->put('editEmail', $email);
+            $this->sendEmail($user);
+            if ($user->role == 0) {
+                return redirect()->intended('admin/xac-thuc');
+            } else {
+                return redirect()->intended('xac-thuc');
+            }
+        } else if ($phoneNumber != $user->phone_number && $email != $user->email) {
+            $request->session()->put('info', $token);
+            $request->session()->put('editPhone', $phoneNumber);
+            $request->session()->put('editEmail', $email);
+            $this->sendEmail($user);
+            if ($user->role == 0) {
+                return redirect()->intended('admin/xac-thuc');
+            } else {
+                return redirect()->intended('xac-thuc');
+            }
+        } else {
+            $user->full_name = $fullName;
+            $user->address = $address;
+            $user->save();
+            return back()->with('success', 'Chỉnh sửa thông tin thành công');
+        }
+    }
+
+    public function sendEmail($user)
+    {
+        $codeOtp = \rand(1000, 9999);
+
+        $to_email = $user->email;
+        $data = array("otp" => $codeOtp);
+        Mail::send('auth.mail', $data, function ($message) use ($to_email) {
+            $message->to($to_email)->subject('Xác thực tài khoản!');
+            $message->from($to_email);
+        });
+
+        Session::put('verify', 'Vui lòng nhập mã xác thực, mã đã được gửi vào email của bạn');
+        Session::put('otp', $codeOtp);
+    }
+
+    public function changePasswordIndex(Request $request)
+    {
+        //SEO
+        $meta_desc = "Thay đổi mật khẩu";
+        $meta_title = "Thay đổi mật khẩu";
+        $url_canonical = $request->url();
+        //---------------
+
+        $user = Users::find(Session::get('id'));
+
+        return \view('customer.pages.info.change_password')->with(\compact('meta_desc', 'meta_title', 'url_canonical', 'user'));
+    }
+
+    public function changePasswordAdminIndex(Request $request)
+    {
+        //SEO
+        $meta_desc = "Thay đổi mật khẩu";
+        $meta_title = "Thay đổi mật khẩu";
+        $url_canonical = $request->url();
+        //---------------
+
+        $user = Users::find(Session::get('id'));
+
+        return \view('admin.pages.info.change_password')->with(\compact('meta_desc', 'meta_title', 'url_canonical', 'user'));
+    }
+
+    public function changePasswordUpdate(Request $request)
+    {
+        $id = Session::get('id');
+        $user = Users::find($id);
+
+        $data = $request->validate(
+            [
+                'current_password' => 'bail|required|min:8|max:32',
+                'new_password' => 'bail|required|min:8|max:32',
+            ],
+            [
+                'current_password.required' => 'Mật khẩu không được để trống',
+                'current_password.min' => 'Mật khẩu ít nhất có 8 ký tự',
+                'current_password.max' => 'Mật khẩu không quá 32 ký tự',
+
+                'new_password.required' => 'Mật khẩu không được để trống',
+                'new_password.min' => 'Mật khẩu ít nhất có 8 ký tự',
+                'new_password.max' => 'Mật khẩu không quá 32 ký tự',
+            ]
+        );
+
+        $currentPassword = \md5($data['current_password']);
+        $newPassword = $data['new_password'];
+        $repeatNewPassword = $request->repeat_password;
+
+        if ($currentPassword == $user->password) {
+            if ($newPassword == $repeatNewPassword) {
+                $user->password = \md5($newPassword);
+                $user->save();
+                return back()->with('success', 'Thay đổi mật khẩu thành công');
+            } else {
+                return back()->with('fail', 'Mật khẩu không trùng khớp');
+            }
+        } else {
+            return back()->with('fail', 'Mật khẩu hiện tại không đúng');
         }
     }
 }

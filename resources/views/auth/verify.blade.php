@@ -27,7 +27,7 @@
                                             <label for="firstname">
                                                 Mã xác thực <span style="color: red">(*)</span>
                                             </label>
-                                            <input type="number" name="verify" id="verify" placeholder="Mã xác thực" value="{{old('verify')}}" />
+                                            <input type="number" name="verify" id="verify" placeholder="Mã xác thực" />
                                             <span class="text-danger">@error('verify') {{ $message }} @enderror</span>
                                             @if (Session::get('fail'))
                                             <span class="text-danger">{{ Session::get('fail') }}</span>
@@ -38,7 +38,7 @@
                                         <div class="row">
                                             <div class="col-md-12 center-form" style="display: flex; align-items: center; justify-content: center;">
                                                 <button type="submit">
-                                                    Đăng ký
+                                                    Tiếp tục
                                                 </button>
                                             </div>
                                             <div class="col-md-12 center-form" style="display: flex; align-items: center; justify-content: center;">

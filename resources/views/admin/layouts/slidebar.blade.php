@@ -105,6 +105,20 @@
 
                 <hr>
 
+                <li class="sidebar-item {{ Request::is('admin/thong-tin-ca-nhan') ? 'active' : '' }}">
+                    <a href="{{ url('admin/thong-tin-ca-nhan') }}" class='sidebar-link'>
+                        <i class="bi bi-person"></i>
+                        <span>Hồ sơ cá nhân</span>
+                    </a>
+                </li>
+
+                <li class="sidebar-item {{ Request::is('admin/doi-mat-khau') ? 'active' : '' }}">
+                    <a href="{{ url('admin/doi-mat-khau') }}" class='sidebar-link'>
+                        <i class="bi bi-lock"></i>
+                        <span>Đổi mật khẩu</span>
+                    </a>
+                </li>
+
                 <li class="sidebar-item  ">
                     <a href="{{ url('dang-xuat') }}" class='sidebar-link'>
                         <i class="bi bi-box-arrow-in-right"></i>

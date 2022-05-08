@@ -8,55 +8,59 @@
             <div class="col-lg-6">
                 <div class="login-booking">
                     <ul class="login-tab-list">
-                        <li rel="tab-2" class="active">Đổi mật khẩu</li>
+                        <li rel="tab-2" class="active">Thông tin cá nhân</li>
                     </ul>
                     <div class="login-content">
                         <div id="tab-2" class="content-tab" style="display: block;">
                             <div class="register-form">
-                                <form action="{{ url('doi-mat-khau-tai-khoan') }}" method="POST" accept-charset="utf-8">
+                                <form action="{{ url('chinh-sua-thong-tin') }}" method="POST" accept-charset="utf-8">
                                     @csrf
                                     <div class="results">
                                         @if (Session::get('success'))
                                         <div class="alert alert-success">
                                             {{ Session::get('success') }}
                                         </div>
-                                        @elseif (Session::get('fail'))
-                                        <div class="alert alert-danger">
-                                            {{ Session::get('fail') }}
-                                        </div>
                                         @endif
                                     </div>
                                     <div class="row">
-                                        <div class="col-md-12">
-                                            <label for="re-pass">
-                                                Mật khẩu hiện tại
+                                        <div class="col-md-6">
+                                            <label for="firstname">
+                                                Họ tên
                                             </label>
-                                            <input type="password" name="current_password" placeholder="********" />
-                                            <span class="text-danger">@error('current_password') {{ $message }} @enderror</span>
+                                            <input type="text" name="full_name" value="{{ $user->full_name }}" />
+                                            <span class="text-danger">@error('full_name') {{ $message }} @enderror</span>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="lastname">
+                                                Số điện thoại
+                                            </label>
+                                            <input type="text" name="phone_number" value="{{ $user->phone_number }}" />
+                                            <span class="text-danger">@error('phone_number') {{ $message }} @enderror</span>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-12">
                                             <label for="re-pass">
-                                                Mật khẩu mới
+                                                Email
                                             </label>
-                                            <input type="password" name="new_password" placeholder="********" />
-                                            <span class="text-danger">@error('new_password') {{ $message }} @enderror</span>
+                                            <input type="email" name="email" value="{{ $user->email }}" />
+                                            <span class="text-danger">@error('email') {{ $message }} @enderror</span>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-12">
                                             <label for="re-pass">
-                                                Nhập lại mật khẩu
+                                                Địa chỉ
                                             </label>
-                                            <input type="password" name="repeat_password" placeholder="********" />
+                                            <textarea name="address" style="resize: none">{{ $user->address }}</textarea>
+                                            <span class="text-danger">@error('address') {{ $message }} @enderror</span>
                                         </div>
                                     </div>
                                     <div class="btn-submit">
                                         <div class="row">
                                             <div class="col-md-12 center-form" style="display: flex; align-items: center; justify-content: center;">
                                                 <button type="submit">
-                                                    Thay đổi
+                                                    Chỉnh sửa
                                                 </button>
                                             </div>
                                         </div>

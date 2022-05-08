@@ -3,8 +3,11 @@
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('')->group(function () {
+    //HomeController
     Route::get('/', 'HomeController@index');
+    Route::get('gioi-thieu', 'HomeController@aboutUs');
 
+    //AuthController
     Route::get('/dang-nhap', 'AuthController@loginIndex')->middleware('session');
     Route::get('/dang-ky', 'AuthController@registerIndex')->middleware('session');
     Route::get('/dang-xuat', 'AuthController@logoutAccount');
@@ -16,8 +19,10 @@ Route::prefix('')->group(function () {
     Route::post('/xac-thuc-tai-khoan', 'AuthController@verifyAccount');
     Route::post('/quen-mat-khau-tai-khoan', 'AuthController@forgotAccount');
     Route::post('/tao-moi-mat-khau-tai-khoan', 'AuthController@newPasswordAccount');
-
-    Route::get('gioi-thieu', 'HomeController@aboutUs');
+    Route::get('/thong-tin-ca-nhan', 'AuthController@infoIndex');
+    Route::post('/chinh-sua-thong-tin', 'AuthController@infoEdit');
+    Route::get('/doi-mat-khau', 'AuthController@changePasswordIndex');
+    Route::post('/doi-mat-khau-tai-khoan', 'AuthController@changePasswordUpdate');
 
     Route::get('dich-vu-thue-xe', function () {
         return view('customer.pages.services.detail');
@@ -34,9 +39,10 @@ Route::prefix('')->group(function () {
 });
 
 Route::prefix('admin')->group(function () {
-    Route::get('/', function () {
-        return view('admin.pages.dashboard');
-    })->middleware('loged');
+    Route::get('/', 'Admin\DashboardController@index')->middleware('loged');
+    Route::get('/xac-thuc', 'AuthController@verifyAdminIndex')->middleware('otp');
+    Route::get('/thong-tin-ca-nhan', 'AuthController@infoAdminIndex');
+    Route::get('/doi-mat-khau', 'AuthController@changePasswordAdminIndex');
 
     Route::get('/quan-ly-tai-khoan', function () {
         return view('admin.pages.account.list');
