@@ -131,7 +131,7 @@
                                             <label for="first-name-icon"> Chọn dịch vụ <span class="required">(*)</span></label>
                                             <div class="position-relative">
                                                 <select class="form-select select" name="service_id" v-model="form.service_id">
-                                                    <option value="">Chọn dịch vụ</option>
+                                                    <option value="" disabled>Chọn dịch vụ</option>
                                                     <option value="1">Đăng bài</option>
                                                 </select>
                                                 <div
@@ -146,8 +146,8 @@
                                         <div class="form-group">
                                             <label for="first-name-icon"> Chọn loại xe <span class="required">(*)</span></label>
                                             <select class="form-select select" name="car_id" v-model="form.car_id">
-                                                <option value="">Chọn loại xe</option>
-                                                <option value="1">Đăng bài</option>
+                                                <option value="" disabled>Chọn loại xe</option>
+                                                <option v-for="car in cars" :key="car.id" :value="car.id">{{ car.name }}</option>
                                             </select>
                                             <div
                                                 class="text-danger mb-3"
@@ -342,6 +342,8 @@ export default {
         return {
             orders: [],
             places: [],
+            cars: [],
+            services: [],
             pagination: {
                 current_page: 1,
                 last_page: 5
@@ -429,6 +431,15 @@ export default {
                 })
                 .catch((err) => console.log(err))
         },
+        fetchCars(page_url) {
+            page_url = `../../api/admin/manage-car/car/all`
+            fetch(page_url)
+                .then((res) => res.json())
+                .then((res) => {
+                    this.cars = res.data
+                })
+                .catch((err) => console.log(err))
+        },
         search(page_url) {
             page_url = `../../api/admin/manage-order/order/search/${this.query}/${this.currentEntries}?page=${this.pagination.current_page}`
             fetch(page_url)
@@ -452,6 +463,7 @@ export default {
         create() {
             this.form.reset()
             this.form.clear()
+            this.fetchCars()
             $('#orderModal').modal('show')
         },
         close() {

@@ -45,13 +45,10 @@ Route::prefix('admin')->group(function () {
     Route::get('/doi-mat-khau', 'AuthController@changePasswordAdminIndex');
 
     Route::resource('/don-dat-thue-xe', 'Admin\OrderController')->only('index');
+    Route::resource('/quan-ly-loai-xe', 'Admin\CarController')->only('index');
 
     Route::get('/quan-ly-tai-khoan', function () {
         return view('admin.pages.account.list');
-    });
-
-    Route::get('/quan-ly-loai-xe', function () {
-        return view('admin.pages.car.list');
     });
 
     Route::get('/tao-moi-dich-vu', function () {

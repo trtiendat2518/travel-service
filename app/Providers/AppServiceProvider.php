@@ -18,6 +18,10 @@ class AppServiceProvider extends ServiceProvider
             \App\Repositories\Order\OrderInterface::class,
             \App\Repositories\Order\OrderRepository::class,
         );
+        $this->app->singleton(
+            \App\Repositories\Car\CarInterface::class,
+            \App\Repositories\Car\CarRepository::class,
+        );
     }
 
     /**

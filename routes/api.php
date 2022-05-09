@@ -25,4 +25,12 @@ Route::prefix('admin')->group(function () {
         Route::get('order/search/{query}/{currentEntries}', 'Admin\OrderController@search');
         Route::resource('order', 'Admin\OrderController')->except('index');
     });
+
+    Route::prefix('manage-car')->group(function () {
+        Route::post('car/upgrade/{carId}', 'Admin\CarController@upgrade');
+        Route::patch('car/change/{carId}', 'Admin\CarController@change');
+        Route::get('car/all', 'Admin\CarController@all');
+        Route::get('car/search/{query}/{currentEntries}', 'Admin\CarController@search');
+        Route::resource('car', 'Admin\CarController')->except('index');
+    });
 });

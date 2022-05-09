@@ -5870,6 +5870,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var vue_snotify_styles_material_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-snotify/styles/material.css */ "./node_modules/vue-snotify/styles/material.css");
 //
 //
 //
@@ -6010,10 +6011,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -6022,14 +6020,15 @@ __webpack_require__.r(__webpack_exports__);
         current_page: 1,
         last_page: 5
       },
-      currentEntries: 5,
+      currentEntries: 10,
       showEntries: [5, 10, 25, 50],
-      query: "",
+      query: '',
       editMode: false,
       form: new Form({
-        car_id: "",
-        car_name: "",
-        car_status: ""
+        id: '',
+        name: '',
+        avatar: '',
+        status: ''
       })
     };
   },
@@ -6045,56 +6044,148 @@ __webpack_require__.r(__webpack_exports__);
         this.pagination = 1;
         this.fetchCars();
       }
-    } // query(keyword) {
-    //     if (keyword === "") {
-    //         this.fetchFaculties();
-    //     } else {
-    //         this.pagination.current_page = 1;
-    //         this.search();
-    //     }
-    // },
-
+    },
+    query: function query(keyword) {
+      if (keyword === '') {
+        this.fetchCars();
+      } else {
+        this.pagination.current_page = 1;
+        this.search();
+      }
+    }
   },
   methods: {
     empty: function empty() {
       return this.cars.length < 1;
     },
     fetchCars: function fetchCars(page_url) {
-      // page_url = `../../api/admin/edu-faculty/khoa/${this.currentEntries}?page=${this.pagination.current_page}`;
-      // fetch(page_url)
-      //     .then((res) => res.json())
-      //     .then((res) => {
-      //         this.accounts = res.data;
-      //         this.pagination = res.meta;
-      //     })
-      //     .catch((err) => console.log(err));
-      this.cars = [{
-        car_id: 1,
-        name: "Xe 4 chỗ",
-        status: Math.floor(Math.random() * (2 - 0) + 0)
-      }, {
-        car_id: 2,
-        name: "Xe 7 chỗ",
-        status: Math.floor(Math.random() * (2 - 0) + 0)
-      }, {
-        car_id: 3,
-        name: "Xe 16 chỗ",
-        status: Math.floor(Math.random() * (2 - 0) + 0)
-      }, {
-        car_id: 4,
-        name: "Xe 29 chỗ",
-        status: Math.floor(Math.random() * (2 - 0) + 0)
-      }, {
-        car_id: 5,
-        name: "Xe 45 chỗ",
-        status: Math.floor(Math.random() * (2 - 0) + 0)
-      }];
+      var _this = this;
+
+      page_url = "../../api/admin/manage-car/car/".concat(this.currentEntries, "?page=").concat(this.pagination.current_page);
+      fetch(page_url).then(function (res) {
+        return res.json();
+      }).then(function (res) {
+        _this.cars = res.data;
+        _this.pagination = res.meta;
+      })["catch"](function (err) {
+        return console.log(err);
+      });
     },
     create: function create() {
-      $("#loanModal").modal("show");
+      $('#carModal').modal('show');
     },
     close: function close() {
-      $("#loanModal").modal("hide");
+      $('#carModal').modal('hide');
+    },
+    onAvatarChange: function onAvatarChange(e) {
+      var file = e.target.files[0];
+      this.form.avatar = URL.createObjectURL(file);
+    },
+    store: function store() {
+      var _this2 = this;
+
+      this.form.avatar = document.getElementById('avatar').files[0];
+      this.form.post('../../api/admin/manage-car/car').then(function (res) {
+        if (_this2.form.successful) {
+          $('#carModal').modal('hide');
+
+          _this2.$snotify.success('Thêm mới thành công!');
+
+          _this2.fetchCars();
+
+          _this2.form.reset();
+
+          _this2.form.clear();
+
+          _this2.$refs.fileupload.value = '';
+        }
+      })["catch"](function (err) {
+        _this2.$snotify.error(err);
+      });
+    },
+    search: function search(page_url) {
+      var _this3 = this;
+
+      page_url = "../../api/admin/manage-car/car/search/".concat(this.query, "/").concat(this.currentEntries, "?page=").concat(this.pagination.current_page);
+      fetch(page_url).then(function (res) {
+        return res.json();
+      }).then(function (res) {
+        _this3.cars = res.data;
+        _this3.pagination = res.meta;
+      })["catch"](function (err) {
+        return console.log(err);
+      });
+    },
+    change: function change(carId) {
+      var _this4 = this;
+
+      axios.patch("../../api/admin/manage-car/car/change/".concat(carId)).then(function (res) {
+        _this4.fetchCars();
+
+        _this4.$snotify.success('Cập nhật trạng thái thành công!');
+      })["catch"](function (err) {
+        return console.log(err);
+      });
+    },
+    destroy: function destroy(carId) {
+      var _this5 = this;
+
+      this.$snotify.clear();
+      this.$snotify.confirm('Xác nhận xóa', {
+        timeout: 5000,
+        showProgressBar: true,
+        closeOnClick: false,
+        pauseOnHover: true,
+        buttons: [{
+          text: 'Xóa',
+          action: function action(toast) {
+            _this5.$snotify.remove(toast.id);
+
+            axios["delete"]("../../api/admin/manage-car/car/".concat(carId)).then(function (res) {
+              _this5.$snotify.success('Đã xóa!');
+
+              _this5.fetchCars();
+            })["catch"](function (err) {
+              return console.log(err);
+            });
+          },
+          bold: false
+        }, {
+          text: 'Đóng',
+          action: function action(toast) {
+            _this5.$snotify.remove(toast.id);
+          },
+          bold: true
+        }]
+      });
+    },
+    show: function show(car) {
+      this.editMode = true;
+      this.form.reset();
+      this.form.clear();
+      this.form.fill(car);
+      this.form.avatar = "../public/images/car/".concat(car.avatar);
+      $('#carModal').modal('show');
+    },
+    update: function update() {
+      var _this6 = this;
+
+      this.form.avatar = document.getElementById('avatar').files[0];
+      this.form.post("../../api/admin/manage-car/car/upgrade/".concat(this.form.id)).then(function (res) {
+        $('#carModal').modal('hide');
+
+        _this6.$snotify.success('Cập nhật thành công!');
+
+        _this6.fetchCars();
+
+        _this6.form.reset();
+
+        _this6.form.clear();
+
+        _this6.$refs.fileupload.value = '';
+      })["catch"](function (err) {
+        _this6.$snotify.error(err);
+      });
     }
   }
 });
@@ -6674,6 +6765,8 @@ __webpack_require__.r(__webpack_exports__);
     return {
       orders: [],
       places: [],
+      cars: [],
+      services: [],
       pagination: {
         current_page: 1,
         last_page: 5
@@ -6767,23 +6860,22 @@ __webpack_require__.r(__webpack_exports__);
         return console.log(err);
       });
     },
-    search: function search(page_url) {
+    fetchCars: function fetchCars(page_url) {
       var _this3 = this;
 
-      page_url = "../../api/admin/manage-order/order/search/".concat(this.query, "/").concat(this.currentEntries, "?page=").concat(this.pagination.current_page);
+      page_url = "../../api/admin/manage-car/car/all";
       fetch(page_url).then(function (res) {
         return res.json();
       }).then(function (res) {
-        _this3.orders = res.data;
-        _this3.pagination = res.meta;
+        _this3.cars = res.data;
       })["catch"](function (err) {
         return console.log(err);
       });
     },
-    filter: function filter(page_url) {
+    search: function search(page_url) {
       var _this4 = this;
 
-      page_url = "../../api/admin/manage-order/order/filter/".concat(this.value, "/").concat(this.currentEntries, "?page=").concat(this.pagination.current_page);
+      page_url = "../../api/admin/manage-order/order/search/".concat(this.query, "/").concat(this.currentEntries, "?page=").concat(this.pagination.current_page);
       fetch(page_url).then(function (res) {
         return res.json();
       }).then(function (res) {
@@ -6793,9 +6885,23 @@ __webpack_require__.r(__webpack_exports__);
         return console.log(err);
       });
     },
+    filter: function filter(page_url) {
+      var _this5 = this;
+
+      page_url = "../../api/admin/manage-order/order/filter/".concat(this.value, "/").concat(this.currentEntries, "?page=").concat(this.pagination.current_page);
+      fetch(page_url).then(function (res) {
+        return res.json();
+      }).then(function (res) {
+        _this5.orders = res.data;
+        _this5.pagination = res.meta;
+      })["catch"](function (err) {
+        return console.log(err);
+      });
+    },
     create: function create() {
       this.form.reset();
       this.form.clear();
+      this.fetchCars();
       $('#orderModal').modal('show');
     },
     close: function close() {
@@ -6803,48 +6909,48 @@ __webpack_require__.r(__webpack_exports__);
       $('#DetailModal').modal('hide');
     },
     store: function store() {
-      var _this5 = this;
+      var _this6 = this;
 
       this.form.busy = true;
       this.form.post('../../api/admin/manage-order/order').then(function (res) {
-        _this5.fetchOrders();
+        _this6.fetchOrders();
 
         $('#orderModal').modal('hide');
 
-        if (_this5.form.successful) {
-          _this5.$snotify.success('Tạo mới thành công!');
+        if (_this6.form.successful) {
+          _this6.$snotify.success('Tạo mới thành công!');
         } else {
-          _this5.$snotify.error('Không thể tạo mới', 'Lỗi');
+          _this6.$snotify.error('Không thể tạo mới', 'Lỗi');
         }
       })["catch"](function (err) {
         return console.log(err);
       });
     },
     detail: function detail(order) {
-      var _this6 = this;
+      var _this7 = this;
 
       this.form.reset();
       this.form.clear();
       this.form.fill(order);
       this.places.forEach(function (el) {
         if (el.id == order.place_from) {
-          _this6.form.place_from_name = el.name;
+          _this7.form.place_from_name = el.name;
         }
 
         if (el.id == order.place_to) {
-          _this6.form.place_to_name = el.name;
+          _this7.form.place_to_name = el.name;
         }
       });
       $('#DetailModal').modal('show');
     },
     change: function change(event, order) {
-      var _this7 = this;
+      var _this8 = this;
 
       this.form.status = event.target.value;
       this.form.put("../../api/admin/manage-order/order/".concat(order.order_id)).then(function (res) {
-        _this7.fetchOrders();
+        _this8.fetchOrders();
 
-        _this7.$snotify.success('Đã thay đổi trạng thái');
+        _this8.$snotify.success('Đã thay đổi trạng thái');
       })["catch"](function (err) {
         return console.log(err);
       });
@@ -16097,7 +16203,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#form-select[data-v-522f640c] {\n    width: 25%;\n    display: inline;\n}\n.form-search[data-v-522f640c] {\n    float: right;\n}\n.btn-right[data-v-522f640c] {\n    float: right;\n}\n.select-right[data-v-522f640c] {\n    float: right;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n#form-select[data-v-522f640c] {\n    width: 25%;\n    display: inline;\n}\n.form-search[data-v-522f640c] {\n    float: right;\n}\n.btn-right[data-v-522f640c] {\n    float: right;\n}\n.select-right[data-v-522f640c] {\n    float: right;\n}\n.required[data-v-522f640c] {\n    color: red;\n}\n.styling-img-car[data-v-522f640c] {\n    display: block;\n    width: 30vw;\n    height: 40vh;\n    margin-top: 15px;\n    margin-left: auto;\n    margin-right: auto;\n}\n.image-car[data-v-522f640c] {\n    width: 10vw;\n    height: 10vh;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -70251,222 +70357,436 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "card" }, [
-    _c("div", { staticClass: "card-header" }, [
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-md-6" }, [
-          _vm._v("Danh sách các loại xe"),
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-md-6" }, [
-          _c(
-            "button",
-            {
-              staticClass: "btn btn-primary btn-right",
-              on: {
-                click: function ($event) {
-                  return _vm.create()
+  return _c(
+    "div",
+    { staticClass: "card" },
+    [
+      _c("vue-snotify"),
+      _vm._v(" "),
+      _c("div", { staticClass: "card-header" }, [
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-md-6" }, [
+            _vm._v("Danh sách các loại xe"),
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-md-6" }, [
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-primary btn-right",
+                on: {
+                  click: function ($event) {
+                    return _vm.create()
+                  },
                 },
               },
-            },
-            [_vm._m(0)]
-          ),
+              [_vm._m(0)]
+            ),
+          ]),
         ]),
       ]),
-    ]),
-    _vm._v(" "),
-    _c(
-      "div",
-      { staticClass: "card-body" },
-      [
-        _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "col-md-3" }, [
-            _c("div", { staticClass: "between:flex bottom:margin-3 ml-2" }, [
-              _c("div", { staticClass: "center:flex-items" }, [
-                _c("span", { staticClass: "right:marign-1" }, [
-                  _vm._v("Hiển thị"),
-                ]),
-                _vm._v(" "),
-                _c(
-                  "select",
-                  {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.currentEntries,
-                        expression: "currentEntries",
-                      },
-                    ],
-                    staticClass: "select form-select",
-                    attrs: { id: "form-select" },
-                    on: {
-                      change: function ($event) {
-                        var $$selectedVal = Array.prototype.filter
-                          .call($event.target.options, function (o) {
-                            return o.selected
-                          })
-                          .map(function (o) {
-                            var val = "_value" in o ? o._value : o.value
-                            return val
-                          })
-                        _vm.currentEntries = $event.target.multiple
-                          ? $$selectedVal
-                          : $$selectedVal[0]
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "card-body" },
+        [
+          _c("div", { staticClass: "row" }, [
+            _c("div", { staticClass: "col-md-3" }, [
+              _c("div", { staticClass: "between:flex bottom:margin-3 ml-2" }, [
+                _c("div", { staticClass: "center:flex-items" }, [
+                  _c("span", { staticClass: "right:marign-1" }, [
+                    _vm._v("Hiển thị"),
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "select",
+                    {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.currentEntries,
+                          expression: "currentEntries",
+                        },
+                      ],
+                      staticClass: "select form-select",
+                      attrs: { id: "form-select" },
+                      on: {
+                        change: function ($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function (o) {
+                              return o.selected
+                            })
+                            .map(function (o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.currentEntries = $event.target.multiple
+                            ? $$selectedVal
+                            : $$selectedVal[0]
+                        },
                       },
                     },
-                  },
-                  _vm._l(_vm.showEntries, function (entry) {
-                    return _c(
-                      "option",
-                      { key: entry, domProps: { value: entry } },
-                      [
-                        _vm._v(
-                          "\n                                " +
-                            _vm._s(entry) +
-                            "\n                            "
-                        ),
-                      ]
-                    )
-                  }),
-                  0
-                ),
+                    _vm._l(_vm.showEntries, function (entry) {
+                      return _c(
+                        "option",
+                        { key: entry, domProps: { value: entry } },
+                        [
+                          _vm._v(
+                            "\n                                " +
+                              _vm._s(entry) +
+                              "\n                            "
+                          ),
+                        ]
+                      )
+                    }),
+                    0
+                  ),
+                ]),
               ]),
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-md-4" }),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-md-5" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.query,
+                    expression: "query",
+                  },
+                ],
+                staticClass: "form-control form-search",
+                attrs: { placeholder: "Tìm kiếm...", type: "text" },
+                domProps: { value: _vm.query },
+                on: {
+                  input: function ($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.query = $event.target.value
+                  },
+                },
+              }),
             ]),
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "col-md-4" }),
-          _vm._v(" "),
-          _vm._m(1),
-        ]),
-        _vm._v(" "),
-        _c(
-          "table",
-          { staticClass: "table table-striped", attrs: { id: "table1" } },
-          [
-            _vm._m(2),
-            _vm._v(" "),
-            _c(
-              "tbody",
-              _vm._l(_vm.cars, function (car) {
-                return _c("tr", { key: car.car_id }, [
-                  _c("td", [_vm._v(_vm._s(car.name))]),
-                  _vm._v(" "),
-                  _c("td", [
-                    car.status == 0
-                      ? _c("button", { staticClass: "btn btn-dark" }, [
-                          _c("i", { staticClass: "bi bi-eye" }),
-                        ])
-                      : car.status == 1
-                      ? _c("button", { staticClass: "btn btn-secondary" }, [
-                          _c("i", { staticClass: "bi bi-eye-slash" }),
-                        ])
-                      : _vm._e(),
-                    _vm._v(" "),
-                    _vm._m(3, true),
-                    _vm._v(" "),
-                    _vm._m(4, true),
-                  ]),
-                ])
-              }),
-              0
-            ),
-          ]
-        ),
-        _vm._v(" "),
-        _vm.pagination.last_page > 1
-          ? _c("pagination-component", {
-              attrs: { pagination: _vm.pagination, offset: 5 },
-              on: {
-                paginate: function ($event) {
-                  _vm.query === "" ? _vm.fetchCars() : _vm.search()
-                },
-              },
-            })
-          : _vm._e(),
-      ],
-      1
-    ),
-    _vm._v(" "),
-    _c(
-      "div",
-      {
-        staticClass: "modal fade",
-        attrs: {
-          id: "loanModal",
-          tabindex: "-1",
-          role: "dialog",
-          "aria-labelledby": "loanModalTitle",
-          "aria-hidden": "true",
-        },
-      },
-      [
-        _c(
-          "div",
-          { staticClass: "modal-dialog", attrs: { role: "document" } },
-          [
-            _c(
-              "form",
-              {
-                on: {
-                  submit: function ($event) {
-                    $event.preventDefault()
-                  },
-                  keydown: function ($event) {
-                    return _vm.form.onKeydown($event)
-                  },
-                },
-              },
-              [
-                _c("div", { staticClass: "modal-content" }, [
-                  _c("div", { staticClass: "modal-header bg-primary" }, [
-                    _c(
-                      "h5",
-                      {
-                        staticClass: "modal-title white",
-                        attrs: { id: "loanModalTitle" },
-                      },
-                      [
-                        _vm._v(
-                          "\n                            Tạo mới loại xe\n                        "
+          _c(
+            "table",
+            { staticClass: "table table-striped", attrs: { id: "table1" } },
+            [
+              _vm._m(1),
+              _vm._v(" "),
+              _c(
+                "tbody",
+                [
+                  _vm._l(_vm.cars, function (car) {
+                    return _c("tr", { key: car.car_id }, [
+                      _c("td", [
+                        _c("img", {
+                          staticClass: "image-car",
+                          attrs: {
+                            src: "../public/images/car/" + car.avatar,
+                            alt: "",
+                          },
+                        }),
+                      ]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(car.name))]),
+                      _vm._v(" "),
+                      _c("td", [
+                        car.status == 0
+                          ? _c(
+                              "button",
+                              {
+                                staticClass: "btn btn-dark",
+                                on: {
+                                  click: function ($event) {
+                                    return _vm.change(car.id)
+                                  },
+                                },
+                              },
+                              [_c("i", { staticClass: "bi bi-eye" })]
+                            )
+                          : car.status == 1
+                          ? _c(
+                              "button",
+                              {
+                                staticClass: "btn btn-secondary",
+                                on: {
+                                  click: function ($event) {
+                                    return _vm.change(car.id)
+                                  },
+                                },
+                              },
+                              [_c("i", { staticClass: "bi bi-eye-slash" })]
+                            )
+                          : _vm._e(),
+                        _vm._v(" "),
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-primary",
+                            on: {
+                              click: function ($event) {
+                                return _vm.show(car)
+                              },
+                            },
+                          },
+                          [_c("i", { staticClass: "bi bi-pencil-square" })]
                         ),
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "button",
-                      {
-                        staticClass: "close",
-                        attrs: {
-                          type: "button",
-                          "data-dismiss": "modal",
-                          "aria-label": "Close",
+                        _vm._v(" "),
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-danger",
+                            on: {
+                              click: function ($event) {
+                                return _vm.destroy(car.id)
+                              },
+                            },
+                          },
+                          [_c("i", { staticClass: "bi bi-trash" })]
+                        ),
+                      ]),
+                    ])
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "tr",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: !_vm.cars.length,
+                          expression: "!cars.length",
                         },
-                        on: {
-                          click: function ($event) {
-                            return _vm.close()
+                      ],
+                    },
+                    [_vm._m(2)]
+                  ),
+                ],
+                2
+              ),
+            ]
+          ),
+          _vm._v(" "),
+          _vm.pagination.last_page > 1
+            ? _c("pagination-component", {
+                attrs: { pagination: _vm.pagination, offset: 5 },
+                on: {
+                  paginate: function ($event) {
+                    _vm.query === "" ? _vm.fetchCars() : _vm.search()
+                  },
+                },
+              })
+            : _vm._e(),
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass: "modal fade",
+          attrs: {
+            id: "carModal",
+            tabindex: "-1",
+            role: "dialog",
+            "aria-labelledby": "carModalTitle",
+            "aria-hidden": "true",
+          },
+        },
+        [
+          _c(
+            "div",
+            { staticClass: "modal-dialog", attrs: { role: "document" } },
+            [
+              _c(
+                "form",
+                {
+                  on: {
+                    submit: function ($event) {
+                      $event.preventDefault()
+                      _vm.editMode ? _vm.update() : _vm.store()
+                    },
+                    keydown: function ($event) {
+                      return _vm.form.onKeydown($event)
+                    },
+                  },
+                },
+                [
+                  _c("div", { staticClass: "modal-content" }, [
+                    _c("div", { staticClass: "modal-header bg-primary" }, [
+                      _c(
+                        "h5",
+                        {
+                          staticClass: "modal-title white",
+                          attrs: { id: "carModalTitle" },
+                        },
+                        [
+                          _vm._v(
+                            _vm._s(_vm.editMode ? "Cập nhật" : "Thêm mới") +
+                              " loại xe"
+                          ),
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        {
+                          staticClass: "close",
+                          attrs: {
+                            type: "button",
+                            "data-dismiss": "modal",
+                            "aria-label": "Close",
+                          },
+                          on: {
+                            click: function ($event) {
+                              return _vm.close()
+                            },
                           },
                         },
-                      },
-                      [
-                        _c("span", { attrs: { "aria-hidden": "true" } }, [
-                          _vm._v("×"),
+                        [
+                          _c("span", { attrs: { "aria-hidden": "true" } }, [
+                            _vm._v("×"),
+                          ]),
+                        ]
+                      ),
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "modal-body" }, [
+                      _c("div", { staticClass: "row" }, [
+                        _c("div", { staticClass: "col-12" }, [
+                          _c(
+                            "div",
+                            { staticClass: "form-group has-icon-left" },
+                            [
+                              _vm._m(3),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "position-relative" }, [
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.form.name,
+                                      expression: "form.name",
+                                    },
+                                  ],
+                                  staticClass: "form-control",
+                                  attrs: {
+                                    type: "text",
+                                    placeholder: "Nhập tên loại xe",
+                                    name: "name",
+                                  },
+                                  domProps: { value: _vm.form.name },
+                                  on: {
+                                    input: function ($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        _vm.form,
+                                        "name",
+                                        $event.target.value
+                                      )
+                                    },
+                                  },
+                                }),
+                                _vm._v(" "),
+                                _vm._m(4),
+                              ]),
+                              _vm._v(" "),
+                              _vm.form.errors.has("name")
+                                ? _c("div", {
+                                    staticClass: "text-danger mb-3",
+                                    domProps: {
+                                      innerHTML: _vm._s(
+                                        _vm.form.errors.get("name")
+                                      ),
+                                    },
+                                  })
+                                : _vm._e(),
+                            ]
+                          ),
                         ]),
-                      ]
-                    ),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "col-12" }, [
+                          _c("div", { staticClass: "form-group" }, [
+                            _c("label", { attrs: { for: "first-name-icon" } }, [
+                              _vm._v(" Hình ảnh "),
+                              _c(
+                                "span",
+                                {
+                                  staticClass: "required",
+                                  attrs: { hidden: _vm.editMode },
+                                },
+                                [_vm._v("(*)")]
+                              ),
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "position-relative" }, [
+                              _c("input", {
+                                ref: "fileupload",
+                                staticClass: "form-control",
+                                attrs: {
+                                  type: "file",
+                                  name: "avatar",
+                                  id: "avatar",
+                                },
+                                on: { change: _vm.onAvatarChange },
+                              }),
+                            ]),
+                            _vm._v(" "),
+                            _vm.form.errors.has("avatar")
+                              ? _c("div", {
+                                  staticClass: "text-danger mb-3",
+                                  domProps: {
+                                    innerHTML: _vm._s(
+                                      _vm.form.errors.get("avatar")
+                                    ),
+                                  },
+                                })
+                              : _vm._e(),
+                            _vm._v(" "),
+                            _vm.form.avatar
+                              ? _c("img", {
+                                  staticClass: "styling-img-car center",
+                                  attrs: {
+                                    src: _vm.form.avatar,
+                                    alt: "car_avatar",
+                                  },
+                                })
+                              : _vm._e(),
+                          ]),
+                        ]),
+                      ]),
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "modal-footer" }, [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-primary me-1 mb-1",
+                          attrs: { type: "submit" },
+                        },
+                        [_vm._v(_vm._s(_vm.editMode ? "Cập nhật" : "Thêm mới"))]
+                      ),
+                    ]),
                   ]),
-                  _vm._v(" "),
-                  _vm._m(5),
-                  _vm._v(" "),
-                  _vm._m(6),
-                ]),
-              ]
-            ),
-          ]
-        ),
-      ]
-    ),
-  ])
+                ]
+              ),
+            ]
+          ),
+        ]
+      ),
+    ],
+    1
+  )
 }
 var staticRenderFns = [
   function () {
@@ -70482,20 +70802,11 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-5" }, [
-      _c("input", {
-        staticClass: "form-control form-search",
-        attrs: { placeholder: "Tìm kiếm...", type: "text" },
-      }),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
     return _c("thead", [
       _c("tr", [
-        _c("th", { attrs: { width: "80%" } }, [_vm._v("Tên loại xe")]),
+        _c("th", { attrs: { width: "40%" } }, [_vm._v("Hình ảnh")]),
+        _vm._v(" "),
+        _c("th", { attrs: { width: "40%" } }, [_vm._v("Tên loại xe")]),
         _vm._v(" "),
         _c("th", [_vm._v("Thao tác")]),
       ]),
@@ -70505,48 +70816,9 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("button", { staticClass: "btn btn-primary" }, [
-      _c("i", { staticClass: "bi bi-pencil-square" }),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("button", { staticClass: "btn btn-danger" }, [
-      _c("i", { staticClass: "bi bi-trash" }),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "modal-body" }, [
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-12" }, [
-          _c("div", { staticClass: "form-group has-icon-left" }, [
-            _c("label", { attrs: { for: "first-name-icon" } }, [
-              _vm._v(
-                "\n                                        Tên loại xe\n                                    "
-              ),
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "position-relative" }, [
-              _c("input", {
-                staticClass: "form-control",
-                attrs: {
-                  type: "text",
-                  placeholder: "Nhập tên loại xe",
-                  id: "first-name-icon",
-                },
-              }),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-control-icon" }, [
-                _c("i", { staticClass: "bi bi-truck" }),
-              ]),
-            ]),
-          ]),
-        ]),
+    return _c("td", { attrs: { colspan: "3" } }, [
+      _c("div", { staticClass: "alert alert-danger" }, [
+        _vm._v("Không tìm thấy kết quả phù hợp!"),
       ]),
     ])
   },
@@ -70554,16 +70826,17 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "modal-footer" }, [
-      _c(
-        "button",
-        { staticClass: "btn btn-primary me-1 mb-1", attrs: { type: "submit" } },
-        [
-          _vm._v(
-            "\n                            Tạo mới\n                        "
-          ),
-        ]
-      ),
+    return _c("label", { attrs: { for: "first-name-icon" } }, [
+      _vm._v(" Tên loại xe "),
+      _c("span", { staticClass: "required" }, [_vm._v("(*)")]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-control-icon" }, [
+      _c("i", { staticClass: "bi bi-truck" }),
     ])
   },
 ]
@@ -71309,9 +71582,11 @@ var render = function () {
                                     },
                                   },
                                   [
-                                    _c("option", { attrs: { value: "" } }, [
-                                      _vm._v("Chọn dịch vụ"),
-                                    ]),
+                                    _c(
+                                      "option",
+                                      { attrs: { value: "", disabled: "" } },
+                                      [_vm._v("Chọn dịch vụ")]
+                                    ),
                                     _vm._v(" "),
                                     _c("option", { attrs: { value: "1" } }, [
                                       _vm._v("Đăng bài"),
@@ -71375,14 +71650,24 @@ var render = function () {
                                   },
                                 },
                                 [
-                                  _c("option", { attrs: { value: "" } }, [
-                                    _vm._v("Chọn loại xe"),
-                                  ]),
+                                  _c(
+                                    "option",
+                                    { attrs: { value: "", disabled: "" } },
+                                    [_vm._v("Chọn loại xe")]
+                                  ),
                                   _vm._v(" "),
-                                  _c("option", { attrs: { value: "1" } }, [
-                                    _vm._v("Đăng bài"),
-                                  ]),
-                                ]
+                                  _vm._l(_vm.cars, function (car) {
+                                    return _c(
+                                      "option",
+                                      {
+                                        key: car.id,
+                                        domProps: { value: car.id },
+                                      },
+                                      [_vm._v(_vm._s(car.name))]
+                                    )
+                                  }),
+                                ],
+                                2
                               ),
                               _vm._v(" "),
                               _vm.form.errors.has("car_id")

@@ -2,12 +2,10 @@
 
 namespace App\Repositories\Order;
 
-use App\Repositories\EloquentRepository;
 use App\Repositories\Order\OrderInterface;
 use Illuminate\Http\Request;
 use App\Models\Order;
 use App\Models\Place;
-use App\Models\Places;
 
 /**
  * Class OrderRepository.
