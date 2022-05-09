@@ -22,6 +22,9 @@
     <link rel="stylesheet" href="{{ asset('public/admin/vendors/bootstrap-icons/bootstrap-icons.css') }}">
     <link rel="stylesheet" href="{{ asset('public/admin/css/app.css') }}">
     <link rel="shortcut icon" href="{{ asset('public/admin/images/favicon.svg') }}" type="image/x-icon">
+    @if (Session::get('id') && Session::get('role') == 0)
+    <meta name="admin-id" content="{{ Session::get('id') }}">
+    @endif
 </head>
 
 <body>

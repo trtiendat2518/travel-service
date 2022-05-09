@@ -170,6 +170,8 @@ class AuthController extends Controller
             } else {
                 $request->session()->put('id', $check->id);
                 $request->session()->put('role', $check->role);
+                $request->session()->put('name', $check->full_name);
+                $request->session()->put('email', $check->email);
                 if ($check->role == 0) {
                     return redirect()->intended('admin');
                 } else if ($check->role == 1) {

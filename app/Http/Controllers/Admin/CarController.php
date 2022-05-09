@@ -132,22 +132,37 @@ class CarController extends Controller
 
     public function upgrade(Request $request, $carId)
     {
-        $data = $request->validate([
-            'name' => ['required', 'max:50', 'min:5', "unique:cars,name,$carId,id", 'notspecial_spaces'],
-        ], [
-            'name.required' => 'Tên loại xe không được để trống!',
-            'name.max' => 'Tên loại xe tối đa 50 ký tự!',
-            'name.min' => 'Tên loại xe tối thiểu 5 ký  tự!',
-            'name.notspecial_spaces' => 'Tên loại xe không chứa ký tự đặc biệt!',
-            'name.unique' => 'Tên loại xe đã tồn tại!',
-        ]);
-
         $car = Car::find($carId);
-        $car->name = $data['name'];
 
         if ($request->avatar == null) {
+            $data = $request->validate([
+                'name' => ['required', 'max:50', 'min:5', "unique:cars,name,$carId,id", 'notspecial_spaces'],
+            ], [
+                'name.required' => 'Tên loại xe không được để trống!',
+                'name.max' => 'Tên loại xe tối đa 50 ký tự!',
+                'name.min' => 'Tên loại xe tối thiểu 5 ký  tự!',
+                'name.notspecial_spaces' => 'Tên loại xe không chứa ký tự đặc biệt!',
+                'name.unique' => 'Tên loại xe đã tồn tại!',
+            ]);
+            $car->name = $data['name'];
             $car->save();
         } else {
+            $data = $request->validate(
+                [
+                    'name' => ['required', 'max:50', 'min:5', "unique:cars,name,$carId,id", 'notspecial_spaces'],
+                    'avatar' => 'bail|mimes:jpeg,jpg,png'
+                ],
+                [
+                    'name.required' => 'Tên loại xe không được để trống!',
+                    'name.max' => 'Tên loại xe tối đa 50 ký tự!',
+                    'name.min' => 'Tên loại xe tối thiểu 5 ký  tự!',
+                    'name.notspecial_spaces' => 'Tên loại xe không chứa ký tự đặc biệt!',
+                    'name.unique' => 'Tên loại xe đã tồn tại!',
+
+                    'avatar.mimes' => 'Tệp nhập vào phải là jpeg,jpg,png!',
+                ]
+            );
+            $car->name = $data['name'];
             $image = $request->avatar;
             $name = 'car_avatar_' . uniqid(md5(rand(1, 999))) . '.png';
             Storage::disk('car')->delete($car->avatar);

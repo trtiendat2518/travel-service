@@ -15,6 +15,10 @@ window.Vue = require('vue').default
 Vue.config.productionTip = false
 Vue.use(VueSweetalert2)
 
+if (document.querySelector("meta[name='admin-id']")) {
+    Vue.prototype.$adminId = document.querySelector("meta[name='admin-id']").getAttribute('content')
+}
+
 const app = new Vue({
     el: '#app',
     router

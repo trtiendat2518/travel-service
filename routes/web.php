@@ -46,17 +46,14 @@ Route::prefix('admin')->group(function () {
 
     Route::resource('/don-dat-thue-xe', 'Admin\OrderController')->only('index');
     Route::resource('/quan-ly-loai-xe', 'Admin\CarController')->only('index');
+    Route::resource('/quan-ly-dich-vu', 'Admin\ServiceController')->only('index');
+    Route::get('/tao-moi-dich-vu', 'Admin\ServiceController@create');
+    Route::get('/quan-ly-dich-vu/cap-nhat/{serviceId}', 'Admin\ServiceController@showUpgrade');
 
     Route::get('/quan-ly-tai-khoan', function () {
         return view('admin.pages.account.list');
     });
 
-    Route::get('/tao-moi-dich-vu', function () {
-        return view('admin.pages.service.create');
-    });
-    Route::get('/quan-ly-dich-vu', function () {
-        return view('admin.pages.service.list');
-    });
 
     Route::get('/tao-moi-bai-viet', function () {
         return view('admin.pages.post.create');
@@ -69,3 +66,7 @@ Route::prefix('admin')->group(function () {
         return view('admin.pages.consulting.list');
     });
 });
+
+Route::any('/{page?}', function () {
+    return view('error.404');
+})->where('page', '.*');

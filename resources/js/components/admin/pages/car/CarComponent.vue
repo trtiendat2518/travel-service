@@ -291,12 +291,10 @@ export default {
                     $('#carModal').modal('hide')
                     this.$snotify.success('Cập nhật thành công!')
                     this.fetchCars()
-                    this.form.reset()
-                    this.form.clear()
                     this.$refs.fileupload.value = ''
                 })
                 .catch((err) => {
-                    this.$snotify.error(err)
+                    this.$snotify.error('Lỗi')
                 })
         }
     }

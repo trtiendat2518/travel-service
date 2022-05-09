@@ -22,6 +22,10 @@ class AppServiceProvider extends ServiceProvider
             \App\Repositories\Car\CarInterface::class,
             \App\Repositories\Car\CarRepository::class,
         );
+        $this->app->singleton(
+            \App\Repositories\Service\ServiceInterface::class,
+            \App\Repositories\Service\ServiceRepository::class,
+        );
     }
 
     /**

@@ -33,4 +33,12 @@ Route::prefix('admin')->group(function () {
         Route::get('car/search/{query}/{currentEntries}', 'Admin\CarController@search');
         Route::resource('car', 'Admin\CarController')->except('index');
     });
+
+    Route::prefix('manage-service')->group(function () {
+        Route::get('service/detail/{serviceId}', 'Admin\ServiceController@detail');
+        Route::post('service/upgrade/{serviceId}', 'Admin\ServiceController@upgrade');
+        Route::get('service/all', 'Admin\ServiceController@all');
+        Route::get('service/search/{query}/{currentEntries}', 'Admin\ServiceController@search');
+        Route::resource('service', 'Admin\ServiceController')->except('index', 'create');
+    });
 });

@@ -3,7 +3,7 @@
         <div class="sidebar-header">
             <div class="d-flex justify-content-between">
                 <div class="logo">
-                    <a href="index.html"><img src="assets/images/logo/logo.png" alt="Logo" srcset=""></a>
+                    <a href="index.html"><img src="{{ asset('public/images/logo.png') }}" alt="Logo" srcset=""></a>
                 </div>
                 <div class="toggler">
                     <a href="#" class="sidebar-hide d-xl-none d-block"><i class="bi bi-x bi-middle"></i></a>
@@ -13,18 +13,21 @@
 
 
         <div class="card">
-            <div class="card-header">
+            {{-- <div class="card-header">
                 <div class="d-flex align-items-center" style="justify-content: space-around">
                     <div class="avatar avatar-xl">
                         <img src="{{ asset('public/admin/images/faces/1.jpg') }}" alt="Face 1">
                     </div>
                 </div>
-            </div>
+            </div> --}}
             <div class="card-body">
                 <div class="d-flex align-items-center" style="justify-content: space-around">
                     <div class="ms-3 name">
-                        <h5 class="font-bold">Trần Tiến Đạt</h5>
-                        <h6 class="text-muted mb-0">@trdat15</h6>
+                        @if (Session::get('id') && Session::get('role') == 0)
+                        <h5 class="font-bold text-center">{{ Session::get('name') }}</h5>
+                        <h6 class="text-muted mb-0 text-center">{{ Session::get('email') }}</h6>
+                        @endif
+
                     </div>
                 </div>
             </div>

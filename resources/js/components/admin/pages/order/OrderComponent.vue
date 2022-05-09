@@ -132,7 +132,9 @@
                                             <div class="position-relative">
                                                 <select class="form-select select" name="service_id" v-model="form.service_id">
                                                     <option value="" disabled>Chọn dịch vụ</option>
-                                                    <option value="1">Đăng bài</option>
+                                                    <option v-for="service in services" :key="service.id" :value="service.id">
+                                                        {{ service.name }}
+                                                    </option>
                                                 </select>
                                                 <div
                                                     class="text-danger mb-3"
@@ -440,6 +442,15 @@ export default {
                 })
                 .catch((err) => console.log(err))
         },
+        fetchServices(page_url) {
+            page_url = `../../api/admin/manage-service/service/all`
+            fetch(page_url)
+                .then((res) => res.json())
+                .then((res) => {
+                    this.services = res.data
+                })
+                .catch((err) => console.log(err))
+        },
         search(page_url) {
             page_url = `../../api/admin/manage-order/order/search/${this.query}/${this.currentEntries}?page=${this.pagination.current_page}`
             fetch(page_url)
@@ -464,6 +475,7 @@ export default {
             this.form.reset()
             this.form.clear()
             this.fetchCars()
+            this.fetchServices()
             $('#orderModal').modal('show')
         },
         close() {

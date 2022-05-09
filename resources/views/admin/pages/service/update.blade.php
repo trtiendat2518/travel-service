@@ -26,7 +26,7 @@
 
         <!-- Basic Vertical form layout section start -->
         <section id="basic-vertical-layouts">
-            <create-service-component></create-service-component>
+            <update-service-component></update-service-component>
         </section>
     </div>
 

@@ -5,7 +5,7 @@
             <div class="card">
                 <div class="card-content">
                     <div class="card-body">
-                        <form @submit.prevent="store()" @keydown="form.onKeydown($event)" class="form form-vertical">
+                        <form @submit.prevent="update()" @keydown="form.onKeydown($event)" class="form form-vertical">
                             <div class="form-body">
                                 <div class="row">
                                     <div class="col-12 mb-2">
@@ -62,8 +62,12 @@
                                         </div>
                                     </div>
 
+                                    <div class="col-6 d-flex">
+                                        <button type="button" class="btn btn-secondary me-1 mb-1" @click="backList()">Quay lại</button>
+                                    </div>
+
                                     <div class="col-12 d-flex justify-content-end">
-                                        <button type="submit" class="btn btn-primary me-1 mb-1">Tạo mới</button>
+                                        <button type="submit" class="btn btn-primary me-1 mb-1">Cập nhật</button>
                                     </div>
                                 </div>
                             </div>
@@ -85,6 +89,7 @@ export default {
     data() {
         return {
             services: [],
+            service_id: this.$route.params.idService,
             form: new Form({
                 id: '',
                 name: '',
@@ -108,26 +113,46 @@ export default {
             ]
         }
     },
+    watch: {
+        $route(to, from) {
+            this.service_id = to.params.idService
+        }
+    },
+    mounted() {
+        this.show()
+    },
     methods: {
-        store() {
+        show(page_url) {
+            page_url = `../../../api/admin/manage-service/service/detail/${this.service_id}`
+            fetch(page_url)
+                .then((res) => res.json())
+                .then((res) => {
+                    console.log(res.data)
+                    this.form.fill(res.data[0])
+                    this.form.avatar = `../../../public/images/service/${res.data[0].avatar}`
+                })
+                .catch((err) => console.log(err))
+        },
+        update() {
             this.form.avatar = document.getElementById('avatar').files[0]
             this.form
-                .post('../../api/admin/manage-service/service')
+                .post(`../../../api/admin/manage-service/service/upgrade/${this.service_id}`)
                 .then((res) => {
                     if (this.form.successful) {
-                        this.form.reset()
-                        this.form.clear()
-                        this.$refs.fileupload.value = ''
-                        this.$snotify.success('Thêm mới thành công!')
+                        this.show()
+                        this.$snotify.success('Cập nhật thành công!')
                     }
                 })
                 .catch((err) => {
-                    this.$snotify.error(err)
+                    this.$snotify.error('Lỗi')
                 })
         },
         onAvatarChange(e) {
             const file = e.target.files[0]
             this.form.avatar = URL.createObjectURL(file)
+        },
+        backList() {
+            window.location.href = `../../../admin/quan-ly-dich-vu`
         }
     }
 }
