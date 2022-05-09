@@ -11,7 +11,7 @@
             <li class="page-item" v-for="page in pages" :key="page" :class="isCurrentPage(page) ? 'active' : ''">
                 <a class="page-link" @click.prevent="changePage(page)"
                     >{{ page }}
-                    <span v-if="isCurrentPage(page)" class="sr-only">(current)</span>
+                    <span v-if="isCurrentPage(page)" class="sr-only"></span>
                 </a>
             </li>
 

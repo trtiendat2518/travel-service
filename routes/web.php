@@ -44,12 +44,10 @@ Route::prefix('admin')->group(function () {
     Route::get('/thong-tin-ca-nhan', 'AuthController@infoAdminIndex');
     Route::get('/doi-mat-khau', 'AuthController@changePasswordAdminIndex');
 
+    Route::resource('/don-dat-thue-xe', 'Admin\OrderController')->only('index');
+
     Route::get('/quan-ly-tai-khoan', function () {
         return view('admin.pages.account.list');
-    });
-
-    Route::get('/don-dat-thue-xe', function () {
-        return view('admin.pages.order.list');
     });
 
     Route::get('/quan-ly-loai-xe', function () {
