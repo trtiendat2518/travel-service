@@ -30,6 +30,10 @@ class AppServiceProvider extends ServiceProvider
             \App\Repositories\Post\PostInterface::class,
             \App\Repositories\Post\PostRepository::class,
         );
+        $this->app->singleton(
+            \App\Repositories\User\UserInterface::class,
+            \App\Repositories\User\UserRepository::class,
+        );
     }
 
     /**

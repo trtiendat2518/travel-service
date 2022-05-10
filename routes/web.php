@@ -63,9 +63,8 @@ Route::prefix('admin')->group(function () {
     Route::get('/tao-moi-bai-viet', 'Admin\PostController@create');
     Route::get('/quan-ly-bai-viet/cap-nhat/{postId}', 'Admin\PostController@showUpgrade');
 
-    Route::get('/quan-ly-tai-khoan', function () {
-        return view('admin.pages.account.list');
-    });
+    //Admin/AccountController
+    Route::resource('/quan-ly-tai-khoan', 'Admin\AccountController')->only('index');
 
     Route::get('/lien-he-tu-van', function () {
         return view('admin.pages.consulting.list');

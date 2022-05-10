@@ -99,7 +99,7 @@ export default {
     },
     watch: {
         currentEntries(number) {
-            if (number === 5) {
+            if (number === 10) {
                 this.pagination = 1
                 this.fetchCars()
             } else {

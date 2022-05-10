@@ -50,4 +50,11 @@ Route::prefix('admin')->group(function () {
         Route::get('post/search/{query}/{currentEntries}', 'Admin\PostController@search');
         Route::resource('post', 'Admin\PostController')->except('index', 'create');
     });
+
+    Route::prefix('manage-user')->group(function () {
+        Route::patch('user/change/{userId}', 'Admin\AccountController@change');
+        Route::get('user/filter/{query}/{currentEntries}', 'Admin\AccountController@filter');
+        Route::get('user/search/{query}/{currentEntries}', 'Admin\AccountController@search');
+        Route::resource('user', 'Admin\AccountController')->except('index', 'create');
+    });
 });

@@ -395,6 +395,7 @@ export default {
         },
         query(keyword) {
             if (keyword === '') {
+                this.value = ''
                 this.fetchOrders()
             } else {
                 this.pagination.current_page = 1
@@ -403,6 +404,7 @@ export default {
         },
         value(value) {
             if (value === '') {
+                this.query = ''
                 this.fetchOrders()
             } else {
                 this.pagination.current_page = 1

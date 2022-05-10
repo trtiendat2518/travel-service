@@ -5543,6 +5543,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var vue_snotify_styles_material_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-snotify/styles/material.css */ "./node_modules/vue-snotify/styles/material.css");
 //
 //
 //
@@ -5771,6 +5772,27 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -5779,17 +5801,20 @@ __webpack_require__.r(__webpack_exports__);
         current_page: 1,
         last_page: 5
       },
-      currentEntries: 5,
+      currentEntries: 10,
       showEntries: [5, 10, 25, 50],
-      query: "",
+      query: '',
+      value: '',
       editMode: false,
       form: new Form({
-        adminh_id: "",
-        admin_name: "",
-        admin_email: "",
-        admin_phone: "",
-        admin_role: "",
-        admin_status: ""
+        id: '',
+        full_name: '',
+        email: '',
+        phone_number: '',
+        role: '',
+        address: '',
+        status: '',
+        password: ''
       })
     };
   },
@@ -5798,61 +5823,174 @@ __webpack_require__.r(__webpack_exports__);
   },
   watch: {
     currentEntries: function currentEntries(number) {
-      if (number === 5) {
+      if (number === 10) {
         this.pagination = 1;
-        this.fetchFaculties();
+        this.fetchAccounts();
       } else {
         this.pagination = 1;
-        this.fetchFaculties();
+        this.fetchAccounts();
       }
-    } // query(keyword) {
-    //     if (keyword === "") {
-    //         this.fetchFaculties();
-    //     } else {
-    //         this.pagination.current_page = 1;
-    //         this.search();
-    //     }
-    // },
-
+    },
+    query: function query(keyword) {
+      if (keyword === '') {
+        this.value = '';
+        this.fetchAccounts();
+      } else {
+        this.pagination.current_page = 1;
+        this.search();
+      }
+    },
+    value: function value(_value) {
+      if (_value === '') {
+        this.query = '';
+        this.fetchAccounts();
+      } else {
+        this.pagination.current_page = 1;
+        this.filter();
+      }
+    }
   },
   methods: {
     empty: function empty() {
       return this.accounts.length < 1;
     },
     fetchAccounts: function fetchAccounts(page_url) {
-      // page_url = `../../api/admin/edu-faculty/khoa/${this.currentEntries}?page=${this.pagination.current_page}`;
-      // fetch(page_url)
-      //     .then((res) => res.json())
-      //     .then((res) => {
-      //         this.accounts = res.data;
-      //         this.pagination = res.meta;
-      //     })
-      //     .catch((err) => console.log(err));
-      var obj = {};
+      var _this = this;
 
-      for (var i = 0; i < 10; i++) {
-        this.form.adminh_id = i;
-        this.form.admin_name = "Họ và tên " + i;
-        this.form.admin_email = "email" + i + "@email.com";
-        this.form.admin_phone = "09" + Math.floor(Math.random() * 12345678);
-        this.form.admin_role = "Đăng bài";
-        this.form.admin_status = "active";
-        obj = {
-          id: this.form.adminh_id,
-          name: this.form.admin_name,
-          email: this.form.admin_email,
-          phone: this.form.admin_phone,
-          role: this.form.admin_role,
-          status: this.form.admin_status
-        };
-        this.accounts.push(obj);
-      }
+      page_url = "../../api/admin/manage-user/user/".concat(this.currentEntries, "?page=").concat(this.pagination.current_page);
+      fetch(page_url).then(function (res) {
+        return res.json();
+      }).then(function (res) {
+        _this.accounts = res.data;
+        _this.pagination = res.meta;
+      })["catch"](function (err) {
+        return console.log(err);
+      });
     },
     create: function create() {
-      $("#loanModal").modal("show");
+      this.editMode = false;
+      this.form.reset();
+      this.form.clear();
+      $('#userModal').modal('show');
     },
     close: function close() {
-      $("#loanModal").modal("hide");
+      $('#userModal').modal('hide');
+    },
+    store: function store() {
+      var _this2 = this;
+
+      this.form.busy = true;
+      this.form.post('../../api/admin/manage-user/user').then(function (res) {
+        _this2.fetchAccounts();
+
+        $('#userModal').modal('hide');
+
+        if (_this2.form.successful) {
+          _this2.$snotify.success('Tạo mới thành công!');
+        } else {
+          _this2.$snotify.error('Không thể tạo mới', 'Lỗi');
+        }
+      })["catch"](function (err) {
+        return console.log(err);
+      });
+    },
+    show: function show(account) {
+      this.editMode = true;
+      this.form.reset();
+      this.form.clear();
+      this.form.fill(account);
+      $('#userModal').modal('show');
+    },
+    update: function update() {
+      var _this3 = this;
+
+      this.form.put("../../api/admin/manage-user/user/".concat(this.form.id)).then(function (res) {
+        _this3.fetchAccounts();
+
+        $('#userModal').modal('hide');
+        console.log(_this3.form.successful);
+
+        if (_this3.form.successful) {
+          _this3.$snotify.success('Cập nhật thành công!');
+        } else {
+          _this3.$snotify.error('Không thể cập nhật', 'Lỗi');
+        }
+
+        _this3.form.reset();
+
+        _this3.form.clear();
+      })["catch"](function (err) {
+        return console.log(err);
+      });
+    },
+    destroy: function destroy(userId) {
+      var _this4 = this;
+
+      this.$snotify.clear();
+      this.$snotify.confirm('Xác nhận xóa', {
+        timeout: 5000,
+        showProgressBar: true,
+        closeOnClick: false,
+        pauseOnHover: true,
+        buttons: [{
+          text: 'Xóa',
+          action: function action(toast) {
+            _this4.$snotify.remove(toast.id);
+
+            axios["delete"]("../../api/admin/manage-user/user/".concat(userId)).then(function (res) {
+              _this4.$snotify.success('Đã xóa!');
+
+              _this4.fetchAccounts();
+            })["catch"](function (err) {
+              return console.log(err);
+            });
+          },
+          bold: false
+        }, {
+          text: 'Đóng',
+          action: function action(toast) {
+            _this4.$snotify.remove(toast.id);
+          },
+          bold: true
+        }]
+      });
+    },
+    search: function search(page_url) {
+      var _this5 = this;
+
+      page_url = "../../api/admin/manage-user/user/search/".concat(this.query, "/").concat(this.currentEntries, "?page=").concat(this.pagination.current_page);
+      fetch(page_url).then(function (res) {
+        return res.json();
+      }).then(function (res) {
+        _this5.accounts = res.data;
+        _this5.pagination = res.meta;
+      })["catch"](function (err) {
+        return console.log(err);
+      });
+    },
+    filter: function filter(page_url) {
+      var _this6 = this;
+
+      page_url = "../../api/admin/manage-user/user/filter/".concat(this.value, "/").concat(this.currentEntries, "?page=").concat(this.pagination.current_page);
+      fetch(page_url).then(function (res) {
+        return res.json();
+      }).then(function (res) {
+        _this6.accounts = res.data;
+        _this6.pagination = res.meta;
+      })["catch"](function (err) {
+        return console.log(err);
+      });
+    },
+    change: function change(userId) {
+      var _this7 = this;
+
+      axios.patch("../../api/admin/manage-user/user/change/".concat(userId)).then(function (res) {
+        _this7.fetchAccounts();
+
+        _this7.$snotify.success('Cập nhật trạng thái thành công!');
+      })["catch"](function (err) {
+        return console.log(err);
+      });
     }
   }
 });
@@ -6167,7 +6305,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   watch: {
     currentEntries: function currentEntries(number) {
-      if (number === 5) {
+      if (number === 10) {
         this.pagination = 1;
         this.fetchCars();
       } else {
@@ -7085,6 +7223,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     query: function query(keyword) {
       if (keyword === '') {
+        this.value = '';
         this.fetchOrders();
       } else {
         this.pagination.current_page = 1;
@@ -7093,6 +7232,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     value: function value(_value) {
       if (_value === '') {
+        this.query = '';
         this.fetchOrders();
       } else {
         this.pagination.current_page = 1;
@@ -7584,7 +7724,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   watch: {
     currentEntries: function currentEntries(number) {
-      if (number === 5) {
+      if (number === 10) {
         this.pagination = 1;
         this.fetchPosts();
       } else {
@@ -8220,7 +8360,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   watch: {
     currentEntries: function currentEntries(number) {
-      if (number === 5) {
+      if (number === 10) {
         this.pagination = 1;
         this.fetchServices();
       } else {
@@ -17484,7 +17624,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n#form-select[data-v-97bafff0] {\n    width: 25%;\n    display: inline;\n}\n.form-search[data-v-97bafff0] {\n    width: 50%;\n    float: right;\n}\n.btn-right[data-v-97bafff0] {\n    float: right;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\ntextarea[data-v-97bafff0] {\n    resize: none;\n}\n#form-select[data-v-97bafff0] {\n    width: 25%;\n    display: inline;\n}\n.form-search[data-v-97bafff0] {\n    float: right;\n}\n.btn-right[data-v-97bafff0] {\n    float: right;\n}\n.select-right[data-v-97bafff0] {\n    float: right;\n}\n.required[data-v-97bafff0] {\n    color: red;\n}\n.not-allowed[data-v-97bafff0] {\n    cursor: not-allowed;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -72358,218 +72498,758 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "card" }, [
-    _c("div", { staticClass: "card-header" }, [
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-md-6" }, [
-          _vm._v("Danh sách các tài khoản"),
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-md-6" }, [
-          _c(
-            "button",
-            {
-              staticClass: "btn btn-primary btn-right",
-              on: {
-                click: function ($event) {
-                  return _vm.create()
+  return _c(
+    "div",
+    { staticClass: "card" },
+    [
+      _c("vue-snotify"),
+      _vm._v(" "),
+      _c("div", { staticClass: "card-header" }, [
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-md-6" }, [
+            _vm._v("Danh sách các tài khoản"),
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-md-6" }, [
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-primary btn-right",
+                on: {
+                  click: function ($event) {
+                    return _vm.create()
+                  },
                 },
               },
-            },
-            [_vm._m(0)]
-          ),
+              [_vm._m(0)]
+            ),
+          ]),
         ]),
       ]),
-    ]),
-    _vm._v(" "),
-    _c(
-      "div",
-      { staticClass: "card-body" },
-      [
-        _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "col-md-3" }, [
-            _c("div", { staticClass: "between:flex bottom:margin-3 ml-2" }, [
-              _c("div", { staticClass: "center:flex-items" }, [
-                _c("span", { staticClass: "right:marign-1" }, [
-                  _vm._v("Hiển thị"),
-                ]),
-                _vm._v(" "),
-                _c(
-                  "select",
-                  {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.currentEntries,
-                        expression: "currentEntries",
-                      },
-                    ],
-                    staticClass: "select form-select",
-                    attrs: { id: "form-select" },
-                    on: {
-                      change: function ($event) {
-                        var $$selectedVal = Array.prototype.filter
-                          .call($event.target.options, function (o) {
-                            return o.selected
-                          })
-                          .map(function (o) {
-                            var val = "_value" in o ? o._value : o.value
-                            return val
-                          })
-                        _vm.currentEntries = $event.target.multiple
-                          ? $$selectedVal
-                          : $$selectedVal[0]
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "card-body" },
+        [
+          _c("div", { staticClass: "row" }, [
+            _c("div", { staticClass: "col-md-3" }, [
+              _c("div", { staticClass: "between:flex bottom:margin-3 ml-2" }, [
+                _c("div", { staticClass: "center:flex-items" }, [
+                  _c("span", { staticClass: "right:marign-1" }, [
+                    _vm._v("Hiển thị"),
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "select",
+                    {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.currentEntries,
+                          expression: "currentEntries",
+                        },
+                      ],
+                      staticClass: "select form-select",
+                      attrs: { id: "form-select" },
+                      on: {
+                        change: function ($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function (o) {
+                              return o.selected
+                            })
+                            .map(function (o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.currentEntries = $event.target.multiple
+                            ? $$selectedVal
+                            : $$selectedVal[0]
+                        },
                       },
                     },
-                  },
-                  _vm._l(_vm.showEntries, function (entry) {
-                    return _c(
-                      "option",
-                      { key: entry, domProps: { value: entry } },
-                      [
-                        _vm._v(
-                          "\n                                " +
-                            _vm._s(entry) +
-                            "\n                            "
-                        ),
-                      ]
-                    )
-                  }),
-                  0
-                ),
+                    _vm._l(_vm.showEntries, function (entry) {
+                      return _c(
+                        "option",
+                        { key: entry, domProps: { value: entry } },
+                        [
+                          _vm._v(
+                            "\n                                " +
+                              _vm._s(entry) +
+                              "\n                            "
+                          ),
+                        ]
+                      )
+                    }),
+                    0
+                  ),
+                ]),
               ]),
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-md-4" }, [
+              _c(
+                "select",
+                {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.value,
+                      expression: "value",
+                    },
+                  ],
+                  staticClass: "select form-select",
+                  attrs: { id: "select-right" },
+                  on: {
+                    change: function ($event) {
+                      var $$selectedVal = Array.prototype.filter
+                        .call($event.target.options, function (o) {
+                          return o.selected
+                        })
+                        .map(function (o) {
+                          var val = "_value" in o ? o._value : o.value
+                          return val
+                        })
+                      _vm.value = $event.target.multiple
+                        ? $$selectedVal
+                        : $$selectedVal[0]
+                    },
+                  },
+                },
+                [
+                  _c("option", { attrs: { value: "" } }, [
+                    _vm._v("Tất cả người dùng"),
+                  ]),
+                  _vm._v(" "),
+                  _c("option", { attrs: { value: "0" } }, [
+                    _vm._v("Quản trị viên"),
+                  ]),
+                  _vm._v(" "),
+                  _c("option", { attrs: { value: "1" } }, [
+                    _vm._v("Khách hàng"),
+                  ]),
+                ]
+              ),
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-md-5" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.query,
+                    expression: "query",
+                  },
+                ],
+                staticClass: "form-control form-search",
+                attrs: { placeholder: "Tìm kiếm...", type: "text" },
+                domProps: { value: _vm.query },
+                on: {
+                  input: function ($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.query = $event.target.value
+                  },
+                },
+              }),
             ]),
           ]),
           _vm._v(" "),
-          _vm._m(1),
-        ]),
-        _vm._v(" "),
-        _c(
-          "table",
-          { staticClass: "table table-striped", attrs: { id: "table1" } },
-          [
-            _vm._m(2),
-            _vm._v(" "),
-            _c(
-              "tbody",
-              _vm._l(_vm.accounts, function (account) {
-                return _c("tr", { key: account.id }, [
-                  _c("td", [_vm._v(_vm._s(account.name))]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(account.email))]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(account.phone))]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(account.role))]),
-                  _vm._v(" "),
-                  _c("td", [
-                    _c("span", { staticClass: "badge bg-success" }, [
-                      _vm._v(_vm._s(account.status)),
-                    ]),
-                  ]),
-                  _vm._v(" "),
-                  _vm._m(3, true),
-                ])
-              }),
-              0
-            ),
-          ]
-        ),
-        _vm._v(" "),
-        _vm.pagination.last_page > 1
-          ? _c("pagination-component", {
-              attrs: { pagination: _vm.pagination, offset: 5 },
-              on: {
-                paginate: function ($event) {
-                  _vm.query === "" ? _vm.fetchAccounts() : _vm.search()
-                },
-              },
-            })
-          : _vm._e(),
-      ],
-      1
-    ),
-    _vm._v(" "),
-    _c(
-      "div",
-      {
-        staticClass: "modal fade",
-        attrs: {
-          id: "loanModal",
-          tabindex: "-1",
-          role: "dialog",
-          "aria-labelledby": "loanModalTitle",
-          "aria-hidden": "true",
-        },
-      },
-      [
-        _c(
-          "div",
-          { staticClass: "modal-dialog", attrs: { role: "document" } },
-          [
-            _c(
-              "form",
-              {
-                on: {
-                  submit: function ($event) {
-                    $event.preventDefault()
-                  },
-                  keydown: function ($event) {
-                    return _vm.form.onKeydown($event)
-                  },
-                },
-              },
-              [
-                _c("div", { staticClass: "modal-content" }, [
-                  _c("div", { staticClass: "modal-header bg-primary" }, [
-                    _c(
-                      "h5",
-                      {
-                        staticClass: "modal-title white",
-                        attrs: { id: "loanModalTitle" },
-                      },
-                      [
-                        _vm._v(
-                          "\n                            Tạo mới tài khoản\n                        "
-                        ),
-                      ]
-                    ),
+          _c(
+            "table",
+            { staticClass: "table table-striped", attrs: { id: "table1" } },
+            [
+              _vm._m(1),
+              _vm._v(" "),
+              _c(
+                "tbody",
+                _vm._l(_vm.accounts, function (account) {
+                  return _c("tr", { key: account.id }, [
+                    _c("td", [_vm._v(_vm._s(account.full_name))]),
                     _vm._v(" "),
-                    _c(
-                      "button",
-                      {
-                        staticClass: "close",
-                        attrs: {
-                          type: "button",
-                          "data-dismiss": "modal",
-                          "aria-label": "Close",
-                        },
-                        on: {
-                          click: function ($event) {
-                            return _vm.close()
+                    _c("td", [_vm._v(_vm._s(account.email))]),
+                    _vm._v(" "),
+                    _c("td", [_vm._v(_vm._s(account.phone_number))]),
+                    _vm._v(" "),
+                    _c("td", [
+                      account.role == 0
+                        ? _c("div", [_vm._v("Quản trị viên")])
+                        : account.role == 1
+                        ? _c("div", [_vm._v("Khách hàng")])
+                        : _vm._e(),
+                    ]),
+                    _vm._v(" "),
+                    _c("td", [
+                      account.status == 0
+                        ? _c(
+                            "button",
+                            {
+                              staticClass: "btn btn-dark",
+                              on: {
+                                click: function ($event) {
+                                  return _vm.change(account.id)
+                                },
+                              },
+                            },
+                            [_c("i", { staticClass: "bi bi-eye" })]
+                          )
+                        : account.status == 1
+                        ? _c(
+                            "button",
+                            {
+                              staticClass: "btn btn-secondary",
+                              on: {
+                                click: function ($event) {
+                                  return _vm.change(account.id)
+                                },
+                              },
+                            },
+                            [_c("i", { staticClass: "bi bi-eye-slash" })]
+                          )
+                        : _vm._e(),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-primary",
+                          on: {
+                            click: function ($event) {
+                              return _vm.show(account)
+                            },
                           },
                         },
-                      },
-                      [
-                        _c("span", { attrs: { "aria-hidden": "true" } }, [
-                          _vm._v("×"),
+                        [_c("i", { staticClass: "bi bi-pencil-square" })]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-danger",
+                          on: {
+                            click: function ($event) {
+                              return _vm.destroy(account.id)
+                            },
+                          },
+                        },
+                        [_c("i", { staticClass: "bi bi-trash" })]
+                      ),
+                    ]),
+                  ])
+                }),
+                0
+              ),
+            ]
+          ),
+          _vm._v(" "),
+          _vm.pagination.last_page > 1
+            ? _c("pagination-component", {
+                attrs: { pagination: _vm.pagination, offset: 5 },
+                on: {
+                  paginate: function ($event) {
+                    _vm.query === "" ? _vm.fetchAccounts() : _vm.search()
+                  },
+                },
+              })
+            : _vm._e(),
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass: "modal fade bd-example-modal-lg",
+          attrs: {
+            id: "userModal",
+            tabindex: "-1",
+            role: "dialog",
+            "aria-labelledby": "userModalTitle",
+            "aria-hidden": "true",
+          },
+        },
+        [
+          _c(
+            "div",
+            {
+              staticClass: "modal-dialog modal-lg",
+              attrs: { role: "document" },
+            },
+            [
+              _c(
+                "form",
+                {
+                  on: {
+                    submit: function ($event) {
+                      $event.preventDefault()
+                      _vm.editMode ? _vm.update() : _vm.store()
+                    },
+                    keydown: function ($event) {
+                      return _vm.form.onKeydown($event)
+                    },
+                  },
+                },
+                [
+                  _c("div", { staticClass: "modal-content" }, [
+                    _c("div", { staticClass: "modal-header bg-primary" }, [
+                      _c(
+                        "h5",
+                        {
+                          staticClass: "modal-title white",
+                          attrs: { id: "userModalTitle" },
+                        },
+                        [
+                          _vm._v(
+                            _vm._s(_vm.editMode ? "Cập nhật" : "Thêm mới") +
+                              " tài khoản"
+                          ),
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        {
+                          staticClass: "close",
+                          attrs: {
+                            type: "button",
+                            "data-dismiss": "modal",
+                            "aria-label": "Close",
+                          },
+                          on: {
+                            click: function ($event) {
+                              return _vm.close()
+                            },
+                          },
+                        },
+                        [
+                          _c("span", { attrs: { "aria-hidden": "true" } }, [
+                            _vm._v("×"),
+                          ]),
+                        ]
+                      ),
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "modal-body" }, [
+                      _c("div", { staticClass: "row" }, [
+                        _c("div", { staticClass: "col-6" }, [
+                          _c(
+                            "div",
+                            { staticClass: "form-group has-icon-left" },
+                            [
+                              _c(
+                                "label",
+                                { attrs: { for: "first-name-icon" } },
+                                [_vm._v(" Họ và tên ")]
+                              ),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "position-relative" }, [
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.form.full_name,
+                                      expression: "form.full_name",
+                                    },
+                                  ],
+                                  staticClass: "form-control",
+                                  class: { "not-allowed": _vm.editMode },
+                                  attrs: {
+                                    type: "text",
+                                    placeholder: "Nhập họ và tên",
+                                    id: "full_name",
+                                    name: "full_name",
+                                    disabled: _vm.editMode,
+                                  },
+                                  domProps: { value: _vm.form.full_name },
+                                  on: {
+                                    input: function ($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        _vm.form,
+                                        "full_name",
+                                        $event.target.value
+                                      )
+                                    },
+                                  },
+                                }),
+                                _vm._v(" "),
+                                _vm._m(2),
+                              ]),
+                              _vm._v(" "),
+                              _vm.form.errors.has("full_name")
+                                ? _c("div", {
+                                    staticClass: "text-danger mb-3",
+                                    domProps: {
+                                      innerHTML: _vm._s(
+                                        _vm.form.errors.get("full_name")
+                                      ),
+                                    },
+                                  })
+                                : _vm._e(),
+                            ]
+                          ),
                         ]),
-                      ]
-                    ),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "col-6" }, [
+                          _c(
+                            "div",
+                            { staticClass: "form-group has-icon-left" },
+                            [
+                              _c("label", { attrs: { for: "email-id-icon" } }, [
+                                _vm._v("Email"),
+                              ]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "position-relative" }, [
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.form.email,
+                                      expression: "form.email",
+                                    },
+                                  ],
+                                  staticClass: "form-control",
+                                  class: { "not-allowed": _vm.editMode },
+                                  attrs: {
+                                    type: "text",
+                                    placeholder: "abc@email.com",
+                                    id: "email",
+                                    name: "email",
+                                    disabled: _vm.editMode,
+                                  },
+                                  domProps: { value: _vm.form.email },
+                                  on: {
+                                    input: function ($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        _vm.form,
+                                        "email",
+                                        $event.target.value
+                                      )
+                                    },
+                                  },
+                                }),
+                                _vm._v(" "),
+                                _vm._m(3),
+                              ]),
+                              _vm._v(" "),
+                              _vm.form.errors.has("email")
+                                ? _c("div", {
+                                    staticClass: "text-danger mb-3",
+                                    domProps: {
+                                      innerHTML: _vm._s(
+                                        _vm.form.errors.get("email")
+                                      ),
+                                    },
+                                  })
+                                : _vm._e(),
+                            ]
+                          ),
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "col-6" }, [
+                          _c(
+                            "div",
+                            { staticClass: "form-group has-icon-left" },
+                            [
+                              _c(
+                                "label",
+                                { attrs: { for: "mobile-id-icon" } },
+                                [_vm._v(" Số điện thoại ")]
+                              ),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "position-relative" }, [
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.form.phone_number,
+                                      expression: "form.phone_number",
+                                    },
+                                  ],
+                                  staticClass: "form-control",
+                                  class: { "not-allowed": _vm.editMode },
+                                  attrs: {
+                                    type: "text",
+                                    placeholder: "0123456789",
+                                    id: "phone_number",
+                                    name: "phone_number",
+                                    disabled: _vm.editMode,
+                                  },
+                                  domProps: { value: _vm.form.phone_number },
+                                  on: {
+                                    input: function ($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        _vm.form,
+                                        "phone_number",
+                                        $event.target.value
+                                      )
+                                    },
+                                  },
+                                }),
+                                _vm._v(" "),
+                                _vm._m(4),
+                              ]),
+                              _vm._v(" "),
+                              _vm.form.errors.has("phone_number")
+                                ? _c("div", {
+                                    staticClass: "text-danger mb-3",
+                                    domProps: {
+                                      innerHTML: _vm._s(
+                                        _vm.form.errors.get("phone_number")
+                                      ),
+                                    },
+                                  })
+                                : _vm._e(),
+                            ]
+                          ),
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "col-6" }, [
+                          _c(
+                            "div",
+                            { staticClass: "form-group has-icon-left" },
+                            [
+                              _c(
+                                "label",
+                                { attrs: { for: "password-id-icon" } },
+                                [_vm._v("Loại tài khoản")]
+                              ),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "position-relative" }, [
+                                _c(
+                                  "select",
+                                  {
+                                    directives: [
+                                      {
+                                        name: "model",
+                                        rawName: "v-model",
+                                        value: _vm.form.role,
+                                        expression: "form.role",
+                                      },
+                                    ],
+                                    staticClass: "form-select select",
+                                    attrs: { id: "role", name: "role" },
+                                    on: {
+                                      change: function ($event) {
+                                        var $$selectedVal =
+                                          Array.prototype.filter
+                                            .call(
+                                              $event.target.options,
+                                              function (o) {
+                                                return o.selected
+                                              }
+                                            )
+                                            .map(function (o) {
+                                              var val =
+                                                "_value" in o
+                                                  ? o._value
+                                                  : o.value
+                                              return val
+                                            })
+                                        _vm.$set(
+                                          _vm.form,
+                                          "role",
+                                          $event.target.multiple
+                                            ? $$selectedVal
+                                            : $$selectedVal[0]
+                                        )
+                                      },
+                                    },
+                                  },
+                                  [
+                                    _c("option", { attrs: { value: "" } }, [
+                                      _vm._v("Chọn loại tài khoản"),
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("option", { attrs: { value: "0" } }, [
+                                      _vm._v("Quản trị viên"),
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("option", { attrs: { value: "1" } }, [
+                                      _vm._v("Khách hàng"),
+                                    ]),
+                                  ]
+                                ),
+                              ]),
+                              _vm._v(" "),
+                              _vm.form.errors.has("role")
+                                ? _c("div", {
+                                    staticClass: "text-danger mb-3",
+                                    domProps: {
+                                      innerHTML: _vm._s(
+                                        _vm.form.errors.get("role")
+                                      ),
+                                    },
+                                  })
+                                : _vm._e(),
+                            ]
+                          ),
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          {
+                            staticClass: "col-12",
+                            attrs: { hidden: _vm.editMode },
+                          },
+                          [
+                            _c(
+                              "div",
+                              { staticClass: "form-group has-icon-left" },
+                              [
+                                _c(
+                                  "label",
+                                  { attrs: { for: "password-id-icon" } },
+                                  [_vm._v("Password")]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  { staticClass: "position-relative" },
+                                  [
+                                    _c("input", {
+                                      directives: [
+                                        {
+                                          name: "model",
+                                          rawName: "v-model",
+                                          value: _vm.form.password,
+                                          expression: "form.password",
+                                        },
+                                      ],
+                                      staticClass: "form-control",
+                                      attrs: {
+                                        type: "password",
+                                        placeholder: "*******",
+                                        id: "password",
+                                        name: "password",
+                                      },
+                                      domProps: { value: _vm.form.password },
+                                      on: {
+                                        input: function ($event) {
+                                          if ($event.target.composing) {
+                                            return
+                                          }
+                                          _vm.$set(
+                                            _vm.form,
+                                            "password",
+                                            $event.target.value
+                                          )
+                                        },
+                                      },
+                                    }),
+                                    _vm._v(" "),
+                                    _vm._m(5),
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _vm.form.errors.has("password")
+                                  ? _c("div", {
+                                      staticClass: "text-danger mb-3",
+                                      domProps: {
+                                        innerHTML: _vm._s(
+                                          _vm.form.errors.get("password")
+                                        ),
+                                      },
+                                    })
+                                  : _vm._e(),
+                              ]
+                            ),
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "col-12" }, [
+                          _c(
+                            "div",
+                            { staticClass: "form-group has-icon-left" },
+                            [
+                              _c(
+                                "label",
+                                { attrs: { for: "password-id-icon" } },
+                                [_vm._v("Địa chỉ")]
+                              ),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "position-relative" }, [
+                                _c("textarea", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.form.address,
+                                      expression: "form.address",
+                                    },
+                                  ],
+                                  staticClass: "form-control",
+                                  attrs: {
+                                    name: "address",
+                                    id: "address",
+                                    rows: "2",
+                                    placeholder: "...",
+                                  },
+                                  domProps: { value: _vm.form.address },
+                                  on: {
+                                    input: function ($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        _vm.form,
+                                        "address",
+                                        $event.target.value
+                                      )
+                                    },
+                                  },
+                                }),
+                              ]),
+                              _vm._v(" "),
+                              _vm.form.errors.has("address")
+                                ? _c("div", {
+                                    staticClass: "text-danger mb-3",
+                                    domProps: {
+                                      innerHTML: _vm._s(
+                                        _vm.form.errors.get("address")
+                                      ),
+                                    },
+                                  })
+                                : _vm._e(),
+                            ]
+                          ),
+                        ]),
+                      ]),
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "modal-footer" }, [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-primary me-1 mb-1",
+                          attrs: { type: "submit" },
+                        },
+                        [_vm._v(_vm._s(_vm.editMode ? "Cập nhật" : "Thêm mới"))]
+                      ),
+                    ]),
                   ]),
-                  _vm._v(" "),
-                  _vm._m(4),
-                  _vm._v(" "),
-                  _vm._m(5),
-                ]),
-              ]
-            ),
-          ]
-        ),
-      ]
-    ),
-  ])
+                ]
+              ),
+            ]
+          ),
+        ]
+      ),
+    ],
+    1
+  )
 }
 var staticRenderFns = [
   function () {
@@ -72579,17 +73259,6 @@ var staticRenderFns = [
     return _c("span", [
       _c("i", { staticClass: "bi bi-plus-circle" }),
       _vm._v(" Tạo mới"),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-9" }, [
-      _c("input", {
-        staticClass: "form-control form-search",
-        attrs: { placeholder: "Tìm kiếm...", type: "text" },
-      }),
     ])
   },
   function () {
@@ -72606,8 +73275,6 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", [_vm._v("Loại tài khoản")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Trạng thái")]),
-        _vm._v(" "),
         _c("th", [_vm._v("Thao tác")]),
       ]),
     ])
@@ -72616,173 +73283,32 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("td", [
-      _c("button", { staticClass: "btn btn-dark" }, [
-        _c("i", { staticClass: "bi bi-eye" }),
-      ]),
-      _vm._v(" "),
-      _c("button", { staticClass: "btn btn-primary" }, [
-        _c("i", { staticClass: "bi bi-pencil-square" }),
-      ]),
-      _vm._v(" "),
-      _c("button", { staticClass: "btn btn-danger" }, [
-        _c("i", { staticClass: "bi bi-trash" }),
-      ]),
+    return _c("div", { staticClass: "form-control-icon" }, [
+      _c("i", { staticClass: "bi bi-person" }),
     ])
   },
   function () {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "modal-body" }, [
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-12" }, [
-          _c("div", { staticClass: "form-group has-icon-left" }, [
-            _c("label", { attrs: { for: "first-name-icon" } }, [
-              _vm._v(
-                "\n                                        Họ và tên\n                                    "
-              ),
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "position-relative" }, [
-              _c("input", {
-                staticClass: "form-control",
-                attrs: {
-                  type: "text",
-                  placeholder: "Nhập họ và tên",
-                  id: "first-name-icon",
-                },
-              }),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-control-icon" }, [
-                _c("i", { staticClass: "bi bi-person" }),
-              ]),
-            ]),
-          ]),
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-12" }, [
-          _c("div", { staticClass: "form-group has-icon-left" }, [
-            _c("label", { attrs: { for: "email-id-icon" } }, [_vm._v("Email")]),
-            _vm._v(" "),
-            _c("div", { staticClass: "position-relative" }, [
-              _c("input", {
-                staticClass: "form-control",
-                attrs: {
-                  type: "text",
-                  placeholder: "abc@email.com",
-                  id: "email-id-icon",
-                },
-              }),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-control-icon" }, [
-                _c("i", { staticClass: "bi bi-envelope" }),
-              ]),
-            ]),
-          ]),
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-12" }, [
-          _c("div", { staticClass: "form-group has-icon-left" }, [
-            _c("label", { attrs: { for: "mobile-id-icon" } }, [
-              _vm._v(
-                "\n                                        Số điện thoại\n                                    "
-              ),
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "position-relative" }, [
-              _c("input", {
-                staticClass: "form-control",
-                attrs: {
-                  type: "text",
-                  placeholder: "0123456789",
-                  id: "mobile-id-icon",
-                },
-              }),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-control-icon" }, [
-                _c("i", { staticClass: "bi bi-phone" }),
-              ]),
-            ]),
-          ]),
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-12" }, [
-          _c("div", { staticClass: "form-group has-icon-left" }, [
-            _c("label", { attrs: { for: "password-id-icon" } }, [
-              _vm._v("Password"),
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "position-relative" }, [
-              _c("input", {
-                staticClass: "form-control",
-                attrs: {
-                  type: "password",
-                  placeholder: "*******",
-                  id: "password-id-icon",
-                },
-              }),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-control-icon" }, [
-                _c("i", { staticClass: "bi bi-lock" }),
-              ]),
-            ]),
-          ]),
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-12" }, [
-          _c("div", { staticClass: "form-group has-icon-left" }, [
-            _c("label", { attrs: { for: "password-id-icon" } }, [
-              _vm._v("Vai trò"),
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "position-relative" }, [
-              _c(
-                "select",
-                {
-                  staticClass: "form-select select",
-                  attrs: { type: "password", id: "role-id-icon" },
-                },
-                [
-                  _c("option", { attrs: { value: "" } }, [
-                    _vm._v(
-                      "\n                                                Chọn vai trò\n                                            "
-                    ),
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "1" } }, [
-                    _vm._v(
-                      "\n                                                Đăng bài\n                                            "
-                    ),
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "1" } }, [
-                    _vm._v(
-                      "\n                                                Kiểm duyệt bài\n                                            "
-                    ),
-                  ]),
-                ]
-              ),
-            ]),
-          ]),
-        ]),
-      ]),
+    return _c("div", { staticClass: "form-control-icon" }, [
+      _c("i", { staticClass: "bi bi-envelope" }),
     ])
   },
   function () {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "modal-footer" }, [
-      _c(
-        "button",
-        { staticClass: "btn btn-primary me-1 mb-1", attrs: { type: "submit" } },
-        [
-          _vm._v(
-            "\n                            Tạo mới\n                        "
-          ),
-        ]
-      ),
+    return _c("div", { staticClass: "form-control-icon" }, [
+      _c("i", { staticClass: "bi bi-phone" }),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-control-icon" }, [
+      _c("i", { staticClass: "bi bi-lock" }),
     ])
   },
 ]
