@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Middleware\CheckLoged;
 
 Route::prefix('')->group(function () {
     //HomeController
@@ -39,32 +40,36 @@ Route::prefix('')->group(function () {
 });
 
 Route::prefix('admin')->group(function () {
-    //DashboardController
-    Route::get('/', 'Admin\DashboardController@index')->middleware('loged');
+    Route::middleware([CheckLoged::class])->group(function () {
+        //DashboardController
+        Route::get('/', 'Admin\DashboardController@index');
 
-    //AuthController
-    Route::get('/xac-thuc', 'AuthController@verifyAdminIndex')->middleware('otp');
-    Route::get('/thong-tin-ca-nhan', 'AuthController@infoAdminIndex');
-    Route::get('/doi-mat-khau', 'AuthController@changePasswordAdminIndex');
+        //AuthController
+        Route::get('/xac-thuc', 'AuthController@verifyAdminIndex')->middleware('otp');
+        Route::get('/thong-tin-ca-nhan', 'AuthController@infoAdminIndex');
+        Route::get('/doi-mat-khau', 'AuthController@changePasswordAdminIndex');
 
-    //Admin/OrderController
-    Route::resource('/don-dat-thue-xe', 'Admin\OrderController')->only('index');
-    Route::resource('/quan-ly-loai-xe', 'Admin\CarController')->only('index');
-    Route::get('/tao-moi-loai-xe', 'Admin\CarController@create');
-    Route::get('/quan-ly-loai-xe/cap-nhat/{carId}', 'Admin\CarController@showUpgrade');
+        //Admin/OrderController
+        Route::resource('/don-dat-thue-xe', 'Admin\OrderController')->only('index');
 
-    //Admin/ServiceController
-    Route::resource('/quan-ly-dich-vu', 'Admin\ServiceController')->only('index');
-    Route::get('/tao-moi-dich-vu', 'Admin\ServiceController@create');
-    Route::get('/quan-ly-dich-vu/cap-nhat/{serviceId}', 'Admin\ServiceController@showUpgrade');
+        //Admin/CarController
+        Route::resource('/quan-ly-loai-xe', 'Admin\CarController')->only('index');
+        Route::get('/tao-moi-loai-xe', 'Admin\CarController@create');
+        Route::get('/quan-ly-loai-xe/cap-nhat/{carSlug}', 'Admin\CarController@showUpgrade');
 
-    //Admin/PostController
-    Route::resource('/quan-ly-bai-viet', 'Admin\PostController')->only('index');
-    Route::get('/tao-moi-bai-viet', 'Admin\PostController@create');
-    Route::get('/quan-ly-bai-viet/cap-nhat/{postId}', 'Admin\PostController@showUpgrade');
+        //Admin/ServiceController
+        Route::resource('/quan-ly-dich-vu', 'Admin\ServiceController')->only('index');
+        Route::get('/tao-moi-dich-vu', 'Admin\ServiceController@create');
+        Route::get('/quan-ly-dich-vu/cap-nhat/{serviceSlug}', 'Admin\ServiceController@showUpgrade');
 
-    //Admin/AccountController
-    Route::resource('/quan-ly-tai-khoan', 'Admin\AccountController')->only('index');
+        //Admin/PostController
+        Route::resource('/quan-ly-bai-viet', 'Admin\PostController')->only('index');
+        Route::get('/tao-moi-bai-viet', 'Admin\PostController@create');
+        Route::get('/quan-ly-bai-viet/cap-nhat/{postSlug}', 'Admin\PostController@showUpgrade');
+
+        //Admin/AccountController
+        Route::resource('/quan-ly-tai-khoan', 'Admin\AccountController')->only('index');
+    });
 
     Route::get('/lien-he-tu-van', function () {
         return view('admin.pages.consulting.list');

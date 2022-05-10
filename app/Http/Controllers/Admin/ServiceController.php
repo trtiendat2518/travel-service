@@ -10,6 +10,7 @@ use App\Repositories\Service\ServiceInterface;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Str;
 
 class ServiceController extends Controller
 {
@@ -66,9 +67,9 @@ class ServiceController extends Controller
         return view('admin.pages.service.create')->with(compact('meta_desc', 'meta_title', 'url_canonical'));
     }
 
-    public function showUpgrade(Request $request, $serviceId)
+    public function showUpgrade(Request $request, $serviceSlug)
     {
-        $service = Service::find($serviceId);
+        $service = Service::where('slug', $serviceSlug)->first();
         //SEO
         $meta_desc = $service->name;
         $meta_title = $service->name;
@@ -107,6 +108,7 @@ class ServiceController extends Controller
 
         $newService = new Service();
         $newService->name = $data['name'];
+        $newService->slug = Str::slug($data['name']);
         $newService->content = $data['content'];
         $newService->author = $request->author;
         date_default_timezone_set('Asia/Ho_Chi_Minh');
@@ -175,6 +177,7 @@ class ServiceController extends Controller
                 'content.max' => 'Nội dung tối đa 5000 ký tự!',
             ]);
             $service->name = $data['name'];
+            $service->slug = Str::slug($data['name']);
             $service->content = $data['content'];
             date_default_timezone_set('Asia/Ho_Chi_Minh');
             $service->updated_at = now();
@@ -198,6 +201,7 @@ class ServiceController extends Controller
                 'avatar.mimes' => 'Tệp nhập vào phải có đuôi jpeg,jpg,png!',
             ]);
             $service->name = $data['name'];
+            $service->slug = Str::slug($data['name']);
             $service->content = $data['content'];
             date_default_timezone_set('Asia/Ho_Chi_Minh');
             $service->updated_at = now();
@@ -230,9 +234,9 @@ class ServiceController extends Controller
         return ServiceResource::collection($searchService);
     }
 
-    public function detail($serviceId)
+    public function detail($serviceSlug)
     {
-        $detailService = $this->serviceRepository->detail($serviceId);
+        $detailService = $this->serviceRepository->detail($serviceSlug);
         return ServiceResource::collection($detailService);
     }
 }

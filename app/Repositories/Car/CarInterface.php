@@ -12,6 +12,6 @@ interface CarInterface
     //  */
     public function list($currentEntries);
     public function search($query, $currentEntries);
-    public function detail($carId);
+    public function detail($carSlug);
     public function all();
 }

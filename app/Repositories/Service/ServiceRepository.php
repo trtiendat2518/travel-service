@@ -38,8 +38,8 @@ class ServiceRepository implements ServiceInterface
         return Service::all();
     }
 
-    public function detail($serviceId)
+    public function detail($serviceSlug)
     {
-        return Service::where('id', $serviceId)->get();
+        return Service::where('slug', $serviceSlug)->limit(1)->get();
     }
 }

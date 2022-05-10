@@ -9,6 +9,7 @@ use App\Repositories\Post\PostInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Str;
 
 class PostController extends Controller
 {
@@ -54,9 +55,9 @@ class PostController extends Controller
         return view('admin.pages.post.create')->with(compact('meta_desc', 'meta_title', 'url_canonical'));
     }
 
-    public function showUpgrade(Request $request, $postId)
+    public function showUpgrade(Request $request, $postSlug)
     {
-        $post = Post::find($postId);
+        $post = Post::where('slug', $postSlug)->first();
         //SEO
         $meta_desc = $post->title;
         $meta_title = $post->title;
@@ -101,6 +102,7 @@ class PostController extends Controller
 
         $newPost = new Post();
         $newPost->title = $data['title'];
+        $newPost->slug = Str::slug($data['title']);
         $newPost->category_id = $data['category_id'];
         $newPost->content = $data['content'];
         $newPost->author = $request->author;
@@ -172,6 +174,7 @@ class PostController extends Controller
                 'category_id.required' => 'Vui lòng chọn danh mục bài viết'
             ]);
             $post->title = $data['title'];
+            $post->slug = Str::slug($data['title']);
             $post->content = $data['content'];
             $post->category_id = $data['category_id'];
             date_default_timezone_set('Asia/Ho_Chi_Minh');
@@ -201,6 +204,7 @@ class PostController extends Controller
                 ]
             );
             $post->title = $data['title'];
+            $post->slug = Str::slug($data['title']);
             $post->content = $data['content'];
             $post->category_id = $data['category_id'];
             $image = $request->avatar;
@@ -245,9 +249,9 @@ class PostController extends Controller
         }
     }
 
-    public function detail($postId)
+    public function detail($postSlug)
     {
-        $detailPost = $this->postRepository->detail($postId);
+        $detailPost = $this->postRepository->detail($postSlug);
         return PostResource::collection($detailPost);
     }
 }

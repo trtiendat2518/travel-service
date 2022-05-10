@@ -1,74 +1,95 @@
 <template>
-    <div class="card">
+    <div class="page-heading">
         <vue-snotify></vue-snotify>
-        <div class="card-header">
+        <div class="page-title">
             <div class="row">
-                <div class="col-md-12">Danh sách các dịch vụ thuê xe</div>
+                <div class="col-12 col-md-6 order-md-1 order-last">
+                    <h3>Quản lý dịch vụ thuê xe</h3>
+                </div>
+                <div class="col-12 col-md-6 order-md-2 order-first">
+                    <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/admin">Dashboard</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Quản lý dịch vụ thuê xe</li>
+                        </ol>
+                    </nav>
+                </div>
             </div>
         </div>
-        <div class="card-body">
-            <div class="row">
-                <div class="col-md-3">
-                    <div class="between:flex bottom:margin-3 ml-2">
-                        <div class="center:flex-items">
-                            <span class="right:marign-1">Hiển thị</span>
-                            <select class="select form-select" id="form-select" v-model="currentEntries">
-                                <option v-for="entry in showEntries" :key="entry" :value="entry">
-                                    {{ entry }}
-                                </option>
-                            </select>
-                        </div>
+
+        <!-- Basic Vertical form layout section start -->
+        <section id="basic-vertical-layouts">
+            <div class="card">
+                <div class="card-header">
+                    <div class="row">
+                        <div class="col-md-12">Danh sách các dịch vụ thuê xe</div>
                     </div>
                 </div>
-                <div class="col-md-4"></div>
-                <div class="col-md-5">
-                    <input class="form-control form-search" v-model="query" placeholder="Tìm kiếm..." type="text" />
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="between:flex bottom:margin-3 ml-2">
+                                <div class="center:flex-items">
+                                    <span class="right:marign-1">Hiển thị</span>
+                                    <select class="select form-select" id="form-select" v-model="currentEntries">
+                                        <option v-for="entry in showEntries" :key="entry" :value="entry">
+                                            {{ entry }}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4"></div>
+                        <div class="col-md-5">
+                            <input class="form-control form-search" v-model="query" placeholder="Tìm kiếm..." type="text" />
+                        </div>
+                    </div>
+                    <table class="table table-striped" id="table1">
+                        <thead>
+                            <tr>
+                                <th width="30%">Hình ảnh</th>
+                                <th width="30%">Tên dịch vụ</th>
+                                <th width="30%">Tác giả</th>
+                                <th>Thao tác</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="service in services" :key="service.id">
+                                <td>
+                                    <img class="image-service" :src="`../public/images/service/${service.avatar}`" alt="" />
+                                </td>
+                                <td>{{ service.name }}</td>
+                                <td>{{ service.full_name }}</td>
+                                <td>
+                                    <router-link
+                                        tag="button"
+                                        class="btn btn-primary"
+                                        :to="{ name: 'service-update', params: { slugService: slug(service.name) } }"
+                                    >
+                                        <i class="bi bi-pencil-square"></i>
+                                    </router-link>
+                                    <button class="btn btn-danger" @click="destroy(service.id)">
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr v-show="!services.length">
+                                <td colspan="4">
+                                    <div class="alert alert-danger">Không tìm thấy kết quả phù hợp!</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <pagination-component
+                        v-if="pagination.last_page > 1"
+                        :pagination="pagination"
+                        :offset="5"
+                        @paginate="query === '' ? fetchServices() : search()"
+                    >
+                    </pagination-component>
                 </div>
             </div>
-            <table class="table table-striped" id="table1">
-                <thead>
-                    <tr>
-                        <th width="30%">Hình ảnh</th>
-                        <th width="30%">Tên dịch vụ</th>
-                        <th width="30%">Tác giả</th>
-                        <th>Thao tác</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr v-for="service in services" :key="service.id">
-                        <td>
-                            <img class="image-service" :src="`../public/images/service/${service.avatar}`" alt="" />
-                        </td>
-                        <td>{{ service.name }}</td>
-                        <td>{{ service.full_name }}</td>
-                        <td>
-                            <router-link
-                                tag="button"
-                                class="btn btn-primary"
-                                :to="{ name: 'service-update', params: { idService: service.id } }"
-                            >
-                                <i class="bi bi-pencil-square"></i>
-                            </router-link>
-                            <button class="btn btn-danger" @click="destroy(service.id)">
-                                <i class="bi bi-trash"></i>
-                            </button>
-                        </td>
-                    </tr>
-                    <tr v-show="!services.length">
-                        <td colspan="4">
-                            <div class="alert alert-danger">Không tìm thấy kết quả phù hợp!</div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <pagination-component
-                v-if="pagination.last_page > 1"
-                :pagination="pagination"
-                :offset="5"
-                @paginate="query === '' ? fetchServices() : search()"
-            >
-            </pagination-component>
-        </div>
+        </section>
     </div>
 </template>
 
@@ -176,6 +197,27 @@ export default {
         },
         show(serviceId) {
             window.location.href = `../admin/quan-ly-dich-vu/cap-nhat/${serviceId}`
+        },
+        slug(name) {
+            var slug = ''
+            // Change to lower case
+            var nameLower = name.toLowerCase()
+            // Letter "e"
+            slug = nameLower.replace(/e|é|è|ẽ|ẻ|ẹ|ê|ế|ề|ễ|ể|ệ/gi, 'e')
+            // Letter "a"
+            slug = slug.replace(/a|á|à|ã|ả|ạ|ă|ắ|ằ|ẵ|ẳ|ặ|â|ấ|ầ|ẫ|ẩ|ậ/gi, 'a')
+            // Letter "o"
+            slug = slug.replace(/o|ó|ò|õ|ỏ|ọ|ô|ố|ồ|ỗ|ổ|ộ|ơ|ớ|ờ|ỡ|ở|ợ/gi, 'o')
+            // Letter "u"
+            slug = slug.replace(/u|ú|ù|ũ|ủ|ụ|ư|ứ|ừ|ữ|ử|ự/gi, 'u')
+            // Letter "d"
+            slug = slug.replace(/đ/gi, 'd')
+            // Trim the last whitespace
+            slug = slug.replace(/\s*$/g, '')
+            // Change whitespace to "-"
+            slug = slug.replace(/\s+/g, '-')
+
+            return slug
         }
     }
 }

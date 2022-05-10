@@ -29,7 +29,7 @@ export default new VueRouter({
                 },
 
                 {
-                    path: 'cap-nhat/:idService',
+                    path: 'cap-nhat/:slugService',
                     name: 'service-update',
                     component: UpdateService
                 }
@@ -48,7 +48,7 @@ export default new VueRouter({
                 },
 
                 {
-                    path: 'cap-nhat/:idCar',
+                    path: 'cap-nhat/:slugCar',
                     name: 'car-update',
                     component: UpdateCar
                 }
@@ -67,7 +67,7 @@ export default new VueRouter({
                 },
 
                 {
-                    path: 'cap-nhat/:idPost',
+                    path: 'cap-nhat/:slugPost',
                     name: 'post-update',
                     component: UpdatePost
                 }

@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Repositories\Car\CarInterface;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Str;
 
 class CarController extends Controller
 {
@@ -65,9 +66,9 @@ class CarController extends Controller
         return view('admin.pages.car.create')->with(compact('meta_desc', 'meta_title', 'url_canonical'));
     }
 
-    public function showUpgrade(Request $request, $carId)
+    public function showUpgrade(Request $request, $carSlug)
     {
-        $car = Car::find($carId);
+        $car = Car::where('slug', $carSlug)->first();
         //SEO
         $meta_desc = $car->name;
         $meta_title = $car->name;
@@ -112,6 +113,7 @@ class CarController extends Controller
         $newCar->content = $data['content'];
         date_default_timezone_set('Asia/Ho_Chi_Minh');
         $newCar->created_at = now();
+        $newCar->slug = Str::slug($data['name']);
 
         $image = $data['avatar'];
         $name = 'car_avatar' . uniqid(md5(rand(1, 999))) . '.png';
@@ -176,6 +178,7 @@ class CarController extends Controller
             ]);
             $car->name = $data['name'];
             $car->content = $data['content'];
+            $car->slug = Str::slug($data['name']);
 
             $car->save();
         } else {
@@ -201,6 +204,7 @@ class CarController extends Controller
             );
             $car->name = $data['name'];
             $car->content = $data['content'];
+            $car->slug = Str::slug($data['name']);
             $image = $request->avatar;
             $name = 'car_avatar_' . uniqid(md5(rand(1, 999))) . '.png';
             Storage::disk('car')->delete($car->avatar);
@@ -241,9 +245,9 @@ class CarController extends Controller
         }
     }
 
-    public function detail($carId)
+    public function detail($carSlug)
     {
-        $detailCar = $this->carRepository->detail($carId);
+        $detailCar = $this->carRepository->detail($carSlug);
         return CarResource::collection($detailCar);
     }
 }

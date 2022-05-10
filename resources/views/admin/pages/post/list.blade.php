@@ -7,26 +7,7 @@
         </a>
     </header>
 
-    <div class="page-heading">
-        <div class="page-title">
-            <div class="row">
-                <div class="col-12 col-md-6 order-md-1 order-last">
-                    <h3>{{ $meta_title }}</h3>
-                </div>
-                <div class="col-12 col-md-6 order-md-2 order-first">
-                    <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{{ url('admin') }}s">Dashboard</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">{{ $meta_title }}</li>
-                        </ol>
-                    </nav>
-                </div>
-            </div>
-        </div>
-        <section class="section">
-            <post-component></post-component>
-        </section>
-    </div>
+    <post-component></post-component>
 
     @include('admin.layouts.footer')
 </div>

@@ -17,7 +17,7 @@ class CheckOTP
     public function handle(Request $request, Closure $next)
     {
         if (!session()->has('otp')) {
-            if (url('/xac-thuc') == $request->url()) {
+            if ((url('/xac-thuc') == $request->url()) || (url('admin/xac-thuc') == $request->url())) {
                 return back();
             }
         }

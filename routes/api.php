@@ -27,7 +27,7 @@ Route::prefix('admin')->group(function () {
     });
 
     Route::prefix('manage-car')->group(function () {
-        Route::get('car/detail/{carId}', 'Admin\CarController@detail');
+        Route::get('car/detail/{carSlug}', 'Admin\CarController@detail');
         Route::post('car/upgrade/{carId}', 'Admin\CarController@upgrade');
         Route::patch('car/change/{carId}', 'Admin\CarController@change');
         Route::get('car/all', 'Admin\CarController@all');
@@ -36,7 +36,7 @@ Route::prefix('admin')->group(function () {
     });
 
     Route::prefix('manage-service')->group(function () {
-        Route::get('service/detail/{serviceId}', 'Admin\ServiceController@detail');
+        Route::get('service/detail/{serviceSlug}', 'Admin\ServiceController@detail');
         Route::post('service/upgrade/{serviceId}', 'Admin\ServiceController@upgrade');
         Route::get('service/all', 'Admin\ServiceController@all');
         Route::get('service/search/{query}/{currentEntries}', 'Admin\ServiceController@search');
@@ -44,7 +44,7 @@ Route::prefix('admin')->group(function () {
     });
 
     Route::prefix('manage-post')->group(function () {
-        Route::get('post/detail/{postId}', 'Admin\PostController@detail');
+        Route::get('post/detail/{postSlug}', 'Admin\PostController@detail');
         Route::patch('post/change/{postId}', 'Admin\PostController@change');
         Route::post('post/upgrade/{postId}', 'Admin\PostController@upgrade');
         Route::get('post/search/{query}/{currentEntries}', 'Admin\PostController@search');

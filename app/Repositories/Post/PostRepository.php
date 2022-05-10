@@ -41,11 +41,11 @@ class PostRepository implements PostInterface
         return Post::all();
     }
 
-    public function detail($postId)
+    public function detail($postSlug)
     {
         return Post::join('places', 'places.id', '=', 'posts.category_id')
             ->join('users', 'users.id', '=', 'posts.author')
             ->select('posts.*', 'users.full_name as author_name', 'places.name as place_name')
-            ->where('posts.id', $postId)->get();
+            ->where('posts.slug', $postSlug)->get();
     }
 }
