@@ -53,6 +53,6 @@ class OrderRepository implements OrderInterface
 
     public function listPlaces()
     {
-        return Place::all();
+        return Place::orderBy('name', 'ASC')->get();
     }
 }

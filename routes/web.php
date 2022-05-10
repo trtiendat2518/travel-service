@@ -39,27 +39,32 @@ Route::prefix('')->group(function () {
 });
 
 Route::prefix('admin')->group(function () {
+    //DashboardController
     Route::get('/', 'Admin\DashboardController@index')->middleware('loged');
+
+    //AuthController
     Route::get('/xac-thuc', 'AuthController@verifyAdminIndex')->middleware('otp');
     Route::get('/thong-tin-ca-nhan', 'AuthController@infoAdminIndex');
     Route::get('/doi-mat-khau', 'AuthController@changePasswordAdminIndex');
 
+    //Admin/OrderController
     Route::resource('/don-dat-thue-xe', 'Admin\OrderController')->only('index');
     Route::resource('/quan-ly-loai-xe', 'Admin\CarController')->only('index');
+    Route::get('/tao-moi-loai-xe', 'Admin\CarController@create');
+    Route::get('/quan-ly-loai-xe/cap-nhat/{carId}', 'Admin\CarController@showUpgrade');
+
+    //Admin/ServiceController
     Route::resource('/quan-ly-dich-vu', 'Admin\ServiceController')->only('index');
     Route::get('/tao-moi-dich-vu', 'Admin\ServiceController@create');
     Route::get('/quan-ly-dich-vu/cap-nhat/{serviceId}', 'Admin\ServiceController@showUpgrade');
 
+    //Admin/PostController
+    Route::resource('/quan-ly-bai-viet', 'Admin\PostController')->only('index');
+    Route::get('/tao-moi-bai-viet', 'Admin\PostController@create');
+    Route::get('/quan-ly-bai-viet/cap-nhat/{postId}', 'Admin\PostController@showUpgrade');
+
     Route::get('/quan-ly-tai-khoan', function () {
         return view('admin.pages.account.list');
-    });
-
-
-    Route::get('/tao-moi-bai-viet', function () {
-        return view('admin.pages.post.create');
-    });
-    Route::get('/quan-ly-bai-viet', function () {
-        return view('admin.pages.post.list');
     });
 
     Route::get('/lien-he-tu-van', function () {

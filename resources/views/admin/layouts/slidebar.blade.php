@@ -65,11 +65,28 @@
                     </a>
                 </li>
 
-                <li class="sidebar-item {{ Request::is('admin/quan-ly-loai-xe') ? 'active' : '' }}">
+                {{-- <li class="sidebar-item {{ Request::is('admin/quan-ly-loai-xe') ? 'active' : '' }}">
                     <a href="{{ url('admin/quan-ly-loai-xe') }}" class='sidebar-link'>
                         <i class="bi bi-truck"></i>
                         <span>Loại xe</span>
                     </a>
+                </li> --}}
+
+                <li
+                    class="sidebar-item has-sub {{ Request::is('admin/quan-ly-loai-xe') ? 'active' : '' }} {{ Request::is('admin/tao-moi-loai-xe') ? 'active' : '' }}">
+                    <a href="javascript:void(0)" class='sidebar-link'>
+                        <i class="bi bi-truck"></i>
+                        <span>Loại xe</span>
+                    </a>
+                    <ul
+                        class="submenu {{ Request::is('admin/quan-ly-loai-xe') ? 'active' : '' }} {{ Request::is('admin/tao-moi-loai-xe') ? 'active' : '' }}">
+                        <li class="submenu-item {{ Request::is('admin/tao-moi-loai-xe') ? 'active' : '' }}">
+                            <a href="{{ url('admin/tao-moi-loai-xe') }}">Tạo mới</a>
+                        </li>
+                        <li class="submenu-item {{ Request::is('admin/quan-ly-loai-xe') ? 'active' : '' }}">
+                            <a href="{{ url('admin/quan-ly-loai-xe') }}">Danh sách</a>
+                        </li>
+                    </ul>
                 </li>
 
                 <li

@@ -5,19 +5,19 @@
             <div class="card">
                 <div class="card-content">
                     <div class="card-body">
-                        <form @submit.prevent="update()" @keydown="form.onKeydown($event)" class="form form-vertical">
+                        <form @submit.prevent="store()" @keydown="form.onKeydown($event)" class="form form-vertical">
                             <div class="form-body">
                                 <div class="row">
                                     <div class="col-12 mb-2">
                                         <div class="form-group">
-                                            <label for="first-name-vertical">Tên dịch vụ</label>
+                                            <label for="first-name-vertical">Tên loại xe</label>
                                             <input
                                                 type="text"
                                                 id="name"
                                                 class="form-control"
                                                 name="name"
                                                 v-model="form.name"
-                                                placeholder="Tên dịch vụ thuê xe"
+                                                placeholder="Tên loại xe"
                                             />
                                             <div
                                                 class="text-danger mb-3"
@@ -62,12 +62,8 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-6 d-flex">
-                                        <button type="button" class="btn btn-secondary me-1 mb-1" @click="backList()">Quay lại</button>
-                                    </div>
-
                                     <div class="col-12 d-flex justify-content-end">
-                                        <button type="submit" class="btn btn-primary me-1 mb-1">Cập nhật</button>
+                                        <button type="submit" class="btn btn-primary me-1 mb-1">Tạo mới</button>
                                     </div>
                                 </div>
                             </div>
@@ -89,7 +85,6 @@ export default {
     data() {
         return {
             services: [],
-            service_id: this.$route.params.idService,
             form: new Form({
                 id: '',
                 name: '',
@@ -113,33 +108,17 @@ export default {
             ]
         }
     },
-    watch: {
-        $route(to, from) {
-            this.service_id = to.params.idService
-        }
-    },
-    mounted() {
-        this.show()
-    },
     methods: {
-        show(page_url) {
-            page_url = `../../../api/admin/manage-service/service/detail/${this.service_id}`
-            fetch(page_url)
-                .then((res) => res.json())
-                .then((res) => {
-                    this.form.fill(res.data[0])
-                    this.form.avatar = `../../../public/images/service/${res.data[0].avatar}`
-                })
-                .catch((err) => console.log(err))
-        },
-        update() {
+        store() {
             this.form.avatar = document.getElementById('avatar').files[0]
             this.form
-                .post(`../../../api/admin/manage-service/service/upgrade/${this.service_id}`)
+                .post('../../api/admin/manage-car/car')
                 .then((res) => {
                     if (this.form.successful) {
-                        this.$snotify.success('Cập nhật thành công!')
-                        this.show()
+                        this.$snotify.success('Thêm mới thành công!')
+                        this.form.reset()
+                        this.form.clear()
+                        this.$refs.fileupload.value = ''
                     }
                 })
                 .catch((err) => {
@@ -149,9 +128,6 @@ export default {
         onAvatarChange(e) {
             const file = e.target.files[0]
             this.form.avatar = URL.createObjectURL(file)
-        },
-        backList() {
-            window.location.href = `../../../admin/quan-ly-dich-vu`
         }
     }
 }

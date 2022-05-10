@@ -54,9 +54,27 @@ class CarController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        //SEO
+        $meta_desc = "Tạo mới loại xe";
+        $meta_title = "Tạo mới loại thuê xe";
+        $url_canonical = $request->url();
+        //---------------
+
+        return view('admin.pages.car.create')->with(compact('meta_desc', 'meta_title', 'url_canonical'));
+    }
+
+    public function showUpgrade(Request $request, $carId)
+    {
+        $car = Car::find($carId);
+        //SEO
+        $meta_desc = $car->name;
+        $meta_title = $car->name;
+        $url_canonical = $request->url();
+        //---------------
+
+        return view('admin.pages.car.update')->with(compact('meta_desc', 'meta_title', 'url_canonical', 'car'));
     }
 
     /**
@@ -69,22 +87,29 @@ class CarController extends Controller
     {
         $data = $request->validate(
             [
-                'name' => 'bail|required|max:50|min:5|notspecial_spaces',
-                'avatar' => 'bail|required|mimes:jpeg,jpg,png'
+                'name' => 'bail|required|max:50|min:5|notspecial_spaces|unique:cars',
+                'avatar' => 'bail|required|mimes:jpeg,jpg,png',
+                'content' => 'bail|required|min:50|max:5000',
             ],
             [
                 'name.required' => 'Tên loại xe không được để trống!',
                 'name.max' => 'Tên loại xe tối đa 50 ký tự!',
                 'name.min' => 'Tên loại xe tối thiểu 5 ký  tự!',
                 'name.notspecial_spaces' => 'Tên loại xe không chứa ký tự đặc biệt!',
+                'name.unique' => 'Tên loại xe đã tồn tại!',
 
                 'avatar.required' => 'Vui lòng chọn hình ảnh cho loại xe này!',
                 'avatar.mimes' => 'Tệp nhập vào phải là jpeg,jpg,png!',
+
+                'content.required' => 'Nội dung không được để trống!',
+                'content.min' => 'Nội dung phải có 50 ký tự trở lên!',
+                'content.max' => 'Nội dung tối đa 5000 ký tự!',
             ]
         );
 
         $newCar = new Car();
         $newCar->name = $data['name'];
+        $newCar->content = $data['content'];
         date_default_timezone_set('Asia/Ho_Chi_Minh');
         $newCar->created_at = now();
 
@@ -137,20 +162,28 @@ class CarController extends Controller
         if ($request->avatar == null) {
             $data = $request->validate([
                 'name' => ['required', 'max:50', 'min:5', "unique:cars,name,$carId,id", 'notspecial_spaces'],
+                'content' => ['required', 'min:50', 'max:5000'],
             ], [
                 'name.required' => 'Tên loại xe không được để trống!',
                 'name.max' => 'Tên loại xe tối đa 50 ký tự!',
                 'name.min' => 'Tên loại xe tối thiểu 5 ký  tự!',
                 'name.notspecial_spaces' => 'Tên loại xe không chứa ký tự đặc biệt!',
                 'name.unique' => 'Tên loại xe đã tồn tại!',
+
+                'content.required' => 'Nội dung không được để trống!',
+                'content.min' => 'Nội dung phải có 50 ký tự trở lên!',
+                'content.max' => 'Nội dung tối đa 5000 ký tự!',
             ]);
             $car->name = $data['name'];
+            $car->content = $data['content'];
+
             $car->save();
         } else {
             $data = $request->validate(
                 [
                     'name' => ['required', 'max:50', 'min:5', "unique:cars,name,$carId,id", 'notspecial_spaces'],
-                    'avatar' => 'bail|mimes:jpeg,jpg,png'
+                    'avatar' => 'bail|mimes:jpeg,jpg,png',
+                    'content' => ['required', 'min:50', 'max:5000'],
                 ],
                 [
                     'name.required' => 'Tên loại xe không được để trống!',
@@ -159,10 +192,15 @@ class CarController extends Controller
                     'name.notspecial_spaces' => 'Tên loại xe không chứa ký tự đặc biệt!',
                     'name.unique' => 'Tên loại xe đã tồn tại!',
 
+                    'content.required' => 'Nội dung không được để trống!',
+                    'content.min' => 'Nội dung phải có 50 ký tự trở lên!',
+                    'content.max' => 'Nội dung tối đa 5000 ký tự!',
+
                     'avatar.mimes' => 'Tệp nhập vào phải là jpeg,jpg,png!',
                 ]
             );
             $car->name = $data['name'];
+            $car->content = $data['content'];
             $image = $request->avatar;
             $name = 'car_avatar_' . uniqid(md5(rand(1, 999))) . '.png';
             Storage::disk('car')->delete($car->avatar);
@@ -201,5 +239,11 @@ class CarController extends Controller
             $car->status = 0;
             $car->save();
         }
+    }
+
+    public function detail($carId)
+    {
+        $detailCar = $this->carRepository->detail($carId);
+        return CarResource::collection($detailCar);
     }
 }

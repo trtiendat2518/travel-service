@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Repositories\Car;
+namespace App\Repositories\Post;
 
 use Illuminate\Http\Request;
 
-interface CarInterface
+interface PostInterface
 {
     // /**
     //  * search
@@ -12,6 +12,6 @@ interface CarInterface
     //  */
     public function list($currentEntries);
     public function search($query, $currentEntries);
-    public function detail($carId);
+    public function detail($postId);
     public function all();
 }

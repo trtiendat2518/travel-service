@@ -10,14 +10,14 @@
                                 <div class="row">
                                     <div class="col-12 mb-2">
                                         <div class="form-group">
-                                            <label for="first-name-vertical">Tên dịch vụ</label>
+                                            <label for="first-name-vertical">Tên loại xe</label>
                                             <input
                                                 type="text"
                                                 id="name"
                                                 class="form-control"
                                                 name="name"
                                                 v-model="form.name"
-                                                placeholder="Tên dịch vụ thuê xe"
+                                                placeholder="Tên loại xe"
                                             />
                                             <div
                                                 class="text-danger mb-3"
@@ -88,8 +88,8 @@ export default {
     },
     data() {
         return {
-            services: [],
-            service_id: this.$route.params.idService,
+            cars: [],
+            car_id: this.$route.params.idCar,
             form: new Form({
                 id: '',
                 name: '',
@@ -115,7 +115,7 @@ export default {
     },
     watch: {
         $route(to, from) {
-            this.service_id = to.params.idService
+            this.car_id = to.params.idCar
         }
     },
     mounted() {
@@ -123,24 +123,22 @@ export default {
     },
     methods: {
         show(page_url) {
-            page_url = `../../../api/admin/manage-service/service/detail/${this.service_id}`
+            page_url = `../../../api/admin/manage-car/car/detail/${this.car_id}`
             fetch(page_url)
                 .then((res) => res.json())
                 .then((res) => {
                     this.form.fill(res.data[0])
-                    this.form.avatar = `../../../public/images/service/${res.data[0].avatar}`
+                    this.form.avatar = `../../../public/images/car/${res.data[0].avatar}`
                 })
                 .catch((err) => console.log(err))
         },
         update() {
             this.form.avatar = document.getElementById('avatar').files[0]
             this.form
-                .post(`../../../api/admin/manage-service/service/upgrade/${this.service_id}`)
+                .post(`../../../api/admin/manage-car/car/upgrade/${this.car_id}`)
                 .then((res) => {
-                    if (this.form.successful) {
-                        this.$snotify.success('Cập nhật thành công!')
-                        this.show()
-                    }
+                    this.$snotify.success('Cập nhật thành công!')
+                    this.show()
                 })
                 .catch((err) => {
                     this.$snotify.error('Lỗi')
@@ -151,7 +149,7 @@ export default {
             this.form.avatar = URL.createObjectURL(file)
         },
         backList() {
-            window.location.href = `../../../admin/quan-ly-dich-vu`
+            window.location.href = `../../../admin/quan-ly-loai-xe`
         }
     }
 }

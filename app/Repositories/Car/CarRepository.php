@@ -34,4 +34,9 @@ class CarRepository implements CarInterface
     {
         return Car::all();
     }
+
+    public function detail($carId)
+    {
+        return Car::where('id', $carId)->get();
+    }
 }
