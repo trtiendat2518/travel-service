@@ -65,12 +65,12 @@
                     </a>
                 </li>
 
-                {{-- <li class="sidebar-item {{ Request::is('admin/quan-ly-loai-xe') ? 'active' : '' }}">
-                    <a href="{{ url('admin/quan-ly-loai-xe') }}" class='sidebar-link'>
-                        <i class="bi bi-truck"></i>
-                        <span>Loại xe</span>
+                <li class="sidebar-item {{ Request::is('admin/quan-ly-danh-gia') ? 'active' : '' }}">
+                    <a href="{{ url('admin/quan-ly-danh-gia') }}" class='sidebar-link'>
+                        <i class="bi bi-star"></i>
+                        <span>Đánh giá</span>
                     </a>
-                </li> --}}
+                </li>
 
                 <li
                     class="sidebar-item has-sub {{ Request::is('admin/quan-ly-loai-xe') ? 'active' : '' }} {{ Request::is('admin/tao-moi-loai-xe') ? 'active' : '' }}">

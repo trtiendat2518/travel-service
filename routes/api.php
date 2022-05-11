@@ -63,4 +63,10 @@ Route::prefix('admin')->group(function () {
         Route::get('contact/search/{query}/{currentEntries}', 'Admin\ConsultingController@search');
         Route::resource('contact', 'Admin\ConsultingController')->except('index', 'create');
     });
+
+    Route::prefix('manage-review')->group(function () {
+        Route::get('review/filter/{query}/{currentEntries}', 'Admin\ReviewController@filter');
+        Route::get('review/search/{query}/{currentEntries}', 'Admin\ReviewController@search');
+        Route::resource('review', 'Admin\ReviewController')->except('index');
+    });
 });

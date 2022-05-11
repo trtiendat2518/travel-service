@@ -38,6 +38,10 @@ class AppServiceProvider extends ServiceProvider
             \App\Repositories\Contact\ContactInterface::class,
             \App\Repositories\Contact\ContactRepository::class,
         );
+        $this->app->singleton(
+            \App\Repositories\Review\ReviewInterface::class,
+            \App\Repositories\Review\ReviewRepository::class,
+        );
     }
 
     /**

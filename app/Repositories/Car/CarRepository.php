@@ -32,7 +32,7 @@ class CarRepository implements CarInterface
 
     public function all()
     {
-        return Car::all();
+        return Car::where('status', '>', 0)->get();
     }
 
     public function detail($carSlug)

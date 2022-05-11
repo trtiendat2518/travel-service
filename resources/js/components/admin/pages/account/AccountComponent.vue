@@ -70,6 +70,11 @@
                             </button>
                         </td>
                     </tr>
+                    <tr v-show="!accounts.length">
+                        <td colspan="5">
+                            <div class="alert alert-danger">Không tìm thấy kết quả phù hợp!</div>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
             <pagination-component
@@ -288,18 +293,18 @@ export default {
         },
         query(keyword) {
             if (keyword === '') {
-                this.value = ''
                 this.fetchAccounts()
             } else {
+                this.value = ''
                 this.pagination.current_page = 1
                 this.search()
             }
         },
         value(value) {
             if (value === '') {
-                this.query = ''
                 this.fetchAccounts()
             } else {
+                this.query = ''
                 this.pagination.current_page = 1
                 this.filter()
             }

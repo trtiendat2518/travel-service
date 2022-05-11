@@ -35,7 +35,7 @@ class ServiceRepository implements ServiceInterface
 
     public function all()
     {
-        return Service::all();
+        return Service::where('status', '>', 0)->get();
     }
 
     public function detail($serviceSlug)

@@ -30,3 +30,6 @@ Vue.component('list-post-component', require('./components/admin/pages/post/List
 
 // Consulting
 Vue.component('consulting-component', require('./components/admin/pages/consulting/ConsultingComponent.vue').default)
+
+// Review
+Vue.component('review-component', require('./components/admin/pages/review/ReviewComponent.vue').default)

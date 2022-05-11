@@ -72,6 +72,9 @@ Route::prefix('admin')->group(function () {
 
         //Admin/ConsultingController
         Route::resource('/quan-ly-lien-he-tu-van', 'Admin\ConsultingController')->only('index');
+
+        //Admin/ReviewController
+        Route::resource('/quan-ly-danh-gia', 'Admin\ReviewController')->only('index');
     });
 });
 
