@@ -51,8 +51,8 @@
                     </a>
                 </li>
 
-                <li class="sidebar-item {{ Request::is('admin/lien-he-tu-van') ? 'active' : '' }}">
-                    <a href="{{ url('admin/lien-he-tu-van') }}" class='sidebar-link'>
+                <li class="sidebar-item {{ Request::is('admin/quan-ly-lien-he-tu-van') ? 'active' : '' }}">
+                    <a href="{{ url('admin/quan-ly-lien-he-tu-van') }}" class='sidebar-link'>
                         <i class="bi bi-phone"></i>
                         <span>Liên hệ tư vấn</span>
                     </a>

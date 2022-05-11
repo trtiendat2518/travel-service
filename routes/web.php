@@ -69,10 +69,9 @@ Route::prefix('admin')->group(function () {
 
         //Admin/AccountController
         Route::resource('/quan-ly-tai-khoan', 'Admin\AccountController')->only('index');
-    });
 
-    Route::get('/lien-he-tu-van', function () {
-        return view('admin.pages.consulting.list');
+        //Admin/ConsultingController
+        Route::resource('/quan-ly-lien-he-tu-van', 'Admin\ConsultingController')->only('index');
     });
 });
 

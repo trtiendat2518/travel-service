@@ -193,6 +193,10 @@ export default {
                                 .delete(`../../api/admin/manage-post/post/${postId}`)
                                 .then((res) => {
                                     this.$snotify.success('Đã xóa!')
+                                    let checkData = this.posts.length - 1
+                                    if (checkData == 0) {
+                                        this.pagination.current_page = this.pagination.current_page - 1
+                                    }
                                     this.fetchPosts()
                                 })
                                 .catch((err) => console.log(err))

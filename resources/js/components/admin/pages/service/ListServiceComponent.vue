@@ -179,6 +179,10 @@ export default {
                                 .delete(`../../api/admin/manage-service/service/${serviceId}`)
                                 .then((res) => {
                                     this.$snotify.success('Đã xóa!')
+                                    let checkData = this.services.length - 1
+                                    if (checkData == 0) {
+                                        this.pagination.current_page = this.pagination.current_page - 1
+                                    }
                                     this.fetchServices()
                                 })
                                 .catch((err) => console.log(err))

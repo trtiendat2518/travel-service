@@ -383,6 +383,10 @@ export default {
                                 .delete(`../../api/admin/manage-user/user/${userId}`)
                                 .then((res) => {
                                     this.$snotify.success('Đã xóa!')
+                                    let checkData = this.accounts.length - 1
+                                    if (checkData == 0) {
+                                        this.pagination.current_page = this.pagination.current_page - 1
+                                    }
                                     this.fetchAccounts()
                                 })
                                 .catch((err) => console.log(err))

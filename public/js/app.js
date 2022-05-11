@@ -5940,6 +5940,12 @@ __webpack_require__.r(__webpack_exports__);
             axios["delete"]("../../api/admin/manage-user/user/".concat(userId)).then(function (res) {
               _this4.$snotify.success('Đã xóa!');
 
+              var checkData = _this4.accounts.length - 1;
+
+              if (checkData == 0) {
+                _this4.pagination.current_page = _this4.pagination.current_page - 1;
+              }
+
               _this4.fetchAccounts();
             })["catch"](function (err) {
               return console.log(err);
@@ -6403,6 +6409,12 @@ __webpack_require__.r(__webpack_exports__);
             axios["delete"]("../../api/admin/manage-car/car/".concat(carId)).then(function (res) {
               _this4.$snotify.success('Đã xóa!');
 
+              var checkData = _this4.cars.length - 1;
+
+              if (checkData == 0) {
+                _this4.pagination.current_page = _this4.pagination.current_page - 1;
+              }
+
               _this4.fetchCars();
             })["catch"](function (err) {
               return console.log(err);
@@ -6704,6 +6716,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var vue_snotify_styles_material_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-snotify/styles/material.css */ "./node_modules/vue-snotify/styles/material.css");
 //
 //
 //
@@ -6804,107 +6817,219 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
-      orders: [],
+      contacts: [],
       pagination: {
         current_page: 1,
         last_page: 5
       },
-      currentEntries: 5,
+      currentEntries: 10,
       showEntries: [5, 10, 25, 50],
-      query: "",
+      query: '',
+      value: '',
       editMode: false,
       form: new Form({
-        order_id: "",
-        order_customer_name: "",
-        order_customer_phone: "",
-        order_place_from: "",
-        order_place_to: "",
-        order_time_go: "",
-        order_time_back: "",
-        order_status: ""
+        id: '',
+        full_name: '',
+        email: '',
+        phone_number: '',
+        status: '',
+        note: '',
+        created_at: ''
       })
     };
   },
   mounted: function mounted() {
-    this.fetchOrders();
+    this.fetchContacts();
   },
   watch: {
     currentEntries: function currentEntries(number) {
-      if (number === 5) {
+      if (number === 10) {
         this.pagination = 1;
-        this.fetchOrders();
+        this.fetchContacts();
       } else {
         this.pagination = 1;
-        this.fetchOrders();
+        this.fetchContacts();
       }
-    } // query(keyword) {
-    //     if (keyword === "") {
-    //         this.fetchFaculties();
-    //     } else {
-    //         this.pagination.current_page = 1;
-    //         this.search();
-    //     }
-    // },
-
+    },
+    query: function query(keyword) {
+      if (keyword === '') {
+        this.fetchContacts();
+      } else {
+        this.value = '';
+        this.pagination.current_page = 1;
+        this.search();
+      }
+    },
+    value: function value(_value) {
+      if (_value === '') {
+        this.fetchContacts();
+      } else {
+        this.query = '';
+        this.pagination.current_page = 1;
+        this.filter();
+      }
+    }
   },
   methods: {
     empty: function empty() {
       return this.orders.length < 1;
     },
-    fetchOrders: function fetchOrders(page_url) {
-      // page_url = `../../api/admin/edu-faculty/khoa/${this.currentEntries}?page=${this.pagination.current_page}`;
-      // fetch(page_url)
-      //     .then((res) => res.json())
-      //     .then((res) => {
-      //         this.accounts = res.data;
-      //         this.pagination = res.meta;
-      //     })
-      //     .catch((err) => console.log(err));
-      this.orders = [{
-        order_id: 1,
-        code: "MVD000001",
-        name: "Ho va Ten 1",
-        phone: "09" + Math.floor(Math.random() * (98765432 - 12345678) + 12345678),
-        note: "Cần tư vấn đi nơi nào vui vẻ đổi tâm trạng",
-        status: Math.floor(Math.random() * (2 - 0) + 0)
-      }, {
-        order_id: 2,
-        code: "MVD000002",
-        name: "Ho va Ten 2",
-        phone: "09" + Math.floor(Math.random() * (98765432 - 12345678) + 12345678),
-        note: "Nơi nào có biển thoáng và sạch",
-        status: Math.floor(Math.random() * (2 - 0) + 0)
-      }, {
-        order_id: 3,
-        code: "MVD000003",
-        name: "Ho va Ten 3",
-        phone: "09" + Math.floor(Math.random() * (98765432 - 12345678) + 12345678),
-        note: "Cần tư vấn đi nơi nào đó",
-        status: Math.floor(Math.random() * (2 - 0) + 0)
-      }, {
-        order_id: 4,
-        code: "MVD000004",
-        name: "Ho va Ten 4",
-        phone: "09" + Math.floor(Math.random() * (98765432 - 12345678) + 12345678),
-        note: "Không",
-        status: Math.floor(Math.random() * (2 - 0) + 0)
-      }, {
-        order_id: 5,
-        code: "MVD000005",
-        name: "Ho va Ten 5",
-        phone: "09" + Math.floor(Math.random() * (98765432 - 12345678) + 12345678),
-        note: "Tư vấn",
-        status: Math.floor(Math.random() * (2 - 0) + 0)
-      }];
+    fetchContacts: function fetchContacts(page_url) {
+      var _this = this;
+
+      page_url = "../../api/admin/manage-contact/contact/".concat(this.currentEntries, "?page=").concat(this.pagination.current_page);
+      fetch(page_url).then(function (res) {
+        return res.json();
+      }).then(function (res) {
+        _this.contacts = res.data;
+        _this.pagination = res.meta;
+      })["catch"](function (err) {
+        return console.log(err);
+      });
     },
-    create: function create() {
-      $("#loanModal").modal("show");
+    search: function search(page_url) {
+      var _this2 = this;
+
+      page_url = "../../api/admin/manage-contact/contact/search/".concat(this.query, "/").concat(this.currentEntries, "?page=").concat(this.pagination.current_page);
+      fetch(page_url).then(function (res) {
+        return res.json();
+      }).then(function (res) {
+        _this2.contacts = res.data;
+        _this2.pagination = res.meta;
+      })["catch"](function (err) {
+        return console.log(err);
+      });
+    },
+    filter: function filter(page_url) {
+      var _this3 = this;
+
+      page_url = "../../api/admin/manage-contact/contact/filter/".concat(this.value, "/").concat(this.currentEntries, "?page=").concat(this.pagination.current_page);
+      fetch(page_url).then(function (res) {
+        return res.json();
+      }).then(function (res) {
+        _this3.contacts = res.data;
+        _this3.pagination = res.meta;
+      })["catch"](function (err) {
+        return console.log(err);
+      });
+    },
+    destroy: function destroy(contactId) {
+      var _this4 = this;
+
+      this.$snotify.clear();
+      this.$snotify.confirm('Xác nhận xóa', {
+        timeout: 5000,
+        showProgressBar: true,
+        closeOnClick: false,
+        pauseOnHover: true,
+        buttons: [{
+          text: 'Xóa',
+          action: function action(toast) {
+            _this4.$snotify.remove(toast.id);
+
+            axios["delete"]("../../api/admin/manage-contact/contact/".concat(contactId)).then(function (res) {
+              _this4.$snotify.success('Đã xóa!');
+
+              var checkData = _this4.contacts.length - 1;
+
+              if (checkData == 0) {
+                _this4.pagination.current_page = _this4.pagination.current_page - 1;
+              }
+
+              _this4.fetchContacts();
+            })["catch"](function (err) {
+              return console.log(err);
+            });
+          },
+          bold: false
+        }, {
+          text: 'Đóng',
+          action: function action(toast) {
+            _this4.$snotify.remove(toast.id);
+          },
+          bold: true
+        }]
+      });
+    },
+    change: function change(event, contact) {
+      var _this5 = this;
+
+      this.form.status = event.target.value;
+      this.form.put("../../api/admin/manage-contact/contact/".concat(contact.id)).then(function (res) {
+        _this5.fetchContacts();
+
+        _this5.$snotify.success('Đã thay đổi trạng thái');
+      })["catch"](function (err) {
+        return console.log(err);
+      });
+    },
+    detail: function detail(contact) {
+      this.form.reset();
+      this.form.clear();
+      this.form.fill(contact);
+      $('#DetailModal').modal('show');
     },
     close: function close() {
-      $("#loanModal").modal("hide");
+      $('#DetailModal').modal('hide');
     }
   }
 });
@@ -7319,18 +7444,18 @@ __webpack_require__.r(__webpack_exports__);
     },
     query: function query(keyword) {
       if (keyword === '') {
-        this.value = '';
         this.fetchOrders();
       } else {
+        this.value = '';
         this.pagination.current_page = 1;
         this.search();
       }
     },
     value: function value(_value) {
       if (_value === '') {
-        this.query = '';
         this.fetchOrders();
       } else {
+        this.query = '';
         this.pagination.current_page = 1;
         this.filter();
       }
@@ -7917,6 +8042,12 @@ __webpack_require__.r(__webpack_exports__);
 
             axios["delete"]("../../api/admin/manage-post/post/".concat(postId)).then(function (res) {
               _this4.$snotify.success('Đã xóa!');
+
+              var checkData = _this4.posts.length - 1;
+
+              if (checkData == 0) {
+                _this4.pagination.current_page = _this4.pagination.current_page - 1;
+              }
 
               _this4.fetchPosts();
             })["catch"](function (err) {
@@ -8639,6 +8770,12 @@ __webpack_require__.r(__webpack_exports__);
             axios["delete"]("../../api/admin/manage-service/service/".concat(serviceId)).then(function (res) {
               _this3.$snotify.success('Đã xóa!');
 
+              var checkData = _this3.services.length - 1;
+
+              if (checkData == 0) {
+                _this3.pagination.current_page = _this3.pagination.current_page - 1;
+              }
+
               _this3.fetchServices();
             })["catch"](function (err) {
               return console.log(err);
@@ -9317,143 +9454,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -74465,171 +74465,467 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "card" }, [
-    _vm._m(0),
-    _vm._v(" "),
-    _c(
-      "div",
-      { staticClass: "card-body" },
-      [
-        _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "col-md-3" }, [
-            _c("div", { staticClass: "between:flex bottom:margin-3 ml-2" }, [
-              _c("div", { staticClass: "center:flex-items" }, [
-                _c("span", { staticClass: "right:marign-1" }, [
-                  _vm._v("Hiển thị"),
+  return _c(
+    "div",
+    { staticClass: "card" },
+    [
+      _c("vue-snotify"),
+      _vm._v(" "),
+      _vm._m(0),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "card-body" },
+        [
+          _c("div", { staticClass: "row" }, [
+            _c("div", { staticClass: "col-md-3" }, [
+              _c("div", { staticClass: "between:flex bottom:margin-3 ml-2" }, [
+                _c("div", { staticClass: "center:flex-items" }, [
+                  _c("span", { staticClass: "right:marign-1" }, [
+                    _vm._v("Hiển thị"),
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "select",
+                    {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.currentEntries,
+                          expression: "currentEntries",
+                        },
+                      ],
+                      staticClass: "select form-select",
+                      attrs: { id: "form-select" },
+                      on: {
+                        change: function ($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function (o) {
+                              return o.selected
+                            })
+                            .map(function (o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.currentEntries = $event.target.multiple
+                            ? $$selectedVal
+                            : $$selectedVal[0]
+                        },
+                      },
+                    },
+                    _vm._l(_vm.showEntries, function (entry) {
+                      return _c(
+                        "option",
+                        { key: entry, domProps: { value: entry } },
+                        [
+                          _vm._v(
+                            "\n                                " +
+                              _vm._s(entry) +
+                              "\n                            "
+                          ),
+                        ]
+                      )
+                    }),
+                    0
+                  ),
                 ]),
+              ]),
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-md-4" }, [
+              _c(
+                "select",
+                {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.value,
+                      expression: "value",
+                    },
+                  ],
+                  staticClass: "select form-select",
+                  attrs: { id: "select-right" },
+                  on: {
+                    change: function ($event) {
+                      var $$selectedVal = Array.prototype.filter
+                        .call($event.target.options, function (o) {
+                          return o.selected
+                        })
+                        .map(function (o) {
+                          var val = "_value" in o ? o._value : o.value
+                          return val
+                        })
+                      _vm.value = $event.target.multiple
+                        ? $$selectedVal
+                        : $$selectedVal[0]
+                    },
+                  },
+                },
+                [
+                  _c("option", { attrs: { value: "" } }, [
+                    _vm._v("Xem tất cả"),
+                  ]),
+                  _vm._v(" "),
+                  _c("option", { attrs: { value: "0" } }, [
+                    _vm._v("Đang xử lý"),
+                  ]),
+                  _vm._v(" "),
+                  _c("option", { attrs: { value: "1" } }, [
+                    _vm._v("Đã liên hệ"),
+                  ]),
+                  _vm._v(" "),
+                  _c("option", { attrs: { value: "2" } }, [_vm._v("Đã huỷ")]),
+                ]
+              ),
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-md-5" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.query,
+                    expression: "query",
+                  },
+                ],
+                staticClass: "form-control form-search",
+                attrs: { placeholder: "Tìm kiếm...", type: "text" },
+                domProps: { value: _vm.query },
+                on: {
+                  input: function ($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.query = $event.target.value
+                  },
+                },
+              }),
+            ]),
+          ]),
+          _vm._v(" "),
+          _c(
+            "table",
+            { staticClass: "table table-striped", attrs: { id: "table1" } },
+            [
+              _vm._m(1),
+              _vm._v(" "),
+              _c(
+                "tbody",
+                [
+                  _vm._l(_vm.contacts, function (contact) {
+                    return _c("tr", { key: contact.id }, [
+                      _c("td", [
+                        _c(
+                          "a",
+                          {
+                            attrs: { href: "javascript:void(0)" },
+                            on: {
+                              click: function ($event) {
+                                return _vm.detail(contact)
+                              },
+                            },
+                          },
+                          [
+                            _vm._v(
+                              "\n                            " +
+                                _vm._s(contact.full_name) +
+                                "\n                        "
+                            ),
+                          ]
+                        ),
+                      ]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(contact.email))]),
+                      _vm._v(" "),
+                      _c("td", [_vm._v(_vm._s(contact.phone_number))]),
+                      _vm._v(" "),
+                      _c("td", [
+                        _vm._v(
+                          _vm._s(_vm._f("formatFullTime")(contact.created_at))
+                        ),
+                      ]),
+                      _vm._v(" "),
+                      _c("td", [
+                        _c(
+                          "select",
+                          {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: contact.status,
+                                expression: "contact.status",
+                              },
+                            ],
+                            staticClass: "form-select",
+                            class: [
+                              {
+                                "btn-outline-secondary": contact.status == 0,
+                              },
+                              {
+                                "btn-outline-primary": contact.status == 1,
+                              },
+                              {
+                                "btn-outline-danger": contact.status == 2,
+                              },
+                            ],
+                            on: {
+                              change: [
+                                function ($event) {
+                                  var $$selectedVal = Array.prototype.filter
+                                    .call($event.target.options, function (o) {
+                                      return o.selected
+                                    })
+                                    .map(function (o) {
+                                      var val =
+                                        "_value" in o ? o._value : o.value
+                                      return val
+                                    })
+                                  _vm.$set(
+                                    contact,
+                                    "status",
+                                    $event.target.multiple
+                                      ? $$selectedVal
+                                      : $$selectedVal[0]
+                                  )
+                                },
+                                function ($event) {
+                                  return _vm.change($event, contact)
+                                },
+                              ],
+                            },
+                          },
+                          [
+                            _c(
+                              "option",
+                              {
+                                attrs: {
+                                  value: "0",
+                                  hidden: contact.status != 0,
+                                },
+                              },
+                              [_vm._v("Đang chờ xử lý")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              {
+                                attrs: {
+                                  value: "1",
+                                  hidden: contact.status == 2,
+                                },
+                              },
+                              [_vm._v("Đã liên hệ")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "option",
+                              {
+                                attrs: {
+                                  value: "2",
+                                  hidden: contact.status == 1,
+                                },
+                              },
+                              [_vm._v("Đã huỷ")]
+                            ),
+                          ]
+                        ),
+                      ]),
+                      _vm._v(" "),
+                      _c("td", [
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-danger",
+                            on: {
+                              click: function ($event) {
+                                return _vm.destroy(contact.id)
+                              },
+                            },
+                          },
+                          [_c("i", { staticClass: "bi bi-trash" })]
+                        ),
+                      ]),
+                    ])
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "tr",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: !_vm.contacts.length,
+                          expression: "!contacts.length",
+                        },
+                      ],
+                    },
+                    [_vm._m(2)]
+                  ),
+                ],
+                2
+              ),
+            ]
+          ),
+          _vm._v(" "),
+          _vm.pagination.last_page > 1
+            ? _c("pagination-component", {
+                attrs: { pagination: _vm.pagination, offset: 5 },
+                on: {
+                  paginate: function ($event) {
+                    _vm.query === "" ? _vm.fetchContacts() : _vm.search()
+                  },
+                },
+              })
+            : _vm._e(),
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass: "modal fade",
+          attrs: {
+            id: "DetailModal",
+            tabindex: "-1",
+            role: "dialog",
+            "aria-labelledby": "DetailModalTitle",
+            "aria-hidden": "true",
+          },
+        },
+        [
+          _c("div", { staticClass: "modal-dialog" }, [
+            _c("div", { staticClass: "modal-content" }, [
+              _c("div", { staticClass: "modal-header bg-primary" }, [
+                _c(
+                  "h5",
+                  {
+                    staticClass: "modal-title white",
+                    attrs: { id: "DetailModalTitle" },
+                  },
+                  [_vm._v("Chi tiết liên hệ")]
+                ),
                 _vm._v(" "),
                 _c(
-                  "select",
+                  "button",
                   {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.currentEntries,
-                        expression: "currentEntries",
-                      },
-                    ],
-                    staticClass: "select form-select",
-                    attrs: { id: "form-select" },
+                    staticClass: "close",
+                    attrs: {
+                      type: "button",
+                      "data-dismiss": "modal",
+                      "aria-label": "Close",
+                    },
                     on: {
-                      change: function ($event) {
-                        var $$selectedVal = Array.prototype.filter
-                          .call($event.target.options, function (o) {
-                            return o.selected
-                          })
-                          .map(function (o) {
-                            var val = "_value" in o ? o._value : o.value
-                            return val
-                          })
-                        _vm.currentEntries = $event.target.multiple
-                          ? $$selectedVal
-                          : $$selectedVal[0]
+                      click: function ($event) {
+                        return _vm.close()
                       },
                     },
                   },
-                  _vm._l(_vm.showEntries, function (entry) {
-                    return _c(
-                      "option",
-                      { key: entry, domProps: { value: entry } },
-                      [
-                        _vm._v(
-                          "\n                                " +
-                            _vm._s(entry) +
-                            "\n                            "
-                        ),
-                      ]
-                    )
-                  }),
-                  0
+                  [
+                    _c("span", { attrs: { "aria-hidden": "true" } }, [
+                      _vm._v("×"),
+                    ]),
+                  ]
+                ),
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "modal-body" }, [
+                _c(
+                  "table",
+                  {
+                    staticClass: "table row table-borderless w-100 m-0 border",
+                  },
+                  [
+                    _c("tbody", { staticClass: "col-lg-12 p-0" }, [
+                      _vm._m(3),
+                      _vm._v(" "),
+                      _c("tr", [
+                        _c("td", [
+                          _vm._v(
+                            "\n                                    Tên khách hàng: "
+                          ),
+                          _c("strong", [
+                            _vm._v(" " + _vm._s(_vm.form.full_name)),
+                          ]),
+                        ]),
+                      ]),
+                      _vm._v(" "),
+                      _c("tr", [
+                        _c("td", [
+                          _vm._v(
+                            "\n                                    Số điện thoại: "
+                          ),
+                          _c("strong", [
+                            _vm._v(" " + _vm._s(_vm.form.phone_number)),
+                          ]),
+                        ]),
+                      ]),
+                      _vm._v(" "),
+                      _c("tr", [
+                        _c("td", [
+                          _vm._v(
+                            "\n                                    Email: "
+                          ),
+                          _c("strong", [_vm._v(_vm._s(_vm.form.email))]),
+                        ]),
+                      ]),
+                      _vm._v(" "),
+                      _c("tr", [
+                        _c("td", [
+                          _vm._v(
+                            "\n                                    Ngày gửi: "
+                          ),
+                          _c("strong", [
+                            _vm._v(
+                              " " +
+                                _vm._s(
+                                  _vm._f("formatFullTime")(_vm.form.created_at)
+                                )
+                            ),
+                          ]),
+                        ]),
+                      ]),
+                      _vm._v(" "),
+                      _c("tr", [
+                        _c("td", [
+                          _vm._v(
+                            "\n                                    Ghi chú: "
+                          ),
+                          _c("strong", [_vm._v(" " + _vm._s(_vm.form.note))]),
+                        ]),
+                      ]),
+                    ]),
+                  ]
+                ),
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "modal-footer" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-secondary btn-3d",
+                    attrs: { type: "button", "data-dismiss": "modal" },
+                    on: {
+                      click: function ($event) {
+                        return _vm.close()
+                      },
+                    },
+                  },
+                  [_vm._v("Đóng")]
                 ),
               ]),
             ]),
           ]),
-          _vm._v(" "),
-          _vm._m(1),
-          _vm._v(" "),
-          _vm._m(2),
-        ]),
-        _vm._v(" "),
-        _c(
-          "table",
-          { staticClass: "table table-striped", attrs: { id: "table1" } },
-          [
-            _vm._m(3),
-            _vm._v(" "),
-            _c(
-              "tbody",
-              _vm._l(_vm.orders, function (order) {
-                return _c("tr", { key: order.order_id }, [
-                  _c("td", [_vm._v(_vm._s(order.code))]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(order.name))]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(order.phone))]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(order.note))]),
-                  _vm._v(" "),
-                  _c("td", [
-                    _c(
-                      "select",
-                      {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: order.status,
-                            expression: "order.status",
-                          },
-                        ],
-                        staticClass: "form-select",
-                        class: [
-                          {
-                            "btn-outline-secondary": order.status == 0,
-                          },
-                          {
-                            "btn-outline-primary": order.status == 1,
-                          },
-                          {
-                            "btn-outline-success": order.status == 2,
-                          },
-                          {
-                            "btn-outline-danger": order.status == 3,
-                          },
-                        ],
-                        on: {
-                          change: function ($event) {
-                            var $$selectedVal = Array.prototype.filter
-                              .call($event.target.options, function (o) {
-                                return o.selected
-                              })
-                              .map(function (o) {
-                                var val = "_value" in o ? o._value : o.value
-                                return val
-                              })
-                            _vm.$set(
-                              order,
-                              "status",
-                              $event.target.multiple
-                                ? $$selectedVal
-                                : $$selectedVal[0]
-                            )
-                          },
-                        },
-                      },
-                      [
-                        _c("option", { attrs: { value: "0" } }, [
-                          _vm._v("Đang chờ xử lý"),
-                        ]),
-                        _vm._v(" "),
-                        _c("option", { attrs: { value: "1" } }, [
-                          _vm._v("Đã liên hệ"),
-                        ]),
-                      ]
-                    ),
-                  ]),
-                ])
-              }),
-              0
-            ),
-          ]
-        ),
-        _vm._v(" "),
-        _vm.pagination.last_page > 1
-          ? _c("pagination-component", {
-              attrs: { pagination: _vm.pagination, offset: 5 },
-              on: {
-                paginate: function ($event) {
-                  _vm.query === "" ? _vm.fetchAccounts() : _vm.search()
-                },
-              },
-            })
-          : _vm._e(),
-      ],
-      1
-    ),
-  ])
+        ]
+      ),
+    ],
+    1
+  )
 }
 var staticRenderFns = [
   function () {
@@ -74639,7 +74935,7 @@ var staticRenderFns = [
     return _c("div", { staticClass: "card-header" }, [
       _c("div", { staticClass: "row" }, [
         _c("div", { staticClass: "col-md-12" }, [
-          _vm._v("Danh sách các đơn đặt xe"),
+          _vm._v("Danh sách liên hệ tư vấn"),
         ]),
       ]),
     ])
@@ -74648,48 +74944,39 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-4" }, [
-      _c(
-        "select",
-        { staticClass: "select form-select", attrs: { id: "select-right" } },
-        [
-          _c("option", { attrs: { value: "" } }, [
-            _vm._v("Chọn trạng thái cần lọc"),
-          ]),
-          _vm._v(" "),
-          _c("option", { attrs: { value: "0" } }, [_vm._v("Đang xử lý")]),
-          _vm._v(" "),
-          _c("option", { attrs: { value: "1" } }, [_vm._v("Đã liên hệ")]),
-        ]
-      ),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-5" }, [
-      _c("input", {
-        staticClass: "form-control form-search",
-        attrs: { placeholder: "Tìm kiếm...", type: "text" },
-      }),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
     return _c("thead", [
       _c("tr", [
-        _c("th", [_vm._v("Mã đơn thuê xe")]),
-        _vm._v(" "),
         _c("th", [_vm._v("Họ và tên")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Email")]),
         _vm._v(" "),
         _c("th", [_vm._v("Số điện thoại")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Ghi chú")]),
+        _c("th", [_vm._v("Ngày gửi")]),
         _vm._v(" "),
         _c("th", [_vm._v("Trạng thái")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Thao tác")]),
+      ]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", { attrs: { colspan: "6" } }, [
+      _c("div", { staticClass: "alert alert-danger" }, [
+        _vm._v("Không tìm thấy kết quả phù hợp!"),
+      ]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("tr", [
+      _c("td", { staticClass: "h3-strong" }, [
+        _c("h3", [_c("strong", [_vm._v(" Thông tin chi tiết")])]),
       ]),
     ])
   },
@@ -78432,7 +78719,7 @@ var staticRenderFns = [
             _vm._v(" "),
             _c("p", { staticClass: "mt-4 mb-4" }, [
               _vm._v(
-                "\n                    Bạn điền đẩy đủ thông tin dưới đây và nhấn gửi, sau đó\n                    chúng tôi sẽ liên hệ với bạn.\n                "
+                "Bạn điền đẩy đủ thông tin dưới đây và nhấn gửi, sau đó chúng tôi sẽ liên hệ với bạn."
               ),
             ]),
           ]),
@@ -78451,11 +78738,7 @@ var staticRenderFns = [
                         _c(
                           "label",
                           { staticClass: "text-left", attrs: { for: "name" } },
-                          [
-                            _vm._v(
-                              "\n                                            Họ và tên\n                                        "
-                            ),
-                          ]
+                          [_vm._v(" Họ và tên ")]
                         ),
                         _vm._v(" "),
                         _c("input", {
@@ -78472,11 +78755,7 @@ var staticRenderFns = [
                         _c(
                           "label",
                           { staticClass: "text-left", attrs: { for: "phone" } },
-                          [
-                            _vm._v(
-                              "\n                                            Số điện thoại\n                                        "
-                            ),
-                          ]
+                          [_vm._v(" Số điện thoại ")]
                         ),
                         _vm._v(" "),
                         _c("input", {
@@ -78492,15 +78771,28 @@ var staticRenderFns = [
                       _c("div", { staticClass: "col-md-12" }, [
                         _c(
                           "label",
+                          { staticClass: "text-left", attrs: { for: "phone" } },
+                          [_vm._v(" Email ")]
+                        ),
+                        _vm._v(" "),
+                        _c("input", {
+                          attrs: {
+                            type: "email",
+                            name: "phone",
+                            id: "phone",
+                            placeholder: "Email",
+                          },
+                        }),
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-md-12" }, [
+                        _c(
+                          "label",
                           {
                             staticClass: "text-left",
                             attrs: { for: "category" },
                           },
-                          [
-                            _vm._v(
-                              "\n                                            Ghi chú\n                                        "
-                            ),
-                          ]
+                          [_vm._v(" Ghi chú ")]
                         ),
                         _vm._v(" "),
                         _c("textarea", {
@@ -78524,11 +78816,7 @@ var staticRenderFns = [
                               staticClass: "text-center",
                               attrs: { type: "submit" },
                             },
-                            [
-                              _vm._v(
-                                "\n                                                Gửi\n                                            "
-                              ),
-                            ]
+                            [_vm._v("Gửi")]
                           ),
                         ]),
                       ]),

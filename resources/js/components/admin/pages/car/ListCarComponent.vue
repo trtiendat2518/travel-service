@@ -188,6 +188,10 @@ export default {
                                 .delete(`../../api/admin/manage-car/car/${carId}`)
                                 .then((res) => {
                                     this.$snotify.success('Đã xóa!')
+                                    let checkData = this.cars.length - 1
+                                    if (checkData == 0) {
+                                        this.pagination.current_page = this.pagination.current_page - 1
+                                    }
                                     this.fetchCars()
                                 })
                                 .catch((err) => console.log(err))

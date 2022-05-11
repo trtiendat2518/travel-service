@@ -395,18 +395,18 @@ export default {
         },
         query(keyword) {
             if (keyword === '') {
-                this.value = ''
                 this.fetchOrders()
             } else {
+                this.value = ''
                 this.pagination.current_page = 1
                 this.search()
             }
         },
         value(value) {
             if (value === '') {
-                this.query = ''
                 this.fetchOrders()
             } else {
+                this.query = ''
                 this.pagination.current_page = 1
                 this.filter()
             }

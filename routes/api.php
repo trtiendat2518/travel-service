@@ -57,4 +57,10 @@ Route::prefix('admin')->group(function () {
         Route::get('user/search/{query}/{currentEntries}', 'Admin\AccountController@search');
         Route::resource('user', 'Admin\AccountController')->except('index', 'create');
     });
+
+    Route::prefix('manage-contact')->group(function () {
+        Route::get('contact/filter/{query}/{currentEntries}', 'Admin\ConsultingController@filter');
+        Route::get('contact/search/{query}/{currentEntries}', 'Admin\ConsultingController@search');
+        Route::resource('contact', 'Admin\ConsultingController')->except('index', 'create');
+    });
 });
