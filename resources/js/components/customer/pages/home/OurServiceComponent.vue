@@ -7,110 +7,18 @@
             </div>
             <div class="box-content">
                 <div class="container">
-                    <div class="row">
-                        <div
-                            class="col-md-3 d-flex flex-column justify-content-between mt-4"
-                        >
-                            <a href="/dich-vu-thue-xe">
+                    <div class="cards">
+                        <div class="card" v-for="service in services" :key="service.id">
+                            <a :href="`/dich-vu-thue-xe/${service.slug}`">
                                 <div class="our-service-item">
                                     <img
                                         class="our-service-img decrease-brightness"
-                                        :src="`../public/user/img/xe-dua-don-san-bay.png`"
+                                        :src="`../public/images/service/${service.avatar}`"
                                         alt=""
                                     />
-                                    <p class="our-service-caption">
-                                        Đưa đón sân bay
-                                    </p>
-                                </div>
-                            </a>
-                        </div>
-                        <div
-                            class="col-md-3 d-flex flex-column justify-content-between mt-4"
-                        >
-                            <div class="our-service-item">
-                                <img
-                                    class="our-service-img decrease-brightness"
-                                    :src="`../public/user/img/xe-di-cap-cuu.png`"
-                                    alt=""
-                                />
-                                <p class="our-service-caption">Xe đi cấp cứu</p>
-                            </div>
-                        </div>
-                        <div
-                            class="col-md-3 d-flex flex-column justify-content-between mt-4"
-                        >
-                            <div class="our-service-item">
-                                <img
-                                    class="our-service-img decrease-brightness"
-                                    :src="`../public/user/img/xe-di-cong-tac.png`"
-                                    alt=""
-                                />
-                                <p class="our-service-caption">
-                                    Xe đi công tác
-                                </p>
-                            </div>
-                        </div>
-                        <div
-                            class="col-md-3 d-flex flex-column justify-content-between mt-4"
-                        >
-                            <div class="our-service-item">
-                                <img
-                                    class="our-service-img decrease-brightness"
-                                    :src="`../public/user/img/xe-ve-que.png`"
-                                    alt=""
-                                />
-                                <p class="our-service-caption">Xe đi về quê</p>
-                            </div>
-                        </div>
-                        <div
-                            class="col-md-3 d-flex flex-column justify-content-between mt-4"
-                        >
-                            <div class="our-service-item">
-                                <img
-                                    class="our-service-img decrease-brightness"
-                                    :src="`../public/user/img/xe-di-1-chieu.png`"
-                                    alt=""
-                                />
-                                <p class="our-service-caption">Xe đi 1 chiều</p>
-                            </div>
-                        </div>
-                        <div
-                            class="col-md-3 d-flex flex-column justify-content-between mt-4"
-                        >
-                            <div class="our-service-item">
-                                <img
-                                    class="our-service-img decrease-brightness"
-                                    :src="`../public/user/img/xe-di-2-chieu.png`"
-                                    alt=""
-                                />
-                                <p class="our-service-caption">Xe đi 2 chiều</p>
-                            </div>
-                        </div>
-                        <div
-                            class="col-md-3 d-flex flex-column justify-content-between mt-4"
-                        >
-                            <div class="our-service-item">
-                                <img
-                                    class="our-service-img decrease-brightness"
-                                    :src="`../public/user/img/xe-di-2-chieu.png`"
-                                    alt=""
-                                />
-                                <p class="our-service-caption">
-                                    Xe hoa cưới hỏi
-                                </p>
-                            </div>
-                        </div>
-                        <div
-                            class="col-md-3 d-flex flex-column justify-content-between mt-4"
-                        >
-                            <div class="our-service-item">
-                                <img
-                                    class="our-service-img decrease-brightness"
-                                    :src="`../public/user/img/xe-di-2-chieu.png`"
-                                    alt=""
-                                />
-                                <p class="our-service-caption">Xe đi sự kiện</p>
-                            </div>
+                                    <p class="our-service-caption">{{ service.name }}</p>
+                                </div></a
+                            >
                         </div>
                     </div>
                 </div>
@@ -120,7 +28,27 @@
 </template>
 
 <script>
-export default {};
+export default {
+    data() {
+        return {
+            services: []
+        }
+    },
+    mounted() {
+        this.fetchServices()
+    },
+    methods: {
+        fetchServices(page_url) {
+            page_url = `../../api/admin/manage-service/service/eight-services`
+            fetch(page_url)
+                .then((res) => res.json())
+                .then((res) => {
+                    this.services = res.data
+                })
+                .catch((err) => console.log(err))
+        }
+    }
+}
 </script>
 
 <style scoped>
@@ -129,5 +57,44 @@ export default {};
 }
 p {
     font-size: 18px;
+}
+.our-service-img {
+    width: 100vw;
+    height: 15vh;
+}
+.cards {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-gap: 1rem;
+}
+@media (min-width: 300px) {
+    .cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 600px) {
+    .cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .cards {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media (min-width: 900px) {
+    .cards {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    .cards {
+        grid-template-columns: repeat(4, 1fr);
+    }
 }
 </style>

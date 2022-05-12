@@ -1,135 +1,75 @@
 <template>
     <div class="container">
-        <div class="row">
-            <div class="col-lg-4 col-sm-6">
-                <a href="/bai-viet/chi-tiet">
+        <div class="cards">
+            <div v-for="post in posts" :key="post.id">
+                <a :href="`/bai-viet/${post.slug}`">
                     <article class="post">
                         <div class="featured-image">
-                            <img
-                                :src="`public/user/img/dich-vu-cho-thue-xe-tphcm.png`"
-                                alt=""
-                            />
+                            <img class="post-img" :src="`public/images/post/${post.avatar}`" alt="" />
                         </div>
                         <div class="entry-content">
                             <div class="entry-post-title">
-                                <h4 class="post-title">Hồ Chí Minh</h4>
+                                <h4 class="post-title">{{ post.place_name }}</h4>
                             </div>
                         </div>
                     </article>
                 </a>
             </div>
-            <div class="col-lg-4 col-sm-6">
-                <article class="post">
-                    <div class="featured-image">
-                        <img
-                            :src="`public/user/img/dich-vu-cho-thue-xe-du-lich-da-lat.png`"
-                            alt=""
-                        />
-                    </div>
-                    <div class="entry-content">
-                        <div class="entry-post-title">
-                            <h4 class="post-title">Đà Lạt</h4>
-                        </div>
-                    </div>
-                </article>
-            </div>
-            <div class="col-lg-4 col-sm-6">
-                <article class="post">
-                    <div class="featured-image">
-                        <img
-                            :src="`public/user/img/dich-vu-thue-xe-tai-vung-tau.png`"
-                            alt=""
-                        />
-                    </div>
-                    <div class="entry-content">
-                        <div class="entry-post-title">
-                            <h4 class="post-title">Vũng Tàu</h4>
-                        </div>
-                    </div>
-                </article>
-            </div>
-            <div class="col-lg-4 col-sm-6">
-                <article class="post">
-                    <div class="featured-image">
-                        <img
-                            :src="`public/user/img/thue-xe-du-lich-binh-duong.png`"
-                            alt=""
-                        />
-                    </div>
-                    <div class="entry-content">
-                        <div class="entry-post-title">
-                            <h4 class="post-title">Bình Dương</h4>
-                        </div>
-                    </div>
-                </article>
-            </div>
-            <div class="col-lg-4 col-sm-6">
-                <article class="post">
-                    <div class="featured-image">
-                        <img
-                            :src="`public/user/img/dich-vu-cho-thue-xe-tphcm.png`"
-                            alt=""
-                        />
-                    </div>
-                    <div class="entry-content">
-                        <div class="entry-post-title">
-                            <h4 class="post-title">Hà Nội</h4>
-                        </div>
-                    </div>
-                </article>
-            </div>
-            <div class="col-lg-4 col-sm-6">
-                <article class="post">
-                    <div class="featured-image">
-                        <img
-                            :src="`public/user/img/dich-vu-cho-thue-xe-tphcm.png`"
-                            alt=""
-                        />
-                    </div>
-                    <div class="entry-content">
-                        <div class="entry-post-title">
-                            <h4 class="post-title">Nha Trang</h4>
-                        </div>
-                    </div>
-                </article>
-            </div>
         </div>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="pagination-area">
-                    <ul>
-                        <li class="prev">
-                            <a href="#" class="waves-effect" title="">
-                                <img src="public/user/img/prev.png" alt="" />
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" class="waves-effect" title="">1</a>
-                        </li>
-                        <li class="active">
-                            <a href="#" class="waves-effect" title="">2</a>
-                        </li>
-                        <li><a href="#" class="waves-effect" title="">3</a></li>
-                        <li>
-                            <a href="#" class="waves-effect" title="">...</a>
-                        </li>
-                        <li>
-                            <a href="#" class="waves-effect" title="">22</a>
-                        </li>
-                        <li class="next">
-                            <a href="#" class="waves-effect" title="">
-                                <img src="public/user/img/next.png" alt="" />
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+        <pagination-component
+            class="pagination-area"
+            v-if="pagination.last_page > 1"
+            :pagination="pagination"
+            :offset="5"
+            @paginate="fetchPosts()"
+        >
+        </pagination-component>
     </div>
 </template>
 
 <script>
-export default {};
+export default {
+    data() {
+        return {
+            posts: [],
+            pagination: {
+                current_page: 1,
+                last_page: 5
+            },
+            currentEntries: 15,
+            showEntries: [5, 10, 25, 50],
+            query: '',
+            editMode: false,
+            form: new Form({
+                id: '',
+                title: '',
+                category_id: '',
+                content: '',
+                status: '',
+                author: '',
+                avatar: ''
+            })
+        }
+    },
+    mounted() {
+        this.fetchPosts()
+    },
+    methods: {
+        empty() {
+            return this.posts.length < 1
+        },
+        fetchPosts(page_url) {
+            page_url = `../../api/admin/manage-post/post/${this.currentEntries}?page=${this.pagination.current_page}`
+            fetch(page_url)
+                .then((res) => res.json())
+                .then((res) => {
+                    this.posts = res.data
+                    this.pagination = res.meta
+                })
+                .catch((err) => console.log(err))
+        }
+    }
+}
 </script>
 
 <style scoped>
@@ -141,5 +81,44 @@ a {
 }
 .decrease-brightness {
     filter: brightness(30%);
+}
+.post-img {
+    width: 100vw;
+    height: 20vh;
+}
+.cards {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-gap: 1rem;
+}
+@media (min-width: 300px) {
+    .cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 600px) {
+    .cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .cards {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media (min-width: 900px) {
+    .cards {
+        grid-template-columns: repeat(5, 2fr);
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    .cards {
+        grid-template-columns: repeat(5, 2fr);
+    }
 }
 </style>

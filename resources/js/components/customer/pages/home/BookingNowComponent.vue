@@ -26,11 +26,6 @@
                                         </div>
 
                                         <div class="col-md-12">
-                                            <label for="phone" class="text-left"> Email </label>
-                                            <input type="email" name="phone" id="phone" placeholder="Email" />
-                                        </div>
-
-                                        <div class="col-md-12">
                                             <label for="category" class="text-left"> Ghi chú </label>
                                             <textarea
                                                 name=""

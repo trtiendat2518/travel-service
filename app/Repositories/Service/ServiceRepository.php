@@ -2,9 +2,12 @@
 
 namespace App\Repositories\Service;
 
+use App\Models\Order;
+use App\Models\OrderDetail;
 use App\Repositories\Service\ServiceInterface;
 use Illuminate\Http\Request;
 use App\Models\Service;
+use Illuminate\Support\Facades\DB;
 
 /**
  * Class OrderRepository.
@@ -35,11 +38,24 @@ class ServiceRepository implements ServiceInterface
 
     public function all()
     {
-        return Service::where('status', '>', 0)->get();
+        return Service::where('status', '=', 0)->get();
     }
 
     public function detail($serviceSlug)
     {
         return Service::where('slug', $serviceSlug)->limit(1)->get();
+    }
+
+    public function eightServices()
+    {
+        return Service::orderBy('id', 'DESC')->limit(8)->get();
+    }
+
+    public function popular()
+    {
+        return OrderDetail::join('services', 'services.id', '=', 'order_details.service_id')
+            ->select(DB::raw("COUNT(service_id) AS service_popular"), 'services.id', 'services.name', 'services.avatar', 'services.slug')
+            ->orderBy('service_popular', 'DESC')
+            ->groupBy('service_id')->limit(5)->get();
     }
 }

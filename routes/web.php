@@ -25,18 +25,12 @@ Route::prefix('')->group(function () {
     Route::get('/doi-mat-khau', 'AuthController@changePasswordIndex');
     Route::post('/doi-mat-khau-tai-khoan', 'AuthController@changePasswordUpdate');
 
-    Route::get('dich-vu-thue-xe', function () {
-        return view('customer.pages.services.detail');
-    });
+    //ServiceController
+    Route::get('/dich-vu-thue-xe/{serviceSlug}', 'Customer\ServiceController@index');
 
-    Route::prefix('bai-viet')->group(function () {
-        Route::get('/', function () {
-            return view('customer.pages.posts.index');
-        });
-        Route::get('/chi-tiet', function () {
-            return view('customer.pages.posts.detail');
-        });
-    });
+    //PostController
+    Route::get('/bai-viet', 'Customer\PostController@index');
+    Route::get('/bai-viet/{postSlug}', 'Customer\PostController@indexDetail');
 });
 
 Route::prefix('admin')->group(function () {

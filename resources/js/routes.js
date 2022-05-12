@@ -10,10 +10,12 @@ import UpdateCar from './components/admin/pages/car/UpdateCarComponent.vue'
 import Service from './components/admin/pages/service/ServiceComponent.vue'
 import ListService from './components/admin/pages/service/ListServiceComponent.vue'
 import UpdateService from './components/admin/pages/service/UpdateServiceComponent.vue'
+import DetailService from './components/customer/pages/service/DetailServiceComponent.vue'
 
 import Post from './components/admin/pages/post/PostComponent.vue'
 import ListPost from './components/admin/pages/post/ListPostComponent.vue'
 import UpdatePost from './components/admin/pages/post/UpdatePostComponent.vue'
+import DetailPost from './components/customer/pages/post/DetailPostComponent.vue'
 
 export default new VueRouter({
     routes: [
@@ -34,6 +36,12 @@ export default new VueRouter({
                     component: UpdateService
                 }
             ]
+        },
+
+        {
+            path: '/dich-vu-thue-xe/:slugService',
+            name: 'service-detail',
+            component: DetailService
         },
 
         {
@@ -72,6 +80,11 @@ export default new VueRouter({
                     component: UpdatePost
                 }
             ]
+        },
+        {
+            path: '/bai-viet/:slugPost',
+            name: 'post-detail',
+            component: DetailPost
         }
     ],
     mode: 'history'

@@ -239,4 +239,10 @@ class ServiceController extends Controller
         $detailService = $this->serviceRepository->detail($serviceSlug);
         return ServiceResource::collection($detailService);
     }
+
+    public function eightServices()
+    {
+        $services = $this->serviceRepository->eightServices();
+        return ServiceResource::collection($services);
+    }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Service;
 
 class HomeController extends Controller
 {
@@ -14,7 +15,9 @@ class HomeController extends Controller
         $url_canonical = $request->url();
         //---------------
 
-        return view('customer.pages.home')->with(compact('meta_desc', 'meta_title', 'url_canonical'));
+        $service = Service::where('status', '=', 0)->get();
+
+        return view('customer.pages.home')->with(compact('meta_desc', 'meta_title', 'url_canonical', 'service'));
     }
 
     public function aboutUs(Request $request)
@@ -25,6 +28,8 @@ class HomeController extends Controller
         $url_canonical = $request->url();
         //---------------
 
-        return view('customer.pages.about.index')->with(compact('meta_desc', 'meta_title', 'url_canonical'));
+        $service = Service::where('status', '=', 0)->get();
+
+        return view('customer.pages.about.index')->with(compact('meta_desc', 'meta_title', 'url_canonical', 'service'));
     }
 }

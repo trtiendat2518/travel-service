@@ -83,26 +83,11 @@
                 </div>
             </div>
 
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="card">
-                        <div class="card-header">
-                            <div class="row">
-                                <div class="col-md-8">
-                                    <h4>Thống kê số lượng đơn đặt xe</h4>
-                                </div>
-                                <dashboard-component></dashboard-component>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <div id="chart-profile-visit"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <dashboard-component></dashboard-component>
         </section>
     </div>
     @include('admin.layouts.footer')
+    <script src="{{ asset('public/admin/js/jquery-3.4.1.js') }}"></script>
+    <script src="{{ asset('public/js/app.js') }}"></script>
 </div>
-<script src="{{ asset('public/js/app.js') }}"></script>
 @endsection

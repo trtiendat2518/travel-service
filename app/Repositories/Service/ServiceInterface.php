@@ -13,5 +13,7 @@ interface ServiceInterface
     public function list($currentEntries);
     public function search($query, $currentEntries);
     public function detail($serviceSlug);
+    public function eightServices();
+    public function popular();
     public function all();
 }

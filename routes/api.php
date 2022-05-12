@@ -18,6 +18,14 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::prefix('customer')->group(function () {
+    Route::get('service/detail/{serviceSlug}', 'Customer\ServiceController@detail');
+    Route::get('service/popular', 'Customer\ServiceController@popular');
+
+    Route::get('post/detail/{postSlug}', 'Customer\PostController@detail');
+    Route::get('post/popular', 'Customer\PostController@popular');
+});
+
 Route::prefix('admin')->group(function () {
     Route::prefix('manage-order')->group(function () {
         Route::get('order/place', 'Admin\OrderController@listPLaces');
@@ -36,6 +44,7 @@ Route::prefix('admin')->group(function () {
     });
 
     Route::prefix('manage-service')->group(function () {
+        Route::get('service/eight-services/', 'Admin\ServiceController@eightServices');
         Route::get('service/detail/{serviceSlug}', 'Admin\ServiceController@detail');
         Route::post('service/upgrade/{serviceId}', 'Admin\ServiceController@upgrade');
         Route::get('service/all', 'Admin\ServiceController@all');
@@ -44,6 +53,7 @@ Route::prefix('admin')->group(function () {
     });
 
     Route::prefix('manage-post')->group(function () {
+        Route::get('post/all', 'Admin\PostController@all');
         Route::get('post/detail/{postSlug}', 'Admin\PostController@detail');
         Route::patch('post/change/{postId}', 'Admin\PostController@change');
         Route::post('post/upgrade/{postId}', 'Admin\PostController@upgrade');
@@ -68,5 +78,16 @@ Route::prefix('admin')->group(function () {
         Route::get('review/filter/{query}/{currentEntries}', 'Admin\ReviewController@filter');
         Route::get('review/search/{query}/{currentEntries}', 'Admin\ReviewController@search');
         Route::resource('review', 'Admin\ReviewController')->except('index');
+    });
+
+    Route::prefix('dashboard-statistic')->group(function () {
+        Route::get('export-by-year/{from_year}/{to_year}', 'Admin\DashboardController@exportByYear');
+        Route::get('export-by-month/{from_month}/{to_month}', 'Admin\DashboardController@exportByMonth');
+        Route::get('export-by-day/{from_date}/{to_date}', 'Admin\DashboardController@exportByDay');
+        Route::get('export-one-month', 'Admin\DashboardController@exportStatistic');
+        Route::get('show', 'Admin\DashboardController@statisticShow');
+        Route::post('by-day', 'Admin\DashboardController@statisticDay');
+        Route::post('by-month', 'Admin\DashboardController@statisticMonth');
+        Route::post('by-year', 'Admin\DashboardController@statisticYear');
     });
 });

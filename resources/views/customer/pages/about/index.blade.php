@@ -4,7 +4,7 @@
 <div class="layout-theme">
     <!-- Start Top Title -->
     <section class="top-title">
-        <img src="{{ asset('public/user/img/xe-dua-don-san-bay.png') }}" alt="" style="width: 100vw; height: 500px; filter: brightness(30%)">
+        <img src="{{ asset('public/user/img/about-us-page.jpg') }}" alt="" style="width: 100vw; height: 500px; filter: brightness(30%)">
         <div class="top-page">
             <div class="container">
                 <div class="row">
@@ -77,8 +77,8 @@
                         <div class="elementor-widget-container">
                             <div class="row image-text-alignment-row image-text-alignment-row-right rocket-lazyload"
                                 style="background-image: url(&quot;{{ asset('public/user/img/travel.jpg') }}&quot;);" data-was-processed="true">
-                                <div class="col-md-4 col-sm-12"></div>
-                                <div class="col-md-8 col-sm-12">
+                                <div class="col-md-3 col-sm-12"></div>
+                                <div class="col-md-9 col-sm-12">
                                     <div class="image-text-alignment-block" style="border-right: 2px solid #d1d6db; border-bottom: 2px solid #d1d6db">
                                         <div class="image-text-alignment-block-mobile-image rocket-lazyload"
                                             style="background-image: url(&quot;{{ asset('public/user/img/travel.jpg') }}&quot;);"
@@ -86,19 +86,11 @@
                                         <div class="image-text-alignment-block-content">
                                             <h4 style="color: #1e1e1e;">Xe dịch vụ miền Nam – cho thuê mọi loại xe</h4>
                                             <div class="image-text-aligment-1-column">
-                                                <p>Xe dịch vụ miền Nam là đơn vị tiên phong cung cấp các dịch vụ thuê xe, đồng thời luôn đổi mới với
+                                                <p>Thuê xe miền Nam là đơn vị tiên phong cung cấp các dịch vụ thuê xe, đồng thời luôn đổi mới với
                                                     các dòng xe hiện
                                                     đại, chất lượng, mang lại trải nghiệm tốt nhất cho khách hàng khi ngồi trên xe. Các dòng xe hiện
                                                     tại chúng tôi
-                                                    đang cho thuê bao gồm:</p>
-                                                <p>
-                                                    - Xe 4 chỗ các loại chất lượng
-                                                    - Xe 7 chỗ Inova, Fotuner
-                                                    - Xe 16 chỗ For Trasnit, Mer Sprinter
-                                                    - Xe 29 chỗ Samco, Huyndai County
-                                                    - Xe 45 chỗ Aero Space, xe 45 cho Uni Noble
-                                                    - Xe giường nằm
-                                                </p>
+                                                    đang cho thuê bao gồm: Xe 4 chỗ, Xe 7 chỗ, Xe 16 chỗ, Xe 29 chỗ, Xe 45 chỗ, Xe giường nằm</p>
                                                 <p>
                                                     Với đủ mọi dòng xe, hãng xe từ trung cấp đến cao cấp và đến ngay cả các dòng xe sang chúng tôi
                                                     luôn sẵn sàng phục
@@ -127,21 +119,25 @@
                         data-id="dd26c33" data-element_type="widget" data-widget_type="Image Text Alignment Block.default">
                         <div class="elementor-widget-container">
                             <div class="row image-text-alignment-row image-text-alignment-row-left rocket-lazyload"
-                                style="background-image: url(&quot;{{ asset('public/user/img/02.jpg') }}&quot;);" data-was-processed="true">
+                                style="background-image: url(&quot;{{ asset('public/user/img/lien-he-voi-chung-toi.jpg') }}&quot;);"
+                                data-was-processed="true">
                                 <div class="col-md-7 col-sm-12">
                                     <div class="image-text-alignment-block" style="border-right: 2px solid #d1d6db; border-bottom: 2px solid #d1d6db">
                                         <div class="image-text-alignment-block-mobile-image rocket-lazyload"
-                                            style="background-image: url(&quot;{{ asset('public/user/img/02.jpg') }}&quot;);"
+                                            style="background-image: url(&quot;{{ asset('public/user/img/lien-he-voi-chung-toi.jpg') }}&quot;);"
                                             data-was-processed="true"></div>
                                         <div class="image-text-alignment-block-content">
                                             <h4 style="color: #1e1e1e;">THÔNG TIN LIÊN HỆ XE DỊCH VỤ MIỀN NAM</h4>
                                             <div class="image-text-aligment-1-column">
-                                                <p>– Trụ sở: DS8, Phường Linh Tây, Q. Thủ Đức, Thành phố Hồ Chí Minh</p>
+                                                <p>– <b>Trụ sở:</b> Đường số 8, Phường Linh Tây,Quận Thủ Đứ, Thành phố Hồ Chí Minh</p>
                                                 <p>
-                                                    – Chi nhánh: Thị Trấn Tân Châu, H. Tân Châu, TP Tây Ninh
+                                                    – <b>Chi nhánh:</b> Lô A, Đường N6 Khu Công Nghiệp, Quốc lộ 13
                                                 </p>
                                                 <p>
-                                                    – Điện thoại: 088.678.6052 (Tú) hoặc 0911.714.452 (Hà)
+                                                    – <b>Chi nhánh:</b> 583 Đường Cách Mạng Tháng 8, Khu phố 2, Phường 3, Thành phố Tây Ninh
+                                                </p>
+                                                <p>
+                                                    – <b>Điện thoại:</b> 088.678.6052 (Tú) hoặc 0911.714.452 (Hà)
                                                 </p>
                                             </div>
                                         </div>

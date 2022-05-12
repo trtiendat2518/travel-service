@@ -26,11 +26,14 @@
     "dependencies": {
         "cross-env": "^7.0.3",
         "moment": "^2.29.3",
+        "raphael": "^2.3.0",
         "vform": "^2.1.2",
+        "vue-morris": "^1.1.0",
         "vue-router": "^3.5.3",
         "vue-slick-carousel": "^1.0.6",
         "vue-snotify": "^3.2.1",
         "vue-sweetalert2": "^5.0.2",
+        "vue2-datepicker": "^3.10.4",
         "vue2-editor": "^2.10.3",
         "vuetify": "^2.6.5"
     }

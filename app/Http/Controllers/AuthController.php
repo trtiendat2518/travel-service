@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Service;
 use App\Models\Users;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -18,7 +19,9 @@ class AuthController extends Controller
         $url_canonical = $request->url();
         //---------------
 
-        return view('auth.register')->with(compact('meta_desc', 'meta_title', 'url_canonical'));
+        $service = Service::where('status', '=', 0)->get();
+
+        return view('auth.register')->with(compact('meta_desc', 'meta_title', 'url_canonical', 'service'));
     }
 
     public function loginIndex(Request $request)
@@ -29,7 +32,9 @@ class AuthController extends Controller
         $url_canonical = $request->url();
         //---------------
 
-        return view('auth.login')->with(compact('meta_desc', 'meta_title', 'url_canonical'));
+        $service = Service::where('status', '=', 0)->get();
+
+        return view('auth.login')->with(compact('meta_desc', 'meta_title', 'url_canonical', 'service'));
     }
 
     public function verifyIndex(Request $request)
@@ -40,7 +45,9 @@ class AuthController extends Controller
         $url_canonical = $request->url();
         //---------------
 
-        return \view('auth.verify')->with(\compact('meta_desc', 'meta_title', 'url_canonical'));
+        $service = Service::where('status', '=', 0)->get();
+
+        return \view('auth.verify')->with(\compact('meta_desc', 'meta_title', 'url_canonical', 'service'));
     }
 
     public function verifyAdminIndex(Request $request)
@@ -51,7 +58,9 @@ class AuthController extends Controller
         $url_canonical = $request->url();
         //---------------
 
-        return \view('admin.pages.info.verify')->with(\compact('meta_desc', 'meta_title', 'url_canonical'));
+        $service = Service::where('status', '=', 0)->get();
+
+        return \view('admin.pages.info.verify')->with(\compact('meta_desc', 'meta_title', 'url_canonical', 'service'));
     }
 
     public function forgotIndex(Request $request)
@@ -62,7 +71,9 @@ class AuthController extends Controller
         $url_canonical = $request->url();
         //---------------
 
-        return \view('auth.forgot_password')->with(\compact('meta_desc', 'meta_title', 'url_canonical'));
+        $service = Service::where('status', '=', 0)->get();
+
+        return \view('auth.forgot_password')->with(\compact('meta_desc', 'meta_title', 'url_canonical', 'service'));
     }
 
     public function newPasswordIndex(Request $request)
@@ -73,7 +84,9 @@ class AuthController extends Controller
         $url_canonical = $request->url();
         //---------------
 
-        return \view('auth.new_password')->with(\compact('meta_desc', 'meta_title', 'url_canonical'));
+        $service = Service::where('status', '=', 0)->get();
+
+        return \view('auth.new_password')->with(\compact('meta_desc', 'meta_title', 'url_canonical', 'service'));
     }
 
     public function registerAccount(Request $request)
@@ -325,8 +338,9 @@ class AuthController extends Controller
         //---------------
 
         $user = Users::find(Session::get('id'));
+        $service = Service::where('status', '=', 0)->get();
 
-        return \view('customer.pages.info.edit_info')->with(\compact('meta_desc', 'meta_title', 'url_canonical', 'user'));
+        return \view('customer.pages.info.edit_info')->with(\compact('meta_desc', 'meta_title', 'url_canonical', 'user', 'service'));
     }
 
     public function infoAdminIndex(Request $request)
@@ -438,8 +452,9 @@ class AuthController extends Controller
         //---------------
 
         $user = Users::find(Session::get('id'));
+        $service = Service::where('status', '=', 0)->get();
 
-        return \view('customer.pages.info.change_password')->with(\compact('meta_desc', 'meta_title', 'url_canonical', 'user'));
+        return \view('customer.pages.info.change_password')->with(\compact('meta_desc', 'meta_title', 'url_canonical', 'user', 'service'));
     }
 
     public function changePasswordAdminIndex(Request $request)

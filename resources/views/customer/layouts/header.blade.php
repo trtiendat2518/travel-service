@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <div class="row header-main">
             <div id="logo" class="col-lg-2 col-md-3 col-6 d-flex text-left">
-                <a id="logo-img" href="#"><img src="{{ asset('public/user/img/logo.png') }}" alt="logo" title="prodrive" /></a>
+                <a id="logo-img" href="#"><img src="{{ asset('public/images/logo.png') }}" alt="logo" title="thuexemiennam" /></a>
             </div>
             <div class="top-header-right d-flex flex-wrap col-lg-10 col-md-9 col-6 align-items-center" style="justify-content: right !important">
                 <ul id="menu" class="d-flex align-items-center list-unstyled mb-0">
@@ -15,13 +15,15 @@
                     </li>
 
                     <li class="item">
-                        <a class="nav-link text-capitalize p-0" href="{{ url('/') }}">Dịch vụ thuê xe</a>
+                        <a class="nav-link text-capitalize p-0" href="javascript:void(0)">Dịch vụ thuê xe</a>
                         <ul class="menu-dropdown position-absolute list-unstyled">
-                            <li><a href="services-single.html">Xe đi về quê</a></li>
-                            <li><a href="services-single.html">Xe đi bệnh viện</a></li>
-                            <li><a href="services-single.html">Xe đưa đón sân bay</a></li>
-                            <li><a href="services.html">Xe đi 1 chiều có tài xế</a></li>
-                            <li><a href="services-rates.html">Xe đi 2 chiều có tài xế</a></li>
+                            @foreach ($service as $key => $value)
+                            <li>
+                                <a href="{{ url('dich-vu-thue-xe/'.$value->slug) }}">
+                                    {{ $value->name }}
+                                </a>
+                            </li>
+                            @endforeach
                         </ul>
                     </li>
 

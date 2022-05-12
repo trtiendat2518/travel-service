@@ -80,7 +80,7 @@ class PostController extends Controller
                 'title' => 'bail|required|max:150|min:50|notspecial_spaces|unique:posts',
                 'avatar' => 'bail|required|mimes:jpeg,jpg,png',
                 'content' => 'bail|required|min:50|max:5000',
-                'category_id' => 'required',
+                'category_id' => 'required|unique:posts',
             ],
             [
                 'title.required' => 'Tiêu đề không được để trống!',
@@ -96,7 +96,8 @@ class PostController extends Controller
                 'content.min' => 'Nội dung phải có 50 ký tự trở lên!',
                 'content.max' => 'Nội dung tối đa 5000 ký tự!',
 
-                'category_id.required' => 'Vui lòng chọn danh mục bài viết'
+                'category_id.required' => 'Vui lòng chọn danh mục bài viết',
+                'category_id.unique' => 'Danh mục cho bài viết này đã tồn tại'
             ]
         );
 
@@ -159,7 +160,7 @@ class PostController extends Controller
             $data = $request->validate([
                 'title' => ['required', 'max:150', 'min:50', "unique:posts,title,$postId,id", 'notspecial_spaces'],
                 'content' => ['required', 'min:50', 'max:5000'],
-                'category_id' => ['required'],
+                'category_id' => ['required', "unique:posts,category_id,$postId,id"],
             ], [
                 'title.required' => 'Tiêu đề không được để trống!',
                 'title.max' => 'Tiêu đề tối đa 150 ký tự!',
@@ -171,7 +172,8 @@ class PostController extends Controller
                 'content.min' => 'Nội dung phải có 50 ký tự trở lên!',
                 'content.max' => 'Nội dung tối đa 5000 ký tự!',
 
-                'category_id.required' => 'Vui lòng chọn danh mục bài viết'
+                'category_id.required' => 'Vui lòng chọn danh mục bài viết',
+                'category_id.unique' => 'Danh mục cho bài viết này đã tồn tại'
             ]);
             $post->title = $data['title'];
             $post->slug = Str::slug($data['title']);
@@ -185,7 +187,7 @@ class PostController extends Controller
                 [
                     'title' => ['required', 'max:150', 'min:50', "unique:posts,title,$postId,id", 'notspecial_spaces'],
                     'content' => ['required', 'min:50', 'max:5000'],
-                    'category_id' => ['required'],
+                    'category_id' => ['required', "unique:posts,category_id,$postId,id"],
                     'avatar' => 'bail|mimes:jpeg,jpg,png',
                 ],
                 [
@@ -200,6 +202,7 @@ class PostController extends Controller
                     'content.max' => 'Nội dung tối đa 5000 ký tự!',
 
                     'category_id.required' => 'Vui lòng chọn danh mục bài viết',
+                    'category_id.unique' => 'Danh mục cho bài viết này đã tồn tại',
                     'avatar.mimes' => 'Tệp nhập vào phải là jpeg,jpg,png!',
                 ]
             );
@@ -252,6 +255,12 @@ class PostController extends Controller
     public function detail($postSlug)
     {
         $detailPost = $this->postRepository->detail($postSlug);
+        return PostResource::collection($detailPost);
+    }
+
+    public function all()
+    {
+        $detailPost = $this->postRepository->all();
         return PostResource::collection($detailPost);
     }
 }
