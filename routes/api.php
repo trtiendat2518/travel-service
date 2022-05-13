@@ -24,6 +24,8 @@ Route::prefix('customer')->group(function () {
 
     Route::get('post/detail/{postSlug}', 'Customer\PostController@detail');
     Route::get('post/popular', 'Customer\PostController@popular');
+
+    Route::post('send-contact/consulting', 'HomeController@contact');
 });
 
 Route::prefix('admin')->group(function () {

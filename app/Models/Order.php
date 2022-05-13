@@ -12,7 +12,8 @@ class Order extends Model
         'user_id',
         'note',
         'status',
-        'created_at'
+        'created_at',
+        'ip_address'
     ];
     protected $primaryKey = 'id';
     protected $table = 'orders';

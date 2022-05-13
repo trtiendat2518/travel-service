@@ -338,12 +338,16 @@ export default {
             this.form
                 .post('../../api/admin/manage-user/user')
                 .then((res) => {
-                    this.fetchAccounts()
-                    $('#userModal').modal('hide')
-                    if (this.form.successful) {
-                        this.$snotify.success('Tạo mới thành công!')
+                    if (res.data == 'errorPhone') {
+                        this.$snotify.error('Số điện thoại không đúng định dạng!')
                     } else {
-                        this.$snotify.error('Không thể tạo mới', 'Lỗi')
+                        this.fetchAccounts()
+                        $('#userModal').modal('hide')
+                        if (this.form.successful) {
+                            this.$snotify.success('Tạo mới thành công!')
+                        } else {
+                            this.$snotify.error('Không thể tạo mới', 'Lỗi')
+                        }
                     }
                 })
                 .catch((err) => console.log(err))

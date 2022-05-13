@@ -132,26 +132,30 @@ class AuthController extends Controller
         $newUser->register_date = now();
         $repeatPassword = $request->repeat_password;
 
-        if ($newUser->password != $repeatPassword) {
-            return redirect()->intended('/dang-ky')->with('fail', 'Mật khẩu không trùng khớp');
+        if (preg_match("/(0)[0-9]{9}|(0)[0-9]{10}/", $data['phone_number'])) {
+            if ($newUser->password != $repeatPassword) {
+                return redirect()->intended('/dang-ky')->with('fail', 'Mật khẩu không trùng khớp');
+            } else {
+                $newUser->password = md5($newUser->password);
+                $newUser->save();
+
+                $codeOtp = \rand(1000, 9999);
+
+                $to_email = $newUser->email;
+                $data = array("otp" => $codeOtp);
+                Mail::send('auth.mail', $data, function ($message) use ($to_email) {
+                    $message->to($to_email)->subject('Xác thực tài khoản!');
+                    $message->from($to_email);
+                });
+
+                $request->session()->put('email', $newUser->email);
+                $request->session()->put('verify', 'Vui lòng nhập mã xác thực, mã đã được gửi vào email của bạn');
+                $request->session()->put('otp', $codeOtp);
+
+                return redirect()->intended('xac-thuc');
+            }
         } else {
-            $newUser->password = md5($newUser->password);
-            $newUser->save();
-
-            $codeOtp = \rand(1000, 9999);
-
-            $to_email = $newUser->email;
-            $data = array("otp" => $codeOtp);
-            Mail::send('auth.mail', $data, function ($message) use ($to_email) {
-                $message->to($to_email)->subject('Xác thực tài khoản!');
-                $message->from($to_email);
-            });
-
-            $request->session()->put('email', $newUser->email);
-            $request->session()->put('verify', 'Vui lòng nhập mã xác thực, mã đã được gửi vào email của bạn');
-            $request->session()->put('otp', $codeOtp);
-
-            return redirect()->intended('xac-thuc');
+            return redirect()->intended('/dang-ky')->with('fail', 'Số điện thoại không đúng định dạng');
         }
     }
 
@@ -393,13 +397,17 @@ class AuthController extends Controller
         $token = \md5(\rand() . \time());
 
         if ($phoneNumber != $user->phone_number && $email == $user->email) {
-            $request->session()->put('info', $token);
-            $request->session()->put('editPhone', $phoneNumber);
-            $this->sendEmail($user);
-            if ($user->role == 0) {
-                return redirect()->intended('admin/xac-thuc');
+            if (preg_match("/(0)[0-9]{9}|(0)[0-9]{10}/", $phoneNumber)) {
+                $request->session()->put('info', $token);
+                $request->session()->put('editPhone', $phoneNumber);
+                $this->sendEmail($user);
+                if ($user->role == 0) {
+                    return redirect()->intended('admin/xac-thuc');
+                } else {
+                    return redirect()->intended('xac-thuc');
+                }
             } else {
-                return redirect()->intended('xac-thuc');
+                return back()->with('fail', 'Số điện thoại không đúng định dạng');
             }
         } else if ($phoneNumber == $user->phone_number && $email != $user->email) {
             $request->session()->put('info', $token);
@@ -411,14 +419,18 @@ class AuthController extends Controller
                 return redirect()->intended('xac-thuc');
             }
         } else if ($phoneNumber != $user->phone_number && $email != $user->email) {
-            $request->session()->put('info', $token);
-            $request->session()->put('editPhone', $phoneNumber);
-            $request->session()->put('editEmail', $email);
-            $this->sendEmail($user);
-            if ($user->role == 0) {
-                return redirect()->intended('admin/xac-thuc');
+            if (preg_match("/(0)[0-9]{9}|(0)[0-9]{10}/", $phoneNumber)) {
+                $request->session()->put('info', $token);
+                $request->session()->put('editPhone', $phoneNumber);
+                $request->session()->put('editEmail', $email);
+                $this->sendEmail($user);
+                if ($user->role == 0) {
+                    return redirect()->intended('admin/xac-thuc');
+                } else {
+                    return redirect()->intended('xac-thuc');
+                }
             } else {
-                return redirect()->intended('xac-thuc');
+                return back()->with('fail', 'Số điện thoại không đúng định dạng');
             }
         } else {
             $user->full_name = $fullName;

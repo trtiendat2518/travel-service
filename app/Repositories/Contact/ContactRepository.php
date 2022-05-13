@@ -28,7 +28,6 @@ class ContactRepository implements ContactInterface
     public function search($query, $currentEntries)
     {
         return Contact::where('full_name', 'LIKE', '%' . $query . '%')
-            ->orwhere('email', 'LIKE', '%' . $query . '%')
             ->orwhere('phone_number', 'LIKE', '%' . $query . '%')
             ->orderby('id', 'DESC')->paginate($currentEntries);
     }

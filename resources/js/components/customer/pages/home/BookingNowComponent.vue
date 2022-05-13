@@ -14,26 +14,44 @@
                         <div class="col-md-2"></div>
                         <div class="col-md-8">
                             <div class="form-card">
-                                <form accept-charset="utf-8">
+                                <form @submit.prevent="store()" @keydown="form.onKeydown($event)" accept-charset="utf-8">
                                     <div class="row">
                                         <div class="col-md-6">
                                             <label class="text-left" for="name"> Họ và tên </label>
-                                            <input type="text" name="name" id="name" placeholder="Nhập đầy đủ họ tên" />
+                                            <input type="text" name="full_name" v-model="form.full_name" placeholder="Nhập đầy đủ họ tên" />
+                                            <div
+                                                class="text-danger mb-3 text-left"
+                                                v-if="form.errors.has('full_name')"
+                                                v-html="form.errors.get('full_name')"
+                                            ></div>
                                         </div>
                                         <div class="col-md-6">
                                             <label for="phone" class="text-left"> Số điện thoại </label>
-                                            <input type="text" name="phone" id="phone" placeholder="Nhập số điện thoại" />
+                                            <input
+                                                type="number"
+                                                name="phone_number"
+                                                v-model="form.phone_number"
+                                                placeholder="Nhập số điện thoại"
+                                            />
+                                            <div
+                                                class="text-danger mb-3 text-left"
+                                                v-if="form.errors.has('phone_number')"
+                                                v-html="form.errors.get('phone_number')"
+                                            ></div>
                                         </div>
 
                                         <div class="col-md-12">
                                             <label for="category" class="text-left"> Ghi chú </label>
                                             <textarea
-                                                name=""
-                                                id=""
-                                                cols="30"
-                                                rows="10"
+                                                name="note"
+                                                v-model="form.note"
                                                 placeholder="Để lại lời nhắn cho chúng tôi"
                                             ></textarea>
+                                            <div
+                                                class="text-danger text-left mb-3"
+                                                v-if="form.errors.has('note')"
+                                                v-html="form.errors.get('note')"
+                                            ></div>
                                         </div>
 
                                         <div class="clearfix"></div>
@@ -55,7 +73,62 @@
 </template>
 
 <script>
-export default {}
+import 'sweetalert2/dist/sweetalert2.min.css'
+export default {
+    data() {
+        return {
+            form: new Form({
+                id: '',
+                full_name: '',
+                phone_number: '',
+                note: ''
+            })
+        }
+    },
+    methods: {
+        store() {
+            console.log(this.form)
+            this.form
+                .post('../../api/customer/send-contact/consulting')
+                .then((res) => {
+                    console.log(res.data)
+                    if (res.data == 'errorIp') {
+                        this.$swal({
+                            title: 'Mỗi ngày bạn chỉ được gửi liên hệ 5 lần!',
+                            icon: 'error',
+                            confirmButtonText: 'OK!',
+                            timer: 3500
+                        })
+                    } else if (res.data == 'errorPhone') {
+                        this.$swal({
+                            title: 'Số điện thoại không đúng định dạng!',
+                            icon: 'error',
+                            confirmButtonText: 'OK!',
+                            timer: 3500
+                        })
+                    } else {
+                        if (this.form.successful) {
+                            this.$swal({
+                                title: 'Gửi liên hệ thành công!',
+                                icon: 'success',
+                                confirmButtonText: 'OK!',
+                                timer: 3500
+                            })
+                            this.form.reset()
+                            this.form.clear()
+                        }
+                    }
+                })
+                .catch((err) => {
+                    console.log('error')
+                })
+        }
+    }
+}
 </script>
 
-<style></style>
+<style scoped>
+textarea {
+    resize: none;
+}
+</style>

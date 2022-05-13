@@ -11,9 +11,9 @@ class Contact extends Model
     protected $fillable = [
         'full_name',
         'phone_number',
-        'email',
         'note',
         'created_at',
+        'ip_address'
     ];
     protected $primaryKey = 'id';
     protected $table = 'contacts';

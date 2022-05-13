@@ -77,18 +77,21 @@ class AccountController extends Controller
 
             'role.required' => 'Loại tài khoản không được để trống',
         ]);
-
-        date_default_timezone_set('Asia/Ho_Chi_Minh');
-        $newUser = new Users();
-        $newUser->full_name = $data['full_name'];
-        $newUser->email = $data['email'];
-        $newUser->phone_number = $data['phone_number'];
-        $newUser->password = \md5($data['password']);
-        $newUser->role = $data['role'];
-        $newUser->address = $data['address'];
-        $newUser->status = 0;
-        $newUser->register_date = now();
-        $newUser->save();
+        if (preg_match("/(0)[0-9]{9}|(0)[0-9]{10}/", $data['phone_number'])) {
+            date_default_timezone_set('Asia/Ho_Chi_Minh');
+            $newUser = new Users();
+            $newUser->full_name = $data['full_name'];
+            $newUser->email = $data['email'];
+            $newUser->phone_number = $data['phone_number'];
+            $newUser->password = \md5($data['password']);
+            $newUser->role = $data['role'];
+            $newUser->address = $data['address'];
+            $newUser->status = 0;
+            $newUser->register_date = now();
+            $newUser->save();
+        } else {
+            return response()->json('errorPhone');
+        }
     }
 
     /**

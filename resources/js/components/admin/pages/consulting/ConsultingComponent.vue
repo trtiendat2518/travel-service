@@ -36,7 +36,6 @@
                 <thead>
                     <tr>
                         <th>Họ và tên</th>
-                        <th>Email</th>
                         <th>Số điện thoại</th>
                         <th>Ngày gửi</th>
                         <th>Trạng thái</th>
@@ -50,7 +49,6 @@
                                 {{ contact.full_name }}
                             </a>
                         </td>
-                        <td>{{ contact.email }}</td>
                         <td>{{ contact.phone_number }}</td>
                         <td>{{ contact.created_at | formatFullTime }}</td>
                         <td>
@@ -127,11 +125,6 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        Email: <strong>{{ form.email }}</strong>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
                                         Ngày gửi: <strong> {{ form.created_at | formatFullTime }}</strong>
                                     </td>
                                 </tr>
@@ -171,7 +164,6 @@ export default {
             form: new Form({
                 id: '',
                 full_name: '',
-                email: '',
                 phone_number: '',
                 status: '',
                 note: '',
