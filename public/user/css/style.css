@@ -505,7 +505,7 @@ span.line-bottom {
     transform: translateY(36%);
     z-index: 8;
     color: #fff;
-    width: 100%;
+    width: 100vw;
 }
 .caption h4.amimate-caption-title {
     font-size: 90px;

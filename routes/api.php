@@ -26,6 +26,10 @@ Route::prefix('customer')->group(function () {
     Route::get('post/popular', 'Customer\PostController@popular');
 
     Route::post('send-contact/consulting', 'HomeController@contact');
+
+    Route::post('book-service/loged', 'Customer\BookingController@book');
+    Route::post('book-service/not-loged', 'Customer\BookingController@bookNotLoged');
+    Route::post('book-service/validate', 'Customer\BookingController@validateOtp');
 });
 
 Route::prefix('admin')->group(function () {

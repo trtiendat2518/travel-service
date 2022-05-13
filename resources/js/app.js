@@ -17,6 +17,8 @@ Vue.use(VueSweetalert2)
 
 if (document.querySelector("meta[name='admin-id']")) {
     Vue.prototype.$adminId = document.querySelector("meta[name='admin-id']").getAttribute('content')
+} else if (document.querySelector("meta[name='cus-id']")) {
+    Vue.prototype.$customerId = document.querySelector("meta[name='cus-id']").getAttribute('content')
 }
 
 const app = new Vue({

@@ -38,6 +38,9 @@
     <!-- SEO website -->
     <meta name="description" content="{{$meta_desc}}">
     <meta name="author" content="TranTienDat">
+    @if (Session::get('id') && Session::get('role') == 1)
+    <meta name="cus-id" content="{{ Session::get('id') }}">
+    @endif
     <link rel="canonical" href="{{$url_canonical}}">
     <link rel="icon" href="{{asset('public/images/logo.ico')}}">
 

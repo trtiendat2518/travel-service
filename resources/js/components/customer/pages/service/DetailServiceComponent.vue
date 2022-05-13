@@ -17,6 +17,7 @@
             </div>
         </section>
         <!-- End Top Title -->
+
         <!-- Start Custom Single -->
         <section class="customs-single">
             <div class="container">
@@ -61,107 +62,8 @@
                         </div>
 
                         <div class="booking">
-                            <button class="btn btn-color btn-block btn-lg" @click="loan()">Đặt thuê xe</button>
+                            <button class="btn btn-color btn-block btn-lg" @click="book()">Đặt thuê xe</button>
                             <a href="tel:0123456789" class="btn btn-secondary btn-block btn-lg"> Liên hệ </a>
-
-                            <div
-                                class="modal fade"
-                                id="loanModal"
-                                tabindex="-1"
-                                role="dialog"
-                                aria-labelledby="loanModalTitle"
-                                aria-hidden="true"
-                            >
-                                <div class="modal-dialog" role="document">
-                                    <form @submit.prevent="" @keydown="form.onKeydown($event)">
-                                        <div class="modal-content">
-                                            <div class="modal-header styling-modal-header-update">
-                                                <h5 class="modal-title" id="loanModalTitle">Đặt thuê xe</h5>
-                                                <button
-                                                    type="button"
-                                                    class="close"
-                                                    data-dismiss="modal"
-                                                    aria-label="Close"
-                                                    @click="close()"
-                                                >
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <div class="row">
-                                                    <div class="col-md-6">
-                                                        <label class="text-left" for="name">Họ và tên</label>
-                                                        <input type="text" name="name" id="name" placeholder="Nhập đầy đủ họ tên" />
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <label class="text-left" for="phone">Số điện thoại </label>
-                                                        <input type="text" name="phone" id="phone" placeholder="Nhập số điện thoại" />
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <label for="category">Loại xe</label>
-                                                        <select name="category" id="category">
-                                                            <option value="">Chọn loại xe</option>
-                                                            <option value="1">Xe 4 chỗ</option>
-                                                            <option value="2">Xe 7 chỗ</option>
-                                                            <option value="3">Xe 16 chỗ</option>
-                                                            <option value="4">Xe 29 chỗ</option>
-                                                            <option value="5">Xe 45 chỗ</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <label for="service">Dịch vụ thuê xe </label>
-                                                        <select name="service" id="service">
-                                                            <option value="">Chọn dịch vụ</option>
-                                                            <option value="1">Đi 1 chiều có tài xế</option>
-                                                            <option value="2">Đi 2 chiều có tài xế</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <label for="address-start">Chọn điểm đón</label>
-                                                        <select name="address-start" id="address-start">
-                                                            <option value="">Chọn điểm đón</option>
-                                                            <option value="1">Xe 4 chỗ</option>
-                                                            <option value="2">Xe 7 chỗ</option>
-                                                            <option value="3">Xe 16 chỗ</option>
-                                                            <option value="4">Xe 29 chỗ</option>
-                                                            <option value="5">Xe 45 chỗ</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <label for="address-end">Chọn điểm đến</label>
-                                                        <select name="address-end" id="address-end">
-                                                            <option value="">Chọn điểm đến</option>
-                                                            <option value="1">Đi 1 chiều có tài xế</option>
-                                                            <option value="2">Đi 2 chiều có tài xế</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <label for="time-start">Ngày bắt đầu</label>
-                                                        <input type="date" name="time-start" id="time-start" />
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <label for="time-end">Ngày kết thúc </label>
-                                                        <input type="date" name="time-end" id="time-end" />
-                                                    </div>
-                                                    <div class="col-md-12">
-                                                        <label class="text-left" for="phone">Ghi chú </label>
-                                                        <textarea
-                                                            name=""
-                                                            id=""
-                                                            rows="4"
-                                                            laceholder="Để lại lời nhắn cho chúng tôi"
-                                                        ></textarea>
-                                                    </div>
-                                                    <div class="clearfix"></div>
-                                                </div>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button class="text-center" type="submit">Tiếp tục</button>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -209,6 +111,336 @@
             </div>
         </section>
         <!-- End Custom Single -->
+
+        <!-- Modal not Loged -->
+        <div
+            class="modal fade bd-example-modal-lg"
+            id="bookNoLogedModal"
+            tabindex="-1"
+            role="dialog"
+            aria-labelledby="bookNoLogedModalTitle"
+            aria-hidden="true"
+        >
+            <div class="modal-dialog modal-lg" role="document">
+                <form @submit.prevent="storeNotLoged()" @keydown="booking.onKeydown($event)">
+                    <div class="modal-content">
+                        <div class="modal-header styling-modal-header-update">
+                            <h4 class="modal-title" id="bookNoLogedModalTitle">Đặt thuê xe</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close" @click="close()">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label class="text-left" for="name">Họ và tên</label>
+                                    <span
+                                        class="text-danger ml-2"
+                                        v-if="booking.errors.has('full_name')"
+                                        v-html="'( ' + booking.errors.get('full_name') + ' )'"
+                                    >
+                                    </span>
+                                    <input
+                                        type="text"
+                                        name="full_name"
+                                        id="full_name"
+                                        v-model="booking.full_name"
+                                        placeholder="Nhập đầy đủ họ tên"
+                                    />
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="text-left" for="phone">Số điện thoại </label>
+                                    <span
+                                        class="text-danger ml-2"
+                                        v-if="booking.errors.has('phone_number')"
+                                        v-html="'( ' + booking.errors.get('phone_number') + ' )'"
+                                    >
+                                    </span>
+                                    <input
+                                        type="number"
+                                        name="phone_number"
+                                        id="phone_number"
+                                        v-model="booking.phone_number"
+                                        placeholder="Nhập số điện thoại"
+                                    />
+                                </div>
+                                <div class="col-md-12">
+                                    <label class="text-left" for="phone">Địa chỉ Email </label>
+                                    <span
+                                        class="text-danger ml-2"
+                                        v-if="booking.errors.has('email')"
+                                        v-html="'( ' + booking.errors.get('email') + ' )'"
+                                    >
+                                    </span>
+                                    <input type="email" name="email" id="email" v-model="booking.email" placeholder="Nhập Email" />
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="category">Loại xe</label>
+                                    <span
+                                        class="text-danger ml-2"
+                                        v-if="booking.errors.has('car_id')"
+                                        v-html="'( ' + booking.errors.get('car_id') + ' )'"
+                                    >
+                                    </span>
+                                    <select name="category" id="category" v-model="booking.car_id">
+                                        <option value="" disabled>Chọn loại xe</option>
+                                        <option v-for="car in cars" :key="car.id" :value="car.id">
+                                            {{ car.name }}
+                                        </option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="service">Dịch vụ thuê xe </label>
+                                    <span
+                                        class="text-danger ml-2"
+                                        v-if="booking.errors.has('service_id')"
+                                        v-html="'( ' + booking.errors.get('service_id') + ' )'"
+                                    >
+                                    </span>
+                                    <select name="service" id="service" v-model="booking.service_id">
+                                        <option value="" disabled>Chọn dịch vụ</option>
+                                        <option v-for="service in services" :key="service.id" :value="service.id">
+                                            {{ service.name }}
+                                        </option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="address-start">Chọn điểm đón</label>
+                                    <span
+                                        class="text-danger ml-2"
+                                        v-if="booking.errors.has('place_from')"
+                                        v-html="'( ' + booking.errors.get('place_from') + ' )'"
+                                    >
+                                    </span>
+                                    <select name="address-start" id="address-start" v-model="booking.place_from">
+                                        <option value="" disabled>Chọn điểm đón</option>
+                                        <option v-for="place in places" :key="place.id" :value="place.id">{{ place.name }}</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="address-end">Chọn điểm đến</label>
+                                    <span
+                                        class="text-danger ml-2"
+                                        v-if="booking.errors.has('place_to')"
+                                        v-html="'( ' + booking.errors.get('place_to') + ' )'"
+                                    >
+                                    </span>
+                                    <select name="address-end" id="address-end" v-model="booking.place_to">
+                                        <option value="" disabled>Chọn điểm đến</option>
+                                        <option v-for="place in places" :key="place.id" :value="place.id">{{ place.name }}</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="time-start">Ngày bắt đầu</label>
+                                    <span
+                                        class="text-danger ml-2"
+                                        v-if="booking.errors.has('start')"
+                                        v-html="'( ' + booking.errors.get('start') + ' )'"
+                                    >
+                                    </span>
+                                    <input type="date" name="time-start" id="time-start" v-model="booking.start" />
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="time-end">Ngày kết thúc </label>
+                                    <span
+                                        class="text-danger ml-2"
+                                        v-if="booking.errors.has('end')"
+                                        v-html="'( ' + booking.errors.get('end') + ' )'"
+                                    >
+                                    </span>
+                                    <input type="date" name="time-end" id="time-end" v-model="booking.end" />
+                                </div>
+                                <div class="col-md-12">
+                                    <label class="text-left" for="phone">Ghi chú </label>
+                                    <span
+                                        class="text-danger ml-2"
+                                        v-if="booking.errors.has('note')"
+                                        v-html="'( ' + booking.errors.get('note') + ' )'"
+                                    >
+                                    </span>
+                                    <textarea
+                                        name="note"
+                                        rows="4"
+                                        laceholder="Để lại lời nhắn cho chúng tôi"
+                                        v-model="booking.note"
+                                    ></textarea>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="text-center" type="submit">Tiếp tục</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- End Modal -->
+
+        <!-- Modal validate OTP -->
+        <div class="modal fade" id="validateModal" tabindex="-1" role="dialog" aria-labelledby="validateModalTitle" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <form @submit.prevent="validateOtp()" @keydown="booking.onKeydown($event)">
+                    <div class="modal-content">
+                        <div class="modal-header styling-modal-header-update">
+                            <h4 class="modal-title" id="validateModalTitle">Xác thực tài khoản</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close" @click="close()">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <p class="alert alert-warning">Vui lòng không đóng biểu mẫu này khi đang xác thực mã OTP</p>
+                                    <label class="text-left" for="name">Nhập mã OTP</label>
+                                    <span
+                                        class="text-danger ml-2"
+                                        v-if="booking.errors.has('code')"
+                                        v-html="'( ' + booking.errors.get('code') + ' )'"
+                                    >
+                                    </span>
+                                    <input
+                                        type="number"
+                                        name="code"
+                                        id="code"
+                                        v-model="booking.code"
+                                        :placeholder="`Mã OTP đã được gửi tới ${booking.email}`"
+                                    />
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="text-center" type="submit">Tiếp tục</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- End Modal -->
+
+        <!-- Modal -->
+        <div
+            class="modal fade bd-example-modal-lg"
+            id="bookModal"
+            tabindex="-1"
+            role="dialog"
+            aria-labelledby="bookModalTitle"
+            aria-hidden="true"
+        >
+            <div class="modal-dialog modal-lg" role="document">
+                <form @submit.prevent="store()" @keydown="booking.onKeydown($event)">
+                    <div class="modal-content">
+                        <div class="modal-header styling-modal-header-update">
+                            <h4 class="modal-title" id="bookModalTitle">Đặt thuê xe</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close" @click="close()">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="category">Loại xe</label>
+                                    <span
+                                        class="text-danger ml-2"
+                                        v-if="booking.errors.has('car_id')"
+                                        v-html="'( ' + booking.errors.get('car_id') + ' )'"
+                                    >
+                                    </span>
+                                    <select name="category" id="category" v-model="booking.car_id">
+                                        <option value="" disabled>Chọn loại xe</option>
+                                        <option v-for="car in cars" :key="car.id" :value="car.id">
+                                            {{ car.name }}
+                                        </option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="service">Dịch vụ thuê xe </label>
+                                    <span
+                                        class="text-danger ml-2"
+                                        v-if="booking.errors.has('service_id')"
+                                        v-html="'( ' + booking.errors.get('service_id') + ' )'"
+                                    >
+                                    </span>
+                                    <select name="service" id="service" v-model="booking.service_id">
+                                        <option value="" disabled>Chọn dịch vụ</option>
+                                        <option v-for="service in services" :key="service.id" :value="service.id">
+                                            {{ service.name }}
+                                        </option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="address-start">Chọn điểm đón</label>
+                                    <span
+                                        class="text-danger ml-2"
+                                        v-if="booking.errors.has('place_from')"
+                                        v-html="'( ' + booking.errors.get('place_from') + ' )'"
+                                    >
+                                    </span>
+                                    <select name="address-start" id="address-start" v-model="booking.place_from">
+                                        <option value="" disabled>Chọn điểm đón</option>
+                                        <option v-for="place in places" :key="place.id" :value="place.id">{{ place.name }}</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="address-end">Chọn điểm đến</label>
+                                    <span
+                                        class="text-danger ml-2"
+                                        v-if="booking.errors.has('place_to')"
+                                        v-html="'( ' + booking.errors.get('place_to') + ' )'"
+                                    >
+                                    </span>
+                                    <select name="address-end" id="address-end" v-model="booking.place_to">
+                                        <option value="" disabled>Chọn điểm đến</option>
+                                        <option v-for="place in places" :key="place.id" :value="place.id">{{ place.name }}</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="time-start">Ngày bắt đầu</label>
+                                    <span
+                                        class="text-danger ml-2"
+                                        v-if="booking.errors.has('start')"
+                                        v-html="'( ' + booking.errors.get('start') + ' )'"
+                                    >
+                                    </span>
+                                    <input type="date" name="time-start" id="time-start" v-model="booking.start" />
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="time-end">Ngày kết thúc </label>
+                                    <span
+                                        class="text-danger ml-2"
+                                        v-if="booking.errors.has('end')"
+                                        v-html="'( ' + booking.errors.get('end') + ' )'"
+                                    >
+                                    </span>
+                                    <input type="date" name="time-end" id="time-end" v-model="booking.end" />
+                                </div>
+                                <div class="col-md-12">
+                                    <label class="text-left" for="phone">Ghi chú </label>
+                                    <span
+                                        class="text-danger ml-2"
+                                        v-if="booking.errors.has('note')"
+                                        v-html="'( ' + booking.errors.get('note') + ' )'"
+                                    >
+                                    </span>
+                                    <textarea
+                                        name="note"
+                                        rows="4"
+                                        laceholder="Để lại lời nhắn cho chúng tôi"
+                                        v-model="booking.note"
+                                    ></textarea>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="text-center" type="submit">Tiếp tục</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- End Modal -->
     </div>
 </template>
 
@@ -220,9 +452,13 @@ export default {
     components: { VueSlickCarousel },
     data() {
         return {
+            code_otp: '',
+            customer_id: this.$customerId,
             service_popular: [],
             post_popular: [],
             services: [],
+            cars: [],
+            places: [],
             posts: [],
             service_slug: this.$route.params.slugService,
             form: new Form({
@@ -232,6 +468,21 @@ export default {
                 content: '',
                 slug: '',
                 author: this.$adminId
+            }),
+            booking: new Form({
+                id: '',
+                user_id: '',
+                full_name: '',
+                phone_number: '',
+                email: '',
+                note: '',
+                car_id: '',
+                service_id: '',
+                place_from: '',
+                place_to: '',
+                start: '',
+                end: '',
+                code: ''
             }),
             responsive: [
                 {
@@ -275,11 +526,23 @@ export default {
         }
     },
     methods: {
-        loan() {
-            $('#loanModal').modal('show')
+        book() {
+            this.fetchPlaces()
+            this.fetchCars()
+            this.fetchServices()
+            if (this.customer_id == null) {
+                this.booking.clear()
+                this.booking.reset()
+                this.code_otp = ''
+                $('#bookNoLogedModal').modal('show')
+            } else {
+                $('#bookModal').modal('show')
+            }
         },
         close() {
-            $('#loanModal').modal('hide')
+            $('#bookNoLogedModal').modal('hide')
+            $('#bookModal').modal('hide')
+            $('#validateModal').modal('hide')
         },
         show(page_url) {
             page_url = `../../../api/customer/service/detail/${this.service_slug}`
@@ -300,12 +563,148 @@ export default {
                 })
                 .catch((err) => console.log(err))
         },
+        fetchPlaces(page_url) {
+            page_url = `../../../api/admin/manage-order/order/place`
+            fetch(page_url)
+                .then((res) => res.json())
+                .then((res) => {
+                    this.places = res.data
+                })
+                .catch((err) => console.log(err))
+        },
+        fetchCars(page_url) {
+            page_url = `../../../api/admin/manage-car/car/all`
+            fetch(page_url)
+                .then((res) => res.json())
+                .then((res) => {
+                    this.cars = res.data
+                })
+                .catch((err) => console.log(err))
+        },
+        fetchServices(page_url) {
+            page_url = `../../../api/admin/manage-service/service/all`
+            fetch(page_url)
+                .then((res) => res.json())
+                .then((res) => {
+                    this.services = res.data
+                })
+                .catch((err) => console.log(err))
+        },
         showPostPopular(page_url) {
             page_url = `../../../api/customer/post/popular`
             fetch(page_url)
                 .then((res) => res.json())
                 .then((res) => {
                     this.post_popular = res.data
+                })
+                .catch((err) => console.log(err))
+        },
+        storeNotLoged() {
+            this.booking
+                .post('../../api/customer/book-service/not-loged')
+                .then((res) => {
+                    if (this.booking.successful) {
+                        if (res.data == 'errorPhone') {
+                            this.$swal({
+                                title: 'Số điện thoại không đúng định dạng!',
+                                icon: 'error',
+                                confirmButtonText: 'OK!',
+                                timer: 3500
+                            })
+                        } else {
+                            this.code_otp = res.data
+                            $('#bookNoLogedModal').modal('hide')
+                            $('#validateModal').modal('show')
+                        }
+                    } else {
+                        this.$swal({
+                            title: 'Lỗi!',
+                            icon: 'error',
+                            confirmButtonText: 'OK!',
+                            timer: 3500
+                        })
+                    }
+                })
+                .catch((err) => console.log(err))
+        },
+        validateOtp() {
+            if (this.booking.code != this.code_otp) {
+                this.$swal({
+                    title: 'Mã OTP không đúng!',
+                    icon: 'error',
+                    confirmButtonText: 'OK!',
+                    timer: 3500
+                })
+            } else if (this.booking.code == '') {
+                this.$swal({
+                    title: 'Mã OTP không được để trống!',
+                    icon: 'error',
+                    confirmButtonText: 'OK!',
+                    timer: 3500
+                })
+            } else {
+                this.booking
+                    .post('../../api/customer/book-service/validate')
+                    .then((res) => {
+                        if (this.booking.successful) {
+                            if (res.data == 'errorIp') {
+                                this.$swal({
+                                    title: 'Mỗi ngày bạn chỉ được đặt 5 lần, vui lòng vui quay lại vào hôm sau!',
+                                    icon: 'error',
+                                    confirmButtonText: 'OK!',
+                                    timer: 3500
+                                })
+                            } else {
+                                $('#validateModal').modal('hide')
+                                this.$swal({
+                                    title: 'Đặt thuê xe thành công!',
+                                    icon: 'success',
+                                    confirmButtonText: 'OK!',
+                                    timer: 3500
+                                })
+                            }
+                        } else {
+                            this.$swal({
+                                title: 'Lỗi!',
+                                icon: 'error',
+                                confirmButtonText: 'OK!',
+                                timer: 3500
+                            })
+                        }
+                    })
+                    .catch((err) => console.log(err))
+            }
+        },
+        store() {
+            this.booking.user_id = this.customer_id
+            this.booking
+                .post('../../api/customer/book-service/loged')
+                .then((res) => {
+                    if (this.booking.successful) {
+                        if (res.data == 'errorIp') {
+                            this.$swal({
+                                title: 'Mỗi ngày bạn chỉ được đặt 5 lần, vui lòng vui quay lại vào hôm sau!',
+                                icon: 'error',
+                                confirmButtonText: 'OK!',
+                                timer: 3500
+                            })
+                        } else {
+                            this.$swal({
+                                title: 'Đặt thuê xe thành công!',
+                                icon: 'success',
+                                confirmButtonText: 'OK!',
+                                timer: 3500
+                            })
+                            $('#bookModal').modal('hide')
+                        }
+                    } else {
+                        this.$swal({
+                            title: 'Lỗi!',
+                            icon: 'error',
+                            confirmButtonText: 'OK!',
+                            timer: 3500
+                        })
+                    }
                 })
                 .catch((err) => console.log(err))
         }

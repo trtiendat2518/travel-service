@@ -277,16 +277,14 @@
                                         Tên khách hàng: <strong> {{ form.full_name }}</strong>
                                     </td>
                                 </tr>
-                                <tr>
+                                <tr v-show="form.phone_number != 0">
                                     <td>
-                                        Số điện thoại: <strong v-if="form.phone_number == 0"> -</strong>
-                                        <strong v-else> {{ form.phone_number }}</strong>
+                                        Số điện thoại: <strong> {{ form.phone_number }}</strong>
                                     </td>
                                 </tr>
-                                <tr>
+                                <tr v-show="form.email != 'null'">
                                     <td>
-                                        Email: <strong v-if="form.email == 'null'"> -</strong>
-                                        <strong v-else>{{ form.email }}</strong>
+                                        Email: <strong>{{ form.email }}</strong>
                                     </td>
                                 </tr>
                                 <tr>
