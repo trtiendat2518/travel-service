@@ -75,6 +75,4 @@ Route::prefix('admin')->group(function () {
     });
 });
 
-Route::any('/{page?}', function () {
-    return view('error.404');
-})->where('page', '.*');
+Route::any('/{page?}', 'HomeController@error')->where('page', '.*');

@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <div class="row header-main">
             <div id="logo" class="col-lg-2 col-md-3 col-6 d-flex text-left">
-                <a id="logo-img" href="#"><img src="{{ asset('public/images/logo.png') }}" alt="logo" title="thuexemiennam" /></a>
+                <a id="logo-img" href="#"><img src="{{ asset('public/images/logo.png') }}" alt="logo" title="thuexemiennam" style="width: 20vw" /></a>
             </div>
             <div class="top-header-right d-flex flex-wrap col-lg-10 col-md-9 col-6 align-items-center" style="justify-content: right !important">
                 <ul id="menu" class="d-flex align-items-center list-unstyled mb-0">

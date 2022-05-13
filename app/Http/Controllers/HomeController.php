@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\ReviewResource;
 use App\Models\Contact;
+use App\Models\Review;
 use Illuminate\Http\Request;
 use App\Models\Service;
 use Carbon\Carbon;
@@ -10,6 +12,19 @@ use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
+    public function error(Request $request)
+    {
+        //SEO
+        $meta_desc = "Không tìm thấy trang";
+        $meta_title = "Không tìm thấy trang";
+        $url_canonical = $request->url();
+        //---------------
+
+        $service = Service::where('status', '=', 0)->get();
+
+        return view('error.404')->with(compact('meta_desc', 'meta_title', 'url_canonical', 'service'));
+    }
+
     public function index(Request $request)
     {
         //SEO
@@ -79,5 +94,14 @@ class HomeController extends Controller
                 return response()->json('errorPhone');
             }
         }
+    }
+
+    public function reviewHome()
+    {
+        $review = Review::join('orders', 'orders.id', '=', 'reviews.order_id')
+            ->join('users', 'users.id', '=', 'orders.user_id')
+            ->select('reviews.*', 'users.full_name')
+            ->orderBy('star', 'DESC')->limit(6)->get();
+        return ReviewResource::collection($review);
     }
 }

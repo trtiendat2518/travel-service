@@ -41,6 +41,13 @@ p {
     padding-bottom: 35px;
 }
 
+/* .cards-process {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-gap: 1rem;
+} */
+
 .box-title {
     padding-top: 30px;
     position: relative;

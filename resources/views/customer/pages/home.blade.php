@@ -25,7 +25,6 @@
                         </span>
                     </div>
                 </div>
-
                 <div class="w-choose-item col-lg-3 col-md-6">
                     <div class="box-content-top">
                         <img src="{{ asset('public/user/img/wchoose2.png') }}" alt="">
@@ -118,7 +117,8 @@
             <h3 class="text-capitalize">Quy Trình Làm Việc</h3>
         </div>
         <div class="box-content">
-            <div class="container">
+            <our-process-component></our-process-component>
+            {{-- <div class="container">
                 <div class="elementor-element elementor-element-869e133 elementor-widget elementor-widget-Numbered Steps Row" data-id="869e133"
                     data-element_type="widget" data-widget_type="Numbered Steps Row.default">
                     <div class="elementor-widget-container">
@@ -183,9 +183,10 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </div>
+
 
     <!-- our service -->
     <our-service-component></our-service-component>
