@@ -67,5 +67,6 @@ class Kernel extends HttpKernel
         'otp' => \App\Http\Middleware\CheckOTP::class,
         'loged' => \App\Http\Middleware\CheckLoged::class,
         'forgot' => \App\Http\Middleware\CheckForgot::class,
+        'logedCus' => \App\Http\Middleware\CheckLogedCus::class,
     ];
 }

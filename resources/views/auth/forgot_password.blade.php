@@ -7,9 +7,12 @@
             <div class="col-lg-3"></div>
             <div class="col-lg-6">
                 <div class="login-booking">
-                    <ul class="login-tab-list">
-                        <li rel="tab-2" class="active">Quên mật khẩu</li>
-                    </ul>
+                    <div class="container mb-5 mt-5">
+                        <div class="box-title text-center">
+                            <h2>Quên mật khẩu</h2>
+                            <h3 class="title">Quên mật khẩu</h3>
+                        </div>
+                    </div>
                     <div class="login-content">
                         <div id="tab-2" class="content-tab" style="display: block;">
                             <div class="register-form">

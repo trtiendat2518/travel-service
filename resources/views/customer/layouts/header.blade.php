@@ -32,7 +32,7 @@
                         <a class="nav-link text-capitalize p-0" href="{{ url('/thong-tin-ca-nhan') }}">Hồ sơ cá nhân</a>
                         <ul class="menu-dropdown position-absolute list-unstyled">
                             <li><a href="{{ url('/thong-tin-ca-nhan') }}">Thông tin cá nhân</a></li>
-                            <li><a href="{{ url('/lich-su-thue-xe') }}">Lịch sử đơn đặt thuê xe</a></li>
+                            <li><a href="{{ url('/lich-su-don-thue-xe') }}">Lịch sử đơn đặt thuê xe</a></li>
                             <li><a href="{{ url('/doi-mat-khau') }}">Đổi mật khẩu</a></li>
                         </ul>
                     </li>

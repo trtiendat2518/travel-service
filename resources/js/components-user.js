@@ -14,3 +14,6 @@ Vue.component('detail-service-component', require('./components/customer/pages/s
 // Post
 Vue.component('post-news-component', require('./components/customer/pages/post/PostNewsComponent.vue').default)
 Vue.component('detail-post-component', require('./components/customer/pages/post/DetailPostComponent.vue').default)
+
+// Order History
+Vue.component('order-history-component', require('./components/customer/pages/order_history/OrderHistoryComponent.vue').default)

@@ -6,9 +6,12 @@
             <div class="col-lg-3"></div>
             <div class="col-lg-6">
                 <div class="login-booking">
-                    <ul class="login-tab-list">
-                        <li rel="tab-1" class="active">Đăng nhập</li>
-                    </ul>
+                    <div class="container mb-5">
+                        <div class="box-title text-center">
+                            <h2>Đăng nhập</h2>
+                            <h3 class="title">Đăng nhập</h3>
+                        </div>
+                    </div>
                     <div class="login-content">
                         <div id="tab-1" class="content-tab" style="display: block;">
                             <div class="login-form">

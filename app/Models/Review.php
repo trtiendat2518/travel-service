@@ -11,6 +11,8 @@ class Review extends Model
     protected $fillable = [
         'order_id',
         'comment',
+        'star',
+        'status',
         'created_at',
     ];
     protected $primaryKey = 'id';

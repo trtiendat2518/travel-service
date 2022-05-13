@@ -30,6 +30,10 @@ Route::prefix('customer')->group(function () {
     Route::post('book-service/loged', 'Customer\BookingController@book');
     Route::post('book-service/not-loged', 'Customer\BookingController@bookNotLoged');
     Route::post('book-service/validate', 'Customer\BookingController@validateOtp');
+
+    Route::get('order/history/{userId}', 'Customer\OrderHistoryController@show');
+    Route::get('order/show-review', 'Customer\OrderHistoryController@showReview');
+    Route::post('order/create-review', 'Customer\OrderHistoryController@createReview');
 });
 
 Route::prefix('admin')->group(function () {

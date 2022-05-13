@@ -31,6 +31,9 @@ Route::prefix('')->group(function () {
     //PostController
     Route::get('/bai-viet', 'Customer\PostController@index');
     Route::get('/bai-viet/{postSlug}', 'Customer\PostController@indexDetail');
+
+    //OrderHistoryController
+    Route::get('/lich-su-don-thue-xe', 'Customer\OrderHistoryController@index')->middleware('logedCus');
 });
 
 Route::prefix('admin')->group(function () {
