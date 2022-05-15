@@ -20,9 +20,9 @@ Route::prefix('')->group(function () {
     Route::post('/xac-thuc-tai-khoan', 'AuthController@verifyAccount');
     Route::post('/quen-mat-khau-tai-khoan', 'AuthController@forgotAccount');
     Route::post('/tao-moi-mat-khau-tai-khoan', 'AuthController@newPasswordAccount');
-    Route::get('/thong-tin-ca-nhan', 'AuthController@infoIndex');
+    Route::get('/thong-tin-ca-nhan', 'AuthController@infoIndex')->middleware('logedCus');
     Route::post('/chinh-sua-thong-tin', 'AuthController@infoEdit');
-    Route::get('/doi-mat-khau', 'AuthController@changePasswordIndex');
+    Route::get('/doi-mat-khau', 'AuthController@changePasswordIndex')->middleware('logedCus');
     Route::post('/doi-mat-khau-tai-khoan', 'AuthController@changePasswordUpdate');
 
     //ServiceController

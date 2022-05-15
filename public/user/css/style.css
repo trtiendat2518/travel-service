@@ -6,7 +6,7 @@
 }
 
 body {
-    font-family: 'Dosis', sans-serif;
+    font-family: Helvetica, Arial, sans-serif;
     font-size: 16px;
     font-weight: 400;
     background-color: #fff;
@@ -91,6 +91,42 @@ input[type="text"]:hover {
     padding-bottom: 30px;
 }
 
+.header-03 .navigation,
+.header-01 .navigation {
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.9);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.4s;
+}
+
+.header-03 .main-menu,
+.header-01 .main-menu {
+    position: fixed;
+    padding-top: 30px;
+    height: 100%;
+    background: #1e1e1e;
+    left: 0;
+    top: 0;
+    padding-left: 74px;
+    padding-bottom: 50px;
+    z-index: 100;
+    opacity: 0;
+    visibility: hidden;
+    animation: fadeInLeft 0.4s both;
+    overflow-y: scroll;
+    width: 720px;
+    max-width: 100%;
+}
+
+.header-03 .main-menu .menu,
+.header-01 .main-menu .menu {
+    margin-top: 110px;
+}
 /* main */
 .main {
     padding-bottom: 60px;
@@ -137,7 +173,7 @@ input[type="text"]:hover {
 
 .header-main {
     width: 92%;
-    padding: 25px 0;
+    padding: 10px 0;
     margin: 0 auto;
 }
 
@@ -1278,7 +1314,7 @@ input[type='submit'] {
     font-size: 18px;
     color: #ffffff;
     background: #1e1e1e;
-    font-family: 'Dosis', sans-serif;
+    font-family: Helvetica, Arial, sans-serif;
     position: relative;
     -webkit-transition: all 0.3s ease-in-out;
     -moz-transition: all 0.3s ease-in-out;
@@ -1305,7 +1341,7 @@ input[type='color'],
 input[type='email'] {
     position: relative;
     display: block;
-    font-family: 'Dosis';
+    font-family: Helvetica, Arial;
     width: 100%;
     padding: 8px 15px 8px 16px;
     color: #969696;
@@ -1420,7 +1456,7 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: 'Dosis', sans-serif;
+    font-family: Helvetica, Arial, sans-serif;
     font-weight: 400;
     line-height: 30px;
 }
@@ -1456,7 +1492,7 @@ h5 {
     box-sizing: border-box;
 }
 body {
-    font-family: 'Dosis', sans-serif;
+    font-family: Helvetica, Arial, sans-serif;
     font-size: 16px;
     line-height: 30px;
     font-weight: 400;

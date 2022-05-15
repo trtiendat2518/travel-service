@@ -51,7 +51,7 @@
     <section class="footer-widgets text-left">
         <div class="container">
             <div class="row">
-                <div class="col-md-4">
+                {{-- <div class="col-md-3">
                     <aside class="widget-area footer-1-area mb-2">
                         <section id="custom_html-4" class="widget_text widget wp-bp-footer-widget widget_custom_html">
                             <h5 class="widget-title h3">Theo dõi chúng tôi</h5>
@@ -73,9 +73,9 @@
                                     class="image wp-image-460  attachment-full size-full" alt="Associations and Payment Methods"
                                     style="max-width: 100%; height: auto;" /></noscript></section>
                     </aside>
-                </div>
+                </div> --}}
 
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <aside class="widget-area footer-2-area mb-2">
                         <section id="nav_menu-2" class="widget wp-bp-footer-widget widget_nav_menu">
                             <h5 class="widget-title h3">Các dịch vụ</h5>
@@ -93,7 +93,7 @@
                     </aside>
                 </div>
 
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <aside class="widget-area footer-3-area mb-2">
                         <section id="nav_menu-3" class="widget wp-bp-footer-widget widget_nav_menu">
                             <h5 class="widget-title h3">Về chúng tôi</h5>
@@ -101,6 +101,29 @@
                                 <ul id="menu-footer-menu-about-us" class="menu">
                                     <li id="menu-item-262" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-262"><a
                                             href="{{ url('gioi-thieu') }}">Giới thiệu</a></li>
+                                    <li id="menu-item-262" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-262"><a
+                                            href="{{ url('gioi-thieu') }}">Facebook</a></li>
+                                    <li id="menu-item-262" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-262"><a
+                                            href="{{ url('gioi-thieu') }}">Youtube</a></li>
+                                </ul>
+                            </div>
+                        </section>
+                    </aside>
+                </div>
+
+                <div class="col-md-3">
+                    <aside class="widget-area footer-4-area mb-2">
+                        <section id="nav_menu-4" class="widget wp-bp-footer-widget widget_nav_menu">
+                            <h5 class="widget-title h3">Chính sách</h5>
+                            <div class="menu-footer-menu-tcs-container">
+                                <ul id="menu-footer-menu-tcs" class="menu">
+                                    <li id="menu-item-2091"
+                                        class="menu-item menu-item-type-post_type menu-item-object-page menu-item-privacy-policy menu-item-2091">
+                                        <a href="#">Chính sách bảo mật</a>
+                                    </li>
+                                    <li id="menu-item-2377" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2377">
+                                        <a href="#">Chính sách thanh toán</a>
+                                    </li>
                                 </ul>
                             </div>
                         </section>

@@ -1,4 +1,31 @@
 @media (max-width: 991px) {
+    .navigation .main-menu.active {
+        opacity: 1;
+        visibility: visible;
+        transform: translate3d(0, 0, 0);
+        animation: fadeInLeft 0.4s both;
+    }
+
+    .item.login,
+    .item.service {
+        display: none;
+    }
+
+    .item.login-mobile,
+    .item.service-mobile {
+        display: inline !important;
+    }
+
+    .hotline-phone-ring-wrap {
+        right: 0 !important;
+        top: 60vh !important;
+        left: inherit !important;
+    }
+
+    .hotline-bar {
+        visibility: hidden !important;
+    }
+
     #menu {
         position: fixed;
         height: 100%;
@@ -16,6 +43,7 @@
         -o-transition: 0.4s;
         transition: 0.4s;
         flex-direction: column;
+        overflow: scroll;
     }
 
     #menu li a.nav-link {
@@ -29,17 +57,17 @@
         width: 100%;
     }
 
-    ul.menu-dropdown{
+    ul.menu-dropdown {
         position: static !important;
         display: none;
         visibility: visible;
     }
-    ul.menu-dropdown{
+    ul.menu-dropdown {
         position: static !important;
     }
 
-    ul.menu-dropdown::before{
-        content: "";
+    ul.menu-dropdown::before {
+        content: '';
         border: 0;
     }
 
@@ -82,35 +110,34 @@
         position: static;
     }
 
-    .tab-select-item.select::before{
+    .tab-select-item.select::before {
         bottom: 0;
     }
 
-    .booking-tab{
+    .booking-tab {
         background-color: black;
         width: 100%;
         justify-content: left !important;
         margin-bottom: 0;
     }
-    .booking-tab li{
-        padding:25px 30px;
+    .booking-tab li {
+        padding: 25px 30px;
     }
     .booking-form {
-     flex-wrap: wrap;
-     justify-content: left !important;
+        flex-wrap: wrap;
+        justify-content: left !important;
     }
 
-    .form-item{
+    .form-item {
         flex-basis: 36%;
         padding: 5px 10px;
     }
 
-    .form-item:first-child{
+    .form-item:first-child {
         padding-left: 10px;
     }
-    .form-item-link{
+    .form-item-link {
         flex-basis: 28%;
-    
     }
 
     .box-title h2 {
@@ -163,14 +190,20 @@
     .footer ul.list-city {
         width: 100%;
     }
-
-
 }
 
 @media (max-width: 767px) {
     .box-title {
         margin-left: 15px;
         margin-right: 15px;
+    }
+
+    li.item {
+        padding-right: 0px;
+    }
+
+    #header.header-01 {
+        padding: 20px 48px 19px 70px;
     }
 }
 
@@ -225,19 +258,22 @@
         padding-top: 20px;
     }
 
-    .booking-tab li{
+    .booking-tab li {
         padding: 20px 20px;
     }
-    .form-item{
-        flex-basis:100%;
+    .form-item {
+        flex-basis: 100%;
         padding: 5px 10px;
     }
 
     /* .form-item:first-child{
         padding-left: 10px;
     } */
-    .form-item-link{
+    .form-item-link {
         flex-basis: 100%;
-    
+    }
+
+    li.item {
+        padding-right: 0px;
     }
 }
