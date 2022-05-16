@@ -46,6 +46,7 @@
         transition: 0.4s;
         flex-direction: column;
         overflow: scroll;
+        padding-left: 30px;
     }
 
     #menu li a.nav-link {
