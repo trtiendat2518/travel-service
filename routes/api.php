@@ -19,8 +19,14 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::prefix('customer')->group(function () {
+    Route::get('car/detail/{carSlug}', 'Customer\CarController@detail');
+
     Route::get('service/detail/{serviceSlug}', 'Customer\ServiceController@detail');
     Route::get('service/popular', 'Customer\ServiceController@popular');
+
+    // Route::get('tags/detail/{slug}', 'Customer\PostController@hashtag');
+
+    Route::post('hashtag/{slug}', 'Customer\PostController@indexHashtag');
 
     Route::get('post/detail/{postSlug}', 'Customer\PostController@detail');
     Route::get('post/popular', 'Customer\PostController@popular');

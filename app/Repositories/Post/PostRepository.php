@@ -2,10 +2,12 @@
 
 namespace App\Repositories\Post;
 
+use App\Models\Car;
 use App\Models\OrderDetail;
 use App\Repositories\Post\CarInterface;
 use Illuminate\Http\Request;
 use App\Models\Post;
+use App\Models\Service;
 use Illuminate\Support\Facades\DB;
 
 /**
@@ -49,6 +51,24 @@ class PostRepository implements PostInterface
             ->join('users', 'users.id', '=', 'posts.author')
             ->select('posts.*', 'users.full_name as author_name', 'places.name as place_name')
             ->where('posts.slug', $postSlug)->get();
+    }
+
+    public function hashtag($slug)
+    {
+        $post = Post::join('places', 'places.id', '=', 'posts.category_id')
+            ->join('users', 'users.id', '=', 'posts.author')
+            ->select('posts.*', 'users.full_name as author_name', 'places.name as place_name')
+            ->where('posts.slug', 'LIKE', '%' . $slug . '%')->limit(1)->get();
+        $car = Car::where('slug', 'LIKE', '%' . $slug . '%')->limit(1)->get();
+        $service = Service::where('slug', 'LIKE', '%' . $slug . '%')->limit(1)->get();
+
+        if ($post->count() > 0) {
+            return $post;
+        } else if ($car->count() > 0) {
+            return $car;
+        } elseif ($service->count() > 0) {
+            return $service;
+        }
     }
 
     public function popular()

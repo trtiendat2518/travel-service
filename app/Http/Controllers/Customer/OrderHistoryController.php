@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Customer;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\OrderResource;
+use App\Models\Car;
 use App\Models\Order;
 use App\Models\Review;
 use App\Models\Service;
@@ -20,8 +21,9 @@ class OrderHistoryController extends Controller
         //---------------
 
         $service = Service::where('status', '=', 0)->get();
+        $car = Car::where('status', '=', 0)->get();
 
-        return view('customer.pages.order_history.index')->with(compact('meta_desc', 'meta_title', 'url_canonical', 'service'));
+        return view('customer.pages.order_history.index')->with(compact('meta_desc', 'meta_title', 'url_canonical', 'service', 'car'));
     }
 
     public function show($userId)

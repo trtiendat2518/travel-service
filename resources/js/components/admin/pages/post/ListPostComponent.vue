@@ -42,48 +42,51 @@
                             <input class="form-control form-search" v-model="query" placeholder="Tìm kiếm..." type="text" />
                         </div>
                     </div>
-                    <table class="table table-striped" id="table1">
-                        <thead>
-                            <tr>
-                                <th width="20%">Hình ảnh</th>
-                                <th width="50%">Tiêu đề</th>
-                                <th width="10%">Tác giả</th>
-                                <th>Thao tác</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr v-for="post in posts" :key="post.id">
-                                <td>
-                                    <img class="image-car" :src="`../public/images/post/${post.avatar}`" alt="" />
-                                </td>
-                                <td>{{ post.title }}</td>
-                                <td>{{ post.author_name }}</td>
-                                <td>
-                                    <button class="btn btn-dark" v-if="post.status == 0" @click="change(post.id)">
-                                        <i class="bi bi-eye"></i>
-                                    </button>
-                                    <button class="btn btn-secondary" v-else-if="post.status == 1" @click="change(post.id)">
-                                        <i class="bi bi-eye-slash"></i>
-                                    </button>
-                                    <router-link
-                                        tag="button"
-                                        class="btn btn-primary"
-                                        :to="{ name: 'post-update', params: { slugPost: slug(post.title) } }"
-                                    >
-                                        <i class="bi bi-pencil-square"></i>
-                                    </router-link>
-                                    <button class="btn btn-danger" @click="destroy(post.id)">
-                                        <i class="bi bi-trash"></i>
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr v-show="!posts.length">
-                                <td colspan="4">
-                                    <div class="alert alert-danger">Không tìm thấy kết quả phù hợp!</div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <div class="table-responsive">
+                        <table class="table table-striped" id="table1">
+                            <thead>
+                                <tr>
+                                    <th width="20%">Hình ảnh</th>
+                                    <th width="50%">Tiêu đề</th>
+                                    <th width="10%">Tác giả</th>
+                                    <th>Thao tác</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for="post in posts" :key="post.id">
+                                    <td>
+                                        <img class="image-car" :src="`../public/images/post/${post.avatar}`" alt="" />
+                                    </td>
+                                    <td>{{ post.title }}</td>
+                                    <td>{{ post.author_name }}</td>
+                                    <td>
+                                        <button class="btn btn-dark" v-if="post.status == 0" @click="change(post.id)">
+                                            <i class="bi bi-eye"></i>
+                                        </button>
+                                        <button class="btn btn-secondary" v-else-if="post.status == 1" @click="change(post.id)">
+                                            <i class="bi bi-eye-slash"></i>
+                                        </button>
+                                        <router-link
+                                            tag="button"
+                                            class="btn btn-primary"
+                                            :to="{ name: 'post-update', params: { slugPost: slug(post.title) } }"
+                                        >
+                                            <i class="bi bi-pencil-square"></i>
+                                        </router-link>
+                                        <button class="btn btn-danger" @click="destroy(post.id)">
+                                            <i class="bi bi-trash"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr v-show="!posts.length">
+                                    <td colspan="4">
+                                        <div class="alert alert-danger">Không tìm thấy kết quả phù hợp!</div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
                     <pagination-component
                         v-if="pagination.last_page > 1"
                         :pagination="pagination"

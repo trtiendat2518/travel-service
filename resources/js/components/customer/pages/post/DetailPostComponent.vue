@@ -58,6 +58,15 @@
                                     </li>
                                 </ul>
                             </div>
+
+                            <div class="widget widget-tags">
+                                <h3>Tags</h3>
+                                <ul>
+                                    <li v-for="tag in form.tags" :key="tag">
+                                        <a href="javascript:void(0)" title="" class="text-tags" @click="hashtag(slug(tag))">{{ tag }}</a>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
 
                         <div class="booking">
@@ -466,6 +475,7 @@ export default {
                 content: '',
                 slug: '',
                 place_name: '',
+                tags: '',
                 author: this.$adminId
             }),
             booking: new Form({
@@ -517,7 +527,6 @@ export default {
     mounted() {
         this.show()
         this.showServicePopular()
-        this.fetchPosts()
     },
     watch: {
         $route(to, from) {
@@ -549,6 +558,8 @@ export default {
                 .then((res) => res.json())
                 .then((res) => {
                     this.form.fill(res.data[0])
+                    let tags = res.data[0].tags.split(',')
+                    this.form.tags = tags
                     this.form.avatar = `../../../public/images/post/${res.data[0].avatar}`
                 })
                 .catch((err) => console.log(err))
@@ -715,6 +726,43 @@ export default {
                     }
                 })
                 .catch((err) => console.log(err))
+        },
+        slug(name) {
+            var slug = ''
+            // Change to lower case
+            var nameLower = name.toLowerCase()
+            // Letter "e"
+            slug = nameLower.replace(/e|é|è|ẽ|ẻ|ẹ|ê|ế|ề|ễ|ể|ệ/gi, 'e')
+            // Letter "a"
+            slug = slug.replace(/a|á|à|ã|ả|ạ|ă|ắ|ằ|ẵ|ẳ|ặ|â|ấ|ầ|ẫ|ẩ|ậ/gi, 'a')
+            // Letter "o"
+            slug = slug.replace(/o|ó|ò|õ|ỏ|ọ|ô|ố|ồ|ỗ|ổ|ộ|ơ|ớ|ờ|ỡ|ở|ợ/gi, 'o')
+            // Letter "u"
+            slug = slug.replace(/u|ú|ù|ũ|ủ|ụ|ư|ứ|ừ|ữ|ử|ự/gi, 'u')
+            // Letter "d"
+            slug = slug.replace(/đ/gi, 'd')
+            // Trim the last whitespace
+            slug = slug.replace(/\s*$/g, '')
+            // Change whitespace to "-"
+            slug = slug.replace(/\s+/g, '-')
+
+            return slug
+        },
+        hashtag(slug) {
+            axios
+                .post(`../../../api/customer/hashtag/${slug}`)
+                .then((res) => {
+                    if (res.data[0] == 'post') {
+                        window.location.href = `../../bai-viet/${res.data[1]}`
+                    } else if (res.data[0] == 'car') {
+                        window.location.href = `../../loai-xe/${res.data[1]}`
+                    } else if (res.data[0] == 'service') {
+                        window.location.href = `../../dich-vu-thue-xe/${res.data[1]}`
+                    } else {
+                        window.location.href = '../../404'
+                    }
+                })
+                .catch((err) => console.log(err))
         }
     }
 }
@@ -743,5 +791,11 @@ article.post {
 .post-img {
     width: 100vw;
     height: 20vh;
+}
+.text-tags {
+    color: #000;
+}
+.text-tags:hover {
+    color: #fff;
 }
 </style>

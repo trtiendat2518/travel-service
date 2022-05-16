@@ -12,9 +12,13 @@ Vue.component('popular-place-component', require('./components/customer/pages/ho
 // Service
 Vue.component('detail-service-component', require('./components/customer/pages/service/DetailServiceComponent.vue').default)
 
+// Car
+Vue.component('detail-car-component', require('./components/customer/pages/car/DetailCarComponent.vue').default)
+
 // Post
 Vue.component('post-news-component', require('./components/customer/pages/post/PostNewsComponent.vue').default)
 Vue.component('detail-post-component', require('./components/customer/pages/post/DetailPostComponent.vue').default)
+Vue.component('detail-hashtags-component', require('./components/customer/pages/post/DetailTagsComponent.vue').default)
 
 // Order History
 Vue.component('order-history-component', require('./components/customer/pages/order_history/OrderHistoryComponent.vue').default)

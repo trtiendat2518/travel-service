@@ -69,6 +69,17 @@
                                                     />
                                                 </div>
                                             </div>
+                                            <div class="col-12 mb-2">
+                                                <div class="form-group">
+                                                    <label for="first-name-vertical">Gắn thẻ</label>
+                                                    <input-tag v-model="form.tags" placeholder="Gắn thẻ bài viết"></input-tag>
+                                                    <div
+                                                        class="text-danger mb-3"
+                                                        v-if="form.errors.has('tags')"
+                                                        v-html="form.errors.get('tags')"
+                                                    ></div>
+                                                </div>
+                                            </div>
                                             <div class="col-12">
                                                 <div class="form-group">
                                                     <label for="contact-info-vertical">Nội dung mô tả</label>
@@ -119,6 +130,7 @@ export default {
                 avatar: '',
                 content: '',
                 slug: '',
+                tags: '',
                 author: this.$adminId
             }),
             customToolbar: [
@@ -152,6 +164,8 @@ export default {
                 .then((res) => res.json())
                 .then((res) => {
                     this.form.fill(res.data[0])
+                    let tag = res.data[0].tags.split(',')
+                    this.form.tags = tag
                     this.form.avatar = `../../../public/images/car/${res.data[0].avatar}`
                 })
                 .catch((err) => console.log(err))

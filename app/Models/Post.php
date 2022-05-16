@@ -12,6 +12,7 @@ class Post extends Model
         'category_id',
         'title',
         'avatar',
+        'slug',
         'content',
         'status',
         'author',

@@ -36,66 +36,69 @@
                     <input class="form-control form-search" v-model="query" placeholder="Tìm kiếm..." type="text" />
                 </div>
             </div>
-            <table class="table table-striped" id="table1">
-                <thead>
-                    <tr>
-                        <th>Mã đơn thuê xe</th>
-                        <th>Họ và tên</th>
-                        <th>Số điện thoại</th>
-                        <th>Địa điểm đón</th>
-                        <th>Địa điểm đến</th>
-                        <th>Trạng thái</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr v-for="order in orders" :key="order.order_id">
-                        <td>
-                            <a href="javascript:void(0)" @click="detail(order)">
-                                {{ order.code }}
-                            </a>
-                        </td>
-                        <td>{{ order.full_name }}</td>
-                        <td class="text-center">
-                            <div v-if="order.phone_number == 0">-</div>
-                            <div v-else>{{ order.phone_number }}</div>
-                        </td>
-                        <td>{{ namePlaceFrom(order) }}</td>
-                        <td>{{ namePlaceTo(order) }}</td>
-                        <td>
-                            <select
-                                class="form-select"
-                                v-model="order.status"
-                                @change="change($event, order)"
-                                name="order_status"
-                                :class="[
-                                    {
-                                        'btn-outline-secondary': order.status == 0
-                                    },
-                                    {
-                                        'btn-outline-primary': order.status == 1
-                                    },
-                                    {
-                                        'btn-outline-success': order.status == 2
-                                    },
-                                    {
-                                        'btn-outline-danger': order.status == 3
-                                    }
-                                ]"
-                            >
-                                <option value="0" :hidden="order.status != 0">Đang chờ xử lý</option>
-                                <option value="1" :hidden="order.status > 1">Đã liên hệ</option>
-                                <option value="2" :hidden="order.status == 3">Đã hoàn thành</option>
-                                <option value="3" :hidden="order.status == 2">Đã huỷ</option>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr v-show="!orders.length">
-                        <td colspan="6">
-                            <div class="alert alert-danger">Không tìm thấy kết quả phù hợp!</div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="table-responsive">
+                <table class="table table-striped" id="table1">
+                    <thead>
+                        <tr>
+                            <th>Mã đơn thuê xe</th>
+                            <th>Họ và tên</th>
+                            <th>Số điện thoại</th>
+                            <th>Địa điểm đón</th>
+                            <th>Địa điểm đến</th>
+                            <th>Trạng thái</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="order in orders" :key="order.order_id">
+                            <td>
+                                <a href="javascript:void(0)" @click="detail(order)">
+                                    {{ order.code }}
+                                </a>
+                            </td>
+                            <td>{{ order.full_name }}</td>
+                            <td class="text-center">
+                                <div v-if="order.phone_number == 0">-</div>
+                                <div v-else>{{ order.phone_number }}</div>
+                            </td>
+                            <td>{{ namePlaceFrom(order) }}</td>
+                            <td>{{ namePlaceTo(order) }}</td>
+                            <td>
+                                <select
+                                    class="form-select"
+                                    v-model="order.status"
+                                    @change="change($event, order)"
+                                    name="order_status"
+                                    :class="[
+                                        {
+                                            'btn-outline-secondary': order.status == 0
+                                        },
+                                        {
+                                            'btn-outline-primary': order.status == 1
+                                        },
+                                        {
+                                            'btn-outline-success': order.status == 2
+                                        },
+                                        {
+                                            'btn-outline-danger': order.status == 3
+                                        }
+                                    ]"
+                                >
+                                    <option value="0" :hidden="order.status != 0">Đang chờ xử lý</option>
+                                    <option value="1" :hidden="order.status > 1">Đã liên hệ</option>
+                                    <option value="2" :hidden="order.status == 3">Đã hoàn thành</option>
+                                    <option value="3" :hidden="order.status == 2">Đã huỷ</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr v-show="!orders.length">
+                            <td colspan="6">
+                                <div class="alert alert-danger">Không tìm thấy kết quả phù hợp!</div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
             <pagination-component
                 v-if="pagination.last_page > 1"
                 :pagination="pagination"

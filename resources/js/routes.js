@@ -6,6 +6,7 @@ Vue.use(VueRouter)
 import Car from './components/admin/pages/car/CarComponent.vue'
 import ListCar from './components/admin/pages/car/ListCarComponent.vue'
 import UpdateCar from './components/admin/pages/car/UpdateCarComponent.vue'
+import DetailCar from './components/customer/pages/car/DetailCarComponent.vue'
 
 import Service from './components/admin/pages/service/ServiceComponent.vue'
 import ListService from './components/admin/pages/service/ListServiceComponent.vue'
@@ -16,6 +17,8 @@ import Post from './components/admin/pages/post/PostComponent.vue'
 import ListPost from './components/admin/pages/post/ListPostComponent.vue'
 import UpdatePost from './components/admin/pages/post/UpdatePostComponent.vue'
 import DetailPost from './components/customer/pages/post/DetailPostComponent.vue'
+
+import DetailHashtag from './components/customer/pages/post/DetailTagsComponent.vue'
 
 export default new VueRouter({
     routes: [
@@ -64,6 +67,12 @@ export default new VueRouter({
         },
 
         {
+            path: '/loai-xe/:slugCar',
+            name: 'car-detail',
+            component: DetailCar
+        },
+
+        {
             path: '/admin/quan-ly-bai-viet',
             name: 'post',
             component: Post,
@@ -85,6 +94,12 @@ export default new VueRouter({
             path: '/bai-viet/:slugPost',
             name: 'post-detail',
             component: DetailPost
+        },
+
+        {
+            path: '/hashtag/:slug',
+            name: 'hashtag-detail',
+            component: DetailHashtag
         }
     ],
     mode: 'history'

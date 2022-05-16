@@ -14,6 +14,7 @@ class Service extends Model
         'content',
         'author',
         'status',
+        'slug',
         'created_at',
         'updated_at',
     ];

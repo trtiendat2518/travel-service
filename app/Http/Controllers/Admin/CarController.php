@@ -90,7 +90,8 @@ class CarController extends Controller
             [
                 'name' => 'bail|required|max:50|min:5|notspecial_spaces|unique:cars',
                 'avatar' => 'bail|required|mimes:jpeg,jpg,png',
-                'content' => 'bail|required|min:50|max:5000',
+                'content' => 'bail|required|min:50',
+                'tags' => 'required',
             ],
             [
                 'name.required' => 'Tên loại xe không được để trống!',
@@ -104,13 +105,14 @@ class CarController extends Controller
 
                 'content.required' => 'Nội dung không được để trống!',
                 'content.min' => 'Nội dung phải có 50 ký tự trở lên!',
-                'content.max' => 'Nội dung tối đa 5000 ký tự!',
+                'tags.required' => 'Vui lòng gắn thẻ cho bài viết',
             ]
         );
 
         $newCar = new Car();
         $newCar->name = $data['name'];
         $newCar->content = $data['content'];
+        $newCar->tags = implode(",", $data['tags']);
         date_default_timezone_set('Asia/Ho_Chi_Minh');
         $newCar->created_at = now();
         $newCar->slug = Str::slug($data['name']);
@@ -164,7 +166,8 @@ class CarController extends Controller
         if ($request->avatar == null) {
             $data = $request->validate([
                 'name' => ['required', 'max:50', 'min:5', "unique:cars,name,$carId,id", 'notspecial_spaces'],
-                'content' => ['required', 'min:50', 'max:5000'],
+                'content' => ['required', 'min:50'],
+                'tags' => 'required',
             ], [
                 'name.required' => 'Tên loại xe không được để trống!',
                 'name.max' => 'Tên loại xe tối đa 50 ký tự!',
@@ -174,11 +177,12 @@ class CarController extends Controller
 
                 'content.required' => 'Nội dung không được để trống!',
                 'content.min' => 'Nội dung phải có 50 ký tự trở lên!',
-                'content.max' => 'Nội dung tối đa 5000 ký tự!',
+                'tags.required' => 'Vui lòng gắn thẻ cho bài viết',
             ]);
             $car->name = $data['name'];
             $car->content = $data['content'];
             $car->slug = Str::slug($data['name']);
+            $car->tags = implode(",", $data['tags']);
 
             $car->save();
         } else {
@@ -186,7 +190,8 @@ class CarController extends Controller
                 [
                     'name' => ['required', 'max:50', 'min:5', "unique:cars,name,$carId,id", 'notspecial_spaces'],
                     'avatar' => 'bail|mimes:jpeg,jpg,png',
-                    'content' => ['required', 'min:50', 'max:5000'],
+                    'content' => ['required', 'min:50'],
+                    'tags' => 'required',
                 ],
                 [
                     'name.required' => 'Tên loại xe không được để trống!',
@@ -200,11 +205,13 @@ class CarController extends Controller
                     'content.max' => 'Nội dung tối đa 5000 ký tự!',
 
                     'avatar.mimes' => 'Tệp nhập vào phải là jpeg,jpg,png!',
+                    'tags.required' => 'Vui lòng gắn thẻ cho bài viết',
                 ]
             );
             $car->name = $data['name'];
             $car->content = $data['content'];
             $car->slug = Str::slug($data['name']);
+            $car->tags = implode(",", $data['tags']);
             $image = $request->avatar;
             $name = 'car_avatar_' . uniqid(md5(rand(1, 999))) . '.png';
             Storage::disk('car')->delete($car->avatar);

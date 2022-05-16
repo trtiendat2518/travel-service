@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Customer;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\ServiceResource;
+use App\Models\Car;
 use App\Models\Service;
 use App\Repositories\Service\ServiceInterface;
 use Illuminate\Http\Request;
@@ -22,6 +23,7 @@ class ServiceController extends Controller
 
     public function index(Request $request, $serviceSlug)
     {
+        $car = Car::where('status', '=', 0)->get();
         $service = Service::where('status', '=', 0)->get();
         foreach ($service as $key => $value) {
             if ($value->slug == $serviceSlug) {
@@ -33,7 +35,7 @@ class ServiceController extends Controller
             }
         }
 
-        return view('customer.pages.services.detail')->with(compact('meta_desc', 'meta_title', 'url_canonical', 'service'));
+        return view('customer.pages.services.detail')->with(compact('meta_desc', 'meta_title', 'url_canonical', 'service', 'car'));
     }
 
     public function detail($serviceSlug)

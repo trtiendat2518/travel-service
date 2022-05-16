@@ -13,6 +13,7 @@ class Car extends Model
         'avatar',
         'content',
         'status',
+        'slug',
         'created_at',
         'updated_at'
     ];

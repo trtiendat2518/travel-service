@@ -79,8 +79,9 @@ class PostController extends Controller
             [
                 'title' => 'bail|required|max:150|min:50|notspecial_spaces|unique:posts',
                 'avatar' => 'bail|required|mimes:jpeg,jpg,png',
-                'content' => 'bail|required|min:50|max:5000',
+                'content' => 'bail|required|min:50',
                 'category_id' => 'required|unique:posts',
+                'tags' => 'required',
             ],
             [
                 'title.required' => 'Tiêu đề không được để trống!',
@@ -94,10 +95,12 @@ class PostController extends Controller
 
                 'content.required' => 'Nội dung không được để trống!',
                 'content.min' => 'Nội dung phải có 50 ký tự trở lên!',
-                'content.max' => 'Nội dung tối đa 5000 ký tự!',
+                // 'content.max' => 'Nội dung tối đa 5000 ký tự!',
 
                 'category_id.required' => 'Vui lòng chọn danh mục bài viết',
-                'category_id.unique' => 'Danh mục cho bài viết này đã tồn tại'
+                'category_id.unique' => 'Danh mục cho bài viết này đã tồn tại',
+
+                'tags.required' => 'Vui lòng gắn thẻ cho bài viết',
             ]
         );
 
@@ -106,6 +109,7 @@ class PostController extends Controller
         $newPost->slug = Str::slug($data['title']);
         $newPost->category_id = $data['category_id'];
         $newPost->content = $data['content'];
+        $newPost->tags = implode(",", $data['tags']);
         $newPost->author = $request->author;
         date_default_timezone_set('Asia/Ho_Chi_Minh');
         $newPost->created_at = now();
@@ -159,8 +163,9 @@ class PostController extends Controller
         if ($request->avatar == null) {
             $data = $request->validate([
                 'title' => ['required', 'max:150', 'min:50', "unique:posts,title,$postId,id", 'notspecial_spaces'],
-                'content' => ['required', 'min:50', 'max:5000'],
+                'content' => ['required', 'min:50'],
                 'category_id' => ['required', "unique:posts,category_id,$postId,id"],
+                'tags' => 'required',
             ], [
                 'title.required' => 'Tiêu đề không được để trống!',
                 'title.max' => 'Tiêu đề tối đa 150 ký tự!',
@@ -170,13 +175,15 @@ class PostController extends Controller
 
                 'content.required' => 'Nội dung không được để trống!',
                 'content.min' => 'Nội dung phải có 50 ký tự trở lên!',
-                'content.max' => 'Nội dung tối đa 5000 ký tự!',
+                // 'content.max' => 'Nội dung tối đa 5000 ký tự!',
 
                 'category_id.required' => 'Vui lòng chọn danh mục bài viết',
-                'category_id.unique' => 'Danh mục cho bài viết này đã tồn tại'
+                'category_id.unique' => 'Danh mục cho bài viết này đã tồn tại',
+                'tags.required' => 'Vui lòng gắn thẻ cho bài viết',
             ]);
             $post->title = $data['title'];
             $post->slug = Str::slug($data['title']);
+            $post->tags = implode(",", $data['tags']);
             $post->content = $data['content'];
             $post->category_id = $data['category_id'];
             date_default_timezone_set('Asia/Ho_Chi_Minh');
@@ -186,9 +193,10 @@ class PostController extends Controller
             $data = $request->validate(
                 [
                     'title' => ['required', 'max:150', 'min:50', "unique:posts,title,$postId,id", 'notspecial_spaces'],
-                    'content' => ['required', 'min:50', 'max:5000'],
+                    'content' => ['required', 'min:50'],
                     'category_id' => ['required', "unique:posts,category_id,$postId,id"],
                     'avatar' => 'bail|mimes:jpeg,jpg,png',
+                    'tags' => 'required',
                 ],
                 [
                     'title.required' => 'Tiêu đề không được để trống!',
@@ -199,15 +207,17 @@ class PostController extends Controller
 
                     'content.required' => 'Nội dung không được để trống!',
                     'content.min' => 'Nội dung phải có 50 ký tự trở lên!',
-                    'content.max' => 'Nội dung tối đa 5000 ký tự!',
+                    // 'content.max' => 'Nội dung tối đa 5000 ký tự!',
 
                     'category_id.required' => 'Vui lòng chọn danh mục bài viết',
                     'category_id.unique' => 'Danh mục cho bài viết này đã tồn tại',
                     'avatar.mimes' => 'Tệp nhập vào phải là jpeg,jpg,png!',
+                    'tags.required' => 'Vui lòng gắn thẻ cho bài viết',
                 ]
             );
             $post->title = $data['title'];
             $post->slug = Str::slug($data['title']);
+            $post->tags = implode(",", $data['tags']);
             $post->content = $data['content'];
             $post->category_id = $data['category_id'];
             $image = $request->avatar;

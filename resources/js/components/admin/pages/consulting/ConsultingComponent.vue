@@ -32,60 +32,63 @@
                     <input class="form-control form-search" placeholder="Tìm kiếm..." v-model="query" type="text" />
                 </div>
             </div>
-            <table class="table table-striped" id="table1">
-                <thead>
-                    <tr>
-                        <th>Họ và tên</th>
-                        <th>Số điện thoại</th>
-                        <th>Ngày gửi</th>
-                        <th>Trạng thái</th>
-                        <th>Thao tác</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr v-for="contact in contacts" :key="contact.id">
-                        <td>
-                            <a href="javascript:void(0)" @click="detail(contact)">
-                                {{ contact.full_name }}
-                            </a>
-                        </td>
-                        <td>{{ contact.phone_number }}</td>
-                        <td>{{ contact.created_at | formatFullTime }}</td>
-                        <td>
-                            <select
-                                class="form-select"
-                                v-model="contact.status"
-                                @change="change($event, contact)"
-                                :class="[
-                                    {
-                                        'btn-outline-secondary': contact.status == 0
-                                    },
-                                    {
-                                        'btn-outline-primary': contact.status == 1
-                                    },
-                                    {
-                                        'btn-outline-danger': contact.status == 2
-                                    }
-                                ]"
-                            >
-                                <option value="0" :hidden="contact.status != 0">Đang chờ xử lý</option>
-                                <option value="1" :hidden="contact.status == 2">Đã liên hệ</option>
-                                <option value="2" :hidden="contact.status == 1">Đã huỷ</option>
-                            </select>
-                        </td>
-                        <td>
-                            <button class="btn btn-danger" @click="destroy(contact.id)">
-                                <i class="bi bi-trash"></i>
-                            </button>
-                        </td>
-                    </tr>
-                    <tr v-show="!contacts.length">
-                        <td colspan="6">
-                            <div class="alert alert-danger">Không tìm thấy kết quả phù hợp!</div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="table-responsive">
+                <table class="table table-striped" id="table1">
+                    <thead>
+                        <tr>
+                            <th>Họ và tên</th>
+                            <th>Số điện thoại</th>
+                            <th>Ngày gửi</th>
+                            <th>Trạng thái</th>
+                            <th>Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="contact in contacts" :key="contact.id">
+                            <td>
+                                <a href="javascript:void(0)" @click="detail(contact)">
+                                    {{ contact.full_name }}
+                                </a>
+                            </td>
+                            <td>{{ contact.phone_number }}</td>
+                            <td>{{ contact.created_at | formatFullTime }}</td>
+                            <td>
+                                <select
+                                    class="form-select"
+                                    v-model="contact.status"
+                                    @change="change($event, contact)"
+                                    :class="[
+                                        {
+                                            'btn-outline-secondary': contact.status == 0
+                                        },
+                                        {
+                                            'btn-outline-primary': contact.status == 1
+                                        },
+                                        {
+                                            'btn-outline-danger': contact.status == 2
+                                        }
+                                    ]"
+                                >
+                                    <option value="0" :hidden="contact.status != 0">Đang chờ xử lý</option>
+                                    <option value="1" :hidden="contact.status == 2">Đã liên hệ</option>
+                                    <option value="2" :hidden="contact.status == 1">Đã huỷ</option>
+                                </select>
+                            </td>
+                            <td>
+                                <button class="btn btn-danger" @click="destroy(contact.id)">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr v-show="!contacts.length">
+                            <td colspan="6">
+                                <div class="alert alert-danger">Không tìm thấy kết quả phù hợp!</div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
             <pagination-component
                 v-if="pagination.last_page > 1"
                 :pagination="pagination"

@@ -36,47 +36,50 @@
                     <input class="form-control form-search" v-model="query" placeholder="Tìm kiếm..." type="text" />
                 </div>
             </div>
-            <table class="table table-striped" id="table1">
-                <thead>
-                    <tr>
-                        <th>Họ và tên</th>
-                        <th>Email</th>
-                        <th>Số điện thoại</th>
-                        <th>Loại tài khoản</th>
-                        <th>Thao tác</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr v-for="account in accounts" :key="account.id">
-                        <td>{{ account.full_name }}</td>
-                        <td>{{ account.email }}</td>
-                        <td>{{ account.phone_number }}</td>
-                        <td>
-                            <div v-if="account.role == 0">Quản trị viên</div>
-                            <div v-else-if="account.role == 1">Khách hàng</div>
-                        </td>
-                        <td>
-                            <button class="btn btn-dark" v-if="account.status == 0" @click="change(account.id)">
-                                <i class="bi bi-eye"></i>
-                            </button>
-                            <button class="btn btn-secondary" v-else-if="account.status == 1" @click="change(account.id)">
-                                <i class="bi bi-eye-slash"></i>
-                            </button>
-                            <button class="btn btn-primary" @click="show(account)">
-                                <i class="bi bi-pencil-square"></i>
-                            </button>
-                            <button class="btn btn-danger" @click="destroy(account.id)">
-                                <i class="bi bi-trash"></i>
-                            </button>
-                        </td>
-                    </tr>
-                    <tr v-show="!accounts.length">
-                        <td colspan="5">
-                            <div class="alert alert-danger">Không tìm thấy kết quả phù hợp!</div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="table-responsive">
+                <table class="table table-striped" id="table1">
+                    <thead>
+                        <tr>
+                            <th>Họ và tên</th>
+                            <th>Email</th>
+                            <th>Số điện thoại</th>
+                            <th>Loại tài khoản</th>
+                            <th>Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="account in accounts" :key="account.id">
+                            <td>{{ account.full_name }}</td>
+                            <td>{{ account.email }}</td>
+                            <td>{{ account.phone_number }}</td>
+                            <td>
+                                <div v-if="account.role == 0">Quản trị viên</div>
+                                <div v-else-if="account.role == 1">Khách hàng</div>
+                            </td>
+                            <td>
+                                <button class="btn btn-dark" v-if="account.status == 0" @click="change(account.id)">
+                                    <i class="bi bi-eye"></i>
+                                </button>
+                                <button class="btn btn-secondary" v-else-if="account.status == 1" @click="change(account.id)">
+                                    <i class="bi bi-eye-slash"></i>
+                                </button>
+                                <button class="btn btn-primary" @click="show(account)">
+                                    <i class="bi bi-pencil-square"></i>
+                                </button>
+                                <button class="btn btn-danger" @click="destroy(account.id)">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr v-show="!accounts.length">
+                            <td colspan="5">
+                                <div class="alert alert-danger">Không tìm thấy kết quả phù hợp!</div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
             <pagination-component
                 v-if="pagination.last_page > 1"
                 :pagination="pagination"

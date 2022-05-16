@@ -34,48 +34,53 @@
                     <input class="form-control form-search" v-model="query" placeholder="Tìm kiếm..." type="text" />
                 </div>
             </div>
-            <table class="table table-striped" id="table1">
-                <thead>
-                    <tr>
-                        <th>Họ và tên</th>
-                        <th>Số điện thoại</th>
-                        <th>Ngày đánh giá</th>
-                        <th>Đánh giá</th>
-                        <th>Thao tác</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr v-for="review in reviews" :key="review.id">
-                        <td>
-                            <a href="javascript:void(0)" @click="detail(review)">
-                                {{ review.full_name }}
-                            </a>
-                        </td>
-                        <td>{{ review.phone_number }}</td>
-                        <td>{{ review.created_at | formatFullTime }}</td>
-                        <td>
-                            <span v-for="star in review.star" :key="'star' + star">&nbsp;<i class="bi bi-star-fill star-color"></i></span>
-                            <span v-for="star in 5 - review.star" :key="star"><i class="bi bi-star star-color"></i>&nbsp;</span>
-                        </td>
-                        <td>
-                            <button class="btn btn-dark" v-if="review.status == 0" @click="update(review.id)">
-                                <i class="bi bi-eye"></i>
-                            </button>
-                            <button class="btn btn-secondary" v-else-if="review.status == 1" @click="update(review.id)">
-                                <i class="bi bi-eye-slash"></i>
-                            </button>
-                            <button class="btn btn-danger" @click="destroy(review.id)">
-                                <i class="bi bi-trash"></i>
-                            </button>
-                        </td>
-                    </tr>
-                    <tr v-show="!reviews.length">
-                        <td colspan="5">
-                            <div class="alert alert-danger">Không tìm thấy kết quả phù hợp!</div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="table-responsive">
+                <table class="table table-striped" id="table1">
+                    <thead>
+                        <tr>
+                            <th>Họ và tên</th>
+                            <th>Số điện thoại</th>
+                            <th>Ngày đánh giá</th>
+                            <th>Đánh giá</th>
+                            <th>Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="review in reviews" :key="review.id">
+                            <td>
+                                <a href="javascript:void(0)" @click="detail(review)">
+                                    {{ review.full_name }}
+                                </a>
+                            </td>
+                            <td>{{ review.phone_number }}</td>
+                            <td>{{ review.created_at | formatFullTime }}</td>
+                            <td>
+                                <span v-for="star in review.star" :key="'star' + star"
+                                    >&nbsp;<i class="bi bi-star-fill star-color"></i
+                                ></span>
+                                <span v-for="star in 5 - review.star" :key="star"><i class="bi bi-star star-color"></i>&nbsp;</span>
+                            </td>
+                            <td>
+                                <button class="btn btn-dark" v-if="review.status == 0" @click="update(review.id)">
+                                    <i class="bi bi-eye"></i>
+                                </button>
+                                <button class="btn btn-secondary" v-else-if="review.status == 1" @click="update(review.id)">
+                                    <i class="bi bi-eye-slash"></i>
+                                </button>
+                                <button class="btn btn-danger" @click="destroy(review.id)">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr v-show="!reviews.length">
+                            <td colspan="5">
+                                <div class="alert alert-danger">Không tìm thấy kết quả phù hợp!</div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
             <pagination-component
                 v-if="pagination.last_page > 1"
                 :pagination="pagination"

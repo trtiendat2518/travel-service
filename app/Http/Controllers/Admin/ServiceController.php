@@ -89,8 +89,9 @@ class ServiceController extends Controller
     {
         $data = $request->validate([
             'name' => ['required', 'max:50', 'min:10', 'unique:services', 'notspecial_spaces'],
-            'content' => ['required', 'min:50', 'max:5000'],
+            'content' => ['required', 'min:50'],
             'avatar' => ['required', 'mimes:jpeg,jpg,png'],
+            'tags' => 'required',
         ], [
             'name.required' => 'Tên dịch vụ không được để trống!',
             'name.max' => 'Tên dịch vụ không nhập quá 50 ký tự!',
@@ -100,16 +101,17 @@ class ServiceController extends Controller
 
             'content.required' => 'Nội dung không được để trống!',
             'content.min' => 'Nội dung phải có 50 ký tự trở lên!',
-            'content.max' => 'Nội dung tối đa 5000 ký tự!',
 
             'avatar.required' => 'Vui lòng chọn hình ảnh cho dịch vụ này!',
             'avatar.mimes' => 'Tệp nhập vào phải có đuôi jpeg,jpg,png!',
+            'tags.required' => 'Vui lòng gắn thẻ cho bài viết',
         ]);
 
         $newService = new Service();
         $newService->name = $data['name'];
         $newService->slug = Str::slug($data['name']);
         $newService->content = $data['content'];
+        $newService->tags = implode(",", $data['tags']);
         $newService->author = $request->author;
         date_default_timezone_set('Asia/Ho_Chi_Minh');
         $newService->created_at = now();
@@ -164,7 +166,8 @@ class ServiceController extends Controller
         if ($request->avatar == null) {
             $data = $request->validate([
                 'name' => ['required', 'max:50', 'min:5', "unique:services,name,$serviceId,id", 'notspecial_spaces'],
-                'content' => ['required', 'min:50', 'max:5000'],
+                'content' => ['required', 'min:50'],
+                'tags' => 'required',
             ], [
                 'name.required' => 'Tên dịch vụ không được để trống!',
                 'name.max' => 'Tên dịch vụ không nhập quá 50 ký tự!',
@@ -174,19 +177,21 @@ class ServiceController extends Controller
 
                 'content.required' => 'Nội dung không được để trống!',
                 'content.min' => 'Nội dung phải có 50 ký tự trở lên!',
-                'content.max' => 'Nội dung tối đa 5000 ký tự!',
+                'tags.required' => 'Vui lòng gắn thẻ cho bài viết',
             ]);
             $service->name = $data['name'];
             $service->slug = Str::slug($data['name']);
             $service->content = $data['content'];
+            $service->tags = implode(",", $data['tags']);
             date_default_timezone_set('Asia/Ho_Chi_Minh');
             $service->updated_at = now();
             $service->save();
         } else {
             $data = $request->validate([
                 'name' => ['required', 'max:50', 'min:5', "unique:services,name,$serviceId,id", 'notspecial_spaces'],
-                'content' => ['required', 'min:50', 'max:5000'],
+                'content' => ['required', 'min:50'],
                 'avatar' => ['required', 'mimes:jpeg,jpg,png'],
+                'tags' => 'required',
             ], [
                 'name.required' => 'Tên dịch vụ không được để trống!',
                 'name.max' => 'Tên dịch vụ không nhập quá 50 ký tự!',
@@ -196,13 +201,14 @@ class ServiceController extends Controller
 
                 'content.required' => 'Nội dung không được để trống!',
                 'content.min' => 'Nội dung phải có 50 ký tự trở lên!',
-                'content.max' => 'Nội dung tối đa 5000 ký tự!',
 
                 'avatar.mimes' => 'Tệp nhập vào phải có đuôi jpeg,jpg,png!',
+                'tags.required' => 'Vui lòng gắn thẻ cho bài viết',
             ]);
             $service->name = $data['name'];
             $service->slug = Str::slug($data['name']);
             $service->content = $data['content'];
+            $service->tags = implode(",", $data['tags']);
             date_default_timezone_set('Asia/Ho_Chi_Minh');
             $service->updated_at = now();
 

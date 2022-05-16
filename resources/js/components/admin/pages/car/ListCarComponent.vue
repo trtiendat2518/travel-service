@@ -42,46 +42,49 @@
                             <input class="form-control form-search" v-model="query" placeholder="Tìm kiếm..." type="text" />
                         </div>
                     </div>
-                    <table class="table table-striped" id="table1">
-                        <thead>
-                            <tr>
-                                <th width="40%">Hình ảnh</th>
-                                <th width="40%">Tên loại xe</th>
-                                <th>Thao tác</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr v-for="car in cars" :key="car.id">
-                                <td>
-                                    <img class="image-car" :src="`../public/images/car/${car.avatar}`" alt="" />
-                                </td>
-                                <td>{{ car.name }}</td>
-                                <td>
-                                    <button class="btn btn-dark" v-if="car.status == 0" @click="change(car.id)">
-                                        <i class="bi bi-eye"></i>
-                                    </button>
-                                    <button class="btn btn-secondary" v-else-if="car.status == 1" @click="change(car.id)">
-                                        <i class="bi bi-eye-slash"></i>
-                                    </button>
-                                    <router-link
-                                        tag="button"
-                                        class="btn btn-primary"
-                                        :to="{ name: 'car-update', params: { slugCar: slug(car.name) } }"
-                                    >
-                                        <i class="bi bi-pencil-square"></i>
-                                    </router-link>
-                                    <button class="btn btn-danger" @click="destroy(car.id)">
-                                        <i class="bi bi-trash"></i>
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr v-show="!cars.length">
-                                <td colspan="3">
-                                    <div class="alert alert-danger">Không tìm thấy kết quả phù hợp!</div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <div class="table-responsive">
+                        <table class="table table-striped" id="table1">
+                            <thead>
+                                <tr>
+                                    <th width="40%">Hình ảnh</th>
+                                    <th width="40%">Tên loại xe</th>
+                                    <th>Thao tác</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for="car in cars" :key="car.id">
+                                    <td>
+                                        <img class="image-car" :src="`../public/images/car/${car.avatar}`" alt="" />
+                                    </td>
+                                    <td>{{ car.name }}</td>
+                                    <td>
+                                        <button class="btn btn-dark" v-if="car.status == 0" @click="change(car.id)">
+                                            <i class="bi bi-eye"></i>
+                                        </button>
+                                        <button class="btn btn-secondary" v-else-if="car.status == 1" @click="change(car.id)">
+                                            <i class="bi bi-eye-slash"></i>
+                                        </button>
+                                        <router-link
+                                            tag="button"
+                                            class="btn btn-primary"
+                                            :to="{ name: 'car-update', params: { slugCar: slug(car.name) } }"
+                                        >
+                                            <i class="bi bi-pencil-square"></i>
+                                        </router-link>
+                                        <button class="btn btn-danger" @click="destroy(car.id)">
+                                            <i class="bi bi-trash"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr v-show="!cars.length">
+                                    <td colspan="3">
+                                        <div class="alert alert-danger">Không tìm thấy kết quả phù hợp!</div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
                     <pagination-component
                         v-if="pagination.last_page > 1"
                         :pagination="pagination"

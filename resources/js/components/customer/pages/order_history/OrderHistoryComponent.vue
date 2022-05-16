@@ -29,15 +29,20 @@
                             <div class="cancel" v-else-if="order.status == 3">Bị huỷ</div>
                         </td>
                         <td class="text-center">
-                            <div v-show="checkReview(order) > 0">
-                                <span v-for="star in stars" :key="'star' + star"> &nbsp;<i class="fa-solid fa-star star-color"></i></span>
-                                <span v-for="star in 5 - stars" :key="star"><i class="fa-solid fa-star star-disable"></i>&nbsp;</span>
+                            <div v-if="order.status > 1">
+                                <div v-show="checkReview(order) > 0">
+                                    <span v-for="star in stars" :key="'star' + star">
+                                        &nbsp;<i class="fa-solid fa-star star-color"></i
+                                    ></span>
+                                    <span v-for="star in 5 - stars" :key="star"><i class="fa-solid fa-star star-disable"></i>&nbsp;</span>
+                                </div>
+                                <div v-show="checkReview(order) < 0">
+                                    <button class="btn btn-primary" :disabled="checkReview(order) > 0" @click="createReview(order)">
+                                        Đánh giá
+                                    </button>
+                                </div>
                             </div>
-                            <div v-show="checkReview(order) < 0">
-                                <button class="btn btn-primary" :disabled="checkReview(order) > 0" @click="createReview(order)">
-                                    Đánh giá
-                                </button>
-                            </div>
+                            <div v-else>Chưa thể đánh giá</div>
                         </td>
                     </tr>
                 </tbody>

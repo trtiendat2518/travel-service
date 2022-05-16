@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\ReviewResource;
+use App\Models\Car;
 use App\Models\Contact;
 use App\Models\Review;
 use Illuminate\Http\Request;
@@ -21,8 +22,9 @@ class HomeController extends Controller
         //---------------
 
         $service = Service::where('status', '=', 0)->get();
+        $car = Car::where('status', '=', 0)->get();
 
-        return view('error.404')->with(compact('meta_desc', 'meta_title', 'url_canonical', 'service'));
+        return view('error.404')->with(compact('meta_desc', 'meta_title', 'url_canonical', 'service', 'car'));
     }
 
     public function index(Request $request)
@@ -34,8 +36,9 @@ class HomeController extends Controller
         //---------------
 
         $service = Service::where('status', '=', 0)->get();
+        $car = Car::where('status', '=', 0)->get();
 
-        return view('customer.pages.home')->with(compact('meta_desc', 'meta_title', 'url_canonical', 'service'));
+        return view('customer.pages.home')->with(compact('meta_desc', 'meta_title', 'url_canonical', 'service', 'car'));
     }
 
     public function aboutUs(Request $request)
@@ -47,8 +50,9 @@ class HomeController extends Controller
         //---------------
 
         $service = Service::where('status', '=', 0)->get();
+        $car = Car::where('status', '=', 0)->get();
 
-        return view('customer.pages.about.index')->with(compact('meta_desc', 'meta_title', 'url_canonical', 'service'));
+        return view('customer.pages.about.index')->with(compact('meta_desc', 'meta_title', 'url_canonical', 'service', 'car'));
     }
 
     public function contact(Request $request)

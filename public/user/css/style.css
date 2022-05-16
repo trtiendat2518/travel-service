@@ -2117,7 +2117,7 @@ button:focus {
     line-height: 32px;
 }
 .menu-dropdown li a {
-    color: #969696;
+    color: #000;
     font-size: 16px;
     display: block;
 }
@@ -2736,7 +2736,7 @@ article.post:hover .featured-image img {
     transform: scale(1.1) rotate(-2deg);
 }
 article.post .entry-content {
-    padding: 20px 35px 0px;
+    padding: 20px 20px 0px;
 }
 article.post .entry-content .entry-post-title h4 {
     margin-bottom: 20px;

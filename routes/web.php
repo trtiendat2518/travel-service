@@ -28,6 +28,9 @@ Route::prefix('')->group(function () {
     //ServiceController
     Route::get('/dich-vu-thue-xe/{serviceSlug}', 'Customer\ServiceController@index');
 
+    //CarController
+    Route::get('/loai-xe/{carSlug}', 'Customer\CarController@index');
+
     //PostController
     Route::get('/bai-viet', 'Customer\PostController@index');
     Route::get('/bai-viet/{postSlug}', 'Customer\PostController@indexDetail');
@@ -76,3 +79,4 @@ Route::prefix('admin')->group(function () {
 });
 
 Route::any('/{page?}', 'HomeController@error')->where('page', '.*');
+Route::get('/404', 'HomeController@error');

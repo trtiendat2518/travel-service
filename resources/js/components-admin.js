@@ -1,4 +1,7 @@
 import Vue from 'vue'
+import InputTag from 'vue-input-tag'
+
+Vue.component('input-tag', InputTag)
 
 Vue.component('pagination-component', require('./components/common/PaginationComponent.vue').default)
 

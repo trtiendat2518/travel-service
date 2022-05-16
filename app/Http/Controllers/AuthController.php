@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Car;
 use App\Models\Service;
 use App\Models\Users;
 use Illuminate\Http\Request;
@@ -20,8 +21,9 @@ class AuthController extends Controller
         //---------------
 
         $service = Service::where('status', '=', 0)->get();
+        $car = Car::where('status', '=', 0)->get();
 
-        return view('auth.register')->with(compact('meta_desc', 'meta_title', 'url_canonical', 'service'));
+        return view('auth.register')->with(compact('meta_desc', 'meta_title', 'url_canonical', 'service', 'car'));
     }
 
     public function loginIndex(Request $request)
@@ -33,8 +35,9 @@ class AuthController extends Controller
         //---------------
 
         $service = Service::where('status', '=', 0)->get();
+        $car = Car::where('status', '=', 0)->get();
 
-        return view('auth.login')->with(compact('meta_desc', 'meta_title', 'url_canonical', 'service'));
+        return view('auth.login')->with(compact('meta_desc', 'meta_title', 'url_canonical', 'service', 'car'));
     }
 
     public function verifyIndex(Request $request)
@@ -46,8 +49,9 @@ class AuthController extends Controller
         //---------------
 
         $service = Service::where('status', '=', 0)->get();
+        $car = Car::where('status', '=', 0)->get();
 
-        return \view('auth.verify')->with(\compact('meta_desc', 'meta_title', 'url_canonical', 'service'));
+        return \view('auth.verify')->with(\compact('meta_desc', 'meta_title', 'url_canonical', 'service', 'car'));
     }
 
     public function verifyAdminIndex(Request $request)
@@ -72,8 +76,9 @@ class AuthController extends Controller
         //---------------
 
         $service = Service::where('status', '=', 0)->get();
+        $car = Car::where('status', '=', 0)->get();
 
-        return \view('auth.forgot_password')->with(\compact('meta_desc', 'meta_title', 'url_canonical', 'service'));
+        return \view('auth.forgot_password')->with(\compact('meta_desc', 'meta_title', 'url_canonical', 'service', 'car'));
     }
 
     public function newPasswordIndex(Request $request)
@@ -85,8 +90,9 @@ class AuthController extends Controller
         //---------------
 
         $service = Service::where('status', '=', 0)->get();
+        $car = Car::where('status', '=', 0)->get();
 
-        return \view('auth.new_password')->with(\compact('meta_desc', 'meta_title', 'url_canonical', 'service'));
+        return \view('auth.new_password')->with(\compact('meta_desc', 'meta_title', 'url_canonical', 'service', 'car'));
     }
 
     public function registerAccount(Request $request)
@@ -254,6 +260,7 @@ class AuthController extends Controller
 
                 $request->session()->put('id', $user->id);
                 $request->session()->put('role', $user->role);
+                $request->session()->put('name', $user->full_name);
                 $request->session()->forget('verify');
                 $request->session()->forget('otp');
 
@@ -343,8 +350,9 @@ class AuthController extends Controller
 
         $user = Users::find(Session::get('id'));
         $service = Service::where('status', '=', 0)->get();
+        $car = Car::where('status', '=', 0)->get();
 
-        return \view('customer.pages.info.edit_info')->with(\compact('meta_desc', 'meta_title', 'url_canonical', 'user', 'service'));
+        return \view('customer.pages.info.edit_info')->with(\compact('meta_desc', 'meta_title', 'url_canonical', 'user', 'service', 'car'));
     }
 
     public function infoAdminIndex(Request $request)
@@ -465,8 +473,9 @@ class AuthController extends Controller
 
         $user = Users::find(Session::get('id'));
         $service = Service::where('status', '=', 0)->get();
+        $car = Car::where('status', '=', 0)->get();
 
-        return \view('customer.pages.info.change_password')->with(\compact('meta_desc', 'meta_title', 'url_canonical', 'user', 'service'));
+        return \view('customer.pages.info.change_password')->with(\compact('meta_desc', 'meta_title', 'url_canonical', 'user', 'service', 'car'));
     }
 
     public function changePasswordAdminIndex(Request $request)

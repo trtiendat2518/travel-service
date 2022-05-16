@@ -20,6 +20,7 @@
 
     <link rel="stylesheet" href="{{ asset('public/admin/vendors/perfect-scrollbar/perfect-scrollbar.css') }}">
     <link rel="stylesheet" href="{{ asset('public/admin/vendors/bootstrap-icons/bootstrap-icons.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/admin/css/bootstrap-tagsinput.css') }}">
     <link rel="stylesheet" href="{{ asset('public/admin/css/app.css') }}">
     {{--
     <link rel="shortcut icon" href="{{ asset('public/admin/images/favicon.svg') }}" type="image/x-icon"> --}}
@@ -39,7 +40,7 @@
 
     <script src="{{ asset('public/admin/vendors/apexcharts/apexcharts.js') }}"></script>
     <script src="{{ asset('public/admin/js/pages/dashboard.js') }}"></script>
-
+    <script src="{{ asset('public/admin/js/bootstrap-tagsinput.min.js') }}"></script>
     <script src="{{ asset('public/admin/js/main.js') }}"></script>
 </body>
 

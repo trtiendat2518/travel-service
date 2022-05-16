@@ -44,42 +44,45 @@
                             <input class="form-control form-search" v-model="query" placeholder="Tìm kiếm..." type="text" />
                         </div>
                     </div>
-                    <table class="table table-striped" id="table1">
-                        <thead>
-                            <tr>
-                                <th width="30%">Hình ảnh</th>
-                                <th width="30%">Tên dịch vụ</th>
-                                <th width="30%">Tác giả</th>
-                                <th>Thao tác</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr v-for="service in services" :key="service.id">
-                                <td>
-                                    <img class="image-service" :src="`../public/images/service/${service.avatar}`" alt="" />
-                                </td>
-                                <td>{{ service.name }}</td>
-                                <td>{{ service.full_name }}</td>
-                                <td>
-                                    <router-link
-                                        tag="button"
-                                        class="btn btn-primary"
-                                        :to="{ name: 'service-update', params: { slugService: slug(service.name) } }"
-                                    >
-                                        <i class="bi bi-pencil-square"></i>
-                                    </router-link>
-                                    <button class="btn btn-danger" @click="destroy(service.id)">
-                                        <i class="bi bi-trash"></i>
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr v-show="!services.length">
-                                <td colspan="4">
-                                    <div class="alert alert-danger">Không tìm thấy kết quả phù hợp!</div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <div class="table-responsive">
+                        <table class="table table-striped" id="table1">
+                            <thead>
+                                <tr>
+                                    <th width="30%">Hình ảnh</th>
+                                    <th width="30%">Tên dịch vụ</th>
+                                    <th width="30%">Tác giả</th>
+                                    <th>Thao tác</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for="service in services" :key="service.id">
+                                    <td>
+                                        <img class="image-service" :src="`../public/images/service/${service.avatar}`" alt="" />
+                                    </td>
+                                    <td>{{ service.name }}</td>
+                                    <td>{{ service.full_name }}</td>
+                                    <td>
+                                        <router-link
+                                            tag="button"
+                                            class="btn btn-primary"
+                                            :to="{ name: 'service-update', params: { slugService: slug(service.name) } }"
+                                        >
+                                            <i class="bi bi-pencil-square"></i>
+                                        </router-link>
+                                        <button class="btn btn-danger" @click="destroy(service.id)">
+                                            <i class="bi bi-trash"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr v-show="!services.length">
+                                    <td colspan="4">
+                                        <div class="alert alert-danger">Không tìm thấy kết quả phù hợp!</div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
                     <pagination-component
                         v-if="pagination.last_page > 1"
                         :pagination="pagination"

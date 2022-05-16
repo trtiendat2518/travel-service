@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Customer;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\PostResource;
+use App\Models\Car;
 use App\Models\Post;
 use App\Models\Service;
 use App\Repositories\Post\PostInterface;
@@ -30,8 +31,9 @@ class PostController extends Controller
         //---------------
 
         $service = Service::where('status', '=', 0)->get();
+        $car = Car::where('status', '=', 0)->get();
 
-        return view('customer.pages.posts.index')->with(compact('meta_desc', 'meta_title', 'url_canonical', 'service'));
+        return view('customer.pages.posts.index')->with(compact('meta_desc', 'meta_title', 'url_canonical', 'service', 'car'));
     }
 
     public function indexDetail(Request $request, $postSlug)
@@ -44,8 +46,9 @@ class PostController extends Controller
         //---------------
 
         $service = Service::where('status', '=', 0)->get();
+        $car = Car::where('status', '=', 0)->get();
 
-        return view('customer.pages.posts.detail')->with(compact('meta_desc', 'meta_title', 'url_canonical', 'post', 'service'));
+        return view('customer.pages.posts.detail')->with(compact('meta_desc', 'meta_title', 'url_canonical', 'post', 'service', 'car'));
     }
 
     public function detail($postSlug)
@@ -58,5 +61,28 @@ class PostController extends Controller
     {
         $popularPost = $this->postRepository->popular();
         return PostResource::collection($popularPost);
+    }
+
+    public function indexHashtag(Request $request, $slug)
+    {
+        $postTag = Post::where('slug', 'LIKE', '%' . $slug . '%')->first();
+        $carTag = Car::where('slug', 'LIKE', '%' . $slug . '%')->first();
+        $serviceTag = Service::where('slug', 'LIKE', '%' . $slug . '%')->first();
+
+        if ($postTag != null) {
+            return response()->json(['post', $postTag->slug]);
+        } else if ($carTag != null) {
+            return response()->json(['car', $carTag->slug]);
+        } else if ($serviceTag != null) {
+            return response()->json(['service', $serviceTag->slug]);
+        } else {
+            return response()->json('error');
+        }
+    }
+
+    public function hashtag($slug)
+    {
+        $tag = $this->postRepository->hashtag($slug);
+        return PostResource::collection($tag);
     }
 }

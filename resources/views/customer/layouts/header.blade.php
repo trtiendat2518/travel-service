@@ -2,16 +2,23 @@
     <div class="container-fluid">
         <div class="row header-main">
             <div id="logo" class="col-lg-2 col-md-3 col-6 d-flex text-left">
-                <a id="logo-img" href="#"><img src="{{ asset('public/images/logo.png') }}" alt="logo" title="thuexemiennam" style="width: 20vw" /></a>
+                <a id="logo-img" href="#"><img src="{{ asset('public/images/logo.png') }}" alt="logo" title="thuexemiennam" style="width: 50%" /></a>
             </div>
             <div class="top-header-right d-flex flex-wrap col-lg-10 col-md-9 col-6 align-items-center" style="justify-content: right !important">
                 <ul id="menu" class="d-flex  list-unstyled mb-0">
                     <div class="close-menu d-none">
                         <img src="{{ asset('public/user/img/close_s.png') }}" alt="">
                     </div>
-                    <div class="logo-res d-none">
+                    {{-- <div class="logo-res d-none">
                         <a href="{{ url('/') }}"><img src="{{ asset('public/images/logo.png') }}" alt=""></a>
-                    </div>
+                    </div> --}}
+
+                    @if (Session::get('id') && Session::get('role') == 1)
+                    <li class="item login-mobile" hidden>
+                        <a class="nav-link text-capitalize p-0" href="javascript:void(0)">Xin chào, {{ Session::get('name') }}</a>
+                    </li>
+                    <hr class="item login-mobile" hidden>
+                    @endif
 
                     <li class="item">
                         <a class="nav-link text-capitalize p-0" href="{{ url('/') }}">Trang chủ</a>
@@ -34,6 +41,19 @@
                         </ul>
                     </li>
 
+                    <li class="item car">
+                        <a class="nav-link text-capitalize p-0" href="javascript:void(0)">Các loại xe</a>
+                        <ul class="menu-dropdown position-absolute list-unstyled">
+                            @foreach ($car as $key => $value)
+                            <li>
+                                <a href="{{ url('loai-xe/'.$value->slug) }}">
+                                    {{ $value->name }}
+                                </a>
+                            </li>
+                            @endforeach
+                        </ul>
+                    </li>
+
                     <hr class="item service-mobile" hidden>
                     @foreach ($service as $key => $value)
                     <li class="item service-mobile" hidden>
@@ -41,16 +61,36 @@
                     </li>
                     @endforeach
 
+                    <hr class="item service-car" hidden>
+                    @foreach ($car as $key => $value)
+                    <li class="item service-mobile" hidden>
+                        <a class="nav-link text-capitalize p-0" href="{{ url('loai-xe/'.$value->slug) }}">{{ $value->name }}</a>
+                    </li>
+                    @endforeach
+
                     @if (Session::get('id') && Session::get('role') == 1)
-                    <li class="item">
-                        <a class="nav-link text-capitalize p-0" href="{{ url('/thong-tin-ca-nhan') }}">Hồ sơ cá nhân</a>
+                    <li class="item login">
+                        <a class="nav-link text-capitalize p-0" href="{{ url('/thong-tin-ca-nhan') }}">Xin chào, {{ Session::get('name') }}</a>
                         <ul class="menu-dropdown position-absolute list-unstyled">
                             <li><a href="{{ url('/thong-tin-ca-nhan') }}">Thông tin cá nhân</a></li>
                             <li><a href="{{ url('/lich-su-don-thue-xe') }}">Lịch sử đơn đặt thuê xe</a></li>
                             <li><a href="{{ url('/doi-mat-khau') }}">Đổi mật khẩu</a></li>
+                            <hr>
+                            <li><a href="{{ url('dang-xuat') }}">Đăng xuất</a></li>
                         </ul>
                     </li>
-                    <li class="item">
+
+                    <hr class="item login-mobile" hidden>
+                    <li class="item login-mobile" hidden>
+                        <a class="nav-link text-capitalize p-0" href="{{ url('/thong-tin-ca-nhan') }}">Thông tin cá nhân</a>
+                    </li>
+                    <li class="item login-mobile" hidden>
+                        <a class="nav-link text-capitalize p-0" href="{{ url('/lich-su-don-thue-xe') }}">Lịch sử đơn đặt thuê xe</a>
+                    </li>
+                    <li class="item login-mobile" hidden>
+                        <a class="nav-link text-capitalize p-0" href="{{ url('/doi-mat-khau') }}">Đổi mật khẩu</a>
+                    </li>
+                    <li class="item login-mobile" hidden>
                         <a class="nav-link text-capitalize p-0" href="{{ url('dang-xuat') }}">Đăng xuất</a>
                     </li>
                     @else
