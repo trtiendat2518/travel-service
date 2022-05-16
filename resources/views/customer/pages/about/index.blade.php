@@ -129,7 +129,7 @@
                                         <div class="image-text-alignment-block-content">
                                             <h4 style="color: #1e1e1e;">THÔNG TIN LIÊN HỆ XE DỊCH VỤ MIỀN NAM</h4>
                                             <div class="image-text-aligment-1-column">
-                                                <p>– <b>Trụ sở:</b> Đường số 8, Phường Linh Tây,Quận Thủ Đứ, Thành phố Hồ Chí Minh</p>
+                                                <p>– <b>Trụ sở:</b> Đường số 8, Phường Linh Tây,Quận Thủ Đức, Thành phố Hồ Chí Minh</p>
                                                 <p>
                                                     – <b>Chi nhánh:</b> Lô A, Đường N6 Khu Công Nghiệp, Quốc lộ 13
                                                 </p>

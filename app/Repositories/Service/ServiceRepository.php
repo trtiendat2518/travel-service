@@ -26,19 +26,23 @@ class ServiceRepository implements ServiceInterface
     public function list($currentEntries)
     {
         return Service::join('users', 'users.id', '=', 'services.author')
-            ->select('services.*', 'users.full_name')->orderby('services.id', 'DESC')->paginate($currentEntries);
+            ->select('services.*', 'users.full_name')
+            ->where('services.id', '>', 0)
+            ->orderby('services.id', 'DESC')->paginate($currentEntries);
     }
 
     public function search($query, $currentEntries)
     {
         return Service::join('users', 'users.id', '=', 'services.author')
             ->where('services.name', 'LIKE', '%' . $query . '%')
-            ->select('services.*', 'users.full_name')->orderby('services.id', 'DESC')->paginate($currentEntries);
+            ->select('services.*', 'users.full_name')
+            ->where('services.id', '>', 0)
+            ->orderby('services.id', 'DESC')->paginate($currentEntries);
     }
 
     public function all()
     {
-        return Service::where('status', '=', 0)->get();
+        return Service::where('status', '=', 0)->orderby('name', 'ASC')->get();
     }
 
     public function detail($serviceSlug)
@@ -48,13 +52,14 @@ class ServiceRepository implements ServiceInterface
 
     public function eightServices()
     {
-        return Service::orderBy('id', 'DESC')->limit(8)->get();
+        return Service::where('services.id', '>', 0)->orderBy('id', 'DESC')->limit(8)->get();
     }
 
     public function popular()
     {
         return OrderDetail::join('services', 'services.id', '=', 'order_details.service_id')
             ->select(DB::raw("COUNT(service_id) AS service_popular"), 'services.id', 'services.name', 'services.avatar', 'services.slug')
+            ->where('services.id', '>', 0)
             ->orderBy('service_popular', 'DESC')
             ->groupBy('service_id')->limit(5)->get();
     }

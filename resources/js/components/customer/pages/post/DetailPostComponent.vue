@@ -71,7 +71,7 @@
 
                         <div class="booking">
                             <button class="btn btn-color btn-block btn-lg" @click="book()">Đặt thuê xe</button>
-                            <a href="tel:0123456789" class="btn btn-secondary btn-block btn-lg"> Liên hệ </a>
+                            <a href="tel:0886786052" class="btn btn-secondary btn-block btn-lg"> Liên hệ </a>
                         </div>
                     </div>
                 </div>

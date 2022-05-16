@@ -32,7 +32,8 @@ class CarRepository implements CarInterface
 
     public function all()
     {
-        return Car::where('status', '=', 0)->get();
+        // return Car::where('status', '=', 0)->orderby('name', 'ASC')->get();
+        return Car::where('status', '=', 0)->orderby('id', 'ASC')->get();
     }
 
     public function detail($carSlug)
