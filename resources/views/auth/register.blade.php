@@ -9,7 +9,6 @@
                 <div class="login-booking">
                     <div class="container mb-5 mt-3">
                         <div class="box-title text-center">
-                            <h2>Đăng ký</h2>
                             <h3 class="title">Đăng ký</h3>
                         </div>
                     </div>

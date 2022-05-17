@@ -9,7 +9,6 @@
                 <div class="login-booking">
                     <div class="container mb-5 mt-5">
                         <div class="box-title text-center">
-                            <h2>Quên mật khẩu</h2>
                             <h3 class="title">Quên mật khẩu</h3>
                         </div>
                     </div>

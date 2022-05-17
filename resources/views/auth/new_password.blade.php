@@ -9,7 +9,6 @@
                 <div class="login-booking">
                     <div class="container mb-5 mt-3">
                         <div class="box-title text-center">
-                            <h2>Tạo mới mật khẩu</h2>
                             <h3 class="title">Tạo mới mật khẩu</h3>
                         </div>
                     </div>
