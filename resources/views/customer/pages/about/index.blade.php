@@ -129,15 +129,19 @@
                                         <div class="image-text-alignment-block-content">
                                             <h4 style="color: #1e1e1e;">THÔNG TIN LIÊN HỆ XE DỊCH VỤ MIỀN NAM</h4>
                                             <div class="image-text-aligment-1-column">
-                                                <p>– <b>Trụ sở:</b> Đường số 8, Phường Linh Tây,Quận Thủ Đức, Thành phố Hồ Chí Minh</p>
-                                                <p>
-                                                    – <b>Chi nhánh:</b> Lô A, Đường N6 Khu Công Nghiệp, Quốc lộ 13
+                                                <p>– <b style="font-family: auto">Trụ sở:</b>
+                                                    <span>Đường số 8, Phường Linh Tây,Quận Thủ Đức, Thành phố Hồ
+                                                        Chí Minh</span>
                                                 </p>
                                                 <p>
-                                                    – <b>Chi nhánh:</b> 583 Đường Cách Mạng Tháng 8, Khu phố 2, Phường 3, Thành phố Tây Ninh
+                                                    – <b style="font-family: auto">Chi nhánh:</b> Lô A, Đường N6 Khu Công Nghiệp, Quốc lộ 13
                                                 </p>
                                                 <p>
-                                                    – <b>Điện thoại:</b> 088.678.6052 (Tú) hoặc 0911.714.452 (Hà)
+                                                    – <b style="font-family: auto">Chi nhánh:</b> 583 Đường Cách Mạng Tháng 8, Khu phố 2, Phường 3,
+                                                    Thành phố Tây Ninh
+                                                </p>
+                                                <p>
+                                                    – <b style="font-family: auto">Điện thoại:</b> 088.678.6052 (Tú) hoặc 0911.714.452 (Hà)
                                                 </p>
                                             </div>
                                         </div>

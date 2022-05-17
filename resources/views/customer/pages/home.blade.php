@@ -84,7 +84,7 @@
                                                         style="background-image: url(&quot;{{ asset('public/user/img/ve-chung-toi.jpg') }}&quot;);"
                                                         data-was-processed="true"></div>
                                                     <div class="image-text-alignment-block-content">
-                                                        <h3><b>Tại sao nên sử dụng dịch vụ của chúng tôi?</b> </h3>
+                                                        <h3><b style="font-family: auto">Tại sao nên sử dụng dịch vụ của chúng tôi?</b> </h3>
                                                         <div class="image-text-aligment-1-column">
                                                             <p>Dịch vụ thuê xe của chúng tôi trải dài rộng khắp các tỉnh miền Nam, có
                                                                 đa dạng các loại xe 4-7-16-29-45 chỗ, phù hợp với từng nhu cầu sử dụng của khách hàng.
