@@ -77,7 +77,7 @@ class PostController extends Controller
     {
         $data = $request->validate(
             [
-                'title' => 'bail|required|max:150|min:50|notspecial_spaces|unique:posts',
+                'title' => 'bail|required|max:150|min:20|unique:posts',
                 'avatar' => 'bail|required|mimes:jpeg,jpg,png',
                 'content' => 'bail|required|min:50',
                 'category_id' => 'required|unique:posts',
@@ -87,7 +87,6 @@ class PostController extends Controller
                 'title.required' => 'Tiêu đề không được để trống!',
                 'title.max' => 'Tiêu đề tối đa 150 ký tự!',
                 'title.min' => 'Tiêu đề tối thiểu 50 ký  tự!',
-                'title.notspecial_spaces' => 'Tiêu đề không chứa ký tự đặc biệt!',
                 'title.unique' => 'Tiêu đề đã tồn tại!',
 
                 'avatar.required' => 'Vui lòng chọn hình ảnh cho bài viết này!',
@@ -162,7 +161,7 @@ class PostController extends Controller
 
         if ($request->avatar == null) {
             $data = $request->validate([
-                'title' => ['required', 'max:150', 'min:50', "unique:posts,title,$postId,id", 'notspecial_spaces'],
+                'title' => ['required', 'max:150', 'min:20', "unique:posts,title,$postId,id"],
                 'content' => ['required', 'min:50'],
                 'category_id' => ['required', "unique:posts,category_id,$postId,id"],
                 'tags' => 'required',
@@ -170,7 +169,6 @@ class PostController extends Controller
                 'title.required' => 'Tiêu đề không được để trống!',
                 'title.max' => 'Tiêu đề tối đa 150 ký tự!',
                 'title.min' => 'Tiêu đề tối thiểu 50 ký  tự!',
-                'title.notspecial_spaces' => 'Tiêu đề không chứa ký tự đặc biệt!',
                 'title.unique' => 'Tiêu đề đã tồn tại!',
 
                 'content.required' => 'Nội dung không được để trống!',
@@ -192,7 +190,7 @@ class PostController extends Controller
         } else {
             $data = $request->validate(
                 [
-                    'title' => ['required', 'max:150', 'min:50', "unique:posts,title,$postId,id", 'notspecial_spaces'],
+                    'title' => ['required', 'max:150', 'min:20', "unique:posts,title,$postId,id"],
                     'content' => ['required', 'min:50'],
                     'category_id' => ['required', "unique:posts,category_id,$postId,id"],
                     'avatar' => 'bail|mimes:jpeg,jpg,png',
@@ -202,7 +200,6 @@ class PostController extends Controller
                     'title.required' => 'Tiêu đề không được để trống!',
                     'title.max' => 'Tiêu đề tối đa 150 ký tự!',
                     'title.min' => 'Tiêu đề tối thiểu 50 ký  tự!',
-                    'title.notspecial_spaces' => 'Tiêu đề không chứa ký tự đặc biệt!',
                     'title.unique' => 'Tiêu đề đã tồn tại!',
 
                     'content.required' => 'Nội dung không được để trống!',
