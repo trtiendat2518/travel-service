@@ -769,6 +769,7 @@ export default {
 </script>
 
 <style scoped>
+@import 'vue2-editor/dist/vue2-editor.css';
 .btn-color {
     background-color: #1e1e1e;
     color: #fff;
