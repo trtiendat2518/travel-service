@@ -52,7 +52,7 @@ class ServiceRepository implements ServiceInterface
 
     public function eightServices()
     {
-        return Service::where('services.id', '>', 0)->orderBy('id', 'DESC')->limit(6)->get();
+        return Service::where('services.id', '>', 0)->orderBy('id', 'DESC')->limit(8)->get();
     }
 
     public function popular()

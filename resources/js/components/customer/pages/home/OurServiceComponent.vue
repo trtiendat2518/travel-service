@@ -15,7 +15,7 @@
                                         :src="`../public/images/service/${service.avatar}`"
                                         alt=""
                                     />
-                                    <p class="our-service-caption">{{ service.name }}</p>
+                                    <p class="name-service our-service-caption">{{ service.name }}</p>
                                 </div></a
                             >
                         </div>
@@ -81,19 +81,30 @@ p {
 
 @media only screen and (min-width: 768px) {
     .cards {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .name-service {
+        font-size: 12px;
     }
 }
 
 @media (min-width: 900px) {
     .cards {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .name-service {
+        font-size: 13px;
     }
 }
 
 @media only screen and (min-width: 1200px) {
     .cards {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(4, 1fr);
+    }
+    .name-service {
+        font-size: 14px;
     }
 }
 </style>
