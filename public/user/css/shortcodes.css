@@ -131,7 +131,7 @@
     padding: 13px 0;
 }
 .price-car ul.level-price li .value {
-    color: #bf9c60;
+    color: #2f7ed3;
     font-size: 18px;
 }
 .price-car ul.level-price li .value .price {
@@ -199,7 +199,7 @@
 }
 .price-car.bg-3 .price-header,
 .price-car.bg-3 .price-bottom a {
-    background: #bf9c60;
+    background: #2f7ed3;
 }
 
 .price-car.bg-3 .price-header,
@@ -208,7 +208,7 @@
 }
 
 .price-car.bg-3 {
-    border: 1px solid #bf9c60;
+    border: 1px solid #2f7ed3;
 }
 .price-car.bg-2 .price-bottom a:not(:hover),
 .price-car.bg-3 .price-bottom a:not(:hover) {
@@ -279,7 +279,7 @@
 .popular-fleet .content .price {
     font-size: 18px;
     line-height: 30px;
-    color: #bf9c60;
+    color: #2f7ed3;
     margin-top: 7px;
 }
 .popular-fleet .content .price span {
@@ -306,7 +306,7 @@
     line-height: 30px;
     color: #fff;
     border-radius: 4px;
-    background: #bf9c60;
+    background: #2f7ed3;
     padding: 9px 65px 10px 65px;
     display: inline-block;
     position: absolute;
@@ -412,7 +412,7 @@
 .widget-infomation ul li.download a {
     display: flex;
     align-items: center;
-    background-color: #bf9c60;
+    background-color: #2f7ed3;
     padding: 17px 43px 16px 33px;
 }
 .widget-infomation ul li.download a:hover {
@@ -441,7 +441,7 @@
     font-weight: 500;
 }
 .address-box > p {
-    color: #bf9c60;
+    color: #2f7ed3;
     font-size: 20px;
     font-weight: 500;
 }
@@ -525,7 +525,7 @@
     margin-top: 9px;
 }
 .contact-form form .btn-submit-form button:hover {
-    background: #bf9c60;
+    background: #2f7ed3;
 }
 .contact-form form .btn-submit-form button img {
     padding-left: 40px;
@@ -630,10 +630,10 @@ button.clr-black {
     color: #1e1e1e;
 }
 button.clr-1 {
-    color: #bf9c60;
+    color: #2f7ed3;
 }
 button.bg-1 {
-    background: #bf9c60;
+    background: #2f7ed3;
 }
 button.bg-3 {
     background: #d7d2bd;
@@ -642,7 +642,7 @@ button.no-bg {
     background: transparent;
 }
 button.border-1 {
-    border: 1px solid #bf9c60;
+    border: 1px solid #2f7ed3;
 }
 button.border-2 {
     border: 1px solid #1e1e1e;
@@ -674,7 +674,7 @@ button.no-bg:hover {
     border-bottom: 1px solid #ebe9dc;
 }
 .accordion-toggle .toggle-title.active {
-    color: #bf9c60;
+    color: #2f7ed3;
     margin-bottom: 10px;
     border-bottom: none;
 }
@@ -752,10 +752,10 @@ button.no-bg:hover {
     color: #1e1e1e;
 }
 .box-tabs.border-2 {
-    border: 1px solid #bf9c60;
+    border: 1px solid #2f7ed3;
 }
 .box-tabs ul.bg-2.tab-list {
-    background: #bf9c60;
+    background: #2f7ed3;
 }
 /*========== Tables Area ==========*/
 .tables-area {
@@ -798,13 +798,13 @@ table tbody tr td {
     border-color: #fff;
 }
 table thead.bg-2 {
-    background: #1e1e1e;
+    background: #2f7ed3;
 }
 table thead.bg-2 tr th {
     color: #fff;
 }
 table tbody.bg-2 tr {
-    background: #e9e9e9;
+    background: #e4f1fe;
     border-color: #fff;
 }
 /*========== Price Area ==========*/
@@ -919,7 +919,7 @@ table tbody.bg-2 tr {
 .progres .progress-item .progress-bar .progress-animate {
     height: 6px;
     border-radius: 6px;
-    background: #bf9c60;
+    background: #2f7ed3;
     width: 0;
 }
 .progres .progress-item.photoshop .progress-bar .progress-animate {
@@ -953,7 +953,7 @@ table tbody.bg-2 tr {
 }
 /*========== Error Page ==========*/
 .error-page {
-    background: url("../images/template/bg-error.jpg") top center no-repeat;
+    background: url('../images/template/bg-error.jpg') top center no-repeat;
     height: 973px;
 }
 .error-area {
@@ -967,7 +967,7 @@ table tbody.bg-2 tr {
     font-size: 30px;
     margin-top: 43px;
     margin-bottom: 42px;
-    color: #bf9c60;
+    color: #2f7ed3;
 }
 .error .content-error p {
     color: #fff;
@@ -983,7 +983,7 @@ table tbody.bg-2 tr {
     color: #fff;
 }
 .error .content-error form input:focus {
-    border-color: #bf9c60;
+    border-color: #2f7ed3;
 }
 /*========== Heading Area ==========*/
 .heading-area {
@@ -1166,7 +1166,7 @@ ul.booking-steps li .text {
     transform: translateX(-50%);
 }
 .button-summary-bar .icon {
-    background: #bf9c60;
+    background: #2f7ed3;
     width: 50px;
     height: 27px;
     text-align: center;
@@ -1195,14 +1195,14 @@ ul.booking-steps li .text {
     transform: rotate(180deg);
 }
 .button-summary-bar .icon:after {
-    content: "";
+    content: '';
     position: absolute;
     top: 7px;
     left: 0;
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    background: #bf9c60;
+    background: #2f7ed3;
     z-index: -1;
 }
 .button-summary-bar p {
@@ -1315,7 +1315,7 @@ ul.booking-steps li .text {
 }
 .select-car .box-text .bottom .price,
 .select-car.ofl .bottom .price {
-    color: #bf9c60;
+    color: #2f7ed3;
     font-size: 18px;
     margin-right: 40px;
 }
@@ -1354,7 +1354,7 @@ ul.booking-steps li .text {
     height: 50px;
     padding: 0 85px 0 48px;
     color: #fff;
-    background: #bf9c60;
+    background: #2f7ed3;
     border-radius: 4px;
     display: block;
     position: relative;
@@ -1390,7 +1390,7 @@ ul.booking-steps li .text {
     height: 35px;
     line-height: 35px;
     color: #fff;
-    background: #bf9c60;
+    background: #2f7ed3;
     border-radius: 4px;
     display: block;
     position: relative;
@@ -1400,9 +1400,9 @@ ul.booking-steps li .text {
     background: #1e1e1e;
 }
 .select-car .box-text .bottom .btn-select a:before {
-    content: "\f3d6";
+    content: '\f3d6';
     position: absolute;
-    font-family: "ionicons";
+    font-family: 'ionicons';
     color: #fff;
     top: 0;
     right: 39px;
@@ -1558,9 +1558,9 @@ ul.booking-steps li .text {
     position: relative;
 }
 .form-options .one-half .select:before {
-    content: "\f35f";
+    content: '\f35f';
     position: absolute;
-    font-family: "ionicons";
+    font-family: 'ionicons';
     top: 10px;
     right: 20px;
 }
@@ -1581,7 +1581,7 @@ ul.booking-steps li .text {
     padding: 0 65px 0 38px;
 }
 .form-options .btn-submit button:hover {
-    background: #bf9c60;
+    background: #2f7ed3;
 }
 /*========== Login Booking Area ==========*/
 .login-booking-area {
@@ -1613,7 +1613,7 @@ ul.booking-steps li .text {
     color: #1e1e1e;
 }
 .login-booking > ul li:before {
-    content: "";
+    content: '';
     position: absolute;
     bottom: -20px;
     left: 0;
@@ -1647,7 +1647,7 @@ ul.booking-steps li .text {
     position: relative;
 }
 .login-booking .login-content .login-form:before {
-    content: "";
+    content: '';
     position: absolute;
     bottom: 0;
     left: 15px;
@@ -1675,7 +1675,7 @@ ul.booking-steps li .text {
 }
 .remember label:before,
 .checkbox label:before {
-    content: "";
+    content: '';
     position: absolute;
     top: 6px;
     left: 0;
@@ -1686,7 +1686,7 @@ ul.booking-steps li .text {
 }
 .remember label:after,
 .checkbox label:after {
-    content: "";
+    content: '';
     position: absolute;
     height: 8px;
     width: 8px;
@@ -1696,8 +1696,8 @@ ul.booking-steps li .text {
     border-radius: 4px;
     opacity: 0;
 }
-.remember input[type="checkbox"],
-.checkbox input[type="checkbox"] {
+.remember input[type='checkbox'],
+.checkbox input[type='checkbox'] {
     position: absolute;
     opacity: 0;
     top: 0;
@@ -1705,8 +1705,8 @@ ul.booking-steps li .text {
     z-index: 3;
     cursor: pointer;
 }
-.remember input[type="checkbox"]:checked + label::after,
-.checkbox input[type="checkbox"]:checked + label::after {
+.remember input[type='checkbox']:checked + label::after,
+.checkbox input[type='checkbox']:checked + label::after {
     opacity: 1;
 }
 .login-booking .login-content .login-form .form-password {
@@ -1731,7 +1731,7 @@ ul.booking-steps li .text {
 .register-form form .btn-submit button:hover,
 .form-card .btn-submit button:hover {
     color: #fff;
-    background: #bf9c60;
+    background: #2f7ed3;
 }
 .login-social {
     text-align: center;
@@ -1744,7 +1744,7 @@ ul.booking-steps li .text {
     z-index: 5;
 }
 .login-social > span:before {
-    content: "";
+    content: '';
     position: absolute;
     top: -13px;
     left: -18px;
@@ -1962,14 +1962,14 @@ ul.booking-steps li .text {
     position: relative;
 }
 .loadmore a:hover {
-    background: #bf9c60;
+    background: #2f7ed3;
     color: #fff;
     border-color: transparent;
 }
 .loadmore a:before {
-    content: "\f3d6";
+    content: '\f3d6';
     position: absolute;
-    font-family: "ionicons";
+    font-family: 'ionicons';
     top: 0;
     right: 68px;
     font-size: 28px;
@@ -2017,7 +2017,7 @@ ul.booking-steps li .text {
     overflow: hidden;
 }
 .sdl-booking .tab_booking li.active:before {
-    content: "";
+    content: '';
     width: 23px;
     height: 23px;
     background: #1e1e1e;
@@ -2032,7 +2032,7 @@ ul.booking-steps li .text {
 }
 .sdl-booking .tab_booking li.active a,
 .sdl-booking .tab_booking li:hover a {
-    color: #bf9c60;
+    color: #2f7ed3;
 }
 .box-time .select-hidden {
     display: none;
@@ -2052,11 +2052,11 @@ ul.booking-steps li .text {
     cursor: pointer;
 }
 .box-time .select-styled:after {
-    content: "";
+    content: '';
     width: 0;
     height: 0;
     border: 5px solid transparent;
-    border-color: #bf9c60 transparent transparent transparent;
+    border-color: #2f7ed3 transparent transparent transparent;
     position: absolute;
     top: 50%;
     right: 45px;
@@ -2086,7 +2086,7 @@ ul.booking-steps li .text {
 .box-time .select-options li:hover {
     color: #fff;
 }
-.box-time.select-options: [rel= "hide" ] {
+.box-time.select-options [rel='hide'] {
     display: none;
 }
 /*========== Schedule Booking ==========*/
@@ -2150,9 +2150,9 @@ ul.booking-steps li .text {
 }
 .schedule-booking .form-booking > div:nth-child(4) label:after,
 .schedule-booking .form-booking > div:nth-child(3) label:after {
-    content: "";
+    content: '';
     border: solid 5px transparent;
-    border-top: solid 5px #bf9c60;
+    border-top: solid 5px #2f7ed3;
     position: absolute;
     right: -10px;
     top: 39px;
@@ -2175,7 +2175,7 @@ ul.booking-steps li .text {
     outline: none;
     height: auto;
     background-color: transparent;
-    font-family: "Dosis";
+    font-family: 'Dosis';
 }
 .schedule-booking .form-booking select {
     position: relative;
@@ -2190,7 +2190,7 @@ ul.booking-steps li .text {
     font-family: Dosis;
     font-weight: 700;
     font-size: 20px;
-    background: #bf9c60;
+    background: #2f7ed3;
     padding: 47px 45px 40px 45px;
     text-transform: uppercase;
     color: #fff;
@@ -2279,13 +2279,13 @@ ul.booking-steps li .text {
     padding-top: 20px;
     padding-bottom: 17px;
     border-radius: 3px;
-    background-color: #bf9c60;
-    border: 2px solid #bf9c60;
+    background-color: #2f7ed3;
+    border: 2px solid #2f7ed3;
     display: block;
 }
 .add-box .schedule-booking .form-booking .btn-submit a:hover {
     background-color: transparent;
-    border: 2px solid #bf9c60;
+    border: 2px solid #2f7ed3;
 }
 .add-box .schedule-booking .form-booking select option {
     color: #1e1e1e;
@@ -2382,7 +2382,7 @@ ul.booking-steps li .text {
     font-weight: 600;
     font-size: 40.02px;
     line-height: 55px;
-    color: #1e1e1e;
+    color: #2f7ed3;
     margin-bottom: 6px;
     text-transform: capitalize;
 }
@@ -2529,7 +2529,7 @@ hr {
 .icon-box .content-box .left-content {
     font-size: 20px;
     line-height: 24px;
-    color: #bf9c60;
+    color: #2f7ed3;
 }
 .icon-box .content-box .view_service {
     text-align: center;
@@ -2755,7 +2755,7 @@ hr {
     right: 0;
     bottom: 0;
     left: 0;
-    content: "";
+    content: '';
     opacity: 0;
     border-radius: 3px;
     -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
@@ -2814,7 +2814,7 @@ hr {
 }
 .fleet-content .fleet-title a:hover,
 .fleet-content ul li a:hover {
-    color: #bf9c60;
+    color: #2f7ed3;
 }
 .fleet-content ul li a img {
     vertical-align: baseline;
@@ -2851,10 +2851,7 @@ hr {
 .slick-center .fleet-carousel .fleet-item:not(.slick-center) {
     padding-top: 50px;
 }
-.slick-center
-    .fleet-carousel
-    .fleet-item.slick-active:not(.slick-center)
-    .images {
+.slick-center .fleet-carousel .fleet-item.slick-active:not(.slick-center) .images {
     text-align: left;
     transition: all 300ms ease;
 }
@@ -2863,11 +2860,7 @@ hr {
     display: inline-block;
     transition: all 300ms ease;
 }
-.slick-center
-    .fleet-carousel
-    .fleet-item.slick-active.slick-center
-    + .fleet-item.slick-slide.slick-active
-    .images {
+.slick-center .fleet-carousel .fleet-item.slick-active.slick-center + .fleet-item.slick-slide.slick-active .images {
     text-align: right;
 }
 .slick-center .fleet-carousel .fleet-item.slick-center {
@@ -2896,7 +2889,7 @@ hr {
     position: relative;
 }
 .parallax_one {
-    background-image: url("../images/parallax/prl1.jpg");
+    background-image: url('../images/parallax/prl1.jpg');
 }
 .info-box {
     text-align: center;
@@ -2926,15 +2919,15 @@ hr {
     font-weight: 400;
     font-size: 16px;
     color: #fff;
-    background: #bf9c60;
+    background: #2f7ed3;
     display: inline-block;
-    border: 2px solid #bf9c60;
+    border: 2px solid #2f7ed3;
     border-radius: 3px;
     padding: 11px 34px 9px 42px;
 }
 .info-box .booking:hover {
     background-color: transparent;
-    border: 2px solid #bf9c60;
+    border: 2px solid #2f7ed3;
 }
 .info-box .booking img {
     padding-left: 10px;
@@ -3038,7 +3031,7 @@ hr {
     z-index: 10;
 }
 .has-over.color_three .title {
-    color: #bf9c60;
+    color: #2f7ed3;
 }
 .icon-box.ccl .tab_services li a {
     color: #555;
@@ -3145,8 +3138,8 @@ hr {
     display: block;
 }
 .change_dark .owl-controls .owl-nav div.owl-prev:before {
-    font-family: "Ionicons";
-    content: "\f3d5";
+    font-family: 'Ionicons';
+    content: '\f3d5';
     font-size: 57px;
     color: #626262;
 }
@@ -3157,8 +3150,8 @@ hr {
     right: -54px;
 }
 .change_dark .owl-controls div.owl-nav .owl-next:before {
-    font-family: "Ionicons";
-    content: "\f3d6";
+    font-family: 'Ionicons';
+    content: '\f3d6';
     font-size: 57px;
     color: #626262;
 }
@@ -3166,13 +3159,13 @@ hr {
     color: #fff;
 }
 .blog_dark .entry-post-title .post-title a:hover {
-    color: #bf9c60;
+    color: #2f7ed3;
 }
 .blog_dark .entry-content ul li a {
     color: #969696;
 }
 .blog_dark .entry-content ul li a:hover {
-    color: #bf9c60;
+    color: #2f7ed3;
 }
 .blog_dark .owl-controls {
     display: none;
@@ -3198,7 +3191,7 @@ hr {
     margin-bottom: 50px;
 }
 #rev_slider_1078_5_forcefullwidth:before {
-    content: "";
+    content: '';
     width: 50px;
     height: 100%;
     background: #1c1c1c;
@@ -3240,7 +3233,7 @@ hr {
     transition: all 0.4s ease-in-out;
 }
 .has-social .social-ft li a:hover {
-    color: #bf9c60;
+    color: #2f7ed3;
 }
 .schedule-booking .schedule-booking-date {
     font-size: 18px;
@@ -3341,9 +3334,9 @@ hr {
 
 .date-picker-wrapper table .caption .next:before,
 .date-picker-wrapper table .caption .prev:before {
-    content: "\f3d5";
+    content: '\f3d5';
     position: absolute;
-    font-family: "ionicons";
+    font-family: 'ionicons';
     top: -12px;
     left: 0px;
     color: #fff;
@@ -3351,7 +3344,7 @@ hr {
 }
 
 .date-picker-wrapper table .caption .next:before {
-    content: "\f3d6";
+    content: '\f3d6';
 }
 
 .colorOne {

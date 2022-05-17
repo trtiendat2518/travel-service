@@ -55,8 +55,8 @@
 
                                         <div class="clearfix"></div>
                                         <div class="col-md-12 text-center">
-                                            <div class="btn-submit">
-                                                <button class="text-center" type="submit">Gửi</button>
+                                            <div>
+                                                <button class="text-center view-all" type="submit">Gửi</button>
                                             </div>
                                         </div>
                                     </div>
@@ -129,5 +129,8 @@ export default {
 <style scoped>
 textarea {
     resize: none;
+}
+.view-all:hover {
+    background-color: #3a8adc;
 }
 </style>

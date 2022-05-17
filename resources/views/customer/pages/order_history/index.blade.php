@@ -7,7 +7,6 @@
                 <div class="login-booking">
                     <div class="container mb-5">
                         <div class="box-title text-center">
-                            <h2>Lịch sử đơn thuê xe</h2>
                             <h3 class="title">Lịch sử đơn thuê xe</h3>
                         </div>
                     </div>

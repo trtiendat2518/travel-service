@@ -134,7 +134,7 @@
                                                         Chí Minh</span>
                                                 </p>
                                                 <p>
-                                                    – <b style="font-family: auto">Chi nhánh:</b> Lô A, Đường N6 Khu Công Nghiệp, Quốc lộ 13
+                                                    – <b style="font-family: auto">Chi nhánh:</b> 4 Đường D1, Thị Xã Bến Cát, Tỉnh Bình Dương
                                                 </p>
                                                 <p>
                                                     – <b style="font-family: auto">Chi nhánh:</b> 583 Đường Cách Mạng Tháng 8, Khu phố 2, Phường 3,

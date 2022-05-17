@@ -73,7 +73,7 @@ a {
     filter: brightness(30%);
 }
 .view-all:hover {
-    background-color: #bf9c60;
+    background-color: #3a8adc;
 }
 .post-styling {
     border: none !important;

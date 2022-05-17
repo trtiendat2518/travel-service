@@ -1,7 +1,7 @@
 <template>
     <div class="table-responsive">
         <div class="table">
-            <table class="border">
+            <table class="border table-striped">
                 <thead class="bg-2">
                     <tr>
                         <th class="text-center">Mã đơn</th>

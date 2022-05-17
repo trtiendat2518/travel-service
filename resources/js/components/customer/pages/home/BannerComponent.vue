@@ -589,8 +589,13 @@ a:hover {
 }
 .btn-booking {
     margin-top: 100vh;
-    background-color: #bf9c60;
-    border-color: #bf9c60;
+    background-color: #2f7ed3;
+    border-color: #2f7ed3;
+}
+
+.btn-booking:hover {
+    background-color: #3a8adc;
+    border-color: #3a8adc;
 }
 @media (min-width: 200px) {
     .btn-booking {

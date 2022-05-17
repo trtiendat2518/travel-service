@@ -23,7 +23,7 @@ class CarController extends Controller
 
     public function index(Request $request, $carSlug)
     {
-        $service = Service::where('status', '=', 0)->get();
+        $service = Service::where('status', '=', 0)->where('id', '>', 0)->get();
         $car = Car::where('status', '=', 0)->get();
         foreach ($car as $key => $value) {
             if ($value->slug == $carSlug) {

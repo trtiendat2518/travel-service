@@ -3,7 +3,6 @@
         <div class="about-box box">
             <div class="container">
                 <div class="box-title text-center mb-3">
-                    <h2>Cảm nhận</h2>
                     <h3 class="title">Cảm Nhận Khách Hàng</h3>
                 </div>
 
@@ -20,14 +19,14 @@
                 >
                     <blockquote v-for="review in reviews" :key="review.id">
                         <div>
-                            <img :src="`../public/user/img/qteleft.png`" class="first" alt="" />
+                            <span class="fa fa-quote-left first"></span>
                         </div>
                         <p>
                             {{ review.comment }}
                         </p>
 
                         <div>
-                            <img :src="`/public/user/img/qteright.png`" class="last" alt="" />
+                            <span class="fa fa-quote-right last"></span>
                         </div>
                         <div class="author">
                             <span class="name"> {{ review.full_name }} </span>

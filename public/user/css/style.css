@@ -66,7 +66,8 @@ p {
 .box-title h3 {
     position: relative;
     font-size: 40px;
-    color: black;
+    /* color: black; */
+    color: #2f7ed3;
     font-weight: 600;
     margin-bottom: 10px;
     z-index: 2;
@@ -133,7 +134,8 @@ input[type="text"]:hover {
 }
 
 #header {
-    background: #1e1e1e;
+    /* background: #1e1e1e; */
+    background: #2f7ed3;
     position: absolute;
     left: 0;
     top: 0;
@@ -149,7 +151,7 @@ input[type="text"]:hover {
 
 .top-header-right.open #menu {
     transform: translateX(0);
-    background-color: #1e1e1e;
+    background-color: #2f7ed3;
     z-index: 50;
 }
 
@@ -215,7 +217,7 @@ ul.menu-dropdown::before {
     height: 30px;
 }
 ul.menu-dropdown li:hover a {
-    color: #bf9c60;
+    color: #2f7ed3;
 }
 ul.menu-dropdown li:first-child::before {
     content: '';
@@ -236,7 +238,7 @@ ul.menu-dropdown a {
     padding: 10px 25px;
 }
 .login a:hover {
-    color: #bf9c60;
+    color: #2f7ed3;
 }
 
 .outline-login {
@@ -621,7 +623,7 @@ span.line-bottom {
     font-size: 20px;
 }
 .booking-tab a:hover {
-    color: #bf9c60;
+    color: #2f7ed3;
 }
 
 .tab-select-item {
@@ -639,7 +641,7 @@ span.line-bottom {
     border-bottom: 18px solid #1e1e1e;
 }
 .tab-select-item.select a {
-    color: #bf9c60;
+    color: #2f7ed3;
 }
 
 .booking-form {
@@ -687,7 +689,7 @@ span.line-bottom {
     border-right: 0;
     opacity: 1;
     flex-basis: 19.8%;
-    background-color: #bf9c60;
+    background-color: #2f7ed3;
     font-size: 20px;
     font-weight: 600;
     color: #fff;
@@ -860,10 +862,10 @@ span.line-bottom {
     padding-bottom: 30px;
 }
 .hero-text .info-box-content a {
-    background-color: #bf9c60;
+    background-color: #2f7ed3;
     color: #fff;
     padding: 14px 40px;
-    border: 2px solid #bf9c60;
+    border: 2px solid #2f7ed3;
 }
 .hero-text .info-box-content a:hover {
     background: transparent;
@@ -904,7 +906,7 @@ span.line-bottom {
     transition: color 0.5s ease;
 }
 .w-choose .box-content .w-choose-item a.sub-title:hover {
-    color: #f19b06;
+    color: #2f7ed3;
     transition: color 0.5s ease;
 }
 
@@ -968,8 +970,8 @@ span.line-bottom {
 
 /* Footer */
 .footer {
-    background-color: #191919;
-    color: #969696;
+    background-color: #2f7ed3;
+    color: #fff;
 }
 .footer .footer-logo {
     margin-top: 20px;
@@ -995,7 +997,7 @@ span.line-bottom {
     transition: all 0.5 linear;
 }
 .footer a {
-    color: #969696;
+    color: #fff;
     transition: all 0.5 linear;
 }
 .footer ul.list-city {
@@ -1017,7 +1019,7 @@ span.line-bottom {
 
 /* copyright */
 .copyright {
-    background-color: #0e0e0e;
+    background-color: #2f7ed3;
     padding: 22px 0;
 }
 .copyright p {
@@ -1307,13 +1309,15 @@ input[type='reset'],
 input[type='submit'] {
     display: inline-block;
     border-radius: 4px;
-    border: 1px solid #1e1e1e;
+    /* border: 1px solid #1e1e1e; */
     padding: 0px 30px 0 30px;
     height: 50px;
     line-height: 50px;
     font-size: 18px;
     color: #ffffff;
-    background: #1e1e1e;
+    /* background: #1e1e1e; */
+    background: #2f7ed3;
+    border: 1px solid #2f7ed3;
     font-family: Helvetica, Arial, sans-serif;
     position: relative;
     -webkit-transition: all 0.3s ease-in-out;
@@ -1345,7 +1349,7 @@ input[type='email'] {
     width: 100%;
     padding: 8px 15px 8px 16px;
     color: #969696;
-    border: 1px solid #d7d2bd;
+    border: 1px solid #3a8adc;
     height: 50px;
     border-radius: 4px;
     background-color: transparent;
@@ -1423,7 +1427,7 @@ input[type='color'] {
 blockquote {
     position: relative;
     padding: 20px 55px 13px 97px;
-    border: 5px solid #ebe9dc;
+    border: 5px solid #c6dbf1;
     border-radius: 4px;
     margin-bottom: 22px;
 }
@@ -1497,7 +1501,7 @@ body {
     line-height: 30px;
     font-weight: 400;
     background-color: #fff;
-    color: #969696;
+    color: #212529;
     overflow: hidden;
     position: relative;
 }
@@ -1563,7 +1567,7 @@ button:focus {
     color: #ffffff;
 }
 .box-right .login a:hover {
-    color: #bf9c60;
+    color: #2f7ed3;
 }
 /*========== Header ==========*/
 #header {
@@ -1581,7 +1585,8 @@ button:focus {
 }
 #header.header-01.ver-1 {
     position: relative;
-    background: #1e1e1e;
+    /* background: #1e1e1e; */
+    background: #2f7ed3;
     padding: 25px 48px 25px 70px;
 }
 #logo {
@@ -1642,7 +1647,7 @@ button:focus {
 }
 
 .top-title .breadcrumbs li a:hover {
-    color: #bf9c60;
+    color: #2f7ed3;
 }
 .header-01 .navigation {
     display: inline-block;
@@ -2078,15 +2083,15 @@ button:focus {
     color: #969696;
 }
 .header-03 .box-right .login a:hover {
-    color: #bf9c60;
+    color: #2f7ed3;
 }
 .header-03 .box-right .quocte-booking li {
     display: inline-block;
     vertical-align: baseline;
 }
 .header-03 .box-right .quocte-booking li:first-child a {
-    border: 1px solid #bf9c60;
-    color: #bf9c60;
+    border: 1px solid #2f7ed3;
+    color: #2f7ed3;
     border-radius: 3px;
     margin-right: 21px;
     padding: 13px 46px 13px 46px;
@@ -2099,9 +2104,9 @@ button:focus {
     color: #d7d2bd;
 }
 .header-03 .box-right .quocte-booking li a:hover {
-    background-color: #bf9c60;
+    background-color: #2f7ed3;
     color: #fff;
-    border-color: #bf9c60;
+    border-color: #2f7ed3;
 }
 
 .header-01 .menu .has-dropdown .menu-dropdown,
@@ -2154,7 +2159,7 @@ button:focus {
     color: #969696;
 }
 .header-04 .login a:hover {
-    color: #bf9c60;
+    color: #2f7ed3;
 }
 .header-04 .logo-pro {
     float: left;
@@ -2334,7 +2339,7 @@ button:focus {
     color: #969696;
 }
 .header-05 .top-header .login a:hover {
-    color: #bf9c60;
+    color: #2f7ed3;
 }
 .header-05 .tr-drop {
     border-left: 0;
@@ -2604,11 +2609,11 @@ button:focus {
 }
 .copyright {
     text-align: center;
-    background: #0e0e0e;
+    background: #2f7ed3;
 }
 .copyright p {
     /* line-height: 70px; */
-    color: #969696;
+    color: #fff;
 }
 .cpr-01 {
     border-bottom: 5px solid #d7d2bd;
@@ -2702,7 +2707,7 @@ button:focus {
 .mobile-menu.active:before,
 .mobile-menu.active:after,
 .mobile-menu.active span {
-    background: #bf9c60;
+    background: #2f7ed3;
 }
 /*========== Main Post ==========*/
 #main-post {
@@ -2920,7 +2925,7 @@ article.post.ver-1 .entry-content .btn-readmore a img {
 /*= Sidebar =*/
 .sidebar .widget {
     margin-bottom: 30px;
-    background: #f3f3f3;
+    background: #dae9f9;
     padding: 24px 32px 16px;
     border-radius: 4px;
 }
@@ -2957,7 +2962,7 @@ article.post.ver-1 .entry-content .btn-readmore a img {
     line-height: 48px;
 }
 .widget-category ul li a:not(:hover) {
-    color: #969696;
+    color: #000;
 }
 .widget-category ul li a:hover {
     color: #1e1e1e;
@@ -3018,7 +3023,7 @@ article.post.ver-1 .entry-content .btn-readmore a img {
 }
 .widget-tags ul li a:hover {
     color: #fff;
-    background: #1e1e1e;
+    background: #2f7ed3;
 }
 /*========== Main Single ==========*/
 #main-single {
@@ -3150,7 +3155,7 @@ article.post-single .post-content > p {
     transition: all 0.3s ease-in-out;
 }
 .nav-single ul li a:hover .text h4 {
-    color: #bf9c60;
+    color: #2f7ed3;
 }
 /*========== Comment Single ==========*/
 #comment-area {
@@ -3190,7 +3195,7 @@ article.post-single .post-content > p {
     font-size: 14px;
 }
 #comment-area ul.comment-list li.comment .comment-content .reply a {
-    color: #bf9c60;
+    color: #2f7ed3;
 }
 #comment-area ul.comment-list li.comment .comment-content .reply a i {
     padding-right: 9px;
@@ -3226,10 +3231,10 @@ article.post-single .post-content > p {
 .form-comment-area form .btn-submit img {
     padding-left: 14px;
 }
-.form-comment-area form .btn-submit button:hover {
+/* .form-comment-area form .btn-submit button:hover {
     color: #fff;
-    background: #bf9c60;
-}
+    background: #6693c2;
+} */
 .scroll-top {
     background-image: url('../images/icon/go_top.png');
     background-repeat: no-repeat;
@@ -3351,10 +3356,10 @@ ul.social-ft li:last-child {
 .copyright {
     padding: 22px 0;
     text-align: center;
-    background: #0e0e0e;
+    background: #2f7ed3;
 }
 .copyright p {
-    color: #969696;
+    color: #fff;
 }
 
 /*========== Preload ==========*/
@@ -3388,7 +3393,7 @@ ul.social-ft li:last-child {
     -webkit-animation: preloader-wave 1.6s linear infinite;
     animation: preloader-wave 1.6s linear infinite;
     border-radius: 50%;
-    background: #bf9c60;
+    background: #2f7ed3;
 }
 
 .loader:after {
@@ -3398,7 +3403,7 @@ ul.social-ft li:last-child {
 
 .bordered-text-block:before {
     content: '';
-    border-top: 4px solid #bf9c60;
+    border-top: 4px solid #2f7ed3;
     width: 75px;
     position: absolute;
     margin: 0 auto;

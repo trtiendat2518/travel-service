@@ -20,7 +20,7 @@ class AuthController extends Controller
         $url_canonical = $request->url();
         //---------------
 
-        $service = Service::where('status', '=', 0)->get();
+        $service = Service::where('status', '=', 0)->where('id', '>', 0)->get();
         $car = Car::where('status', '=', 0)->get();
 
         return view('auth.register')->with(compact('meta_desc', 'meta_title', 'url_canonical', 'service', 'car'));
@@ -34,7 +34,7 @@ class AuthController extends Controller
         $url_canonical = $request->url();
         //---------------
 
-        $service = Service::where('status', '=', 0)->get();
+        $service = Service::where('status', '=', 0)->where('id', '>', 0)->get();
         $car = Car::where('status', '=', 0)->get();
 
         return view('auth.login')->with(compact('meta_desc', 'meta_title', 'url_canonical', 'service', 'car'));
@@ -48,7 +48,7 @@ class AuthController extends Controller
         $url_canonical = $request->url();
         //---------------
 
-        $service = Service::where('status', '=', 0)->get();
+        $service = Service::where('status', '=', 0)->where('id', '>', 0)->get();
         $car = Car::where('status', '=', 0)->get();
 
         return \view('auth.verify')->with(\compact('meta_desc', 'meta_title', 'url_canonical', 'service', 'car'));
@@ -62,7 +62,7 @@ class AuthController extends Controller
         $url_canonical = $request->url();
         //---------------
 
-        $service = Service::where('status', '=', 0)->get();
+        $service = Service::where('status', '=', 0)->where('id', '>', 0)->get();
 
         return \view('admin.pages.info.verify')->with(\compact('meta_desc', 'meta_title', 'url_canonical', 'service'));
     }
@@ -75,7 +75,7 @@ class AuthController extends Controller
         $url_canonical = $request->url();
         //---------------
 
-        $service = Service::where('status', '=', 0)->get();
+        $service = Service::where('status', '=', 0)->where('id', '>', 0)->get();
         $car = Car::where('status', '=', 0)->get();
 
         return \view('auth.forgot_password')->with(\compact('meta_desc', 'meta_title', 'url_canonical', 'service', 'car'));
@@ -89,7 +89,7 @@ class AuthController extends Controller
         $url_canonical = $request->url();
         //---------------
 
-        $service = Service::where('status', '=', 0)->get();
+        $service = Service::where('status', '=', 0)->where('id', '>', 0)->get();
         $car = Car::where('status', '=', 0)->get();
 
         return \view('auth.new_password')->with(\compact('meta_desc', 'meta_title', 'url_canonical', 'service', 'car'));
@@ -349,7 +349,7 @@ class AuthController extends Controller
         //---------------
 
         $user = Users::find(Session::get('id'));
-        $service = Service::where('status', '=', 0)->get();
+        $service = Service::where('status', '=', 0)->where('id', '>', 0)->get();
         $car = Car::where('status', '=', 0)->get();
 
         return \view('customer.pages.info.edit_info')->with(\compact('meta_desc', 'meta_title', 'url_canonical', 'user', 'service', 'car'));
@@ -472,7 +472,7 @@ class AuthController extends Controller
         //---------------
 
         $user = Users::find(Session::get('id'));
-        $service = Service::where('status', '=', 0)->get();
+        $service = Service::where('status', '=', 0)->where('id', '>', 0)->get();
         $car = Car::where('status', '=', 0)->get();
 
         return \view('customer.pages.info.change_password')->with(\compact('meta_desc', 'meta_title', 'url_canonical', 'user', 'service', 'car'));

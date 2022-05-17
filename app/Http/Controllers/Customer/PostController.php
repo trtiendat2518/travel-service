@@ -30,7 +30,7 @@ class PostController extends Controller
         $url_canonical = $request->url();
         //---------------
 
-        $service = Service::where('status', '=', 0)->get();
+        $service = Service::where('status', '=', 0)->where('id', '>', 0)->get();
         $car = Car::where('status', '=', 0)->get();
 
         return view('customer.pages.posts.index')->with(compact('meta_desc', 'meta_title', 'url_canonical', 'service', 'car'));
@@ -45,7 +45,7 @@ class PostController extends Controller
         $url_canonical = $request->url();
         //---------------
 
-        $service = Service::where('status', '=', 0)->get();
+        $service = Service::where('status', '=', 0)->where('id', '>', 0)->get();
         $car = Car::where('status', '=', 0)->get();
 
         return view('customer.pages.posts.detail')->with(compact('meta_desc', 'meta_title', 'url_canonical', 'post', 'service', 'car'));

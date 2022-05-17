@@ -24,7 +24,7 @@ class ServiceController extends Controller
     public function index(Request $request, $serviceSlug)
     {
         $car = Car::where('status', '=', 0)->get();
-        $service = Service::where('status', '=', 0)->get();
+        $service = Service::where('status', '=', 0)->where('id', '>', 0)->get();
         foreach ($service as $key => $value) {
             if ($value->slug == $serviceSlug) {
                 //SEO

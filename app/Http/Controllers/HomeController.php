@@ -21,7 +21,7 @@ class HomeController extends Controller
         $url_canonical = $request->url();
         //---------------
 
-        $service = Service::where('status', '=', 0)->get();
+        $service = Service::where('status', '=', 0)->where('id', '>', 0)->get();
         $car = Car::where('status', '=', 0)->get();
 
         return view('error.404')->with(compact('meta_desc', 'meta_title', 'url_canonical', 'service', 'car'));
@@ -35,7 +35,7 @@ class HomeController extends Controller
         $url_canonical = $request->url();
         //---------------
 
-        $service = Service::where('status', '=', 0)->get();
+        $service = Service::where('status', '=', 0)->where('id', '>', 0)->get();
         $car = Car::where('status', '=', 0)->get();
 
         return view('customer.pages.home')->with(compact('meta_desc', 'meta_title', 'url_canonical', 'service', 'car'));
@@ -49,7 +49,7 @@ class HomeController extends Controller
         $url_canonical = $request->url();
         //---------------
 
-        $service = Service::where('status', '=', 0)->get();
+        $service = Service::where('status', '=', 0)->where('id', '>', 0)->get();
         $car = Car::where('status', '=', 0)->get();
 
         return view('customer.pages.about.index')->with(compact('meta_desc', 'meta_title', 'url_canonical', 'service', 'car'));

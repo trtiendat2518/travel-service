@@ -18,7 +18,7 @@
                         <img src="{{ asset('public/user/img/wchoose1.png') }}" alt="">
                     </div>
                     <div class="box-content-bottom">
-                        <a href="#" class="sub-title">Thuê Xe Nhanh Gọn</a>
+                        <a href="javascript:void(0)" class="sub-title">Thuê Xe Nhanh Gọn</a>
                         <span class="sub-desc">
                             Đội ngũ booking luôn làm việc sẵn sàng hỗ trợ đặt xe 24/7, vì thế bạn có thể thuê xe bất cứ khi nào và ở đâu.
                         </span>
@@ -29,7 +29,7 @@
                         <img src="{{ asset('public/user/img/wchoose2.png') }}" alt="">
                     </div>
                     <div class="box-content-bottom">
-                        <a href="#" class="sub-title">Tài Xế Chuyên Nghiệp</a>
+                        <a href="javascript:void(0)" class="sub-title">Tài Xế Chuyên Nghiệp</a>
                         <span class="sub-desc">
                             Chỉ cần bắt máy gọi, xe dichvumiennam sẽ điều phối xe đến cho bạn trong vòng 30 phút. Bất kể bạn ở đâu,
                             tài xế sẵn sàng đưa đón bạn đến tận nơi an toàn, nhanh chóng và chính xác.
@@ -41,7 +41,7 @@
                         <img src="{{ asset('public/user/img/wchoose3.png') }}" alt="">
                     </div>
                     <div class="box-content-bottom">
-                        <a href="#" class="sub-title">Đầy Đủ Các Loại Xe</a>
+                        <a href="javascript:void(0)" class="sub-title">Đầy Đủ Các Loại Xe</a>
                         <span class="sub-desc">
                             Từ các loại xe sang phục vụ sự kiện hay đến các dòng xe bình dân du lịch, từ quy mô nhỏ 4 chỗ đến quy mô lớn cho cả đoàn
                             khách du lịch chúng tôi đều có thể đáp ứng đầy đủ.
@@ -53,7 +53,7 @@
                         <img src="{{ asset('public/user/img/wchoose4.png') }}" alt="">
                     </div>
                     <div class="box-content-bottom">
-                        <a href="#" class="sub-title">Chi Phí Thấp</a>
+                        <a href="javascript:void(0)" class="sub-title">Chi Phí Thấp</a>
                         <span class="sub-desc">
                             Sở hữu số lượng xe lớn, đầy đủ cả nhân lực và nguồn lực có sẵn, do đó mức giá của chúng tôi luôn thấp nhất trên thị
                             trường.

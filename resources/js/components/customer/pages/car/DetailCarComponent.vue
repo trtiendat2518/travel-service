@@ -25,7 +25,6 @@
                     <div class="col-md-12">
                         <section class="template-title center">
                             <h1 class="title has-over">{{ form.name }}</h1>
-                            <span>{{ form.name }}</span>
                         </section>
                     </div>
                 </div>
@@ -53,8 +52,8 @@
                                 <ul>
                                     <li v-for="item in service_popular" :key="item.id">
                                         <a :href="`/dich-vu-thue-xe/${item.slug}`" title="">
-                                            <img :src="`../public/user/img/next.png`" alt="" />
-                                            {{ item.name }}
+                                            <!-- <img :src="`../public/user/img/next.png`" alt="" /> -->
+                                            <span class="fa fa-arrow-right"> {{ item.name }}</span>
                                         </a>
                                     </li>
                                 </ul>
@@ -763,7 +762,7 @@ export default {
 
 <style scoped>
 .btn-color {
-    background-color: #1e1e1e;
+    background-color: #2f7ed3;
     color: #fff;
 }
 textarea {
@@ -779,7 +778,7 @@ article.post {
     color: #000;
 }
 .post-title:hover {
-    color: #bf9c60;
+    color: #2f7ed3;
 }
 .post-img {
     width: 100vw;

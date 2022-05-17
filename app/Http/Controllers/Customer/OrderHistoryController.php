@@ -20,7 +20,7 @@ class OrderHistoryController extends Controller
         $url_canonical = $request->url();
         //---------------
 
-        $service = Service::where('status', '=', 0)->get();
+        $service = Service::where('status', '=', 0)->where('id', '>', 0)->get();
         $car = Car::where('status', '=', 0)->get();
 
         return view('customer.pages.order_history.index')->with(compact('meta_desc', 'meta_title', 'url_canonical', 'service', 'car'));

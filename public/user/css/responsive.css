@@ -34,7 +34,7 @@
         width: 100%;
         left: 0;
         top: 0;
-        justify-content: center;
+        /* justify-content: center; */
         padding: 120px 0 0 0;
         background-color: #3333;
         z-index: -1;
@@ -47,6 +47,7 @@
         flex-direction: column;
         overflow: scroll;
         padding-left: 30px;
+        padding-bottom: 20px;
     }
 
     #menu li a.nav-link {

@@ -71,6 +71,9 @@
                                         <p class="fa fa-location-arrow"> &#8194;Đường số 8, Phường Linh Tây, Quận Thủ Đức, Tp.HCM</p>
                                     </div>
                                     <div>
+                                        <p class="fa fa-location-arrow"> &#8194;4 Đường D1, Thị Xã Bến Cát, Tỉnh Bình Dương, Tp.HCM</p>
+                                    </div>
+                                    <div>
                                         <p class="fa fa-envelope"> &#8194;thuexemiennamofficial@gmail.com</p>
                                     </div>
                                     <div>
