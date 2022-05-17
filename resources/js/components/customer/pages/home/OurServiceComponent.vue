@@ -2,7 +2,6 @@
     <div>
         <div class="our-service box">
             <div class="box-title text-center">
-                <h2 class="text-capitalize">Dịch Vụ Thuê Xe</h2>
                 <h3 class="text-capitalize">Dịch Vụ Thuê Xe</h3>
             </div>
             <div class="box-content">
@@ -82,19 +81,19 @@ p {
 
 @media only screen and (min-width: 768px) {
     .cards {
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(3, 1fr);
     }
 }
 
 @media (min-width: 900px) {
     .cards {
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(3, 1fr);
     }
 }
 
 @media only screen and (min-width: 1200px) {
     .cards {
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(3, 1fr);
     }
 }
 </style>

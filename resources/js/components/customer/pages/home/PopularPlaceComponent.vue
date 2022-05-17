@@ -2,7 +2,6 @@
     <div>
         <div class="our-service box">
             <div class="box-title text-center">
-                <h2 class="text-capitalize">Địa điểm phổ biến</h2>
                 <h3 class="text-capitalize">Địa điểm phổ biến</h3>
             </div>
             <div class="box-content">

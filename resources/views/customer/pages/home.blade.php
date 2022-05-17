@@ -8,7 +8,6 @@
     <div class="w-choose box">
         <div class="container">
             <div class="box-title text-center">
-                <h2>Về Chúng Tôi</h2>
                 <h3 class="title">Về Chúng Tôi</h3>
             </div>
         </div>
@@ -113,7 +112,6 @@
     <!-- our process -->
     <div class="our-process box">
         <div class="box-title text-center">
-            <h2 class="text-capitalize">Quy Trình Làm Việc</h2>
             <h3 class="text-capitalize">Quy Trình Làm Việc</h3>
         </div>
         <div class="box-content">
