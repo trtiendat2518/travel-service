@@ -104,7 +104,7 @@ class HomeController extends Controller
     {
         $review = Review::join('orders', 'orders.id', '=', 'reviews.order_id')
             ->join('users', 'users.id', '=', 'orders.user_id')
-            ->select('reviews.*', 'users.full_name')
+            ->select('reviews.*', 'users.full_name', 'users.avatar')
             ->orderBy('star', 'DESC')->limit(6)->get();
         return ReviewResource::collection($review);
     }

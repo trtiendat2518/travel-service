@@ -74,6 +74,13 @@ return [
             'visibility' => 'public',
         ],
 
+        'user' => [
+            'driver' => 'local',
+            'root' => storage_path('../public/images/user'),
+            'url' => env('APP_URL') . '/storage',
+            'visibility' => 'public',
+        ],
+
     ],
 
     /*

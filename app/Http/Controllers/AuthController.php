@@ -3,12 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\UserResource;
 use App\Models\Car;
 use App\Models\Service;
 use App\Models\Users;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 
 class AuthController extends Controller
 {
@@ -135,6 +138,7 @@ class AuthController extends Controller
         $newUser->email = $data['email'];
         $newUser->address = $data['address'];
         $newUser->password = $data['password'];
+        $newUser->avatar = 'avatar-mac-dinh.jpg';
         $newUser->register_date = now();
         $repeatPassword = $request->repeat_password;
 
@@ -368,84 +372,138 @@ class AuthController extends Controller
         return \view('admin.pages.info.edit_info')->with(\compact('meta_desc', 'meta_title', 'url_canonical', 'user'));
     }
 
-    public function infoEdit(Request $request)
+    public function infoEdit(Request $request, $customerId)
     {
-        $id = Session::get('id');
-        $user = Users::find($id);
+        // $id = Session::get('id');
+        $user = Users::find($customerId);
+        if ($request->avatar == null) {
+            $data = $request->validate(
+                [
+                    'full_name' => 'bail|alpha_spaces|min:8|max:30',
+                    'phone_number' => "bail|unique:users,phone_number,$customerId,id|numeric|digits_between:10,11",
+                    'email' => "bail|unique:users,email,$customerId,id|email|max:50",
+                    'address' => 'bail|min:10|max:128',
+                ],
+                [
+                    'full_name.alpha_spaces' => 'Họ tên không được chứa ký tự số hoặc ký tự đặc biệt',
+                    'full_name.min' => 'Họ tên nhập tối thiểu 8 ký tự',
+                    'full_name.max' => 'Họ tên không nhập quá 30 ký tự chữ',
 
-        $data = $request->validate(
-            [
-                'full_name' => 'bail|alpha_spaces|min:8|max:30',
-                'phone_number' => "bail|unique:users,phone_number,$id,id|numeric|digits_between:10,11",
-                'email' => "bail|unique:users,email,$id,id|email|max:50",
-                'address' => 'bail|min:10|max:128',
-            ],
-            [
-                'full_name.alpha_spaces' => 'Họ tên không được chứa ký tự số hoặc ký tự đặc biệt',
-                'full_name.min' => 'Họ tên nhập tối thiểu 8 ký tự',
-                'full_name.max' => 'Họ tên không nhập quá 30 ký tự chữ',
+                    'phone_number.unique' => 'Số điện thoại này đã tồn tại',
+                    'phone_number.numeric' => 'Số điện thoại chỉ nhập ký tự số',
+                    'phone_number.digits_between' => 'Số điện thoại nhập 10 hoặc 11 số',
 
-                'phone_number.unique' => 'Số điện thoại này đã tồn tại',
-                'phone_number.numeric' => 'Số điện thoại chỉ nhập ký tự số',
-                'phone_number.digits_between' => 'Số điện thoại nhập 10 hoặc 11 số',
+                    'email.unique' => 'Email này đã tồn tại',
+                    'email.email' => 'Emai không đúng định dạng',
+                    'email.max' => 'Email tối đa 50 ký tự chữ',
 
-                'email.unique' => 'Email này đã tồn tại',
-                'email.email' => 'Emai không đúng định dạng',
-                'email.max' => 'Email tối đa 50 ký tự chữ',
+                    'address.min' => 'Địa chỉ không nhập quá 10 ký tự',
+                    'address.max' => 'Địa chỉ không nhập quá 128 ký tự',
+                ]
+            );
 
-                'address.min' => 'Địa chỉ không nhập quá 10 ký tự',
-                'address.max' => 'Địa chỉ không nhập quá 128 ký tự',
-            ]
-        );
-
-        $fullName = $data['full_name'];
-        $phoneNumber = $data['phone_number'];
-        $email = $data['email'];
-        $address = $data['address'];
-        $token = \md5(\rand() . \time());
-
-        if ($phoneNumber != $user->phone_number && $email == $user->email) {
-            if (preg_match("/(0)[0-9]{9}|(0)[0-9]{10}/", $phoneNumber)) {
-                $request->session()->put('info', $token);
-                $request->session()->put('editPhone', $phoneNumber);
-                $this->sendEmail($user);
-                if ($user->role == 0) {
-                    return redirect()->intended('admin/xac-thuc');
-                } else {
-                    return redirect()->intended('xac-thuc');
-                }
-            } else {
-                return back()->with('fail', 'Số điện thoại không đúng định dạng');
-            }
-        } else if ($phoneNumber == $user->phone_number && $email != $user->email) {
-            $request->session()->put('info', $token);
-            $request->session()->put('editEmail', $email);
-            $this->sendEmail($user);
-            if ($user->role == 0) {
-                return redirect()->intended('admin/xac-thuc');
-            } else {
-                return redirect()->intended('xac-thuc');
-            }
-        } else if ($phoneNumber != $user->phone_number && $email != $user->email) {
-            if (preg_match("/(0)[0-9]{9}|(0)[0-9]{10}/", $phoneNumber)) {
-                $request->session()->put('info', $token);
-                $request->session()->put('editPhone', $phoneNumber);
-                $request->session()->put('editEmail', $email);
-                $this->sendEmail($user);
-                if ($user->role == 0) {
-                    return redirect()->intended('admin/xac-thuc');
-                } else {
-                    return redirect()->intended('xac-thuc');
-                }
-            } else {
-                return back()->with('fail', 'Số điện thoại không đúng định dạng');
-            }
+            $fullName = $data['full_name'];
+            $phoneNumber = $data['phone_number'];
+            $email = $data['email'];
+            $address = $data['address'];
+            $token = \md5(\rand() . \time());
         } else {
+            $data = $request->validate(
+                [
+                    'full_name' => 'bail|alpha_spaces|min:8|max:30',
+                    'phone_number' => "bail|unique:users,phone_number,$customerId,id|numeric|digits_between:10,11",
+                    'email' => "bail|unique:users,email,$customerId,id|email|max:50",
+                    'address' => 'bail|min:10|max:128',
+                    'avatar' => 'bail|mimes:jpeg,jpg,png',
+                ],
+                [
+                    'full_name.alpha_spaces' => 'Họ tên không được chứa ký tự số hoặc ký tự đặc biệt',
+                    'full_name.min' => 'Họ tên nhập tối thiểu 8 ký tự',
+                    'full_name.max' => 'Họ tên không nhập quá 30 ký tự chữ',
+
+                    'phone_number.unique' => 'Số điện thoại này đã tồn tại',
+                    'phone_number.numeric' => 'Số điện thoại chỉ nhập ký tự số',
+                    'phone_number.digits_between' => 'Số điện thoại nhập 10 hoặc 11 số',
+
+                    'email.unique' => 'Email này đã tồn tại',
+                    'email.email' => 'Emai không đúng định dạng',
+                    'email.max' => 'Email tối đa 50 ký tự chữ',
+
+                    'address.min' => 'Địa chỉ không nhập quá 10 ký tự',
+                    'address.max' => 'Địa chỉ không nhập quá 128 ký tự',
+                    'avatar.mimes' => 'Tệp nhập vào phải là jpeg,jpg,png!',
+                ]
+            );
+
+            $fullName = $data['full_name'];
+            $phoneNumber = $data['phone_number'];
+            $email = $data['email'];
+            $address = $data['address'];
+            $token = \md5(\rand() . \time());
+
+            $image = $request->avatar;
+            $name = 'user_avatar_' . uniqid(md5(rand(1, 999))) . '.png';
+            if ($user->avatar != 'avatar-mac-dinh.jpg') {
+                Storage::disk('user')->delete($user->avatar);
+            }
+            Storage::disk('user')->put($name, File::get($image));
+            $user->avatar = $name;
+        }
+
+        if (preg_match("/(0)[0-9]{9}|(0)[0-9]{10}/", $data['phone_number'])) {
             $user->full_name = $fullName;
+            $user->phone_number = $phoneNumber;
+            $user->email = $email;
             $user->address = $address;
             $user->save();
-            return back()->with('success', 'Chỉnh sửa thông tin thành công');
+        } else {
+            return response()->json('errorPhone');
         }
+
+
+
+        // if ($phoneNumber != $user->phone_number && $email == $user->email) {
+        //     if (preg_match("/(0)[0-9]{9}|(0)[0-9]{10}/", $phoneNumber)) {
+        //         $request->session()->put('info', $token);
+        //         $request->session()->put('editPhone', $phoneNumber);
+        //         $this->sendEmail($user);
+        //         if ($user->role == 0) {
+        //             return redirect()->intended('admin/xac-thuc');
+        //         } else {
+        //             return redirect()->intended('xac-thuc');
+        //         }
+        //     } else {
+        //         return back()->with('fail', 'Số điện thoại không đúng định dạng');
+        //     }
+        // } else if ($phoneNumber == $user->phone_number && $email != $user->email) {
+        //     $request->session()->put('info', $token);
+        //     $request->session()->put('editEmail', $email);
+        //     $this->sendEmail($user);
+        //     if ($user->role == 0) {
+        //         return redirect()->intended('admin/xac-thuc');
+        //     } else {
+        //         return redirect()->intended('xac-thuc');
+        //     }
+        // } else if ($phoneNumber != $user->phone_number && $email != $user->email) {
+        //     if (preg_match("/(0)[0-9]{9}|(0)[0-9]{10}/", $phoneNumber)) {
+        //         $request->session()->put('info', $token);
+        //         $request->session()->put('editPhone', $phoneNumber);
+        //         $request->session()->put('editEmail', $email);
+        //         $this->sendEmail($user);
+        //         if ($user->role == 0) {
+        //             return redirect()->intended('admin/xac-thuc');
+        //         } else {
+        //             return redirect()->intended('xac-thuc');
+        //         }
+        //     } else {
+        //         return back()->with('fail', 'Số điện thoại không đúng định dạng');
+        //     }
+        // } else {
+        //     $user->full_name = $fullName;
+        //     $user->address = $address;
+        //     $user->save();
+        //     return back()->with('success', 'Chỉnh sửa thông tin thành công');
+        // }
     }
 
     public function sendEmail($user)
@@ -527,5 +585,11 @@ class AuthController extends Controller
         } else {
             return back()->with('fail', 'Mật khẩu hiện tại không đúng');
         }
+    }
+
+    public function viewInfo($CustomerId)
+    {
+        $customer = Users::where('id', $CustomerId)->limit(1)->get();
+        return UserResource::collection($customer);
     }
 }

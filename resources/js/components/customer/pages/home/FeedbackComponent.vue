@@ -21,18 +21,27 @@
                         <div>
                             <span class="fa fa-quote-left first"></span>
                         </div>
-                        <p>
-                            {{ review.comment }}
-                        </p>
+
+                        <div class="row">
+                            <div class="col-md-2">
+                                <img class="avatar-img" :src="userAvatar(review.avatar)" alt="" />
+                            </div>
+                            <div class="col-md-10">
+                                <p>
+                                    {{ review.comment }}
+                                </p>
+
+                                <div class="author">
+                                    <span class="name"> {{ review.full_name }} </span>
+                                    <span class="option">
+                                        <star-rating v-model="review.star" :star-size="30" :rating="0" read-only></star-rating>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
 
                         <div>
                             <span class="fa fa-quote-right last"></span>
-                        </div>
-                        <div class="author">
-                            <span class="name"> {{ review.full_name }} </span>
-                            <span class="option">
-                                <star-rating v-model="review.star" :star-size="30" :rating="0" read-only></star-rating>
-                            </span>
                         </div>
                     </blockquote>
                 </VueSlickCarousel>
@@ -65,6 +74,13 @@ export default {
                     this.reviews = res.data
                 })
                 .catch((err) => console.log(err))
+        },
+        userAvatar(avatar) {
+            if (avatar == 'avatar-mac-dinh.jpg') {
+                return `public/images/avatar-mac-dinh.jpg`
+            } else {
+                return `public/images/user/${avatar}`
+            }
         }
     }
 }
@@ -82,5 +98,9 @@ export default {
     top: 42px;
     left: 12px;
     margin-top: -25px;
+}
+.avatar-img {
+    border-radius: 100%;
+    height: 20vh;
 }
 </style>

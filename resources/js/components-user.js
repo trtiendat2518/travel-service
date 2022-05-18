@@ -22,3 +22,6 @@ Vue.component('detail-hashtags-component', require('./components/customer/pages/
 
 // Order History
 Vue.component('order-history-component', require('./components/customer/pages/order_history/OrderHistoryComponent.vue').default)
+
+// Information
+Vue.component('update-info-component', require('./components/customer/pages/info/UpdateInfoComponent.vue').default)

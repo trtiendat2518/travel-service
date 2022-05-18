@@ -1,5 +1,5 @@
 <div id="fb-root"></div>
-<script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v13.0" nonce="JwI0tqM6"></script>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v13.0" nonce="hUhZf7cm"></script>
 
 <!-- Messenger Plugin chat Code -->
 <div id="fb-root"></div>

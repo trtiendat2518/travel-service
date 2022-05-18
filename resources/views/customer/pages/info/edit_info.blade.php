@@ -12,7 +12,8 @@
                             <h3 class="title">Thông tin cá nhân</h3>
                         </div>
                     </div>
-                    <div class="login-content">
+                    <update-info-component></update-info-component>
+                    {{-- <div class="login-content">
                         <div id="tab-2" class="content-tab" style="display: block;">
                             <div class="register-form">
                                 <form action="{{ url('chinh-sua-thong-tin') }}" method="POST" accept-charset="utf-8">
@@ -29,6 +30,13 @@
                                         @endif
                                     </div>
                                     <div class="row">
+                                        <div class="col-md-12">
+                                            <label for="firstname">
+                                                Ảnh đại diện
+                                            </label>
+                                            <input type="file" class="form-control" name="avatar" value="{{ $user->avatar }}" />
+                                            <span class="text-danger">@error('avatar') {{ $message }} @enderror</span>
+                                        </div>
                                         <div class="col-md-6">
                                             <label for="firstname">
                                                 Họ tên
@@ -43,8 +51,6 @@
                                             <input type="text" name="phone_number" value="{{ $user->phone_number }}" />
                                             <span class="text-danger">@error('phone_number') {{ $message }} @enderror</span>
                                         </div>
-                                    </div>
-                                    <div class="row">
                                         <div class="col-md-12">
                                             <label for="re-pass">
                                                 Email
@@ -52,8 +58,6 @@
                                             <input type="email" name="email" value="{{ $user->email }}" />
                                             <span class="text-danger">@error('email') {{ $message }} @enderror</span>
                                         </div>
-                                    </div>
-                                    <div class="row">
                                         <div class="col-md-12">
                                             <label for="re-pass">
                                                 Địa chỉ
@@ -74,7 +78,7 @@
                                 </form>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
             <div class="col-lg-3"></div>

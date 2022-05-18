@@ -45,6 +45,11 @@
                             <div v-else>Chưa thể đánh giá</div>
                         </td>
                     </tr>
+                    <tr v-show="orders.length == 0">
+                        <td colspan="5">
+                            <div class="alert alert-warning text-center">Bạn chưa có đơn hàng nào</div>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
 

@@ -20,14 +20,13 @@
         <div class="container">
             <div class="row">
 
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <aside class="widget-area footer-2-area mb-2">
                         <section id="nav_menu-2" class="widget wp-bp-footer-widget widget_nav_menu">
                             <h4 class="widget-title">Về Chúng Tôi</h4>
                             <hr>
                             <div class="menu-footer-menu-our-services-container">
-                                Thuexemiennam là đơn vị tiên phong cung cấp các dịch vụ thuê xe, đồng thời luôn đổi mới với các dòng xe hiện đại,
-                                chất lượng, mang lại trải nghiệm tốt nhất cho khách hàng khi ngồi trên xe.
+                                Thuexemiennam là đơn vị tiên phong cung cấp các dịch vụ thuê xe chất lượng đến khách hàng.
                             </div>
                         </section>
                     </aside>
@@ -85,11 +84,14 @@
                     </aside>
                 </div>
 
-                <div class="col-md-1">
+                <div class="col-md-2">
                     <aside class="widget-area footer-4-area mb-2">
                         <section id="nav_menu-4" class="widget wp-bp-footer-widget widget_nav_menu mt-5">
-                            <div class="fb-like" data-href="https://www.facebook.com/Thu%C3%AA-xe-d%E1%BB%8Bch-v%E1%BB%A5-111710484840321"
-                                data-width="" data-layout="box_count" data-action="like" data-size="large" data-share="true"></div>
+                            <div class="fb-page" data-href="https://www.facebook.com/thanhtu0908052721" data-tabs="" data-width="" data-height=""
+                                data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
+                                <blockquote cite="https://www.facebook.com/thanhtu0908052721" class="fb-xfbml-parse-ignore"><a
+                                        href="https://www.facebook.com/thanhtu0908052721">Dịch Vụ Xe Du Lịch Tây Ninh</a></blockquote>
+                            </div>
                         </section>
                     </aside>
                 </div>

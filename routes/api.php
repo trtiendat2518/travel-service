@@ -42,6 +42,9 @@ Route::prefix('customer')->group(function () {
     Route::post('order/create-review', 'Customer\OrderHistoryController@createReview');
 
     Route::get('review/review-home', 'HomeController@reviewHome');
+
+    Route::get('info/view-info/{customerId}', 'AuthController@viewInfo');
+    Route::post('info/update-info/{customerId}', 'AuthController@infoEdit');
 });
 
 Route::prefix('admin')->group(function () {

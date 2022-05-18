@@ -86,6 +86,7 @@ class AccountController extends Controller
             $newUser->password = \md5($data['password']);
             $newUser->role = $data['role'];
             $newUser->address = $data['address'];
+            $newUser->avatar = 'avatar-mac-dinh.jpg';
             $newUser->status = 0;
             $newUser->register_date = now();
             $newUser->save();
