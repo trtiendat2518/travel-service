@@ -101,7 +101,7 @@ export default {
                 name: '',
                 avatar: '',
                 content: '',
-                tags: '',
+                tags: [],
                 author: this.$adminId
             }),
             customToolbar: [

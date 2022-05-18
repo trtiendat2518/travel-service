@@ -1,6 +1,7 @@
 require('./bootstrap')
 
 import Vue from 'vue'
+import Vuex from 'vuex'
 import Form from 'vform'
 import notify from './notify.js'
 import formatDatetime from './format-datetime.js'
@@ -14,6 +15,7 @@ window.Vue = require('vue').default
 
 Vue.config.productionTip = false
 Vue.use(VueSweetalert2)
+Vue.use(Vuex)
 
 if (document.querySelector("meta[name='admin-id']")) {
     Vue.prototype.$adminId = document.querySelector("meta[name='admin-id']").getAttribute('content')
@@ -22,6 +24,6 @@ if (document.querySelector("meta[name='admin-id']")) {
 }
 
 const app = new Vue({
-    el: '#app',
+    // el: '#app',
     router
-})
+}).$mount('#app')

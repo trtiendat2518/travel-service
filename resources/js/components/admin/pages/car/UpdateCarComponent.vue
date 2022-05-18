@@ -130,7 +130,7 @@ export default {
                 avatar: '',
                 content: '',
                 slug: '',
-                tags: '',
+                tags: [],
                 author: this.$adminId
             }),
             customToolbar: [

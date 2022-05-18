@@ -13,7 +13,6 @@
                                             <label for="first-name-vertical">Tên loại xe</label>
                                             <input
                                                 type="text"
-                                                id="name"
                                                 class="form-control"
                                                 name="name"
                                                 v-model="form.name"
@@ -64,7 +63,8 @@
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label for="contact-info-vertical">Nội dung mô tả</label>
-                                            <vue-editor v-model="form.content" :editorToolbar="customToolbar"></vue-editor>
+                                            <!-- <vue-editor v-model="form.content" :editorToolbar="customToolbar"></vue-editor> -->
+                                            <vue-editor id="editor" :editorToolbar="customToolbar" v-model="form.content"> </vue-editor>
                                             <div
                                                 class="text-danger mb-3"
                                                 v-if="form.errors.has('content')"
@@ -95,13 +95,12 @@ export default {
     },
     data() {
         return {
-            services: [],
             form: new Form({
                 id: '',
                 name: '',
                 avatar: '',
                 content: '',
-                tags: '',
+                tags: [],
                 author: this.$adminId
             }),
             customToolbar: [

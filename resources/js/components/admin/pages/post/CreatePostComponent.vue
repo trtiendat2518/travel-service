@@ -122,7 +122,7 @@ export default {
                 category_id: '',
                 avatar: '',
                 content: '',
-                tags: '',
+                tags: [],
                 author: this.$adminId
             }),
             customToolbar: [

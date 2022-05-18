@@ -38,7 +38,7 @@
     <script src="{{ asset('public/admin/vendors/perfect-scrollbar/perfect-scrollbar.min.js') }}"></script>
     <script src="{{ asset('public/admin/js/bootstrap.bundle.min.js') }}"></script>
 
-    <script src="{{ asset('public/admin/vendors/apexcharts/apexcharts.js') }}"></script>
+    {{-- <script src="{{ asset('public/admin/vendors/apexcharts/apexcharts.js') }}"></script> --}}
     <script src="{{ asset('public/admin/js/pages/dashboard.js') }}"></script>
     <script src="{{ asset('public/admin/js/bootstrap-tagsinput.min.js') }}"></script>
     <script src="{{ asset('public/admin/js/main.js') }}"></script>
