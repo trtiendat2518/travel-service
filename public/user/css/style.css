@@ -1208,7 +1208,8 @@ video {
     font-family: inherit;
     font-size: 100%;
     font-weight: inherit;
-    font-style: inherit;
+    /* font-style: inherit; */
+    font-style: revert;
     vertical-align: baseline;
     margin: 0;
     padding: 0;
@@ -1229,10 +1230,10 @@ nav,
 section {
     display: block;
 }
-ol,
+/* ol,
 ul {
     list-style: none;
-}
+} */
 blockquote,
 q {
     -webkit-hyphens: none;
@@ -1526,6 +1527,7 @@ img {
 }
 b,
 strong {
+    font-family: 'Font Awesome 5 Free';
     font-weight: 900;
 }
 button,

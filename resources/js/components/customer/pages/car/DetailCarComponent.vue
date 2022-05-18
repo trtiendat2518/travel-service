@@ -518,7 +518,8 @@ export default {
                         slidesToScroll: 1
                     }
                 }
-            ]
+            ],
+            customToolbar: [[]]
         }
     },
     created() {
@@ -789,5 +790,11 @@ article.post {
 }
 .text-tags:hover {
     color: #fff;
+}
+.quillWrapper .ql-snow.ql-toolbar {
+    display: none !important;
+}
+.ql-container.ql-snow {
+    border: none !important;
 }
 </style>

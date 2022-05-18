@@ -67,16 +67,20 @@
                             <div class="menu-footer-menu-tcs-container">
                                 <ul id="menu-footer-menu-tcs" class="menu">
                                     <div>
-                                        <p class="fa fa-location-arrow"> &#8194;Đường số 8, Phường Linh Tây, Quận Thủ Đức, Tp.HCM</p>
+                                        <p class="fa fa-location-arrow"></p>
+                                        <span> &#8194;Đường số 8, Phường Linh Tây, Quận Thủ Đức, Tp.HCM</span>
                                     </div>
                                     <div>
-                                        <p class="fa fa-location-arrow"> &#8194;4 Đường D1, Thị Xã Bến Cát, Tỉnh Bình Dương, Tp.HCM</p>
+                                        <p class="fa fa-location-arrow"></p>
+                                        <span> &#8194;4 Đường D1, Thị Xã Bến Cát, Tỉnh Bình Dương, Tp.HCM</span>
                                     </div>
                                     <div>
-                                        <p class="fa fa-envelope"> &#8194;thuexemiennamofficial@gmail.com</p>
+                                        <p class="fa fa-envelope"></p>
+                                        <span> &#8194;thuexemiennamofficial@gmail.com</span>
                                     </div>
                                     <div>
-                                        <p class="fa fa-phone"> &#8194;088.678.6052</p>
+                                        <p class="fa fa-phone"></p>
+                                        <span> &#8194;088.678.6052</span>
                                     </div>
                                 </ul>
                             </div>

@@ -64,7 +64,8 @@
                                         <div class="form-group">
                                             <label for="contact-info-vertical">Nội dung mô tả</label>
                                             <!-- <vue-editor v-model="form.content" :editorToolbar="customToolbar"></vue-editor> -->
-                                            <vue-editor id="editor" :editorToolbar="customToolbar" v-model="form.content"> </vue-editor>
+                                            <!-- <vue-editor id="editor" :editorToolbar="customToolbar" v-model="form.content"> </vue-editor> -->
+                                            <vue-editor id="editor" :editorToolbar="customToolbar" v-model="form.content"></vue-editor>
                                             <div
                                                 class="text-danger mb-3"
                                                 v-if="form.errors.has('content')"
@@ -146,6 +147,11 @@ export default {
 
 <style scoped>
 @import '~vue2-editor/dist/vue2-editor.css';
+
+/* Import the Quill styles you want */
+@import '~quill/dist/quill.core.css';
+@import '~quill/dist/quill.bubble.css';
+@import '~quill/dist/quill.snow.css';
 .styling-img-service {
     display: block;
     width: 70vw;
