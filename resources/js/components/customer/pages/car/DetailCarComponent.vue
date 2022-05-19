@@ -797,4 +797,7 @@ article.post {
 .ql-container.ql-snow {
     border: none !important;
 }
+ul {
+    list-style-type: none;
+}
 </style>

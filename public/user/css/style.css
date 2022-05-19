@@ -1578,7 +1578,6 @@ button:focus {
     left: 0;
     width: 100%;
     z-index: 99;
-    border-top: 6px solid #d7d2bd;
     -webkit-transition: all 0.3s ease-in-out;
     -moz-transition: all 0.3s ease-in-out;
     -ms-transition: all 0.3s ease-in-out;

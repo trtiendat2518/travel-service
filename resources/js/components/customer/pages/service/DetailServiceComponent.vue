@@ -790,4 +790,7 @@ article.post {
 .text-tags:hover {
     color: #fff;
 }
+ul {
+    list-style-type: none;
+}
 </style>

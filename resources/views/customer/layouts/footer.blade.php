@@ -38,7 +38,7 @@
                             <h4 class="widget-title">Điều Khoản & Dịch Vụ</h4>
                             <hr>
                             <div class="menu-footer-menu-about-us-container">
-                                <ul id="menu-footer-menu-about-us" class="menu">
+                                <ul id="menu-footer-menu-about-us" class="menu" style="list-style-type: none;">
                                     <li id="menu-item-2091"
                                         class="menu-item menu-item-type-post_type menu-item-object-page menu-item-privacy-policy menu-item-2091">
                                         <a href="#">Chính sách bảo mật</a>
@@ -65,7 +65,7 @@
                             <h4 class="widget-title">Liên Hệ</h4>
                             <hr>
                             <div class="menu-footer-menu-tcs-container">
-                                <ul id="menu-footer-menu-tcs" class="menu">
+                                <ul id="menu-footer-menu-tcs" class="menu" style="list-style-type: none;">
                                     <div>
                                         <p class="fa fa-location-arrow"></p>
                                         <span> &#8194;Đường số 8, Phường Linh Tây, Quận Thủ Đức, Tp.HCM</span>
