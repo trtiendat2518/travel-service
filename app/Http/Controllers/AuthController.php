@@ -123,7 +123,7 @@ class AuthController extends Controller
             'email.max' => 'Email tối đa 50 ký tự chữ',
 
             'address.required' => 'Địa chỉ không được để trống',
-            'address.min' => 'Địa chỉ không nhập quá 10 ký tự',
+            'address.min' => 'Địa chỉ phải nhập tối thiểu 10 ký tự',
             'address.max' => 'Địa chỉ không nhập quá 128 ký tự',
 
             'password.required' => 'Mật khẩu không được để trống',
@@ -591,5 +591,49 @@ class AuthController extends Controller
     {
         $customer = Users::where('id', $CustomerId)->limit(1)->get();
         return UserResource::collection($customer);
+    }
+
+    public function infoAdminEdit(Request $request, $userId)
+    {
+        $user = Users::find($userId);
+        $data = $request->validate(
+            [
+                'full_name' => 'bail|alpha_spaces|min:8|max:30',
+                'phone_number' => "bail|unique:users,phone_number,$userId,id|numeric|digits_between:10,11",
+                'email' => "bail|unique:users,email,$userId,id|email|max:50",
+                'address' => 'bail|max:128',
+            ],
+            [
+                'full_name.alpha_spaces' => 'Họ tên không được chứa ký tự số hoặc ký tự đặc biệt',
+                'full_name.min' => 'Họ tên nhập tối thiểu 8 ký tự',
+                'full_name.max' => 'Họ tên không nhập quá 30 ký tự chữ',
+
+                'phone_number.unique' => 'Số điện thoại này đã tồn tại',
+                'phone_number.numeric' => 'Số điện thoại chỉ nhập ký tự số',
+                'phone_number.digits_between' => 'Số điện thoại nhập 10 hoặc 11 số',
+
+                'email.unique' => 'Email này đã tồn tại',
+                'email.email' => 'Emai không đúng định dạng',
+                'email.max' => 'Email tối đa 50 ký tự chữ',
+
+                'address.max' => 'Địa chỉ không nhập quá 128 ký tự',
+            ]
+        );
+
+        $fullName = $data['full_name'];
+        $phoneNumber = $data['phone_number'];
+        $email = $data['email'];
+        $address = $data['address'];
+
+        if (preg_match("/(0)[0-9]{9}|(0)[0-9]{10}/", $data['phone_number'])) {
+            $user->full_name = $fullName;
+            $user->phone_number = $phoneNumber;
+            $user->email = $email;
+            $user->address = $address;
+            $user->save();
+            return back()->with('success', 'Cập nhật thành công');
+        } else {
+            return back()->with('fail', 'Số điện thoại không hợp lệ');
+        }
     }
 }

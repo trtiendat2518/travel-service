@@ -20,22 +20,23 @@
         <div class="container">
             <div class="row">
 
-                <div class="col-md-2">
+                <div class="col-md-3">
                     <aside class="widget-area footer-2-area mb-2">
                         <section id="nav_menu-2" class="widget wp-bp-footer-widget widget_nav_menu">
                             <h4 class="widget-title">Về Chúng Tôi</h4>
                             <hr>
                             <div class="menu-footer-menu-our-services-container">
-                                Thuexemiennam là đơn vị tiên phong cung cấp các dịch vụ thuê xe chất lượng đến khách hàng.
+                                Thuexemiennam là đơn vị tiên phong cung cấp các dịch vụ thuê xe, đồng thời luôn đổi mới với các dòng xe hiện đại, chất
+                                lượng, mang lại trải nghiệm tốt nhất cho khách hàng khi ngồi trên xe
                             </div>
                         </section>
                     </aside>
                 </div>
 
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <aside class="widget-area footer-3-area mb-2">
                         <section id="nav_menu-3" class="widget wp-bp-footer-widget widget_nav_menu">
-                            <h4 class="widget-title">Điều Khoản & Dịch Vụ</h4>
+                            <h4 class="widget-title">Điều Khoản</h4>
                             <hr>
                             <div class="menu-footer-menu-about-us-container">
                                 <ul id="menu-footer-menu-about-us" class="menu" style="list-style-type: none;">
@@ -68,11 +69,15 @@
                                 <ul id="menu-footer-menu-tcs" class="menu" style="list-style-type: none;">
                                     <div>
                                         <p class="fa fa-location-arrow"></p>
-                                        <span> &#8194;Đường số 8, Phường Linh Tây, Quận Thủ Đức, Tp.HCM</span>
+                                        <span> &#8194;CN1: Đường số 8, P. Linh Tây, Thủ Đức, Tp.HCM</span>
                                     </div>
                                     <div>
                                         <p class="fa fa-location-arrow"></p>
-                                        <span> &#8194;4 Đường D1, Thị Xã Bến Cát, Tỉnh Bình Dương, Tp.HCM</span>
+                                        <span> &#8194;CN2: 4 Đường D1, TX. Bến Cát, Bình Dương, Tp.HCM</span>
+                                    </div>
+                                    <div>
+                                        <p class="fa fa-location-arrow"></p>
+                                        <span> &#8194;CN3: 583 CMT8, Khu phố 2, Phường 3, Tây Ninh</span>
                                     </div>
                                     <div>
                                         <p class="fa fa-envelope"></p>
@@ -81,6 +86,21 @@
                                     <div>
                                         <p class="fa fa-phone"></p>
                                         <span> &#8194;088.678.6052</span>
+                                    </div>
+                                    <hr>
+                                    <div>
+                                        <a href="https://www.facebook.com/thanhtu0908052721/">
+                                            <i class="fa-brands fa-facebook-square" style="font-size: 2rem; margin-right: 1rem"></i>
+                                        </a>
+                                        <a href="#">
+                                            <i class="fa-brands fa-youtube-square" style="font-size: 2rem; margin-right: 1rem"></i>
+                                        </a>
+                                        <a href="mailto:thuexemiennamofficial@gmail.com">
+                                            <i class="fa-solid fa-square-envelope" style="font-size: 2rem; margin-right: 1rem"></i>
+                                        </a>
+                                        <a href="#">
+                                            <i class="fa-brands fa-telegram" style="font-size: 2rem; margin-right: 1rem"></i>
+                                        </a>
                                     </div>
                                 </ul>
                             </div>

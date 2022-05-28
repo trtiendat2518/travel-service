@@ -4,7 +4,7 @@
             <div class="container">
                 <div class="box-title text-center">
                     <h3 class="title">Liên Hệ Tư Vấn</h3>
-                    <p class="mt-4 mb-4">Bạn điền đẩy đủ thông tin dưới đây và nhấn gửi, sau đó chúng tôi sẽ liên hệ với bạn.</p>
+                    <p class="mt-4 mb-4">Bạn điền đầy đủ thông tin dưới đây và nhấn gửi, sau đó chúng tôi sẽ liên hệ với bạn.</p>
                 </div>
             </div>
             <section class="card-area">

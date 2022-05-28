@@ -18,19 +18,22 @@
                     v-if="reviews.length > 0"
                 >
                     <blockquote v-for="review in reviews" :key="review.id">
-                        <div>
-                            <span class="fa fa-quote-left first"></span>
-                        </div>
-
                         <div class="row">
                             <div class="col-md-2">
                                 <img class="avatar-img" :src="userAvatar(review.avatar)" alt="" />
                             </div>
                             <div class="col-md-10">
+                                <!-- <div>
+                                    <span class="fa fa-quote-left first"></span>
+                                </div> -->
                                 <p>
-                                    {{ review.comment }}
+                                    <i class="fa fa-quote-left"></i>
+                                    <span>&#32; {{ review.comment }} &#32;</span>
+                                    <i class="fa fa-quote-right"></i>
                                 </p>
-
+                                <!-- <div>
+                                    <span class="fa fa-quote-right last"></span>
+                                </div> -->
                                 <div class="author">
                                     <span class="name"> {{ review.full_name }} </span>
                                     <span class="option">
@@ -38,10 +41,6 @@
                                     </span>
                                 </div>
                             </div>
-                        </div>
-
-                        <div>
-                            <span class="fa fa-quote-right last"></span>
                         </div>
                     </blockquote>
                 </VueSlickCarousel>

@@ -15,6 +15,20 @@
                     </div>
                 </div>
             </div>
+            <div class="breadcrumbs">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <ul>
+                                <li>
+                                    <a href="/">Trang chủ </a>
+                                </li>
+                                <li>/ {{ form.name }}</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
         <!-- End Top Title -->
 
@@ -25,7 +39,6 @@
                     <div class="col-md-12">
                         <section class="template-title center">
                             <h1 class="title has-over">Dịch vụ {{ form.name }}</h1>
-                            <span>Dịch vụ {{ form.name }}</span>
                         </section>
                     </div>
                 </div>
@@ -53,20 +66,20 @@
                                 <ul>
                                     <li v-for="item in service_popular" :key="item.id">
                                         <a :href="`/dich-vu-thue-xe/${item.slug}`" title="">
-                                            <span class="fa fa-arrow-right"> {{ item.name }}</span>
+                                            <span> <i class="fa fa-arrow-right"></i> {{ item.name }}</span>
                                         </a>
                                     </li>
                                 </ul>
                             </div>
 
-                            <div class="widget widget-tags">
+                            <!-- <div class="widget widget-tags">
                                 <h3>Tags</h3>
                                 <ul>
                                     <li v-for="tag in form.tags" :key="tag">
                                         <a href="javascript:void(0)" title="" class="text-tags" @click="hashtag(slug(tag))">{{ tag }}</a>
                                     </li>
                                 </ul>
-                            </div>
+                            </div> -->
                         </div>
 
                         <div class="booking">

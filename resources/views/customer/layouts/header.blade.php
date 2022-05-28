@@ -2,9 +2,10 @@
     <div class="container-fluid">
         <div class="row header-main">
             <div id="logo" class="col-lg-2 col-md-3 col-6 d-flex text-left">
-                <a id="logo-img" href="#"><img src="{{ asset('public/images/logo.png') }}" alt="logo" title="thuexemiennam" style="width: 50%" /></a>
+                <a id="logo-img" href="{{ url('/') }}"><img src="{{ asset('public/images/logo.png') }}" alt="logo" title="thuexemiennam"
+                        style="width: 50%" /></a>
             </div>
-            <div class="top-header-right d-flex flex-wrap col-lg-10 col-md-9 col-6 align-items-center" style="justify-content: right !important">
+            <div class="top-header-right d-flex flex-wrap col-lg-10 col-md-9 col-6 align-items-center" style="justify-content: flex-end !important">
                 <ul id="menu" class="d-flex  list-unstyled mb-0">
                     <div class="close-menu d-none">
                         <img src="{{ asset('public/user/img/close_s.png') }}" alt="">
@@ -21,15 +22,16 @@
                     @endif
 
                     <li class="item">
-                        <a class="nav-link text-capitalize p-0" href="{{ url('/') }}">Trang chủ</a>
+                        <a class="nav-link text-capitalize p-0" href="{{ url('/') }}">TRANG CHỦ</a>
                     </li>
 
                     <li class="item">
-                        <a class="nav-link text-capitalize p-0" href="{{ url('/gioi-thieu') }}">Giới thiệu</a>
+                        <a class="nav-link text-capitalize p-0" href="{{ url('/gioi-thieu') }}">GIỚI THIỆU</a>
                     </li>
 
                     <li class="item service">
-                        <a class="nav-link text-capitalize p-0" href="javascript:void(0)">Dịch vụ thuê xe</a>
+                        <a class="nav-link text-capitalize p-0" href="javascript:void(0)">DỊCH VỤ THUÊ XE <i class='fas fa-angle-down'
+                                style='font-size:16px'></i></a>
                         <ul class="menu-dropdown position-absolute list-unstyled">
                             @foreach ($service as $key => $value)
                             <li>
@@ -42,7 +44,8 @@
                     </li>
 
                     <li class="item car">
-                        <a class="nav-link text-capitalize p-0" href="javascript:void(0)">Các loại xe</a>
+                        <a class="nav-link text-capitalize p-0" href="javascript:void(0)">CÁC LOẠI XE <i class='fas fa-angle-down'
+                                style='font-size:16px'></i></a>
                         <ul class="menu-dropdown position-absolute list-unstyled">
                             @foreach ($car as $key => $value)
                             <li>
@@ -70,7 +73,7 @@
 
                     @if (Session::get('id') && Session::get('role') == 1)
                     <li class="item login">
-                        <a class="nav-link text-capitalize p-0" href="{{ url('/thong-tin-ca-nhan') }}">Xin chào, {{ Session::get('name') }}</a>
+                        <a class="nav-link text-capitalize p-0" href="{{ url('/thong-tin-ca-nhan') }}">XIN CHÀO, {{ Session::get('name') }}</a>
                         <ul class="menu-dropdown position-absolute list-unstyled">
                             <li><a href="{{ url('/thong-tin-ca-nhan') }}">Thông tin cá nhân</a></li>
                             <li><a href="{{ url('/lich-su-don-thue-xe') }}">Lịch sử đơn đặt thuê xe</a></li>
@@ -95,7 +98,8 @@
                     </li>
                     @else
                     <li class="item login">
-                        <a class="nav-link text-capitalize p-0" href="javascript:void(0)">Tài khoản</a>
+                        <a class="nav-link text-capitalize p-0" href="javascript:void(0)">TÀI KHOẢN <i class='fas fa-angle-down'
+                                style='font-size:16px'></i></a>
                         <ul class="menu-dropdown position-absolute list-unstyled">
                             <li><a href="{{ url('dang-nhap') }}">Đăng nhập</a></li>
                             <li><a href="{{ url('dang-ky') }}">Đăng ký</a></li>

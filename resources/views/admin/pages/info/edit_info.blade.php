@@ -32,7 +32,7 @@
                         </div>
                         <div class="card-content">
                             <div class="card-body">
-                                <form action="{{ url('chinh-sua-thong-tin') }}" method="POST" class="form">
+                                <form action="{{ url('admin/chinh-sua-thong-tin/'. $user->id) }}" method="POST" class="form">
                                     @csrf
                                     <div class="results">
                                         @if (Session::get('success'))

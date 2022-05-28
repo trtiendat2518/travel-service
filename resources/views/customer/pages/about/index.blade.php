@@ -23,7 +23,7 @@
                     <div class="col-md-12">
                         <ul>
                             <li>
-                                <a href="#">Trang chủ </a>
+                                <a href="{{ url('/') }}">Trang chủ </a>
                             </li>
                             <li>
                                 / Giới thiệu
@@ -42,7 +42,6 @@
                 <div class="col-md-12">
                     <section class="template-title center">
                         <h1 class="title has-over">Giới Thiệu Công Ty Chúng Tôi</h1>
-                        <span>Giới Thiệu Công Ty Chúng Tôi</span>
                     </section>
                 </div>
             </div>
@@ -106,6 +105,12 @@
                                                     mình chiếc xe phù hợp nữa. Việc của bạn chỉ là nhấc máy lên, còn mọi khâu chuẩn bị thì đã có
                                                     xedichvumiennam sắp
                                                     xếp sẵn cho bạn, đảm bảo bạn sẽ vô cùng hài lòng.
+                                                </p>
+                                                <br>
+                                                <p>
+                                                    Sứ mệnh: Chúng tôi mang đến mục tiêu cung cấp những cuốc xe an toàn với giá rẻ, uy tín và chất
+                                                    lượng. Bên cạnh đó, còn mong muốn đem lại sự thoải mái kết hợp cùng vẻ hiện đại mà từng loại xe
+                                                    đang có đến quý khách hàng nhằm nâng cao chất lượng phục vụ.
                                                 </p>
                                             </div>
                                             <div class="image-icon-cta-block-button-container"></div>

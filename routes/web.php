@@ -21,7 +21,6 @@ Route::prefix('')->group(function () {
     Route::post('/quen-mat-khau-tai-khoan', 'AuthController@forgotAccount');
     Route::post('/tao-moi-mat-khau-tai-khoan', 'AuthController@newPasswordAccount');
     Route::get('/thong-tin-ca-nhan', 'AuthController@infoIndex')->middleware('logedCus');
-    // Route::post('/chinh-sua-thong-tin', 'AuthController@infoEdit');
     Route::get('/doi-mat-khau', 'AuthController@changePasswordIndex')->middleware('logedCus');
     Route::post('/doi-mat-khau-tai-khoan', 'AuthController@changePasswordUpdate');
 
@@ -47,6 +46,7 @@ Route::prefix('admin')->group(function () {
         //AuthController
         Route::get('/xac-thuc', 'AuthController@verifyAdminIndex')->middleware('otp');
         Route::get('/thong-tin-ca-nhan', 'AuthController@infoAdminIndex');
+        Route::post('/chinh-sua-thong-tin/{userId}', 'AuthController@infoAdminEdit');
         Route::get('/doi-mat-khau', 'AuthController@changePasswordAdminIndex');
 
         //Admin/OrderController

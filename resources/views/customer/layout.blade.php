@@ -36,8 +36,9 @@
     <link rel="stylesheet" href="{{ asset('public/user/css/booking-form.css') }}" />
     <link rel="stylesheet" href="{{ asset('public/user/css/numbered-steps-row.css') }}" />
     <!-- SEO website -->
+    <meta name="keywords" content="website, mobile app, dichvudulich, dulichmiennam, thuexedulichmiennam">
     <meta name="description" content="{{$meta_desc}}">
-    <meta name="author" content="TranTienDat">
+    <meta name="author" content="thuexemiennam.com">
     @if (Session::get('id') && Session::get('role') == 1)
     <meta name="cus-id" content="{{ Session::get('id') }}">
     @endif

@@ -30,8 +30,8 @@ class HomeController extends Controller
     public function index(Request $request)
     {
         //SEO
-        $meta_desc = "Trang chủ: Thuê xe miền nam";
-        $meta_title = "Trang chủ";
+        $meta_desc = "Dịch vụ thuê xe du lịch miền nam";
+        $meta_title = "Dịch vụ thuê xe du lịch Miền Nam";
         $url_canonical = $request->url();
         //---------------
 
