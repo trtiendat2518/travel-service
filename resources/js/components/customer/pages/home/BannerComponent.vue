@@ -513,6 +513,7 @@ export default {
                                     confirmButtonText: 'OK!',
                                     timer: 3500
                                 })
+                                this.sendMail()
                             }
                         } else {
                             this.$swal({
@@ -547,6 +548,7 @@ export default {
                                 timer: 3500
                             })
                             $('#bookModal').modal('hide')
+                            this.sendMail()
                         }
                     } else {
                         this.$swal({
@@ -558,6 +560,14 @@ export default {
                     }
                 })
                 .catch((err) => console.log(err))
+        },
+        sendMail() {
+            let formData = new FormData()
+            formData.append('email', this.form.email)
+            formData.append('id', this.customer_id)
+            axios.post(`../../api/customer/book-service/send-mail`, formData).catch((err) => {
+                console.log(err)
+            })
         }
     }
 }

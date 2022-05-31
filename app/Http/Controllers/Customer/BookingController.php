@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Customer;
 use App\Http\Controllers\Controller;
 use App\Models\Order;
 use App\Models\OrderDetail;
+use App\Models\Users;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -153,5 +154,24 @@ class BookingController extends Controller
                 $newOrderDetail->save();
             }
         }
+    }
+
+    public function sendMail(Request $request)
+    {
+        $subject_mail = 'Bạn đã đặt dịch vụ thành công';
+        $data = array();
+        $to_email = $request->email;
+        if ($to_email == null) {
+            $user = Users::find($request->id);
+            $to_email = $user->email;
+        }
+
+        Mail::send(
+            'admin.pages.mail.email',
+            $data,
+            function ($message) use ($to_email, $subject_mail) {
+                $message->to($to_email)->subject($subject_mail);
+            }
+        );
     }
 }
