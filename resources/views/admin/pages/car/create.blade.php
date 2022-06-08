@@ -33,6 +33,7 @@
     @include('admin.layouts.footer')
 </div>
 <script src="{{ asset('public/admin/js/ckeditor/ckeditor.js') }}"></script>
+<script src="{{ asset('public/admin/js/ckfinder/ckfinder.js') }}"></script>
 <script src="{{ asset('public/admin/js/jquery-3.4.1.js') }}"></script>
 <script src="{{ asset('public/js/app.js') }}"></script>
 @endsection

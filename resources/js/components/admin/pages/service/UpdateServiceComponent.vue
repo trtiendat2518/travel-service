@@ -136,7 +136,9 @@ export default {
             }),
             config: {
                 filebrowserImageUploadUrl: '../../../public/admin/js/ckeditor/upload-images-service.php',
-                filebrowserImageBrowseUrl: '../../../public/images',
+                // filebrowserImageBrowseUrl: '../public/images',
+                filebrowserBrowseUrl: '../public/admin/js/ckfinder/ckfinder.html',
+                // filebrowserUploadUrl: '../public/admin/js/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
                 filebrowserUploadMethod: 'form',
                 editorplaceholder: 'Mô tả chi tiết...',
                 language: 'vi',
