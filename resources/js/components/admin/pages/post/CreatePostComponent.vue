@@ -83,7 +83,7 @@
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label for="contact-info-vertical">Nội dung mô tả</label>
-                                            <vue-editor v-model="form.content" :editorToolbar="customToolbar"></vue-editor>
+                                            <vue-ckeditor v-model="form.content" :config="config"></vue-ckeditor>
                                             <div
                                                 class="text-danger mb-3"
                                                 v-if="form.errors.has('content')"
@@ -107,10 +107,10 @@
 
 <script>
 import 'vue-snotify/styles/material.css'
-import { VueEditor } from 'vue2-editor'
+import VueCkeditor from 'vue-ckeditor2'
 export default {
     components: {
-        VueEditor
+        VueCkeditor
     },
     data() {
         return {
@@ -125,20 +125,14 @@ export default {
                 tags: [],
                 author: this.$adminId
             }),
-            customToolbar: [
-                [{ header: [false, 1, 2, 3, 4, 5, 6] }],
-                [{ size: ['small', false, 'large', 'huge'] }],
-                ['bold', 'italic', 'underline', 'strike'],
-                [{ align: '' }, { align: 'center' }, { align: 'right' }, { align: 'justify' }],
-                [{ header: 1 }, { header: 2 }],
-                ['blockquote', 'code-block'],
-                [{ list: 'ordered' }, { list: 'bullet' }, { list: 'check' }],
-                [{ script: 'sub' }, { script: 'super' }],
-                [{ indent: '-1' }, { indent: '+1' }],
-                [{ color: [] }, { background: [] }],
-                ['link', 'image', 'video', 'formula'],
-                [{ direction: 'rtl' }]
-            ]
+            config: {
+                filebrowserImageUploadUrl: '../public/admin/js/ckeditor/upload-images-post.php',
+                filebrowserImageBrowseUrl: '../public/images',
+                filebrowserUploadMethod: 'form',
+                editorplaceholder: 'Mô tả chi tiết bài viết...',
+                language: 'vi',
+                height: 300
+            }
         }
     },
     mounted() {

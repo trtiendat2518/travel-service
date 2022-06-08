@@ -30,6 +30,7 @@
         "moment": "^2.29.3",
         "raphael": "^2.3.0",
         "vform": "^2.1.2",
+        "vue-ckeditor2": "^2.1.5",
         "vue-input-tag": "^2.0.7",
         "vue-morris": "^1.1.0",
         "vue-router": "^3.5.3",

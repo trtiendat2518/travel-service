@@ -117,11 +117,10 @@ class ServiceController extends Controller
         $newService->created_at = now();
 
         $image = $data['avatar'];
-        $name = 'service_avatar_' . uniqid(md5(rand(1, 999))) . '.png';
-        Storage::disk('service')->put($name, File::get($image));
+        $name = $image->getClientOriginalName();
         $newService->avatar = $name;
-
         $newService->save();
+        Storage::disk('service')->put($name, File::get($image));
     }
 
     /**
@@ -213,7 +212,7 @@ class ServiceController extends Controller
             $service->updated_at = now();
 
             $image = $request->avatar;
-            $name = 'service_avatar_' . uniqid(md5(rand(1, 999))) . '.png';
+            $name = $image->getClientOriginalName();
             Storage::disk('service')->delete($service->avatar);
             Storage::disk('service')->put($name, File::get($image));
             $service->avatar = $name;

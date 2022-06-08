@@ -114,7 +114,7 @@ class PostController extends Controller
         $newPost->created_at = now();
 
         $image = $data['avatar'];
-        $name = 'post_avatar' . uniqid(md5(rand(1, 999))) . '.png';
+        $name = $image->getClientOriginalName();
         $newPost->avatar = $name;
         $newPost->save();
         Storage::disk('post')->put($name, File::get($image));
@@ -217,8 +217,9 @@ class PostController extends Controller
             $post->tags = implode(",", $data['tags']);
             $post->content = $data['content'];
             $post->category_id = $data['category_id'];
+
             $image = $request->avatar;
-            $name = 'post_avatar_' . uniqid(md5(rand(1, 999))) . '.png';
+            $name = $image->getClientOriginalName();
             Storage::disk('post')->delete($post->avatar);
             Storage::disk('post')->put($name, File::get($image));
             $post->avatar = $name;

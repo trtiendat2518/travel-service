@@ -49,6 +49,7 @@
 </head>
 
 <body>
+    {{-- @include('customer.plugin.gtm') --}}
     @include('customer.plugin.zalo')
     @include('customer.plugin.facebook')
 

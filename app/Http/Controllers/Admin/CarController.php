@@ -118,10 +118,10 @@ class CarController extends Controller
         $newCar->slug = Str::slug($data['name']);
 
         $image = $data['avatar'];
-        $name = 'car_avatar' . uniqid(md5(rand(1, 999))) . '.png';
-        Storage::disk('car')->put($name, File::get($image));
+        $name = $image->getClientOriginalName();
         $newCar->avatar = $name;
         $newCar->save();
+        Storage::disk('car')->put($name, File::get($image));
     }
 
     /**
@@ -212,8 +212,9 @@ class CarController extends Controller
             $car->content = $data['content'];
             $car->slug = Str::slug($data['name']);
             $car->tags = implode(",", $data['tags']);
+
             $image = $request->avatar;
-            $name = 'car_avatar_' . uniqid(md5(rand(1, 999))) . '.png';
+            $name = $image->getClientOriginalName();
             Storage::disk('car')->delete($car->avatar);
             Storage::disk('car')->put($name, File::get($image));
             $car->avatar = $name;
